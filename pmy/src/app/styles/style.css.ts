@@ -5,20 +5,10 @@ export const test = style({
   background: "red"
 });
 
-export const setting = style({
-  top: 0,
-  right: "auto",
-  bottom: 0,
-  // left: 394,
-  position: "absolute",
-  margin: "auto",
-  width: "100%",
-  height: "100%",
-  // background: vars.color.bgPrimary,
-  zIndex: 3,
-  textShadow: "0 0 1px rgba(0, 0, 0, .01)",
-  borderRadius: 20,
-  // color: vars.color.primary,
+export const container = style({
+  width: "100vw",
+  height: "100vh",
+  border: "5px solid red"
 });
 
 export const header = style({

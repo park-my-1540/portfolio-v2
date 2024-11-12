@@ -27,6 +27,20 @@ globalStyle("body, html", {
     },
   },
 });
+globalStyle("body", {
+  "@layer": {
+    [layers.reset]: {
+      margin: 0,
+      overflow: "hidden",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#eee7e0",
+      width: "100vw",
+      height: "100vh",
+    },
+  },
+});
 
 globalStyle("button", {
   "@layer": {
