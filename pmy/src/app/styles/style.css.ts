@@ -8,7 +8,6 @@ export const test = style({
 export const container = style({
   width: "100vw",
   height: "100vh",
-  border: "5px solid red"
 });
 
 export const header = style({
