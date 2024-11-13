@@ -1,8 +1,10 @@
 // global.css.ts
 import "./layers.css";
 import "./reset.css";
-
 import { globalStyle } from "@vanilla-extract/css";
+import { sprinkles } from "./common/sprinkles.css";
+import { vars } from "@/styles/common/createThemeContract.css";
+
 import * as layers from "./layers.css";
 
 globalStyle(
@@ -31,13 +33,7 @@ globalStyle("body", {
   "@layer": {
     [layers.reset]: {
       margin: 0,
-      overflow: "hidden",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#eee7e0",
-      width: "100vw",
-      height: "100vh",
+      backgroundColor: vars.color.bgPrimary,
     },
   },
 });
@@ -47,6 +43,14 @@ globalStyle("button", {
     [layers.reset]: {
       cursor: "pointer",
       transition: "opacity 0.3s ease", // 오퍼시티 전환 효과
+    },
+  },
+});
+
+globalStyle("canvas", {
+  "@layer": {
+    [layers.reset]: {
+      borderRadius: "32px"
     },
   },
 });
