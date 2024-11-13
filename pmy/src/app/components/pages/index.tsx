@@ -5,6 +5,7 @@ import MatterComponent from "@/components/oranisms/Main/MatterComponent";
 import Box from "@/components/layouts/Box/Box";
 import Profile from "@/components/oranisms/Profile/Profile";
 import Header from "@/components/oranisms/Header/Header";
+import Footer from "@/components/oranisms/Footer/Footer";
 export default function Home() {
   const canvasRef = useRef<HTMLDivElement>(null);
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
         <Header/>
         <Box
+          border= "1px solid red"
+          height="calc(100vh - 170px)"
           margin="0"
           responsive = {{
             display: {
@@ -26,6 +29,7 @@ export default function Home() {
           <Profile/>
           <MatterComponent canvasRef = {canvasRef}/>
         </Box>
+        <Footer/>
     </>
   );
 }

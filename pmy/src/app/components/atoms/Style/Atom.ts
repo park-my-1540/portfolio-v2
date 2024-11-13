@@ -6,7 +6,7 @@ export interface Atoms extends Sprinkles {
 }
 
 export function atoms(atoms: Atoms) {
-  const { reset, className, ...rest } = atoms;
+  const { className, ...rest } = atoms;
   const sprinklesClassNames = sprinkles(rest);
 
   return clsx(

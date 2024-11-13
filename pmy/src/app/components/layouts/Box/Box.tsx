@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import * as styles from "./box.css";
 import * as flexstyles from "./flex.css";
 import { clsx } from "clsx"; // clsx import
 import { pickProps } from "@/utils/utils";
 import { sprinkles, Sprinkles } from "@/styles/common/sprinkles.css"; // sprinkles import
+import { BoxProps, NumberOrString } from "@/types/styles"
 
 type FlexProps = {
   children: ReactNode;
@@ -15,28 +15,7 @@ type FlexProps = {
   style?: React.CSSProperties;
 };
 
-type BoxProps = {
-  children: ReactNode;
-  backgroundColor?: string;
-  width?: number;
-  height?: number;
-  display?: string;
-  margin?: string;
-  marginTop?: string;
-  marginLeft?: string;
-  marginRight?: string;
-  marginBottom?: string;
-  padding?: string;
-  paddingTop?: string;
-  paddingLeft?: string;
-  paddingRight?: string;
-  paddingBottom?: string;
-  borderRadius?: React.CSSProperties;
-  border?: React.CSSProperties;
-  responsive?: any
-} & FlexProps & Sprinkles;
-
-const Box: React.FC<BoxProps> = ({
+const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   children,
   backgroundColor,
   width,
@@ -63,17 +42,29 @@ const Box: React.FC<BoxProps> = ({
   style,
   ...props
 }) => {
-  const pickedProps = pickProps(
-    {
-      backgroundColor, width, height, display, margin, marginTop, marginLeft, marginRight, marginBottom, padding, paddingTop, paddingLeft, paddingRight, paddingBottom, borderRadius, border
+  const pickedProps = pickProps({
+      backgroundColor, width, height, display, 
+      margin, marginTop, marginLeft, marginRight, marginBottom, 
+      padding, paddingTop, paddingLeft, paddingRight, paddingBottom, 
+      borderRadius, border
     },
-    ["backgroundColor", "width", "height", "display", "margin", "marginTop", "marginLeft", "marginRight", "marginBottom", "padding", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", "borderRadius", "border"]
+    ["backgroundColor", "width", "height", "display", 
+      "margin", "marginTop", "marginLeft", "marginRight", "marginBottom", 
+      "padding", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", 
+      "borderRadius", "border"]
   );
+
+  const addUnit = (value:NumberOrString): NumberOrString=> {
+    if(typeof value === 'number' || value?.startsWith('calc') || value === undefined){
+      return value
+    } 
+    return value + 'px'
+  }
 
   const inlineStyle: React.CSSProperties = {
     backgroundColor: pickedProps.backgroundColor,
-    width: pickedProps.width && `${pickedProps.width}px`,
-    height: pickedProps.height && `${pickedProps.height}px`,
+    width: addUnit(pickedProps.width),
+    height: addUnit(pickedProps.height),
     display: pickedProps.display,
     margin: pickedProps.margin,
     marginTop: pickedProps.marginTop,
@@ -88,13 +79,10 @@ const Box: React.FC<BoxProps> = ({
     borderRadius: pickedProps.borderRadius,
     border: pickedProps.border,
   };
-  console.log(responsive)
-  console.log(props)
-// console.log(sprinkles(props))
+
   return (
      <div
      className={clsx(
-      styles.boxStyle, // Box 기본 스타일
       sprinkles(responsive), // responsive 스타일
       flexstyles.flexDirection[direction], // Flex 스타일 (direction)
       flexstyles.alignItems[align], // Flex 스타일 (align)

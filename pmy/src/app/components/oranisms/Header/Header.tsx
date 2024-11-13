@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <header>
             <Box display="flex" direction="row" align="center" justify="between" gap="small" height={85}>
                 <Text>mee young</Text>
-                <Text>Frontend Portfolio</Text>
+                <Text>폰트를 봅시다잇 이미 글씨체가 너무 이뻐요</Text>
             </Box>
         </header>
   );

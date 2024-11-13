@@ -2,10 +2,24 @@
 import "./layers.css";
 import "./reset.css";
 import { globalStyle } from "@vanilla-extract/css";
-import { sprinkles } from "./common/sprinkles.css";
+import { globalFontFace } from '@vanilla-extract/css';
 import { vars } from "@/styles/common/createThemeContract.css";
 
 import * as layers from "./layers.css";
+
+// Medium 폰트 설정
+globalFontFace('BandoLight', {
+  fontWeight: 400,
+  fontStyle: 'normal',
+  src: 'url("/fonts/bandoLight.ttf") format("truetype")',
+});
+
+// Bold 폰트 설정
+globalFontFace('BandoBold', {
+  fontWeight: 700,
+  fontStyle: 'normal',
+  src: 'url("/fonts/bandoBold.ttf") format("truetype")',
+});
 
 globalStyle(
   "#__next",
@@ -26,6 +40,7 @@ globalStyle("body, html", {
   "@layer": {
     [layers.reset]: {
       height: "100%",
+      fontFamily: 'BandoLight'
     },
   },
 });

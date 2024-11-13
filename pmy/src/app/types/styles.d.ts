@@ -1,3 +1,7 @@
+import { ValueOfUnion } from "@/utils/utils";
+import { sprinkles, Sprinkles } from "@/styles/common/sprinkles.css"; // sprinkles import
+
+
 export type Theme = typeof theme;
 export type WidthSize = keyof Theme["widthSize"]; // default, medium
 export type FontSize = keyof Theme["fontSize"];
@@ -35,4 +39,32 @@ export type OptionType = {
     dark : boolean,
     mode : ThemeMode,
     highlightColor : HighlightColor
+};
+
+const responsiveValue = ["desktop", "tablet", "mobile"] as const;
+export type responsiveType = ValueOfUnion<typeof responsiveValue>
+
+const displayValue = ["flex", "inline", "inline-block", "block"] as const;
+export type displayType = ValueOfUnion<typeof displayValue>
+
+export type NumberOrString = number | string | undefined;
+
+export type BoxProps = {
+  backgroundColor?: string;
+  width?: NumberOrString;
+  height?: NumberOrString;
+  display?: displayType;
+  margin?: NumberOrString;
+  marginTop?: NumberOrString;
+  marginLeft?: NumberOrString;
+  marginRight?: NumberOrString;
+  marginBottom?: NumberOrString;
+  padding?: NumberOrString;
+  paddingTop?: NumberOrString;
+  paddingLeft?: NumberOrString;
+  paddingRight?: NumberOrString;
+  paddingBottom?: NumberOrString;
+  borderRadius?: NumberOrString;
+  border?: string;
+  responsive?: Sprinkles
 };

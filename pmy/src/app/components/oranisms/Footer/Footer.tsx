@@ -5,9 +5,9 @@ import Box from "@/components/layouts/Box/Box";
 const Footer: React.FC = () => {
   return (
     <>
-        {/* <Box height={85}> */}
+        <Box height={85}>
             <Text>see more</Text>
-        {/* </Box> */}
+        </Box>
     </>
   );
 };
