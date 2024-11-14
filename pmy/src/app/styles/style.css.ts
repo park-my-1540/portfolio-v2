@@ -18,6 +18,10 @@ export const header = style({
   // background: vars.color.bgSecondary,
 });
 
+export const swiperContainer = style({
+  height: "calc(100% - 80px)"
+});
+
 // export const container = style([
 //   sprinkles({ paddingX: "large" }),
 //   {

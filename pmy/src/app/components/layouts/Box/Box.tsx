@@ -33,10 +33,12 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   paddingBottom,
   borderRadius,
   border,
+  borderTop,
+  borderBottom,
   responsive,
-  direction = "row",
-  align = "stretch",
-  justify = "start",
+  direction,
+  align,
+  justify,
   gap = "none",
   className,
   style,
@@ -46,12 +48,12 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
       backgroundColor, width, height, display, 
       margin, marginTop, marginLeft, marginRight, marginBottom, 
       padding, paddingTop, paddingLeft, paddingRight, paddingBottom, 
-      borderRadius, border
+      borderRadius, border, borderTop, borderBottom
     },
     ["backgroundColor", "width", "height", "display", 
       "margin", "marginTop", "marginLeft", "marginRight", "marginBottom", 
       "padding", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", 
-      "borderRadius", "border"]
+      "borderRadius", "border", "borderTop", "borderBottom"]
   );
 
   const addUnit = (value:NumberOrString): NumberOrString=> {

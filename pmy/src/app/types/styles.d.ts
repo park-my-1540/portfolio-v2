@@ -66,5 +66,7 @@ export type BoxProps = {
   paddingBottom?: NumberOrString;
   borderRadius?: NumberOrString;
   border?: string;
+  borderTop?: string;
+  borderBottom?: string;
   responsive?: Sprinkles
 };

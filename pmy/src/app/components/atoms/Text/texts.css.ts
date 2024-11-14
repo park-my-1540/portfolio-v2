@@ -3,6 +3,7 @@ import { style } from "@vanilla-extract/css";
 
 const base = {
   margin: "0",
+  lineHeight: '1.3'
 };
 const variants = {
   sizes: {
@@ -19,10 +20,10 @@ const variants = {
       fontSize: "20px",
     }),
     large: style({
-      fontSize: "24px",
+      fontSize: "28px",
     }),
     largeX2: style({
-      fontSize: "50px"
+      fontSize: "40px"
     }),
     big: style({
       fontSize: "120px",

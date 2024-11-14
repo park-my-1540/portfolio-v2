@@ -1,8 +1,6 @@
 import React from "react";
 import { Text } from "@/components/atoms/Text/Text";
-import Flex from "@/components/layouts/Flex/Flex";
 import Box from "@/components/layouts/Box/Box";
-import { sprinkles } from "@/styles/common/sprinkles.css"; // sprinkles import
 
 const Header: React.FC = () => {
   return (

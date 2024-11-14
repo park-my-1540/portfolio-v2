@@ -1,35 +1,58 @@
 "use client";
-
 import { useRef } from "react";
-import MatterComponent from "@/components/oranisms/Main/MatterComponent";
-import Box from "@/components/layouts/Box/Box";
-import Profile from "@/components/oranisms/Profile/Profile";
-import Header from "@/components/oranisms/Header/Header";
-import Footer from "@/components/oranisms/Footer/Footer";
+import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Header from "@/components/organisms/Header/Header";
+import Footer from "@/components/organisms/Footer/Footer";
+import { swiperContainer } from "@/styles/style.css";
+
+import MainPage from "./MainPage";
+import AboutPage from "./AboutPage";
+import Box from "../layouts/Box/Box";
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/mousewheel';
+
 export default function Home() {
-  const canvasRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<HTMLDivElement>(null);
   return (
     <>
-      <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
-        <Header/>
-        <Box
-          border= "1px solid red"
-          height="calc(100vh - 170px)"
-          margin="0"
-          responsive = {{
-            display: {
-              desktop: 'flex',
-              tablet: 'flex',
-              mobile: 'block',
-            }
-          }}
-        >
-          <Profile/>
-          <MatterComponent canvasRef = {canvasRef}/>
-        </Box>
-        <Footer/>
+    <Header/>
+     <Swiper 
+      className={swiperContainer}
+       direction={'vertical'}  
+          speed = {1000}
+          slidesPerView={1}
+          spaceBetween={5}
+          modules={[Navigation, Pagination, Scrollbar, A11y, Mousewheel]}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+          mousewheel={true}
+          keyboard={true}
+          // pagination={{
+          //     el: '.main-pagination',
+          //     clickable:true,
+          //     renderBullet: function (index, className) {
+          //       return `<span class="${className}">  ${index ===0 ? 'Home' : (0)}</span>`;
+          //     },
+          // }} 
+          ref={swiperRef}>
+            <SwiperSlide>
+              <MainPage/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <AboutPage/>
+            </SwiperSlide>
+    </Swiper>
+
+    {/* <Footer/> */}
     </>
   );
 }

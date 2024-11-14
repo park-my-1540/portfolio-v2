@@ -40,7 +40,8 @@ globalStyle("body, html", {
   "@layer": {
     [layers.reset]: {
       height: "100%",
-      fontFamily: 'BandoLight'
+      fontFamily: 'BandoLight',
+      overflowY : 'hidden'
     },
   },
 });
