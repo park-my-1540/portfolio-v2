@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import MatterComponent from "@/components/organisms/Main/MatterComponent";
 import Box from "@/components/layouts/Box/Box";
-import Profile from "@/components/organisms/Profile/Profile";
+import Side from "@/components/organisms/Side/Side";
 export default function Main() {
   const canvasRef = useRef<HTMLDivElement>(null);
   return (
@@ -23,8 +23,8 @@ export default function Main() {
             }
           }}
         >
-          <Profile/>
-          {/* <MatterComponent canvasRef = {canvasRef}/> */}
+          <Side/>
+          <MatterComponent canvasRef = {canvasRef}/>
         </Box>
     </>
   );

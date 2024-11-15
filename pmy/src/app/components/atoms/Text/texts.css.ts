@@ -5,6 +5,7 @@ const base = {
   margin: "0",
   lineHeight: '1.3'
 };
+
 const variants = {
   sizes: {
     small: style({
@@ -31,11 +32,17 @@ const variants = {
     }),
   },
   weights: {
+    light: style({
+      fontWeight: 300,
+      fontFamily: 'MangoLight'
+    }),
     normal: style({
-      fontWeight: "normal",
+      fontWeight: 400,
+      fontFamily: 'MangoRegular'
     }),
     bold: style({
-      fontWeight: "bold",
+      fontWeight: 700,
+      fontFamily: 'MangoBold'
     }),
   },
   display: {

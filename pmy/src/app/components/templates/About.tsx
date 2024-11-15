@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Box from "@/components/layouts/Box/Box";
-import Profile from "@/components/organisms/Profile/Profile";
+import Profile from "@/components/organisms/Side/Side";
 import Introduction from "@/components/organisms/Introduction/Introduction";
 import Connect from "@/components/organisms/Connect/Connect";
 

@@ -8,17 +8,23 @@ import { vars } from "@/styles/common/createThemeContract.css";
 import * as layers from "./layers.css";
 
 // Medium 폰트 설정
-globalFontFace('BandoLight', {
+globalFontFace('MangoLight', {
   fontWeight: 400,
   fontStyle: 'normal',
-  src: 'url("/fonts/bandoLight.ttf") format("truetype")',
+  src: 'url("/fonts/MangoDdobak-L(ttf).ttf") format("truetype")',
 });
 
-// Bold 폰트 설정
-globalFontFace('BandoBold', {
+// Regular 폰트 설정
+globalFontFace('MangoRegular', {
   fontWeight: 700,
   fontStyle: 'normal',
-  src: 'url("/fonts/bandoBold.ttf") format("truetype")',
+  src: 'url("/fonts/MangoDdobak-B(ttf).ttf") format("truetype")',
+});
+// Bold 폰트 설정
+globalFontFace('MangoBold', {
+  fontWeight: 700,
+  fontStyle: 'normal',
+  src: 'url("/fonts/MangoDdobak-B(ttf).ttf") format("truetype")',
 });
 
 globalStyle(
@@ -40,7 +46,7 @@ globalStyle("body, html", {
   "@layer": {
     [layers.reset]: {
       height: "100%",
-      fontFamily: 'BandoLight',
+      fontFamily: 'MangoRegular',
       overflowY : 'hidden'
     },
   },

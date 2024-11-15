@@ -57,7 +57,7 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   );
 
   const addUnit = (value:NumberOrString): NumberOrString=> {
-    if(typeof value === 'number' || value?.startsWith('calc') || value === undefined){
+    if(typeof value === 'number' || value?.startsWith('calc') || value?.endsWith('%') || value === undefined){
       return value
     } 
     return value + 'px'
@@ -81,7 +81,8 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
     borderRadius: pickedProps.borderRadius,
     border: pickedProps.border,
   };
-
+console.log(flexstyles.alignItems[align])
+console.log(align)
   return (
      <div
      className={clsx(

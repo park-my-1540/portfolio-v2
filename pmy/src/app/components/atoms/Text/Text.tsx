@@ -5,6 +5,7 @@ import { textColor, TextColorVariantProps } from "@/styles/common/theme.css";
 type TextProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
 };
 
 type TextLinkProps = {
@@ -21,10 +22,11 @@ export const Text = ({
   display,
   color,
   children,
+  className,
   ...rest
 }: TextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
-    <p {...rest} className={ `${text({
+    <p {...rest} className={ `${className} ${text({
       sizes, weights, display, vertical, textAlign
     })} ${textColor({ color })}`}>
       {children}
