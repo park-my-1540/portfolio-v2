@@ -27,8 +27,8 @@ const variants = {
       fontSize: "40px"
     }),
     big: style({
-      fontSize: "120px",
-      lineHeight: "120px"
+      fontSize: "70px",
+      lineHeight: "70px"
     }),
   },
   weights: {
