@@ -18,7 +18,7 @@ globalFontFace('MangoLight', {
 globalFontFace('MangoRegular', {
   fontWeight: 700,
   fontStyle: 'normal',
-  src: 'url("/fonts/MangoDdobak-B(ttf).ttf") format("truetype")',
+  src: 'url("/fonts/MangoDdobak-R(ttf).ttf") format("truetype")',
 });
 // Bold 폰트 설정
 globalFontFace('MangoBold', {

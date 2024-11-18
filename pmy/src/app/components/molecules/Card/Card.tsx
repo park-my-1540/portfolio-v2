@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "@/components/atoms/Text/Text";
 import { Badge } from "@/components/molecules/Badge/Badge";
+import Duration from "@/components/molecules/Duration/Duration";
 import { cardBox } from "./card.css"
 import { ThemeColor } from "@/types/styles";
 /**
@@ -26,9 +27,10 @@ export default function Card({theme,badge,subTitle,title,duration}:CardProps) {
         <>
         <div className={cardBox}>
           <Badge theme={theme}>{badge}</Badge>
-          <Text color="primary">{subTitle}</Text>
-          <Text color="primary">{title}</Text>
-          <Text color="primary">{duration}</Text>
+          <Text color="tertiary" weights="light" style={{paddingTop: 20}}>{subTitle}</Text>
+          <Text color="primary" weights="light" sizes="mediumlargeX2">{title}</Text>
+          {/* <Text color="primary" weights="light">{duration}</Text> */}
+          <Duration/>
         </div>
         </>
       );

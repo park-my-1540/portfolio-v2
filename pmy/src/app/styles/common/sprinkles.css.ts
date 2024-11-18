@@ -75,9 +75,10 @@ export const colors = {
   "gray-800": "#666",
   'white': "#fff",
   "black-100": "#211B1B",
-  "black-200": "#33353D",
+  "black-200": "#231F20",
   "black-600": "#212023",
   "blue-500": "#083AFF",
+  "blue-600": "#223DFF",
   // etc.
 };
 

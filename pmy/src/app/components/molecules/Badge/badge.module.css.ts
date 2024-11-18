@@ -6,7 +6,7 @@ const base = {
   display:'inline-block',
   padding: '7px 10px',
   borderRadius: 32,
-  fontSize: '16px',
+  fontSize: '14px',
 
 }
 const variants = {

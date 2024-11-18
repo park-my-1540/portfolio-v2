@@ -12,7 +12,8 @@ export default function Resume() {
           width="100%"
           border= "1px solid blue"
           height="calc(100vh - 170px)"
-          margin="0"
+          justify="between"
+          align="stretch"
           responsive = {{
             display: {
               desktop: 'flex',
@@ -25,8 +26,8 @@ export default function Resume() {
               border="1px solid" 
               display="flex" 
               direction="column"
-              width="40%" 
-              padding={38}
+              padding={30}
+              width="100%"
               >
             <Experience/>  
            </Box>
@@ -34,8 +35,8 @@ export default function Resume() {
               border="1px solid" 
               display="flex" 
               direction="column"
-              width="40%" 
-              padding={38}
+              padding={30}
+              width="100%"
               >
             <Experience/>  
            </Box>
@@ -43,8 +44,8 @@ export default function Resume() {
               border="1px solid" 
               display="flex" 
               direction="column"
-              width="40%" 
-              padding={38}
+              padding={30}
+              width="100%"
               >
             <Experience/>  
            </Box>

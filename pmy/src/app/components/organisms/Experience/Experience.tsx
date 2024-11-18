@@ -20,6 +20,12 @@ export default function Experience() {
             subTitle="Freelance"
             title="Graphic Desinger(Logo,Brand)"
             />
+          <Card
+            theme="black"
+            badge="2022"
+            subTitle="Freelance"
+            title="Graphic Desinger(Logo,Brand)"
+            />
         </>
       );
 }

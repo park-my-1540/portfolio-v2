@@ -6,12 +6,14 @@ type ColorKey = keyof typeof colors;
 export const vars = createThemeContract({
   color: {
     primary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
+    subPrimary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
     tertiary: "", // tertiary: 서브 보조 색상
     bgPrimary: "", // bgPrimary: 메인 배경 색상
     bgSecondary: "",
     bgInactive: "",
     bgInput: "",
     accent: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
+    highlight: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textSecondary: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
   },
@@ -19,12 +21,14 @@ export const vars = createThemeContract({
 export const lightTheme = createTheme(vars, {
   color: {
     primary: colors["black-100" as ColorKey],
+    subPrimary: colors["black-200" as ColorKey],
     tertiary: colors["gray-400" as ColorKey],
     bgPrimary: colors["gray-300" as ColorKey],
     bgSecondary: colors["blue-500" as ColorKey],
     bgInactive: colors["gray-500" as ColorKey],
     bgInput: colors["white" as ColorKey],
     accent: colors["white" as ColorKey],
+    highlight: colors["blue-600" as ColorKey],
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
   },
@@ -32,12 +36,14 @@ export const lightTheme = createTheme(vars, {
 export const darkTheme = createTheme(vars, {
   color: {
     primary: colors["gray-500" as ColorKey],
+    subPrimary: colors["gray-500" as ColorKey],
     tertiary: colors["gray-100" as ColorKey],
     bgPrimary: colors["black-100" as ColorKey],
     bgSecondary: colors["black-200" as ColorKey],
     bgInactive: colors["black-600" as ColorKey],
     bgInput: colors["black-200" as ColorKey],
     accent: colors["black-200" as ColorKey],
+    highlight: colors["gray-600" as ColorKey],
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
   },
