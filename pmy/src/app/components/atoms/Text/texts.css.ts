@@ -20,6 +20,9 @@ const variants = {
     mediumlarge: style({
       fontSize: "20px",
     }),
+    mediumlargeX2: style({
+      fontSize: "25px",
+    }),
     large: style({
       fontSize: "28px",
     }),

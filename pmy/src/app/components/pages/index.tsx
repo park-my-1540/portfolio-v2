@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -19,9 +19,18 @@ import 'swiper/css/mousewheel';
 
 export default function Home() {
   const swiperRef = useRef<HTMLDivElement>(null);
+  const [currentIdx, setCurrentIdx] = useState<number>(0);
+
+  const enumPage = ["main", "about", "some"] as const;
+
+
+  useEffect(()=> {
+    console.log('dd')
+  },[currentIdx])
+
   return (
     <>
-    <Header/>
+    <Header pageIndex={enumPage[currentIdx]}/>
      <Swiper 
       className={swiperContainer}
        direction={'vertical'}  
@@ -33,7 +42,7 @@ export default function Home() {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
+          onSlideChange={(swiper) => setCurrentIdx(swiper.realIndex)}
           mousewheel={true}
           keyboard={true}
           // pagination={{

@@ -28,5 +28,5 @@ export const gap = styleVariants({
   none: { gap: "0px" },
   small: { gap: "8px" },
   medium: { gap: "16px" },
-  large: { gap: "24px" },
+  large: { gap: "50px" },
 });
