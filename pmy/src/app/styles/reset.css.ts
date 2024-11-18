@@ -56,7 +56,7 @@ globalStyle("html", {
 globalStyle("svg", {
   "@layer": {
     [layers.reset]: {
-      display: "none"
+      // display: "none"
     },
   },
 });

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.32",
     "@vanilla-extract/css": "^1.16.0",
     "@vanilla-extract/sprinkles": "^1.6.3",
     "clsx": "^2.1.1",

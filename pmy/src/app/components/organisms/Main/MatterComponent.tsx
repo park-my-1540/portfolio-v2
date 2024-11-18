@@ -4,43 +4,44 @@ import React, { useEffect, useRef } from "react";
 import Matter from "matter-js";
 import { container } from "@/styles/style.css";
 import { vars } from "@/styles/common/createThemeContract.css";
-import * as SVG from "./svgpath";
+import { canvasWrap } from "./main.css";
+import {decomp} from "poly-decomp";
 
 const MatterCanvas = ({ canvasRef }) => {
-  
+  // poly-decomp 설정
+  if (typeof window !== "undefined") {
+    (window as any).decomp = decomp;
+  }
+
   useEffect(() => {
-    // Matter.js, pathseg, poly-decomp이 로드된 후 실행
     const Engine = Matter.Engine;
     const Runner = Matter.Runner;
     const Render = Matter.Render;
-    const Bodies = Matter.Bodies;
     const World = Matter.World;
+    const Bodies = Matter.Bodies;
+    const Common = Matter.Common;
     const Body = Matter.Body;
     const Svg = Matter.Svg;
 
+    // poly-decomp 설정
+    Common.setDecomp(decomp); // poly-decomp 사용 설정
+  
     const engine = Engine.create();
     const container = canvasRef.current;
 
-    const renderer = Matter.Render.create({
-      element: canvasRef.current,
+    const renderer = Render.create({
+      element: container,
       engine,
       options: {
         width: container.offsetWidth,
         height: container.offsetHeight,
         wireframes: false,
         background: vars.color.bgSecondary,
-      }
+      },
     });
 
     const walls = [
-      // 왼쪽 벽
-      /**
-       * 위치: x = 0 - 50, y = 0 - 50
-       * 크기: 너비 1px, 높이 container.offsetHeight * 2 - 50
-       */
-      Bodies.rectangle(0, 0, 1, container.offsetHeight * 2, {
-        isStatic: true,
-      }),
+      Bodies.rectangle(0, 0, 1, container.offsetHeight * 2, { isStatic: true }),
       Bodies.rectangle(
         container.offsetWidth,
         0,
@@ -55,112 +56,107 @@ const MatterCanvas = ({ canvasRef }) => {
         10,
         {
           isStatic: true,
-          render: {
-            fillStyle: vars.color.bgPrimary, // 벽 색상 설정
-          },
+          render: { fillStyle: vars.color.bgPrimary },
         }
       ),
     ];
+  
+    const loadExternalSvgs = async () => {
+      const svgPaths = [
+        "./svg/r.svg",
+        "./svg/n.svg",
+      ];
 
-    const physics = {
-      restitution: 0.7,
-      friction: 0.4
-    };
-
-    const createCircle = (width, color, x, y) => {
-      const outerCircle = Bodies.circle(x, y, width, {
-        ...physics,
-        render: {
-          fillStyle: color
-        }
-      });
-      const innerCircle = Bodies.circle(x, y, width / 2.5, {
-        ...physics,
-        render: {
-          fillStyle: "#000"
-        }
-      });
-      return Body.create({
-        parts: [outerCircle, innerCircle]
-      });
-    };
-    const createSvgElement = (path, color, scale, x, y, angle) => {
-      const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      pathElement.setAttribute("d", path);
-      const vertices = Svg.pathToVertices(pathElement, 3);
-      vertices.forEach((vertical) => {
-        const i = vertices.findIndex(
-          (v) => v.x === vertical.x && v.y === vertical.y
-        );
-        if (i !== -1) {
-          vertices.splice(i, 1);
-        }
-      });
-      const body = Bodies.fromVertices(
-        x,
-        y,
-        vertices,
-        {
-          ...physics,
-          render: {
-            fillStyle: color,
-            strokeStyle: color,
-            lineWidth: "1px"
-          }
-        },
-        true
+      const elements = await Promise.all(
+        svgPaths.map((path, i) =>
+          createSvgElementFromPath(path, "#fff", 1, 100 + i * 150, -200 * (i + 1), i * 10)
+        )
       );
 
-      Body.scale(body, 2, 2);
-      Body.setAngle(body, angle);
-      return body;
+      World.add(engine.world, [...walls, ...elements]);
     };
-
-    const elements = [
-      //                  path,     color,   scale, x, y, angle
-      createSvgElement(SVG.F_alphabet, "#fff", 1, 250, -400, 30), // f        O
-      createSvgElement(SVG.R_alphabet, "#fff", 400, 450, -400, 50), // r         O
-      createSvgElement(SVG.O_alphabet, "#fff", 500, 400, -200, 10), // o
-      // createSvgElement(N_alphabet, "#583d91", 1000, 700, -400, 50), // n
-      // createSvgElement(T_alphabet, "#eb5c48", 1150, -200), // t
-      // createSvgElement(E_alphabet, "#583d91", 900, 1460, -400, 200), // e         O
-      // createSvgElement(N_alphabet, "#583d91", 700, 1300, -700, 300), // n         O
-      // createSvgElement(D_alphabet, "#fab71a", 800, 1600, -700, 100), // d
-      // createSvgElement(D_alphabet, "#fab71a", 100, -900), // d
-      // createSvgElement(E_alphabet, "#eb5c48", 500, 250, -900, 250), // e
-      // createSvgElement(V_alphabet, "#fab71a", 600, -900), // v
-      // createSvgElement(E_alphabet, "#eb5c48", 12, 1500, -900, 100), // l
-      // createSvgElement(L_alphabet, "#eb5c48", 230, 1500, -900, 100), // o
-      // createSvgElement(O_alphabet, "#eb5c48", 440, 1500, -900, 100), // p
-      // createSvgElement(P_alphabet, "#eb5c48", 55, 1500, -900, 100), // e
-      // createSvgElement(E_alphabet, "#eb5c48", 660, 1500, -900, 100), // r
-      // createSvgElement(R_alphabet, "#eb5c48", 880, 1500, -900, 100), // r
-    ];
-
-    const mouseConstraint = Matter.MouseConstraint.create(engine, {
-      element: container,
-      constraint: {
-        stiffness: 0.2,
-        render: {
-          visible: false
-        }
-      }
-    });
-    const runner = Matter.Runner.create();
-    Matter.World.add(engine.world, [...walls, mouseConstraint, ...elements]);
-    Matter.Runner.run(runner, engine); // 엔진을 구동합니다.
-    Render.run(renderer); // 렌더를 진행합니다.
-
+  
+    loadExternalSvgs();
+  
+    const runner = Runner.create();
+    Runner.run(runner, engine);
+    Render.run(renderer);
+  
     return () => {
       Render.stop(renderer);
       World.clear(engine.world, false);
       Engine.clear(engine);
-      // render.canvas.remove();
     };
   }, [canvasRef]);
-  return <>
-  <div id="container" ref={canvasRef} className={container} style={{ width: "60vw", height: "58vw" }}></div>
-  </>;
+  
+
+  const loadSvg = async (path: string) => {
+    const response = await fetch(path);
+    const text = await response.text();
+    const parser = new DOMParser();
+    const svgDoc = parser.parseFromString(text, "image/svg+xml");
+    return svgDoc;
+  };
+
+  const createSvgElementFromPath = async (
+    path: string,
+    color: string,
+    scale: number,
+    x: number,
+    y: number,
+    angle: number
+  ) => {
+    try {
+      // SVG 파일 로드
+      const response = await fetch(path);
+      const svgText = await response.text();
+      const parser = new DOMParser();
+      const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+      const pathElements = svgDoc.querySelectorAll("path");
+
+      // 모든 <path> 요소에서 vertices를 추출
+      const vertices = Array.from(pathElements).flatMap((el) =>
+        Matter.Svg.pathToVertices(el, 10)
+      );
+
+      // poly-decomp 사용하여 복잡한 도형 처리
+      const decomposed = decomp(vertices); // poly-decomp로 복잡한 도형 분해
+
+      // Matter.js Body 생성
+      const body = Matter.Bodies.fromVertices(
+        x,
+        y,
+        decomposed,
+        {
+          restitution: 0.7,
+          friction: 0.2,
+          render: {
+            fillStyle: color,
+            strokeStyle: color,
+            lineWidth: 1,
+          },
+        },
+        true // 구멍 인식을 위해 true 설정
+      );
+  
+      // 크기 조절 및 각도 설정
+      Matter.Body.scale(body, scale, scale);
+      Matter.Body.setAngle(body, angle);
+  
+      return body;
+    } catch (error) {
+      console.error("SVG 로딩 중 오류 발생:", error);
+      return null;
+    }
+  };
+
+  return (
+    <>
+      <div className={canvasWrap}>
+        <div id="container" ref={canvasRef} className={container} style={{ width: "100%", height: "100%" }}></div>
+      </div>
+    </>
+  );
 };
 
 export default MatterCanvas;

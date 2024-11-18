@@ -45,7 +45,7 @@ export const swiperContainer = style({
 // ]);
 
 export const none = style({
-  display: "none"
+  // display: "none"
 });
 
 export const buttonWrap = style([
