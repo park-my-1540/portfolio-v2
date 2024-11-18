@@ -9,6 +9,7 @@ import { swiperContainer } from "@/styles/style.css";
 
 import MainPage from "./MainPage";
 import AboutPage from "./AboutPage";
+import ResumePage from "./ResumePage";
 import Box from "../layouts/Box/Box";
 // Import Swiper styles
 import 'swiper/css';
@@ -58,6 +59,9 @@ export default function Home() {
             </SwiperSlide>
             <SwiperSlide>
               <AboutPage/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <ResumePage/>
             </SwiperSlide>
     </Swiper>
 
