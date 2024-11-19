@@ -10,8 +10,7 @@ const Side: React.FC = () => {
           justify="end"
           display="flex"
           direction="column"
-          width="45%"
-          marginLeft={30}
+          width="38%"
           >
           <div className={arrow}></div>
           <Hashtag/>

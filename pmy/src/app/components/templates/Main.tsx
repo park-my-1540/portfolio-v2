@@ -16,7 +16,8 @@ export default function Main() {
           border= "1px solid red"
           height="calc(100vh - 170px)"
           margin="0"
-          padding='30px 70px'
+          padding='30px 140px'
+          justify="around"
           responsive = {{
             display: {
               desktop: 'flex',
