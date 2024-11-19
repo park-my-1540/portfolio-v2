@@ -16,6 +16,7 @@ export const vars = createThemeContract({
     highlight: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textSecondary: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
+    muted:"",
   },
 });
 export const lightTheme = createTheme(vars, {
@@ -31,6 +32,7 @@ export const lightTheme = createTheme(vars, {
     highlight: colors["blue-600" as ColorKey],
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
+    muted: colors["black-700" as ColorKey],
   },
 });
 export const darkTheme = createTheme(vars, {
@@ -46,6 +48,7 @@ export const darkTheme = createTheme(vars, {
     highlight: colors["gray-600" as ColorKey],
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
+    muted: colors["gray-800" as ColorKey],
   },
 });
 

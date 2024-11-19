@@ -46,19 +46,7 @@ const responsiveProperties = defineProperties({
     paddingBottom: space,
     paddingLeft: space,
     paddingRight: space
-    // etc.
   },
-  // shorthands: {
-  //   padding: [
-  //     "paddingTop",
-  //     "paddingBottom",
-  //     "paddingLeft",
-  //     "paddingRight"
-  //   ],
-  //   paddingX: ["paddingLeft", "paddingRight"],
-  //   paddingY: ["paddingTop", "paddingBottom"],
-  //   placeItems: ["justifyContent", "alignItems"]
-  // }
 });
 
 export const colors = {
@@ -77,6 +65,7 @@ export const colors = {
   "black-100": "#211B1B",
   "black-200": "#231F20",
   "black-600": "#212023",
+  "black-700": "#1A1B1C47",
   "blue-500": "#083AFF",
   "blue-600": "#223DFF",
   // etc.

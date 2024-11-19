@@ -4,6 +4,8 @@ import { useRef } from "react";
 import MatterComponent from "@/components/organisms/Main/MatterComponent";
 import Box from "@/components/layouts/Box/Box";
 import Side from "@/components/organisms/Side/Side";
+import ScrollIndicator from "@/components/organisms/ScrollIndicator/ScrollIndicator";
+
 export default function Main() {
   const canvasRef = useRef<HTMLDivElement>(null);
   return (
@@ -12,12 +14,12 @@ export default function Main() {
       <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
+
         <Box
           border= "1px solid red"
           height="calc(100vh - 170px)"
           margin="0"
-          padding='30px 140px'
-          justify="around"
+          padding='30px 0px 30px 140px'
           responsive = {{
             display: {
               desktop: 'flex',
@@ -28,6 +30,7 @@ export default function Main() {
         >
           <Side/>
           <MatterComponent canvasRef = {canvasRef}/>
+          <ScrollIndicator/>
         </Box>
     </>
   );
