@@ -1,14 +1,29 @@
 import React from "react";
-import { Text } from "@/components/atoms/Text/Text";
 import Box from "@/components/layouts/Box/Box";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { CardIcon } from "@/components/molecules/Card/Card";
+import { IconText } from "@/components/atoms/Icon/IconText";
 
 export default function ConnectBox() {
     return (
         <>
-          <Box>
-            아이콘
-            밑줄
-            이메일
+          <Box display="flex" direction="row">
+            <CardIcon
+              theme="black"
+              email="parkmy722698@gmail.com"
+              title={<IconText icon={faEnvelope} fontSize="48px" color='accent'/>}
+              />
+            <CardIcon
+              theme="blue"
+              email="https://github.com/park-my-1540"
+              title={<IconText icon={faGithub} fontSize="48px" color='accent'/>}
+              />
+            <CardIcon
+              theme="default"
+              email="Freelance"
+              title="Notion"
+              />
           </Box>
         </>
       );

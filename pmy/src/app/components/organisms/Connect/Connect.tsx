@@ -11,8 +11,6 @@ const Connect: React.FC = () => {
             <Box display="block" padding={30} border="1px solid" borderRadius={43}>
               <Box>
             <ConnectBox></ConnectBox>
-            <ConnectBox></ConnectBox>
-            <ConnectBox></ConnectBox>
           </Box>
             </Box>
           </Box>

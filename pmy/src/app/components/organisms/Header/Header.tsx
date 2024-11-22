@@ -5,7 +5,6 @@ import { header } from "./header.css";
 import { pageType } from "@/types/main";
 
 export function Header({pageIndex}:pageType) {
-  console.log(pageIndex);
   return (
     <header>
     {

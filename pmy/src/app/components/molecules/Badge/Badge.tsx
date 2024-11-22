@@ -1,11 +1,11 @@
 import React from "react";
-import { button, ButtonVariantProps } from './badge.module.css';
+import { badge, BadgeVariantProps } from './badge.module.css';
 import { ThemeColor } from "@/types/styles";
 
 type BadgeProps <T = unknown> = {
   theme: ThemeColor,
   children: React.ReactNode;
-} & ButtonVariantProps & T;
+} & BadgeVariantProps & T;
 
 
 export const Badge = <T,>({
@@ -15,6 +15,6 @@ export const Badge = <T,>({
 }: BadgeProps<T>) => {
   
 return (
-  <span className={button({ theme })}>{children}</span>
+  <span className={badge({ theme })}>{children}</span>
   );
 };

@@ -15,7 +15,8 @@ const theme = {
   theme: {
     blue: "#223DFF",
     black: "#231F20",
-    white: "#fff"
+    white: "#fff",
+    default: "#231F20"
   }
 } as const;
 

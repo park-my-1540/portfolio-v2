@@ -1,29 +1,18 @@
 import { vars } from '@/styles/common/createThemeContract.css'
 import { theme } from '@/styles/common/theme.css'
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { recipe } from '@vanilla-extract/recipes';
 
-const base = {
-  display:'inline-block',
-  padding: '7px 10px',
-  borderRadius: 32,
-  fontSize: '14px',
-
-}
 const variants = {
   theme: {
         blue: { backgroundColor: theme.theme.blue, color: vars.color.accent },
         white: { backgroundColor: theme.theme.white, color: vars.color.accent },
         black: { backgroundColor: theme.theme.black, color: vars.color.accent },
-        default: { backgroundColor: theme.theme.black, color: vars.color.accent },
+        default: { color: theme.theme.black},
     },
 }
-export const badge = recipe({
-    base: { //공통적으로 적용시킬것
-      ...base
-    },
+export const card = recipe({
     variants: variants, // 상황에 따라
     defaultVariants: { //fallback으로 사용할 variants 설정
       theme: 'blue',
     },
   });
-export type BadgeVariantProps = RecipeVariants<typeof badge>;
