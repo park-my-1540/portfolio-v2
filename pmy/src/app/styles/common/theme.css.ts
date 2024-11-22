@@ -21,6 +21,7 @@ const variants = {
     textSecondary: { color: vars.color.textSecondary },
     textInfo: { color: vars.color.textInfo },
     muted: { color: vars.color.muted },
+    inherit: { color: "inherit"},
   }
 };
  

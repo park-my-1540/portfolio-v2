@@ -24,7 +24,6 @@ export const box = style({
 })
 export const start = style({
   position: 'relative',
-  color: vars.color.tertiary,
   fontSize: 14, 
   fontFamily:'MangoLight',
   selectors: {
@@ -43,7 +42,6 @@ export const start = style({
 })
 export const end = style({
   position: 'relative',
-  color: vars.color.tertiary,
   fontSize: 14, 
   fontFamily:'MangoLight',
   selectors: {
