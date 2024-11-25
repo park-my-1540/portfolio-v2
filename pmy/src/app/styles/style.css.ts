@@ -1,10 +1,6 @@
 import { style } from "@vanilla-extract/css";
 // import { sprinkles } from "./common/sprinkles.css";
 
-export const test = style({
-  background: "red"
-});
-
 export const container = style({
   width: "100vw",
   height: "100vh",

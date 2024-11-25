@@ -9,7 +9,7 @@ export default function Hashtag() {
         <Box borderTop="1px solid" width="100%" paddingTop={35}>
           <Text color="primary" className={hashtag} weights="light" sizes="large">#Branding #Logo</Text>
           <Text color="primary" className={hashtag} weights="light" sizes="large">#Branding #Logo</Text>
-          <Text color="primary" className={hashtag} weights="light" sizes="large">#Branding #Logo</Text>
+          <Text color="primary" className={hashtag} weights="light" sizes="large">#Branding #Publisher</Text>
         </Box>
         </>
       );
