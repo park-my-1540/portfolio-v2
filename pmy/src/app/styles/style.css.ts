@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-// import { sprinkles } from "./common/sprinkles.css";
+import { vars } from "@/styles/common/createThemeContract.css";
 
 export const container = style({
   width: "100vw",
@@ -11,34 +11,43 @@ export const header = style({
   padding: "0 20px",
   lineHeight: "52px",
   fontSize: 24,
-  // background: vars.color.bgSecondary,
 });
+
 
 export const swiperContainer = style({
   height: "calc(100% - 80px)"
 });
 
-// export const container = style([
-//   sprinkles({ paddingX: "large" }),
-//   {
-//     position: "relative",
-//     width: "100%",
-//     height: "calc(100% - 52px)",
-//     margin: "0 auto",
-//     paddingTop: 20
-//   }
-// ]);
+export const pagination = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+})
 
-// export const itemBox = style([
-//   sprinkles({ paddingX: "medium", paddingY: "medium" }),
-//   {
-//     position: "relative",
-//     width: "100%",
-//     marginTop: 10,
-//     // background: vars.color.bgSecondary,
-//     borderRadius: 20
-//   }
-// ]);
+export const bullet = style({
+  position: "relative",
+  width: "8px",
+  height: "8px",
+  margin: "5px 0",
+  borderRadius: "50%",
+  background: vars.color.muted,
+  selectors: {
+    ["&.swiper-pagination-bullet-active"] : {
+      background: "blue",
+    },
+    ["&.swiper-pagination-bullet-active:before"] : {
+      content: "",
+      position: "absolute",
+      top: -2,
+      left: -2,
+      display: "block",
+      width: 12,
+      height: 12,
+      borderRadius: "50%",
+      border: "1px solid blue",
+    },
+  }
+})
 
 export const none = style({
   // display: "none"

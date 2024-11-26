@@ -12,6 +12,7 @@ export default function About() {
           width="100%"
           border= "1px solid blue"
           height="calc(100vh - 170px)"
+          justify="end"
           margin="0"
           responsive = {{
             display: {
@@ -21,7 +22,7 @@ export default function About() {
             }
           }}
         >
-           <Box 
+           {/* <Box 
               border="1px solid" 
               borderRadius={42}
               width="40%" 
@@ -29,7 +30,7 @@ export default function About() {
               direction="column"
               >
             <Profile/>  
-           </Box>
+           </Box> */}
           <Box
             width="60%"
             direction="column"

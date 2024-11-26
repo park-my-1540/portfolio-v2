@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import MatterComponent from "@/components/organisms/Main/MatterComponent";
+import Matter from "@/components/organisms/Main/Matter/Matter";
 import Box from "@/components/layouts/Box/Box";
 import Side from "@/components/organisms/Side/Side";
 import ScrollIndicator from "@/components/organisms/ScrollIndicator/ScrollIndicator";
@@ -29,7 +29,7 @@ export default function Main() {
           }}
         >
           <Side/>
-          <MatterComponent canvasRef = {canvasRef}/>
+          <Matter canvasRef = {canvasRef}/>
           <ScrollIndicator/>
         </Box>
     </>
