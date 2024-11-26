@@ -22,4 +22,11 @@ export const pagination = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  margin: "100px 0",
+})
+
+export const list = style({
+  position: "absolute",
+  top: 80,
+  right:10,
 })

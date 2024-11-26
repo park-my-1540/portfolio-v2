@@ -1,36 +1,37 @@
 import React from "react";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { aside, pagination, bullet } from "./navigationaside.css";
+import { aside, pagination, list } from "./navigation.css";
 import { IconText } from "@/components/atoms/Icon/IconText";
+import { Text } from "@/components/atoms/Text/Text";
 
-interface NavigationAsideProps {
+interface NavigationProps {
   enumPage: readonly string[];
   currentIdx: number;
   onBulletClick: (index: number) => void;
 }
 
-export default function NavigationAside({
+export default function Navigation({
   enumPage,
   currentIdx,
   onBulletClick,
-}: NavigationAsideProps) {
+}: NavigationProps) {
 
   
   return (
-    <div className={aside}>
+  <div className={aside}>
       
     {/* text pagination */}
-    <div className="custom-pagination">
+    <ul className={list}>
       {enumPage.map((label, index) => (
-        <div
+        <li
           key={index}
-          className={`custom-bullet ${currentIdx === index ? 'active' : ''}`}
+          className={`${currentIdx === index ? 'active' : ''}`}
           onClick={()=>onBulletClick} // 슬라이드로 이동
         >
-          {label}
-        </div>
+          <Text sizes="small" color="textLighted" style={{paddingBottom: 5}}>{label}</Text>
+        </li>
       ))}
-    </div>
+    </ul>
 
     {/* prev */}
     <button type="button" className="main-prev"><IconText fontSize="13px" color="textInfo" icon={faChevronUp}/></button> 

@@ -20,6 +20,7 @@ const variants = {
     accent: { color: vars.color.accent },
     textSecondary: { color: vars.color.textSecondary },
     textInfo: { color: vars.color.textInfo },
+    textLighted: { color: vars.color.textLighted },
     muted: { color: vars.color.muted },
     inherit: { color: "inherit"},
   }

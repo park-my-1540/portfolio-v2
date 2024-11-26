@@ -2,24 +2,31 @@
 import { styleVariants, style } from "@vanilla-extract/css";
 import { vars } from "@/styles/common/createThemeContract.css";
 
-export const aside = style({
-  display: "block",
-  position: "fixed",
-  // left: "-999px",
-  width: "20%",
-  height: "100%",
-  float: "left",
-  borderRight: "1px solid rgba(26, 27, 28, .2)",
-  zIndex: "999",
-  textAlign:"center"
-});
-
 export const swiperContainer = style({
   height: "calc(100% - 80px)"
 });
 
-export const pagination = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+export const bullet = style({
+  position: "relative",
+  width: "8px",
+  height: "8px",
+  margin: "5px 0",
+  borderRadius: "50%",
+  background: vars.color.muted,
+  selectors: {
+    ["&.swiper-pagination-bullet-active"] : {
+      background: "blue",
+    },
+    ["&.swiper-pagination-bullet-active:before"] : {
+      content: "",
+      position: "absolute",
+      top: -3,
+      left: -3,
+      display: "block",
+      width: 14,
+      height: 14,
+      borderRadius: "50%",
+      border: "1px solid blue",
+    },
+  }
 })

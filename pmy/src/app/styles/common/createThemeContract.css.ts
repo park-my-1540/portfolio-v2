@@ -16,6 +16,7 @@ export const vars = createThemeContract({
     highlight: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textSecondary: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
+    textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
     muted:"",
   },
 });
@@ -23,7 +24,7 @@ export const lightTheme = createTheme(vars, {
   color: {
     primary: colors["black-100" as ColorKey],
     subPrimary: colors["black-200" as ColorKey],
-    tertiary: colors["gray-400" as ColorKey],
+    tertiary: colors["black-100" as ColorKey],
     bgPrimary: colors["gray-300" as ColorKey],
     bgSecondary: colors["blue-500" as ColorKey],
     bgInactive: colors["gray-500" as ColorKey],
@@ -32,6 +33,7 @@ export const lightTheme = createTheme(vars, {
     highlight: colors["blue-600" as ColorKey],
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
+    textLighted: colors["gray-900" as ColorKey],
     muted: colors["black-700" as ColorKey],
   },
 });
@@ -48,6 +50,7 @@ export const darkTheme = createTheme(vars, {
     highlight: colors["gray-600" as ColorKey],
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
+    textLighted: colors["gray-900" as ColorKey],
     muted: colors["gray-800" as ColorKey],
   },
 });

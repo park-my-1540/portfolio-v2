@@ -2,7 +2,6 @@ import React from "react";
 import { Text } from "@/components/atoms/Text/Text";
 import Box from "@/components/layouts/Box/Box";
 import { header } from "./header.css";
-import { profileImg } from "@/styles/style.css";
 import { pageType } from "@/types/main";
 import { Image } from "@/components/atoms/Image/Image";
 

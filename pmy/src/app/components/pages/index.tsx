@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 
-import NavigationAside from "@/components/organisms/NavigationAside/NavigationAside";
+import Navigation from "@/components/organisms/Aside/Navigation";
 import MainSwiper from "@/components/organisms/Main/Swiper/MainSwiper";
 import Header from "@/components/organisms/Header/Header";
 
@@ -14,7 +14,7 @@ export default function Home() {
   const swiperRef = useRef<HTMLDivElement>(null);
   const [currentIdx, setCurrentIdx] = useState<number>(0);
 
-  const enumPage = ["Main", "About", "Some"] as const;
+  const enumPage = ["main", "about", "some"] as const;
   const pages = [<MainPage />, <AboutPage />, <ResumePage />];
 
   useEffect(()=> {
@@ -24,7 +24,7 @@ export default function Home() {
     <>
     <Header pageIndex={enumPage[currentIdx]}/>
 
-    <NavigationAside
+    <Navigation
         enumPage={enumPage}
         currentIdx={currentIdx}
         onBulletClick={(index) => swiperRef.current?.swiper.slideTo(index)}

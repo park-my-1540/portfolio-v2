@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { swiperContainer, bullet } from "@/styles/style.css";
+import { swiperContainer, bullet } from "./swiper.css";
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
 
 // Import Swiper styles
