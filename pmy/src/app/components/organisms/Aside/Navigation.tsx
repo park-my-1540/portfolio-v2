@@ -1,8 +1,9 @@
-import React from "react";
+import React,{ useRef, useEffect } from "react";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { aside, pagination, list } from "./navigation.css";
 import { IconText } from "@/components/atoms/Icon/IconText";
 import { Text } from "@/components/atoms/Text/Text";
+import { clipGsap } from "@/utils/gsapUtil";
 
 interface NavigationProps {
   enumPage: readonly string[];
@@ -16,12 +17,30 @@ export default function Navigation({
   onBulletClick,
 }: NavigationProps) {
 
-  
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+  useEffect(() => {
+    // GSAP 애니메이션 초기화
+    if (listRef.current) {
+      clipGsap(listRef.current);
+    }
+
+    return() => {
+      tweenRef.current?.kill();
+    }
+  }, []);
+
+  // 애니메이션 재시작
+  const handleRestart = () => {
+    tweenRef.current?.restart();
+  };
+
   return (
   <div className={aside}>
       
     {/* text pagination */}
-    <ul className={list}>
+    <ul className={list} ref={listRef}>
       {enumPage.map((label, index) => (
         <li
           key={index}
