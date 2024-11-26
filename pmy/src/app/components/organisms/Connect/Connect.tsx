@@ -8,11 +8,7 @@ const Connect: React.FC = () => {
         <>
           <Box borderTop="1px solid">
             <Text sizes="largeX2" weights="bold" style={{'paddingBottom':40}}>Get in Touch</Text>
-            <Box display="block" padding={30} border="1px solid" borderRadius={43}>
-              <Box>
-            <ConnectBox></ConnectBox>
-          </Box>
-            </Box>
+              <ConnectBox/>
           </Box>
         </>
   );

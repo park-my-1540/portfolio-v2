@@ -28,5 +28,6 @@ export const gap = styleVariants({
   none: { gap: "0px" },
   small: { gap: "8px" },
   medium: { gap: "16px" },
+  mediumX2: { gap: "40px" },
   large: { gap: "50px" },
 });

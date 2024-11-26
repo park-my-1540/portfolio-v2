@@ -8,7 +8,7 @@ import { IconText } from "@/components/atoms/Icon/IconText";
 export default function ConnectBox() {
     return (
         <>
-          <Box display="flex" direction="row">
+          <Box display="flex" direction="row" gap="mediumX2">
             <CardIcon
               theme="black"
               email="parkmy722698@gmail.com"

@@ -3,8 +3,9 @@ import { card, CardVariantProps } from './card.module.css';
 import { Text } from "@/components/atoms/Text/Text";
 import { Badge } from "@/components/molecules/Badge/Badge";
 import Duration from "@/components/molecules/Duration/Duration";
-import { cardBox, inner, hoverCircle } from "./card.css"
+import { cardBox, cardDivision, inner, hoverCircle } from "./card.css"
 import { ThemeColor } from "@/types/styles";
+import { Position } from "@/components/layouts/Position/Position";
 
 interface CardProps {
   theme: ThemeColor,
@@ -56,9 +57,11 @@ export function CardIcon({theme,email,title,duration}:CardIconProps) {
     return (
         <>
         <div className={`${cardBox} ${card({ theme })}`}>
-            <span>{title}</span>
-            <Duration from={start} to={end} theme={theme}/>
-            <Text weights="light" style={{paddingTop: 5}} sizes="small" className={card({ theme })}>{email}</Text>
+            <Text sizes="large" weights="bold">{title}</Text>
+            <div className={cardDivision}>
+              <Duration from={start} to={end} theme={theme}/>
+              <Text weights="light" style={{paddingTop: 5}} sizes="small" className={card({ theme })}>{email}</Text>
+            </div>
         </div>
         </>
       );

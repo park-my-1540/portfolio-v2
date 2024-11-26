@@ -3,12 +3,18 @@ import { vars } from "@/styles/common/createThemeContract.css";
 
 export const cardBox = style({
   overflow: 'hidden',
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
   position: 'relative',
-  padding: 20,
-  marginTop: 10,
+  minHeight: "170px",
+  padding: 15,
   color: vars.color.primary,
   border: `1px solid ${vars.color.primary}`,
   borderRadius: 32,
+})
+export const cardDivision = style({
+  height: 52,
 })
 export const inner = style({
   position: "relative",
