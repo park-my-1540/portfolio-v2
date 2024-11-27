@@ -1,9 +1,9 @@
 import React from "react";
 import { Text } from "@/components/atoms/Text/Text";
 import Box from "@/components/layouts/Box/Box";
-import { box, wrap, scroll, spinAgain, rotate } from "./scrollIndicator.css";
+import { wrap, scroll, spinAgain, rotate } from "./scrollIndicator.css";
 import { Position } from "@/components/layouts/Position/Position";
-
+import { vars } from "@/styles/common/createThemeContract.css";
 const ScrollIndicator: React.FC = () => {
   return (
         <>
@@ -17,7 +17,7 @@ const ScrollIndicator: React.FC = () => {
               justify="center"
               align="center"
               marginLeft={10}
-              backgroundColor="#3a5dae"
+              backgroundColor={vars.color.highlight.secondary}
               borderRadius="50%"
              >
             <svg className={`${scroll} ${spinAgain}`} width="24" height="34" viewBox="0 0 24 34" fill="none" xmlns="http://www.w3.org/2000/svg">

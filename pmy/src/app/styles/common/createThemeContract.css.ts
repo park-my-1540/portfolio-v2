@@ -13,7 +13,13 @@ export const vars = createThemeContract({
     bgInactive: "",
     bgInput: "",
     accent: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
-    highlight: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
+    // 강조 색상 세트
+    highlight: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      secondary: "", // 강조 색상 2: 보조 강조
+      tertiary: "",  // 강조 색상 3: 약간 강조
+      quaternary: "", // 강조 색상 4: 부드러운 강조
+    },
     textSecondary: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
@@ -25,12 +31,18 @@ export const lightTheme = createTheme(vars, {
     primary: colors["black-100" as ColorKey],
     subPrimary: colors["black-200" as ColorKey],
     tertiary: colors["black-100" as ColorKey],
-    bgPrimary: colors["gray-300" as ColorKey],
-    bgSecondary: colors["blue-500" as ColorKey],
+    bgPrimary: colors["white-100" as ColorKey],
+    bgSecondary: colors["purple" as ColorKey],
     bgInactive: colors["gray-500" as ColorKey],
     bgInput: colors["white" as ColorKey],
     accent: colors["white" as ColorKey],
-    highlight: colors["blue-600" as ColorKey],
+    // 강조 색상 세트
+    highlight: {
+      primary: colors["blue-600" as ColorKey],  // 강조 색상 1: 주요 강조
+      secondary: colors["blue-700" as ColorKey], // 강조 색상 2: 보조 강조
+      tertiary: "",  // 강조 색상 3: 약간 강조
+      quaternary: "", // 강조 색상 4: 부드러운 강조
+    },
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
     textLighted: colors["gray-900" as ColorKey],
@@ -47,7 +59,13 @@ export const darkTheme = createTheme(vars, {
     bgInactive: colors["black-600" as ColorKey],
     bgInput: colors["black-200" as ColorKey],
     accent: colors["black-200" as ColorKey],
-    highlight: colors["gray-600" as ColorKey],
+    // 강조 색상 세트
+    highlight: {
+      primary: colors["blue-600" as ColorKey],  // 강조 색상 1: 주요 강조
+      secondary: "", // 강조 색상 2: 보조 강조
+      tertiary: "",  // 강조 색상 3: 약간 강조
+      quaternary: "", // 강조 색상 4: 부드러운 강조
+    },
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
     textLighted: colors["gray-900" as ColorKey],

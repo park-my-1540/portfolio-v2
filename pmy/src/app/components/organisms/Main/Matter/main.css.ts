@@ -3,8 +3,9 @@ import { styleVariants, style } from "@vanilla-extract/css";
 import { vars } from "@/styles/common/createThemeContract.css";
 export const canvasWrap = style({
   position: 'relative',
-  width: '50%',
+  width: '100%',
   height: '100%',
-  textAlign: 'end'
+  textAlign: 'end',
+  // backgroundColor: "#75FFC0"
 });
 

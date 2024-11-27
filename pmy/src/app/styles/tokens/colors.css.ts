@@ -6,6 +6,9 @@ export const colors = {
     "blue-50": "#eff6ff",
     "blue-100": "#dbeafe",
     "blue-200": "#bfdbfe",
+    "blue-500": "#083AFF",
+    "blue-600": "#223DFF",
+    "blue-700": "#3A5DAD",
     "gray-100": "#f9f9f9",
     "gray-200": "#f2f2f2",
     "gray-300": "#F2F2F5",
@@ -18,10 +21,13 @@ export const colors = {
     'white': "#fff",
     "black-100": "#211B1B",
     "black-200": "#231F20",
+    "white-100": "#eee",
     "black-600": "#212023",
     "black-700": "#1A1B1C47",
-    "blue-500": "#083AFF",
-    "blue-600": "#223DFF",
+    "orange": "#FF8000",
+    "purple": "#4C1F7A",
+    "mint": "#219B9D",
+
     // etc.
   };
   

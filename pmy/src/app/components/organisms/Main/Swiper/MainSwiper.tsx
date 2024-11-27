@@ -34,7 +34,6 @@ export default function MainSwiper({
         prevEl: '.main-prev'
       }} 
       scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
       mousewheel={true}
       keyboard={true}

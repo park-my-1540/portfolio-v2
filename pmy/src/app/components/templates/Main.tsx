@@ -16,10 +16,10 @@ export default function Main() {
       <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
 
         <Box
-          border= "1px solid red"
-          height="calc(100vh - 170px)"
+          height="calc(100vh - 85px)"
           margin="0"
           padding='30px 0px 30px 140px'
+          justify="center"
           responsive = {{
             display: {
               desktop: 'flex',
@@ -27,14 +27,14 @@ export default function Main() {
               mobile: 'block',
             },
             width: {
-              desktop: 'expanded',
+              desktop: 'full',
               tablet: 'shrink',
               mobile: 'full',
             }
           }}
         >
-          <Side/>
           <Matter canvasRef = {canvasRef}/>
+          {/* <Side/> */}
           <ScrollIndicator/>
         </Box>
     </>
