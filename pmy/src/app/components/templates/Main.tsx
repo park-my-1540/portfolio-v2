@@ -25,6 +25,11 @@ export default function Main() {
               desktop: 'flex',
               tablet: 'flex',
               mobile: 'block',
+            },
+            width: {
+              desktop: 'expanded',
+              tablet: 'shrink',
+              mobile: 'full',
             }
           }}
         >

@@ -4,6 +4,7 @@ import { aside, pagination, list } from "./navigation.css";
 import { IconText } from "@/components/atoms/Icon/IconText";
 import { Text } from "@/components/atoms/Text/Text";
 import { clipGsap } from "@/utils/gsapUtil";
+import Box from "@/components/layouts/Box/Box";
 
 interface NavigationProps {
   enumPage: readonly string[];
@@ -17,40 +18,65 @@ export default function Navigation({
   onBulletClick,
 }: NavigationProps) {
 
-  const listRef = useRef<HTMLDivElement | null>(null);
-  const tweenRef = useRef<gsap.core.Tween | null>(null);
-
+  const listRefs = useRef<(HTMLDivElement | null)[]>(Array(enumPage.length).fill(null));
   useEffect(() => {
     // GSAP 애니메이션 초기화
-    if (listRef.current) {
-      clipGsap(listRef.current);
-    }
-
+    listRefs.current.forEach((item) => {
+      if (item) {
+        clipGsap(item); // 각각의 li 태그에 애니메이션 적용
+      }
+    });
     return() => {
-      tweenRef.current?.kill();
+      listRefs.current.forEach((item) => {
+        if (item) gsap.killTweensOf(item); // 애니메이션 정리
+      });
     }
   }, []);
 
-  // 애니메이션 재시작
-  const handleRestart = () => {
-    tweenRef.current?.restart();
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      listRefs.current.forEach((item) => {
+        if (item) clipGsap(item); // currentIdx 변경 시 재적용
+      });
+    }, 500);
+  }, [currentIdx]);
+
 
   return (
-  <div className={aside}>
+  <Box 
+    className={aside}
+    responsive = {{
+      width: {
+        desktop: 'large',
+        tablet: 'medium',
+        mobile: 'small',
+      }
+    }}>
       
     {/* text pagination */}
-    <ul className={list} ref={listRef}>
+    <Box 
+        className={list} 
+        responsive = {{
+          display: {
+            desktop: 'block',
+            tablet: 'none',
+            mobile: 'none',
+          }
+        }}
+        >
       {enumPage.map((label, index) => (
-        <li
+        <p
+          ref={(el) => {
+            listRefs.current[index] = el; // 참조 설정만 수행 (반환값 없음)
+          }}
           key={index}
           className={`${currentIdx === index ? 'active' : ''}`}
           onClick={()=>onBulletClick} // 슬라이드로 이동
         >
           <Text sizes="small" color="textLighted" style={{paddingBottom: 5}}>{label}</Text>
-        </li>
+        </p>
       ))}
-    </ul>
+    </Box>
 
     {/* prev */}
     <button type="button" className="main-prev"><IconText fontSize="13px" color="textInfo" icon={faChevronUp}/></button> 
@@ -58,6 +84,6 @@ export default function Navigation({
     <div className={`main-pagination ${pagination}`}></div>
     {/* next */}
     <button type="button" className="main-next"><IconText fontSize="13px" color="textInfo" icon={faChevronDown}/></button>
-  </div>
+  </Box>
   )
 }

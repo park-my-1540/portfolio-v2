@@ -5,7 +5,7 @@ import { vars } from "@/styles/common/createThemeContract.css";
 export const aside = style({
   display: "block",
   position: "fixed",
-  // left: "-999px",
+  left: "-999px",
   width: "20%",
   height: "100%",
   float: "left",

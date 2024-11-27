@@ -1,6 +1,6 @@
 import { createThemeContract, createTheme } from "@vanilla-extract/css";
-import { colors } from "./sprinkles.css";
-// colors 객체 가져오기
+import { colors } from "@/styles/tokens/colors.css";
+
 type ColorKey = keyof typeof colors;
 
 export const vars = createThemeContract({
