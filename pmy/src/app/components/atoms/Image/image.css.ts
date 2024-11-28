@@ -2,7 +2,6 @@ import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { style } from "@vanilla-extract/css";
 
 const base = {
-  border: "1px solid red",
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",

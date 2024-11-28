@@ -19,11 +19,14 @@ export const vars = createThemeContract({
       secondary: "", // 강조 색상 2: 보조 강조
       tertiary: "",  // 강조 색상 3: 약간 강조
       quaternary: "", // 강조 색상 4: 부드러운 강조
+      quinary: "",    // 강조 색상 5: 미묘한 강조
+      senary: "",     // 강조 색상 6: 거의 보이지 않는 강조
     },
     textSecondary: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
     muted:"",
+    border:"", // border
   },
 });
 export const lightTheme = createTheme(vars, {
@@ -40,13 +43,16 @@ export const lightTheme = createTheme(vars, {
     highlight: {
       primary: colors["blue-600" as ColorKey],  // 강조 색상 1: 주요 강조
       secondary: colors["blue-700" as ColorKey], // 강조 색상 2: 보조 강조
-      tertiary: "",  // 강조 색상 3: 약간 강조
-      quaternary: "", // 강조 색상 4: 부드러운 강조
+      tertiary: colors["orange" as ColorKey], // 강조 색상 3: 약간 강조
+      quaternary: colors["purple" as ColorKey], // 강조 색상 4: 부드러운 강조
+      quinary: colors["mint" as ColorKey],    // 강조 색상 5: 미묘한 강조
+      senary: colors["purple-100" as ColorKey],     // 강조 색상 6: 거의 보이지 않는 강조
     },
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
     textLighted: colors["gray-900" as ColorKey],
     muted: colors["black-700" as ColorKey],
+    border: colors["gray-50" as ColorKey],
   },
 });
 export const darkTheme = createTheme(vars, {
@@ -65,11 +71,14 @@ export const darkTheme = createTheme(vars, {
       secondary: "", // 강조 색상 2: 보조 강조
       tertiary: "",  // 강조 색상 3: 약간 강조
       quaternary: "", // 강조 색상 4: 부드러운 강조
+      quinary: "",    // 강조 색상 5: 미묘한 강조
+      senary: "",     // 강조 색상 6: 거의 보이지 않는 강조
     },
     textSecondary: colors["gray-600" as ColorKey],
     textInfo: colors["gray-800" as ColorKey],
     textLighted: colors["gray-900" as ColorKey],
     muted: colors["gray-800" as ColorKey],
+    border: colors["gray-50" as ColorKey],
   },
 });
 

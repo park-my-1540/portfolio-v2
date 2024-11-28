@@ -1,6 +1,6 @@
 import { createThemeContract } from '@vanilla-extract/css';
 
-export const sizeVars = createThemeContract({
+export const sizeVars = {
   width: {
     small: '58px',
     medium: '58px',
@@ -14,4 +14,4 @@ export const sizeVars = createThemeContract({
     medium: '80px',
     large: '100px',
   },
-});
+};

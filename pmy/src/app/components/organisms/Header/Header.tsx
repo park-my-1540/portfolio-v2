@@ -11,6 +11,7 @@ export function Header({pageIndex}:pageType) {
     {
       pageIndex === "main" ? (
         <Box 
+          className={header}
           display="flex" 
           direction="row" 
           align="center" 
@@ -21,9 +22,8 @@ export function Header({pageIndex}:pageType) {
           >
           <Box display="flex" direction="row" align="center">
             <Image url="./img/pmy.jpg" sizes="small" style={{'borderRadius':"50%", "marginRight": 15}}/>
-            <Text sizes="large">Mee young's Portfolio</Text>
+            <Text sizes="large">Mee young</Text>
           </Box>
-          <Text sizes="large">FrontEnd Developer</Text>
       </Box>
       ) : (
         <Box 

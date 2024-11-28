@@ -13,6 +13,7 @@ type FlexProps = {
   gap?: keyof typeof flexstyles.gap;
   className?: string;
   style?: React.CSSProperties;
+  ref?: React.RefObject<HTMLDivElement>;
 };
 
 const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
@@ -42,6 +43,7 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   gap,
   className,
   style,
+  ref,
   ...props
 }) => {
   const pickedProps = pickProps({
@@ -84,16 +86,17 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   return (
 
      <div
-     className={clsx(
-      sprinkles(responsive), // responsive 스타일
-      flexstyles.flexDirection[direction], // Flex 스타일 (direction)
-      flexstyles.alignItems[align], // Flex 스타일 (align)
-      flexstyles.justifyContent[justify], // Flex 스타일 (justify)
-      flexstyles.gap[gap], // Flex 스타일 (gap)
-      className // 외부에서 전달된 className도 병합
-    )}
-      style={inlineStyle} // 동적 스타일을 인라인 스타일로 적용
-    >
+      ref = {ref}
+      className={clsx(
+        sprinkles(responsive), // responsive 스타일
+        flexstyles.flexDirection[direction], // Flex 스타일 (direction)
+        flexstyles.alignItems[align], // Flex 스타일 (align)
+        flexstyles.justifyContent[justify], // Flex 스타일 (justify)
+        flexstyles.gap[gap], // Flex 스타일 (gap)
+        className // 외부에서 전달된 className도 병합
+      )}
+        style={inlineStyle} // 동적 스타일을 인라인 스타일로 적용
+      >
       {children}
     </div>
   );

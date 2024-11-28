@@ -3,8 +3,6 @@
 import { useRef } from "react";
 import Matter from "@/components/organisms/Main/Matter/Matter";
 import Box from "@/components/layouts/Box/Box";
-import Side from "@/components/organisms/Side/Side";
-import ScrollIndicator from "@/components/organisms/ScrollIndicator/ScrollIndicator";
 
 export default function Main() {
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -35,7 +33,6 @@ export default function Main() {
         >
           <Matter canvasRef = {canvasRef}/>
           {/* <Side/> */}
-          <ScrollIndicator/>
         </Box>
     </>
   );

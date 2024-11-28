@@ -3,26 +3,38 @@ import { styleVariants, style, keyframes } from "@vanilla-extract/css";
 import { vars } from "@/styles/common/createThemeContract.css";
 
 export const wrap = style({
-  borderLeft: `1px solid ${vars.color.primary}`,
-  position: "absolute",
+  position: "fixed",
+  width: "8vw",
+  height: 'calc(100% - 70px)',
+  top:0,
+  padding:10,
   right : 15,
-  width: "6%",
-  height: 'calc(100% - 150px)'
+  selectors: {
+    ['&:after'] : {
+      content: "",
+      position: 'absolute',
+      top:0,
+      display:'block',
+      width: 1,
+      height: 'calc(100% - 70px)',
+      background: `${vars.color.border}`,
+    }
+  }
 });
 
 export const scroll = style({
-  width: 18
+  width: 20
 });
 
 export const rotate = style({
-  padding: "20px 0",
+  padding: "0px 0px 0px 40px",
   transform: "rotate(270deg)",
 });
 
 const upAndDown = keyframes({
-  '0%': { transform: "translate3d(0, -2px, 0)" },
-  '48%, 52%': { transform: "translate3d(0, 2px, 0)" },
-  "97%, 100%": { transform: "translate3d(0, -2px, 0)" }
+  '0%': { transform: "translate3d(0, -3px, 0)" },
+  '48%, 52%': { transform: "translate3d(0, 5px, 0)" },
+  "97%, 100%": { transform: "translate3d(0, -3px, 0)" }
 });
 
 export const spinAgain = style({

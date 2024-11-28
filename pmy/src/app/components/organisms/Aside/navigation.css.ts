@@ -9,7 +9,6 @@ export const aside = style({
   width: "20%",
   height: "100%",
   float: "left",
-  borderRight: "1px solid rgba(26, 27, 28, .2)",
   zIndex: "999",
   textAlign:"center"
 });

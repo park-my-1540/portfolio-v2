@@ -4,6 +4,7 @@ export const widthVar = createVar();
 export const heightVar = createVar();
 
 export const boxStyle = style({
+  position: "relative",
   vars: {
     [widthVar]: 'auto',
     [heightVar]: 'auto'
