@@ -2,25 +2,14 @@ import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { swiperContainer, bullet } from "./swiper.css";
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
-
-// Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/scrollbar';
-// import 'swiper/css/mousewheel';
-
-interface MainSwiperProps {
-  onSlideChange: (index: number) => void;
-  swiperRef: React.RefObject<HTMLDivElement>;
-  pages: React.ReactNode[];
-}
+import { SwiperProps } from "@/types/common";
 
 export default function MainSwiper({
   swiperRef,
   pages,
   onSlideChange,
-}: MainSwiperProps) {
+}: SwiperProps) {
 
-  
   return (
     <Swiper 
     className={swiperContainer}

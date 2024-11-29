@@ -1,19 +1,14 @@
-import React,{ useRef, useEffect } from "react";
+import React,{ useRef, useEffect, useState } from "react";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { aside, pagination, list } from "./navigation.css";
 import { IconText } from "@/components/atoms/Icon/IconText";
 import { Text } from "@/components/atoms/Text/Text";
 import * as gsapUtil from "@/utils/gsapUtil";
 import Box from "@/components/layouts/Box/Box";
-
-interface NavigationProps {
-  enumPage: readonly string[];
-  currentIdx: number;
-  slideRef: React.RefObject<HTMLDivElement>;
-  onBulletClick: (index: number) => void;
-}
+import { NavigationProps, PageType } from "@/types/common";
 
 export default function Navigation({
+  currentPage,
   enumPage,
   currentIdx,
   slideRef,
@@ -21,10 +16,12 @@ export default function Navigation({
 }: NavigationProps) {
 
   const asideRef = useRef<HTMLDivElement>(null)
-  const listRefs = useRef<(HTMLDivElement | null)[]>(Array(enumPage.length).fill(null));
+  const listRefs = useRef<(HTMLButtonElement | null)[]>(Array().fill(null));
 
   const asideAnimation = useRef<ReturnType<typeof gsapUtil.slideInAside> | null>(null);
   const slideAnimation = useRef<ReturnType<typeof gsapUtil.slideLeftBorder> | null>(null);
+
+  const [prevPage, setPrevPage] = useState<PageType>("main");
 
   // GSAP 애니메이션 초기화
   useEffect(() => {
@@ -55,29 +52,40 @@ export default function Navigation({
   if (!asideAnimation.current && asideRef.current) { // asideAnimation이 없을 경우에만 초기화
     asideAnimation.current = gsapUtil.slideInAside(asideRef.current); 
   }
-  if (  slideAnimation.current && asideRef.current && slideRef.current ) {  //  slideAnimation 없을 경우에만 초기화
-    slideAnimation.current = gsapUtil.slideLeftBorder(slideRef.current,asideRef.current.offsetWidth);
+  if (slideAnimation.current && asideRef.current && slideRef.current ) {  //  slideAnimation 없을 경우에만 초기화
+    slideAnimation.current = gsapUtil.slideLeftBorder(slideRef.current, asideRef.current.offsetWidth);
   }
 
-  if (enumPage[currentIdx] === "main") {
-    asideAnimation.current?.reverse();
+  //처음부터 main일때
+
+  if( prevPage==="main" && currentPage==="main"){
+    asideAnimation.current?.reverse(); 
     slideAnimation.current?.reverse();
-  } else {
-    asideAnimation.current?.play();
+      console.log("옆으로")
   }
 
-  if (enumPage[currentIdx] === "about") {
-    slideAnimation.current?.play();
-  } else {
-    //TODO
+    //case1 main -> other
+  if( prevPage==="main" && currentPage!=="main"){
+      asideAnimation.current?.play(); 
+      slideAnimation.current?.play();
   }
+
+  if( prevPage!=="main" && currentPage==="main"){
+      asideAnimation.current?.reverse(); 
+      slideAnimation.current?.reverse();
+  }
+
+
+  // case2 other->other
 
   // aside pagination clip animation
   setTimeout(() => {
     listRefs.current.forEach((item) => {
-      if (item) gsapUtil.clip(item); // currentIdx 변경 시 재적용
+      if (item) gsapUtil.clip(item); // currentPage 변경 시 재적용
     });
   }, 500);
+  setPrevPage(currentPage)
+  
 }, [currentIdx]);
 
 
@@ -103,16 +111,17 @@ export default function Navigation({
         }}
         >
       {enumPage.map((label, index) => (
-        <p
+        <button
           ref={(el) => {
             listRefs.current[index] = el; // 참조 설정만 수행 (반환값 없음)
           }}
           key={index}
+          style={{display:"block"}}
           className={`${currentIdx === index ? 'active' : ''}`}
-          onClick={()=>onBulletClick} // 슬라이드로 이동
+          onClick={()=>onBulletClick(index)} // 슬라이드로 이동
         >
           <Text sizes="small" color="textLighted" style={{paddingBottom: 5}}>{label}</Text>
-        </p>
+        </button>
       ))}
     </Box>
 

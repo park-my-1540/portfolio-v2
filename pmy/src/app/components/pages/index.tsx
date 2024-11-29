@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 
+import { SwiperRefType } from "@/types/swiper";
 import Navigation from "@/components/organisms/Aside/Navigation";
 import MainSwiper from "@/components/organisms/Main/Swiper/MainSwiper";
 import Header from "@/components/organisms/Header/Header";
@@ -11,7 +12,7 @@ import AboutPage from "./AboutPage";
 import ResumePage from "./ResumePage";
 
 export default function Home() {
-  const swiperRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<SwiperRefType>(null);
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const slideRef = useRef<HTMLDivElement>(null);
   const enumPage = ["main", "about", "some"] as const;
@@ -19,9 +20,10 @@ export default function Home() {
 
   return (
     <>
-    <Header pageIndex={enumPage[currentIdx]}/>
+    <Header currentPage={enumPage[currentIdx]}/>
 
     <Navigation
+        currentPage={enumPage[currentIdx]}
         slideRef={slideRef}
         enumPage={enumPage}
         currentIdx={currentIdx}
@@ -32,7 +34,9 @@ export default function Home() {
       swiperRef={swiperRef}
       pages={pages}
     />
-    <ScrollIndicator slideRef={slideRef}pageIndex={enumPage[currentIdx]}/>
+    <ScrollIndicator 
+      slideRef={slideRef} 
+      currentPage={enumPage[currentIdx]}/>
     </>
   );
 }

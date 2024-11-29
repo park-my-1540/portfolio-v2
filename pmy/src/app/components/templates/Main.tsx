@@ -5,7 +5,6 @@ import Matter from "@/components/organisms/Main/Matter/Matter";
 import Box from "@/components/layouts/Box/Box";
 
 export default function Main() {
-  const canvasRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <script src="https://www.jsdelivr.com/package/npm/poly-decomp"></script>
@@ -16,7 +15,6 @@ export default function Main() {
         <Box
           height="calc(100vh - 85px)"
           margin="0"
-          padding='30px 0px 30px 140px'
           justify="center"
           responsive = {{
             display: {
@@ -31,7 +29,7 @@ export default function Main() {
             }
           }}
         >
-          <Matter canvasRef = {canvasRef}/>
+          <Matter/>
           {/* <Side/> */}
         </Box>
     </>

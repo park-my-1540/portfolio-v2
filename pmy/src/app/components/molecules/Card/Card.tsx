@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent, ReactNode } from "react";
-import { card, CardVariantProps } from './card.module.css';
+import { card } from './card.module.css';
 import { Text } from "@/components/atoms/Text/Text";
 import { Badge } from "@/components/molecules/Badge/Badge";
 import Duration from "@/components/molecules/Duration/Duration";

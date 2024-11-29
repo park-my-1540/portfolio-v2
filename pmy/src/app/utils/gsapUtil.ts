@@ -35,33 +35,35 @@ export function clip(target:targetType) {
  * @param width 
  * @returns 
  */
-export function slideLeftBorder(target:targetType, width:number) {
-  const tl = gsap.timeline();
+export function slideLeftBorder(target: targetType, width: number) {
+  const tl = gsap.timeline({ paused: true });
 
+  // 초기 상태 설정
   tl.set(target, {
-    "right": "50px",
-    "left" : "auto",
-    "opacity" : 1,
+    right: "50px",
+    left: "auto",
+    opacity: 1,
   });
 
+  // 애니메이션 정의
   tl.to(target, {
     right: "auto",
-    left: width-11,
+    left: width - 11,
     duration: 0.8,
     ease: "power2.inOut",
   });
 
   tl.to(target, {
     opacity: 0,
-    duration: 0.2, // 원하는 지속 시간
+    duration: 0.2,
     ease: "power2.inOut",
+    clearProps: "all", // 스타일 제거
   });
 
-
-  tl.pause();
-  tl.play();
-
-  return tl;
+  return {
+    play: () => tl.play(), // 재생
+    reverse: () => tl.reverse() // 역방향 실행
+  };
 }
 
 /**
@@ -88,6 +90,9 @@ export function slideInAside(target: targetType) {
     ease: "power2.inOut",
   });
 
+  tl.pause();
+  tl.play();
+  
   return {
     play: () => tl.play(), // 실행
     reverse: () => tl.reverse(), // 반대로 실행

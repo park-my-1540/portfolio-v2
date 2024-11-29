@@ -2,14 +2,15 @@ import React from "react";
 import { Text } from "@/components/atoms/Text/Text";
 import Box from "@/components/layouts/Box/Box";
 import { header } from "./header.css";
-import { pageType } from "@/types/main";
+import { BaseProps } from "@/types/common";
 import { Image } from "@/components/atoms/Image/Image";
 
-export function Header({pageIndex}:pageType) {
+
+export function Header({ currentPage }:BaseProps) {
   return (
     <header>
     {
-      pageIndex === "main" ? (
+      currentPage === "main" ? (
         <Box 
           className={header}
           display="flex" 

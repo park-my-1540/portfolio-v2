@@ -4,21 +4,15 @@ import Box from "@/components/layouts/Box/Box";
 import { wrap, scroll, spinAgain, rotate } from "./scrollIndicator.css";
 import { Position } from "@/components/layouts/Position/Position";
 import { vars } from "@/styles/common/createThemeContract.css";
-import { pageType } from "@/types/main";
+import { ScrollIndicatorProps } from "@/types/common";
 
-
-interface ScrollIndicatorProps {
-  pageIndex: pageType;
-  slideRef: React.RefObject<HTMLDivElement>;
-}
-
-export default function ScrollIndicator({pageIndex,slideRef}:ScrollIndicatorProps){
+export default function ScrollIndicator({currentPage,slideRef}:ScrollIndicatorProps){
   return (
         <>
           <div className={wrap} ref={slideRef}>
             <Position position="relative" top="44%">
               {
-                pageIndex === "main" && (
+                currentPage === "main" && (
                   <>
                     <Text className={rotate} color="muted" sizes="smallmedium">Scroll</Text>
                     <Box 
