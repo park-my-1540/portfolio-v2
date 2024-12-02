@@ -1,7 +1,7 @@
 "use client";
 
 import Box from "@/components/layouts/Box/Box";
-import Profile from "@/components/organisms/Profile/Profile";
+import { ResponsiveBox } from "@/components/layouts/ResponsiveBox/ResponsiveBox";
 import Introduction from "@/components/organisms/Introduction/Introduction";
 import Connect from "@/components/organisms/Connect/Connect";
 
@@ -9,9 +9,6 @@ export default function About() {
   return (
     <>
         <Box
-          width="100%"
-          border= "1px solid blue"
-          height="calc(100vh - 170px)"
           justify="end"
           margin="0"
           responsive = {{
@@ -19,32 +16,22 @@ export default function About() {
               desktop: 'flex',
               tablet: 'flex',
               mobile: 'block',
+            },
+            height: {
+              desktop: 'full',
+              tablet: 'full',
+              mobile: 'full',
             }
           }}
         >
-           {/* <Box 
-              border="1px solid" 
-              borderRadius={42}
-              width="40%" 
-              display="flex" 
-              direction="column"
-              >
-            <Profile/>  
-           </Box> */}
-          <Box
-            width="60%"
+          <ResponsiveBox
+            padding="0 40px"
             direction="column"
             justify="around"
-            responsive = {{
-            display: {
-              desktop: 'flex',
-              tablet: 'flex',
-              mobile: 'block',
-            }
-          }}>
+            >
             <Introduction/>
             <Connect/>
-          </Box>
+          </ResponsiveBox>
         </Box>
     </>
   );

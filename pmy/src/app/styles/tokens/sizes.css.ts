@@ -1,5 +1,3 @@
-import { createThemeContract } from '@vanilla-extract/css';
-
 export const sizeVars = {
   width: {
     small: '58px',
@@ -11,7 +9,7 @@ export const sizeVars = {
   },
   height: {
     small: '40px',
-    medium: '80px',
-    large: '100px',
+    default: 'calc(100% - 70px)',
+    full: '100%',
   },
 };
