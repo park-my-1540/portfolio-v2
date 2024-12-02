@@ -98,3 +98,61 @@ export function slideInAside(target: targetType) {
     reverse: () => tl.reverse(), // 반대로 실행
   };
 }
+
+/**
+ * Matter Svg 컴포넌트 scale animation
+ * @param target 
+ * @returns play reverse
+ */
+export function svgScale(target: targetType, x:number, y: number) {
+  const tl = gsap.timeline({ paused: true }); // 처음부터 paused 상태로 생성
+
+  tl.set(target, {
+    transform: 'scale(1)',
+  });
+
+  tl.to(target, {
+    left: -x,
+    bottom: -y,
+    transform: 'scale(0.3,0.3)',
+    duration: 0.8,
+    ease: "power2.inOut",
+  });
+
+  tl.pause();
+  tl.play();
+  
+  return {
+    play: () => tl.play(), // 실행
+    reverse: () => tl.reverse(), // 반대로 실행
+  };
+}
+
+/**
+ * Matter Svg 컴포넌트 scale animation
+ * @param target 
+ * @returns play reverse
+ */
+export function horizontalClip(target: targetType, x:number, y: number) {
+  const tl = gsap.timeline({ paused: true }); // 처음부터 paused 상태로 생성
+
+  tl.set(target, {
+    "-webkit-clip-path": "inset(0 100% 0 0)",
+    "clip-path": "inset(0 100% 0 0)",
+  });
+
+  tl.to(target, {
+    "-webkit-clip-path": "inset(0% 0 0 0)",
+    "clip-path": "inset(0% 0 0 0)",
+    duration: 1,
+    ease: "power2.inOut",
+  });
+
+  tl.pause();
+  tl.play();
+  
+  return {
+    play: () => tl.play(), // 실행
+    reverse: () => tl.reverse(), // 반대로 실행
+  };
+}

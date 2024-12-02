@@ -1,6 +1,4 @@
 "use client";
-
-import { useRef } from "react";
 import Matter from "@/components/organisms/Main/Matter/Matter";
 import Box from "@/components/layouts/Box/Box";
 
@@ -13,7 +11,6 @@ export default function Main() {
       <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
 
         <Box
-          height="calc(100vh - 85px)"
           margin="0"
           justify="center"
           responsive = {{
@@ -29,8 +26,7 @@ export default function Main() {
             }
           }}
         >
-          <Matter/>
-          {/* <Side/> */}
+          {/* <Matter/> */}
         </Box>
     </>
   );
