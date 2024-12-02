@@ -1,4 +1,6 @@
 import React,{ useRef, useEffect, useState } from "react";
+import { useAtomValue } from "jotai";
+import { viewState } from "@/jotai/viewAtom";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { aside, pagination, list } from "./navigation.css";
 import { IconText } from "@/components/atoms/Icon/IconText";
@@ -8,12 +10,12 @@ import Box from "@/components/layouts/Box/Box";
 import { NavigationProps, PageType } from "@/types/common";
 
 export default function Navigation({
-  currentPage,
   enumPage,
-  currentIdx,
   slideRef,
   onBulletClick,
 }: NavigationProps) {
+
+  const {currentIdx, currentPage} = useAtomValue(viewState);
 
   const asideRef = useRef<HTMLDivElement>(null)
   const listRefs = useRef<(HTMLButtonElement | null)[]>(Array().fill(null));

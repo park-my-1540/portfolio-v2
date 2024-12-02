@@ -1,12 +1,14 @@
 import React from "react";
+import { useAtomValue } from "jotai";
+import { viewState } from "@/jotai/viewAtom";
 import { Text } from "@/components/atoms/Text/Text";
 import Box from "@/components/layouts/Box/Box";
 import { header } from "./header.css";
-import { BaseProps } from "@/types/common";
 import { Image } from "@/components/atoms/Image/Image";
 
 
-export function Header({ currentPage }:BaseProps) {
+export function Header() {
+  const {currentIdx, currentPage} = useAtomValue(viewState);
   return (
     <header>
     {

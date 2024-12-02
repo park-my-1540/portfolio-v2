@@ -7,18 +7,15 @@ export type PageType = ValueOfUnion<typeof pageValue>;
 export type SwiperRefType = SwiperRef;
 
 interface BaseProps {
-    currentPage: PageType;
 }
   
 interface HeaderProps extends BaseProps {
-    // BaseProps의 currentPage를 상속받고, 추가적인 prop을 정의
     title: string;
 }
   
 interface NavigationProps extends BaseProps {
     slideRef: React.RefObject<HTMLElement>;
     enumPage: readonly PageType[];
-    currentIdx: number;
     onBulletClick: (index: number) => void;
 }
   
