@@ -6,6 +6,7 @@ type TextProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
+  ref?: (index: HTMLParagraphElement) => void;
 };
 
 type TextLinkProps = {
@@ -23,10 +24,11 @@ export const Text = ({
   color,
   children,
   className,
+  ref,
   ...rest
 }: TextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
-    <p {...rest} className={ `${className} ${text({
+    <p {...rest}  ref={ref} className={ `${className} ${text({
       sizes, weights, display, vertical, textAlign
     })} ${textColor({ color })}`}>
       {children}

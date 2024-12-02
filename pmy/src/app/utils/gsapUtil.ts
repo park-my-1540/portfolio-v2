@@ -110,7 +110,7 @@ export function svgScale(target: targetType, x:number, y: number) {
   tl.set(target, {
     transform: 'scale(1)',
   });
-
+  
   tl.to(target, {
     left: -x,
     bottom: -y,
@@ -133,26 +133,27 @@ export function svgScale(target: targetType, x:number, y: number) {
  * @param target 
  * @returns play reverse
  */
-export function horizontalClip(target: targetType, x:number, y: number) {
-  const tl = gsap.timeline({ paused: true }); // 처음부터 paused 상태로 생성
+export function horizontalClip(target: targetType) {
+  const tl = gsap.timeline();
 
   tl.set(target, {
     "-webkit-clip-path": "inset(0 100% 0 0)",
     "clip-path": "inset(0 100% 0 0)",
+    "marginLeft": -40
   });
 
   tl.to(target, {
-    "-webkit-clip-path": "inset(0% 0 0 0)",
-    "clip-path": "inset(0% 0 0 0)",
-    duration: 1,
-    ease: "power2.inOut",
+    "-webkit-clip-path": "inset(0 0% 0 0)",
+    "clip-path": "inset(0 0% 0 0)",
+    "marginLeft": 0,
+    duration: 0.7,
+    ease: "cubic-bezier(.25,.25,0,1)",
+    delay: 1.5 // 2초 뒤에 애니메이션 시작
   });
+
 
   tl.pause();
   tl.play();
   
-  return {
-    play: () => tl.play(), // 실행
-    reverse: () => tl.reverse(), // 반대로 실행
-  };
+  return tl;
 }
