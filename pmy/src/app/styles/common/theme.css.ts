@@ -7,7 +7,7 @@ export const theme = {
     black: "#000",
   },
   theme: {
-    blue: vars.color.highlight.primary,
+    blue: vars.color.highlight.senary,
     black: vars.color.subPrimary,
     white: "#fff"
   }

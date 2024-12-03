@@ -1,4 +1,4 @@
-export default function Svg({titleRef}:unknown) {
+export default function Svg({titleRef}:{titleRef:React.RefObject<HTMLOrSVGElement>}) {
     return (
         <>
          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 873 400" className="title" ref={titleRef}>
