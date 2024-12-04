@@ -7,7 +7,7 @@ export default function Experience() {
         <>
           <Text sizes="largeX2" weights="bold">Experience</Text>
           <Card
-            theme="blue"
+            theme="highlight"
             badge="2022-Present"
             subTitle="Freelance"
             title="Graphic Desinger(Logo,Brand)"

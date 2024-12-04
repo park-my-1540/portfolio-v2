@@ -13,7 +13,7 @@ const theme = {
     black: "#000",
   },
   theme: {
-    blue: "#223DFF",
+    highlight: "#223DFF",
     black: "#231F20",
     white: "#fff",
     default: "#231F20"
