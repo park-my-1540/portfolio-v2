@@ -5,9 +5,9 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { aside, pagination, list } from "./navigation.css";
 import { IconText } from "@/components/atoms/Icon/IconText";
 import { Text } from "@/components/atoms/Text/Text";
-import * as gsapUtil from "@/utils/gsapUtil";
-import Box from "@/components/layouts/Box/Box";
 import { NavigationProps, PageType } from "@/types/common";
+import Box from "@/components/layouts/Box/Box";
+import * as gsapUtil from "@/utils/gsapUtil";
 
 export default function Navigation({
   enumPage,
@@ -22,6 +22,7 @@ export default function Navigation({
 
   const asideAnimation = useRef<ReturnType<typeof gsapUtil.slideInAside> | null>(null);
   const slideAnimation = useRef<ReturnType<typeof gsapUtil.slideLeftBorder> | null>(null);
+  const slideTopAnimation = useRef<ReturnType<typeof gsapUtil.slideTopBorder> | null>(null);
 
   const [prevPage, setPrevPage] = useState<PageType>("main");
 
@@ -42,10 +43,8 @@ export default function Navigation({
 
   // slideRef animation - aside 넓이 변경될떄마다 적용
   useEffect(() => {
-
     if(!slideRef.current || !asideRef.current) return;
     slideAnimation.current = gsapUtil.slideLeftBorder(slideRef.current,asideRef.current.offsetWidth);
-
   },[asideRef.current?.offsetWidth])
 
 
@@ -56,30 +55,23 @@ export default function Navigation({
   }
   if (slideAnimation.current && asideRef.current && slideRef.current ) {  //  slideAnimation 없을 경우에만 초기화
     slideAnimation.current = gsapUtil.slideLeftBorder(slideRef.current, asideRef.current.offsetWidth);
+    slideTopAnimation.current = gsapUtil.slideTopBorder(slideRef.current);
   }
 
-  //처음부터 main일때
-
-  if( prevPage==="main" && currentPage==="main"){
-    asideAnimation.current?.reverse(); 
-    slideAnimation.current?.reverse();
-      console.log("옆으로")
-  }
-
-    //case1 main -> other
-  if( prevPage==="main" && currentPage!=="main"){
+  if( currentPage === "main" ) {
+    if( prevPage==="main" ) {
+      asideAnimation.current?.reverse();  // case1: 처음부터 main
+    } else {
+      asideAnimation.current?.reverse(); // case2: other -> main
+      slideTopAnimation.current?.play();
+    }
+  } else {
+    if( prevPage==="main" ) { // case3: main -> other
       asideAnimation.current?.play(); 
       slideAnimation.current?.play();
+    }
   }
-
-  if( prevPage!=="main" && currentPage==="main"){
-      asideAnimation.current?.reverse(); 
-      slideAnimation.current?.reverse();
-  }
-
-
-  // case2 other->other
-
+  
   // aside pagination clip animation
   setTimeout(() => {
     listRefs.current.forEach((item) => {

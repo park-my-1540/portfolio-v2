@@ -8,13 +8,9 @@ export const aside = style({
   left: "-999px",
   width: "20%",
   height: "100%",
-  float: "left",
+  paddingTop: 40,
   zIndex: "999",
   textAlign:"center"
-});
-
-export const swiperContainer = style({
-  height: "calc(100% - 80px)"
 });
 
 export const pagination = style({
@@ -27,5 +23,5 @@ export const pagination = style({
 export const list = style({
   position: "absolute",
   top: 80,
-  right:10,
+  right:20,
 })

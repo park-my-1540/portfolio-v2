@@ -5,7 +5,7 @@ import { vars } from "@/styles/common/createThemeContract.css";
 export const wrap = style({
   position: "fixed",
   width: "8vw",
-  height: 'calc(100% - 70px)',
+  height: '100%',
   top:0,
   padding:10,
   right : 15,
@@ -13,7 +13,7 @@ export const wrap = style({
     ['&:after'] : {
       content: "",
       position: 'absolute',
-      top:0,
+      top:35,
       display:'block',
       width: 1,
       height: 'calc(100% - 70px)',

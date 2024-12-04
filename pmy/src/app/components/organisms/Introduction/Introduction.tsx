@@ -16,7 +16,6 @@ export default function Introduction() {
       textRefs.current.forEach((item) => {
         if (item) {
           gsapUtil.horizontalClip(item); // 각각의 li 태그에 애니메이션 적용
-          console.log(item)
         }
       });
       return() => {

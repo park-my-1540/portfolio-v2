@@ -3,9 +3,8 @@ import { styleVariants, style } from "@vanilla-extract/css";
 import { vars } from "@/styles/common/createThemeContract.css";
 
 export const swiperContainer = style({
-  height: "calc(100% - 80px)",
+  height: "100%",
   border:`15px solid ${vars.color.highlight.senary}`,
-  borderTop: "none",
 });
 
 export const bullet = style({

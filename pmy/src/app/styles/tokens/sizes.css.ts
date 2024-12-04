@@ -9,7 +9,7 @@ export const sizeVars = {
   },
   height: {
     small: '40px',
-    default: 'calc(100% - 70px)',
+    default: '100%',
     full: '100%',
   },
 };

@@ -10,6 +10,7 @@ export const cardBox = style({
   minHeight: "170px",
   width: "100%",
   padding: 15,
+  marginTop: 40,
   color: vars.color.primary,
   border: `1px solid ${vars.color.primary}`,
   borderRadius: 32,

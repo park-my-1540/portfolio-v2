@@ -19,9 +19,8 @@ export default function Resume() {
               mobile: 'block',
             },
           }}>
-            <ResponsiveBox>
+            <ResponsiveBox gap="mediumX2">
               <Box 
-                  border="1px solid" 
                   display="flex" 
                   direction="column"
                   width="100%"
@@ -29,7 +28,6 @@ export default function Resume() {
                 <Experience/>  
               </Box>
               <Box 
-                  border="1px solid" 
                   display="flex" 
                   direction="column"
                   width="100%"
@@ -37,7 +35,6 @@ export default function Resume() {
                 <HardSkill/>  
               </Box>
               <Box 
-                  border="1px solid" 
                   display="flex" 
                   direction="column"
                   width="100%"

@@ -6,13 +6,12 @@ import Box from "@/components/layouts/Box/Box";
 import { header } from "./header.css";
 import { Image } from "@/components/atoms/Image/Image";
 
-
 export function Header() {
   const {currentIdx, currentPage} = useAtomValue(viewState);
   return (
     <header>
     {
-      currentPage === "main" ? (
+      currentPage === "main" && (
         <Box 
           className={header}
           display="flex" 
@@ -28,14 +27,6 @@ export function Header() {
             <Text sizes="large">Mee young</Text>
           </Box>
       </Box>
-      ) : (
-        <Box 
-          className={header}
-          display="flex" direction="row" align="start" gap="large" height={85}  padding={20}>
-          <Text weights="light" color="tertiary" sizes="mediumlargeX2">About Me</Text>
-          <Text weights="light" color="tertiary" sizes="mediumlargeX2">Resume</Text>
-          <Text weights="light" color="tertiary" sizes="mediumlargeX2">Work</Text>
-        </Box>
       )
     }
   </header>
