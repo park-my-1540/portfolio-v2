@@ -5,7 +5,7 @@ import Card from "@/components/molecules/Card/Card";
 export default function Experience() {
     return (
         <>
-          <Text sizes="largeX2" weights="bold">Introduction</Text>
+          <Text sizes="largeX2" weights="bold">Experience</Text>
           <Card
             theme="blue"
             badge="2022-Present"

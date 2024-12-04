@@ -21,7 +21,19 @@ const variants = {
       width: 300,
       height: 300,
     }),
+    card: style({
+      width: "100%",
+      height: 180,
+    }),
   },
+  radius: {
+    default: style({
+      borderRadius: 32
+    }),
+    circle: style({
+      borderRadius: "50%"
+    }),
+  }
 };
 
 export const image = recipe({

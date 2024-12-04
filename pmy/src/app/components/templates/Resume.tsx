@@ -2,6 +2,7 @@
 
 import Box from "@/components/layouts/Box/Box";
 import Experience from "@/components/organisms/Experience/Experience";
+import HardSkill from "@/components/organisms/Hardskill/Hardskill";
 import { ResponsiveBox } from "@/components/layouts/ResponsiveBox/ResponsiveBox";
 
 export default function Resume() {
@@ -18,8 +19,7 @@ export default function Resume() {
               mobile: 'block',
             },
           }}>
-            <ResponsiveBox
-              >
+            <ResponsiveBox>
               <Box 
                   border="1px solid" 
                   display="flex" 
@@ -34,7 +34,7 @@ export default function Resume() {
                   direction="column"
                   width="100%"
                   >
-                <Experience/>  
+                <HardSkill/>  
               </Box>
               <Box 
                   border="1px solid" 

@@ -4,11 +4,13 @@ import { image,ImageVariantProps } from './image.css';
 type ImageProps= {
   url: string,
   sizes: ImageVariantProps,
+  radius?: ImageVariantProps,
   children?: React.ReactNode,
 } ;
 
 export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
+  radius,
   url,
   children,
   ...rest
@@ -18,6 +20,6 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
     backgroundImage: `url(${url})`,
   };
   return (
-    <p className={image({ sizes })} style={style}>{children}</p>
+    <p className={image({ sizes, radius })} style={style}>{children}</p>
   );
 };

@@ -24,7 +24,7 @@ export function Header() {
           height={85}
           >
           <Box display="flex" direction="row" align="center">
-            <Image url="./img/pmy.jpg" sizes="small" style={{'borderRadius':"50%", "marginRight": 15}}/>
+            <Image url="./img/pmy.jpg" sizes="small" radius="circle" style={{"marginRight": 15}}/>
             <Text sizes="large">Mee young</Text>
           </Box>
       </Box>
