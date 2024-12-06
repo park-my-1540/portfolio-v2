@@ -4,16 +4,15 @@ import { swiperContainer, bullet } from "./swiper.css";
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
 import { SwiperProps } from "@/types/common";
 
-export default function MainSwiper({
+export default function SwiperComp({
   swiperRef,
-  pages,
   onSlideChange,
 }: SwiperProps) {
 
   return (
     <Swiper 
     className={swiperContainer}
-      direction={'vertical'}  
+    direction={'horizontal'}  
       speed = {1000}
       slidesPerView={1}
       spaceBetween={5}
@@ -23,7 +22,7 @@ export default function MainSwiper({
         prevEl: '.main-prev'
       }} 
       scrollbar={{ draggable: true }}
-      onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
+      onSlideChange={(swiper) => console.log('zz')}
       mousewheel={true}
       keyboard={true}
       ref={swiperRef}
@@ -34,9 +33,9 @@ export default function MainSwiper({
             return `<button type="button" class="${className} ${bullet}"></button>`;
           },
       }}>
-      {pages.map((page, index) => (
-        <SwiperSlide key={index}>{page}</SwiperSlide>
-      ))}
+        <SwiperSlide>
+          <div style={{height: 400}}>호1롤로로호롤로로호롤로로호롤로로호롤로로호롤로로</div>
+        </SwiperSlide>
   
   </Swiper>
   )

@@ -9,6 +9,7 @@ import { MatterBox } from "@/components/layouts/MatterBox/MatterBox";
 import MainPage from "./MainPage";
 import AboutPage from "./AboutPage";
 import ResumePage from "./ResumePage";
+import Projects from "./ProjectsPage";
 import { viewState } from "@/jotai/viewAtom";
 import { useSetAtom } from "jotai";
 
@@ -17,7 +18,7 @@ export default function Home() {
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const slideRef = useRef<HTMLDivElement>(null);
   const enumPage = ["main", "about", "some"] as const;
-  const pages = [<MainPage />, <AboutPage />, <ResumePage />];
+  const pages = [<MainPage />, <AboutPage />, <ResumePage />, <Projects/>];
 
   const setViewState = useSetAtom(viewState);
 

@@ -13,6 +13,10 @@ const variants = {
       width: 50,
       height: 50,
     }),
+    smallmedium: style({
+      width: 100,
+      height: 100,
+    }),
     medium: style({
       minWidth: 200,
       minHeight: 200,

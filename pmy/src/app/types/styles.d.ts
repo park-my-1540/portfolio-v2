@@ -35,5 +35,6 @@ export type BoxProps = {
   border?: string;
   borderTop?: string;
   borderBottom?: string;
+  borderLeft?: string;
   responsive?: Sprinkles
 };

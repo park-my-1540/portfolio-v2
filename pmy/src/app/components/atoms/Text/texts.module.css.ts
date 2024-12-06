@@ -2,8 +2,9 @@ import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { style } from "@vanilla-extract/css";
 
 const base = {
+  position: "relative",
   margin: "0",
-  lineHeight: '1.3'
+  lineHeight: '1.3',
 };
 
 const variants = {

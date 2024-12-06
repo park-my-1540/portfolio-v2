@@ -36,6 +36,7 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   border,
   borderTop,
   borderBottom,
+  borderLeft,
   responsive,
   direction,
   align,
@@ -50,12 +51,12 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
       backgroundColor, width, height, display, 
       margin, marginTop, marginLeft, marginRight, marginBottom, 
       padding, paddingTop, paddingLeft, paddingRight, paddingBottom, 
-      borderRadius, border, borderTop, borderBottom
+      borderRadius, border, borderTop, borderBottom, borderLeft
     },
     ["backgroundColor", "width", "height", "display", 
       "margin", "marginTop", "marginLeft", "marginRight", "marginBottom", 
       "padding", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", 
-      "borderRadius", "border", "borderTop", "borderBottom"]
+      "borderRadius", "border", "borderTop", "borderBottom", "borderLeft"]
   );
 
   const addUnit = (value:NumberOrString): NumberOrString=> {
@@ -82,6 +83,9 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
     paddingBottom: pickedProps.paddingBottom,
     borderRadius: pickedProps.borderRadius,
     border: pickedProps.border,
+    borderTop: pickedProps.borderTop,
+    borderBottom: pickedProps.borderBottom,
+    borderLeft: pickedProps.borderLeft,
   };
   return (
 
