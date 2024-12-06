@@ -26,7 +26,7 @@ export default function ScrollIndicator({slideRef}:ScrollIndicatorProps){
                       justify="center"
                       align="center"
                       marginLeft={10}
-                      backgroundColor={vars.color.highlight.quinary}
+                      backgroundColor={vars.color.highlight.accent}
                       borderRadius="50%"
                     >
                     <svg className={`${scroll} ${spinAgain}`} width="24" height="34" viewBox="0 0 24 34" fill="none" xmlns="http://www.w3.org/2000/svg">

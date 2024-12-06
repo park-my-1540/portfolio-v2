@@ -1,24 +1,11 @@
 import { ValueOfUnion } from "@/utils/utils";
 import { sprinkles, Sprinkles } from "@/styles/common/sprinkles.css"; // sprinkles import
-
-
-export type Theme = typeof theme;
+import { themeVariants } from "@/styles/common/themeVariants"
+export type Theme = typeof themeVariants;
 export type ThemeColor = keyof Theme["theme"];
 export type Color = keyof Theme["color"];
 export type ThemeMode = "light" | "dark";
 
-const theme = {
-  color: {
-    white: "#fff",
-    black: "#000",
-  },
-  theme: {
-    highlight: "#223DFF",
-    black: "#231F20",
-    white: "#fff",
-    default: "#231F20"
-  }
-} as const;
 
 
 const responsiveValue = ["desktop", "tablet", "mobile"] as const;

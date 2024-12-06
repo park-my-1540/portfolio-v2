@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-import { styleVariants, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 import { vars } from "@/styles/common/createThemeContract.css";
 
 export const swiperContainer = style({
   height: "100%",
-  border:`15px solid ${vars.color.highlight.senary}`,
+  border:`15px solid ${vars.color.highlight.primary}`,
 });
 
 export const bullet = style({
@@ -16,7 +16,7 @@ export const bullet = style({
   background: vars.color.muted,
   selectors: {
     ["&.swiper-pagination-bullet-active"] : {
-      background: "blue",
+      background: vars.color.highlight.complementary02,
     },
     ["&.swiper-pagination-bullet-active:before"] : {
       content: "",
@@ -27,7 +27,7 @@ export const bullet = style({
       width: 14,
       height: 14,
       borderRadius: "50%",
-      border: "1px solid blue",
+      border: `1px solid ${vars.color.highlight.complementary02}`,
     },
   }
 })

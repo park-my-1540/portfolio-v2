@@ -1,6 +1,9 @@
 import React from "react";
-import { text, TextVariantProps } from "./texts.css";
+import { text, TextVariantProps } from "./texts.module.css";
+import { arrowStyle } from "./text.css"
 import { textColor, TextColorVariantProps } from "@/styles/common/theme.css";
+import { IconText } from "@/components/atoms/Icon/IconText";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 type TextProps = {
   children: React.ReactNode;
@@ -24,6 +27,7 @@ export const Text = ({
   color,
   children,
   className,
+  arrow,
   ref,
   ...rest
 }: TextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
@@ -32,6 +36,9 @@ export const Text = ({
       sizes, weights, display, vertical, textAlign
     })} ${textColor({ color })}`}>
       {children}
+      {
+        arrow && (<span className={arrowStyle}><IconText icon={faAngleUp}></IconText></span>)
+      }
     </p>
   );
 };

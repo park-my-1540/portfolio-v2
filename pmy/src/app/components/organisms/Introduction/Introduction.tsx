@@ -4,6 +4,7 @@ import { viewState } from "@/jotai/viewAtom";
 import Box from "@/components/layouts/Box/Box";
 import { Text } from "@/components/atoms/Text/Text";
 import { Image } from "@/components/atoms/Image/Image";
+import { vars } from "@/styles/common/createThemeContract.css";
 import * as gsapUtil from "@/utils/gsapUtil";
 
 export default function Introduction() {
@@ -38,7 +39,12 @@ export default function Introduction() {
 
     return (
         <>
-        <Box borderTop="1px solid">
+        <Box
+          borderRadius={32}
+          padding={30}
+          backgroundColor="#fff"
+          border= {`2px solid ${vars.color.highlight.accent}`}
+        >
           <Text 
             ref={(el) => {
               textRefs.current[0] = el;
@@ -47,7 +53,8 @@ export default function Introduction() {
             weights="bold" 
             style={{'paddingBottom':40}}>Introduction</Text>
 
-          <Box display="block" padding={30} border="1px solid" borderRadius={43}>
+          <Box 
+          display="block" borderRadius={43}>
             <Text 
                ref={(el) => {
                 textRefs.current[1] = el;
@@ -68,6 +75,11 @@ export default function Introduction() {
                 <br/>
                 <br/>
                 정체되지 않고 계속해서 발전하는 사람이 되고싶습니다.
+                <br/>   정체되지 않고 계속해서 발전하는 사람이 되고싶습니다.
+                <br/>   정체되지 않고 계속해서 발전하는 사람이 되고싶습니다.
+                <br/>   정체되지 않고 계속해서 발전하는 사람이 되고싶습니다.
+                <br/>   정체되지 않고 계속해서 발전하는 사람이 되고싶습니다.
+                <br/>
               </Text>
               <Image sizes="medium" url="./img/mac.png"/>
             </Box>

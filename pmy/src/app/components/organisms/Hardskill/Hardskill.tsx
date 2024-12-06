@@ -30,7 +30,7 @@ export default function HardSkill() {
         <>
           <Text sizes="largeX2" weights="bold">HardSkill</Text>
           <CardImages
-            theme="black"
+            theme="dark"
             hardskills={hardskills}
           />
         </>

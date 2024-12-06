@@ -11,8 +11,8 @@ export const cardBox = style({
   width: "100%",
   padding: 15,
   marginTop: 40,
-  color: vars.color.primary,
-  border: `1px solid ${vars.color.primary}`,
+  color: vars.color.subPrimary,
+  border: `1px solid ${vars.color.subPrimary}`,
   borderRadius: 32,
 })
 export const cardDivision = style({
@@ -21,7 +21,7 @@ export const cardDivision = style({
 export const inner = style({
   position: "relative",
   zIndex: 9,
-  color: vars.color.primary,
+  color: vars.color.subPrimary,
   selectors: {
     [`${cardBox}:hover &`]: {
       color: vars.color.accent
@@ -34,7 +34,7 @@ export const hoverCircle = style({
   width: 0,
   height: 0,
   borderRadius: "50%",
-  backgroundColor: vars.color.highlight.tertiary,
+  backgroundColor: vars.color.highlight.complementary,
   transition: "width .35s ease-in-out, height .35s ease-in-out",
   transform: "translate(-50%, -50%)",
   zIndex: 1,

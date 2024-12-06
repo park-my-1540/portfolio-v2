@@ -34,10 +34,10 @@ const MatterMain: React.FC = () => {
       },
     });
 
-    Matter.Render.run(render);
+    // Matter.Render.run(render);
 
     const runner = Matter.Runner.create();
-    Matter.Runner.run(runner, engine);
+    // Matter.Runner.run(runner, engine);
 
     // Floor
     const bounding = titleRef.current.getBoundingClientRect()
@@ -119,7 +119,7 @@ const MatterMain: React.FC = () => {
     <>
     <div className='canvasBox' ref={canvasBoxRef}>
       <Svg titleRef={titleRef}/>
-      <canvas className="canvas" ref={canvasRef}></canvas>
+      {/* <canvas className="canvas" ref={canvasRef}></canvas> */}
     </div>
     </>
   );

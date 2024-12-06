@@ -1,12 +1,12 @@
 import React, { useState, MouseEvent, ReactNode } from "react";
-import { card } from './card.module.css';
+import { themeBase } from "@/styles/common/theme.module.css";
 import { Text } from "@/components/atoms/Text/Text";
 import { Badge } from "@/components/molecules/Badge/Badge";
 import Duration from "@/components/molecules/Duration/Duration";
 import Box from "@/components/layouts/Box/Box";
-import { cardBox, cardDivision, inner, hoverCircle } from "./card.css"
-import { ThemeColor } from "@/types/styles";
 import { Image } from "@/components/atoms/Image/Image";
+import { ThemeColor } from "@/types/styles";
+import { cardBox, cardDivision, inner, hoverCircle } from "./card.css"
 
 interface CardProps {
   theme: ThemeColor,
@@ -57,11 +57,11 @@ export function CardIcon({theme,email,title,duration}:CardIconProps) {
     const [start, end] = duration?.split("~") || ["", ""];
     return (
         <>
-        <div className={`${cardBox} ${card({ theme })}`}>
+        <div className={`${cardBox} ${themeBase({ theme })}`}>
             <Text sizes="large" weights="bold">{title}</Text>
             <div className={cardDivision}>
               <Duration from={start} to={end} theme={theme}/>
-              <Text weights="light" style={{paddingTop: 5}} sizes="small" className={card({ theme })}>{email}</Text>
+              <Text weights="light" style={{paddingTop: 5}} sizes="small" className={themeBase({ theme })}>{email}</Text>
             </div>
         </div>
         </>
@@ -77,7 +77,7 @@ export function CardImages({theme,hardskills}:CardImagesProps) {
     const max= hardskills.length;
     return (
         <>
-        <div className={`${cardBox} ${card({ theme })}`}>
+        <div className={`${cardBox} ${themeBase({ theme })}`}>
           <Image url="./img/hardskill/pc2.jpg" sizes="card" radius="default"/>
           <Box display="flex">
           { 

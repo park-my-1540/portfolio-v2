@@ -6,79 +6,64 @@ type ColorKey = keyof typeof colors;
 export const vars = createThemeContract({
   color: {
     primary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
-    subPrimary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
-    tertiary: "", // tertiary: 서브 보조 색상
+    subPrimary: "", // primary: 보조 색상 (어두운)
+    tertiary: "", // tertiary: 서브 보조 색상 (약간 어두운)
     bgPrimary: "", // bgPrimary: 메인 배경 색상
-    bgSecondary: "",
-    bgInactive: "",
-    bgInput: "",
-    accent: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
+    accent: "",
     // 강조 색상 세트
     highlight: {
       primary: "",  // 강조 색상 1: 주요 강조
-      secondary: "", // 강조 색상 2: 보조 강조
-      tertiary: "",  // 강조 색상 3: 약간 강조
-      quaternary: "", // 강조 색상 4: 부드러운 강조
-      quinary: "",    // 강조 색상 5: 미묘한 강조
-      senary: "",     // 강조 색상 6: 거의 보이지 않는 강조
+      dark: "", // 강조 색상 2: 보조 강조
+      accent: "",  // 강조 색상 3: 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+      complementary02: "",  // 강조 색상 5: 보색 강조 02
     },
-    textSecondary: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
     textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
     muted:"",
     border:"", // border
   },
 });
+
 export const lightTheme = createTheme(vars, {
   color: {
-    primary: colors["black-100" as ColorKey],
-    subPrimary: colors["black-200" as ColorKey],
-    tertiary: colors["black-100" as ColorKey],
-    bgPrimary: colors["white-100" as ColorKey],
-    bgSecondary: colors["purple" as ColorKey],
-    bgInactive: colors["gray-500" as ColorKey],
-    bgInput: colors["white" as ColorKey],
-    accent: colors["white" as ColorKey],
-    // 강조 색상 세트
+    primary: colors["blue" as ColorKey],
+    subPrimary: colors["dark" as ColorKey], 
+    tertiary: colors["grayDark" as ColorKey], 
+    bgPrimary: "", 
+    accent:colors["white" as ColorKey],
     highlight: {
-      primary: colors["blue-600" as ColorKey],  // 강조 색상 1: 주요 강조
-      secondary: colors["blue-700" as ColorKey], // 강조 색상 2: 보조 강조
-      tertiary: colors["orange" as ColorKey], // 강조 색상 3: 약간 강조
-      quaternary: colors["purple" as ColorKey], // 강조 색상 4: 부드러운 강조
-      quinary: colors["mint" as ColorKey],    // 강조 색상 5: 미묘한 강조
-      senary: colors["purple-100" as ColorKey],     // 강조 색상 6: 거의 보이지 않는 강조
+      primary: colors["blue" as ColorKey],  
+      dark: colors["blue" as ColorKey], 
+      accent: colors["cyan" as ColorKey],  
+      complementary: colors["orange" as ColorKey], 
+      complementary02: colors["pink" as ColorKey],  
     },
-    textSecondary: colors["gray-600" as ColorKey],
-    textInfo: colors["gray-800" as ColorKey],
-    textLighted: colors["gray-900" as ColorKey],
-    muted: colors["black-700" as ColorKey],
-    border: colors["gray-50" as ColorKey],
+    textInfo: colors["grayDark" as ColorKey], 
+    textLighted: colors["light" as ColorKey], 
+    muted: colors["muted" as ColorKey],
+    border: colors["grayLight" as ColorKey], 
   },
 });
 export const darkTheme = createTheme(vars, {
   color: {
-    primary: colors["gray-500" as ColorKey],
-    subPrimary: colors["gray-500" as ColorKey],
-    tertiary: colors["gray-100" as ColorKey],
-    bgPrimary: colors["black-100" as ColorKey],
-    bgSecondary: colors["black-200" as ColorKey],
-    bgInactive: colors["black-600" as ColorKey],
-    bgInput: colors["black-200" as ColorKey],
-    accent: colors["black-200" as ColorKey],
+    primary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
+    subPrimary: "", // primary: 보조 색상 (어두운)
+    tertiary: "", // tertiary: 서브 보조 색상 (약간 어두운)
+    bgPrimary: "", // bgPrimary: 메인 배경 색상
+    accent:"",
     // 강조 색상 세트
     highlight: {
-      primary: colors["blue-600" as ColorKey],  // 강조 색상 1: 주요 강조
-      secondary: "", // 강조 색상 2: 보조 강조
-      tertiary: "",  // 강조 색상 3: 약간 강조
-      quaternary: "", // 강조 색상 4: 부드러운 강조
-      quinary: "",    // 강조 색상 5: 미묘한 강조
-      senary: "",     // 강조 색상 6: 거의 보이지 않는 강조
+      primary: "",  // 강조 색상 1: 주요 강조
+      dark: "", // 강조 색상 2: 보조 강조
+      accent: "",  // 강조 색상 3: 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+      complementary02: "",  // 강조 색상 5: 보색 강조 02
     },
-    textSecondary: colors["gray-600" as ColorKey],
-    textInfo: colors["gray-800" as ColorKey],
-    textLighted: colors["gray-900" as ColorKey],
-    muted: colors["gray-800" as ColorKey],
-    border: colors["gray-50" as ColorKey],
+    textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
+    textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
+    muted:"",
+    border:"", // border
   },
 });
 

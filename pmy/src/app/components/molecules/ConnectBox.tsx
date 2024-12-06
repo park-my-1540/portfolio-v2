@@ -10,12 +10,12 @@ export default function ConnectBox() {
         <>
           <Box display="flex" direction="row" gap="mediumX2">
             <CardIcon
-              theme="black"
+              theme="dark"
               email="parkmy722698@gmail.com"
               title={<IconText icon={faEnvelope} fontSize="48px" color='accent'/>}
               />
             <CardIcon
-              theme="highlight"
+              theme="accent"
               email="https://github.com/park-my-1540"
               title={<IconText icon={faGithub} fontSize="48px" color='accent'/>}
               />

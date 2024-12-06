@@ -120,11 +120,11 @@ export default function Navigation({
     </Box>
 
     {/* prev */}
-    <button type="button" className="main-prev"><IconText fontSize="13px" color="textInfo" icon={faChevronUp}/></button> 
+    <button type="button" className="main-prev"><IconText fontSize="13px" color="primary" icon={faChevronUp}/></button> 
     {/* pagination */}
     <div className={`main-pagination ${pagination}`}></div>
     {/* next */}
-    <button type="button" className="main-next"><IconText fontSize="13px" color="textInfo" icon={faChevronDown}/></button>
+    <button type="button" className="main-next"><IconText fontSize="13px" color="primary" icon={faChevronDown}/></button>
   </Box>
   )
 }

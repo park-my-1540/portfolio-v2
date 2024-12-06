@@ -3,23 +3,22 @@ import { vars } from "@/styles/common/createThemeContract.css";
 
 export const theme = {
   color: {
-    white: "#fff",
-    black: "#000",
+    white: vars.color.accent,
+    black: vars.color.subPrimary,
   },
   theme: {
-    highlight: vars.color.highlight.senary,
+    accent: vars.color.highlight.accent,
+    complementary: vars.color.highlight.complementary,
     black: vars.color.subPrimary,
-    white: "#fff"
+    white: vars.color.accent,
   }
 } as const;
 
 const variants = {
   color: {
-    primary: { color: vars.color.primary },
-    tertiary: { color: vars.color.tertiary },
+    primary: { color: vars.color.tertiary }, // 메인 text color
+    tertiary: { color: vars.color.tertiary }, // 옅은
     accent: { color: vars.color.accent },
-    textSecondary: { color: vars.color.textSecondary },
-    textInfo: { color: vars.color.textInfo },
     textLighted: { color: vars.color.textLighted },
     muted: { color: vars.color.muted },
     inherit: { color: "inherit"},

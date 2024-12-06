@@ -5,23 +5,23 @@ import Card from "@/components/molecules/Card/Card";
 export default function Experience() {
     return (
         <>
-          <Text sizes="largeX2" weights="bold">Experience</Text>
+          <Text sizes="largeX2" weights="bold" arrow={true}>Experience</Text>
           <Card
-            theme="highlight"
+            theme="accent"
             badge="2022-Present"
             subTitle="Freelance"
             title="Graphic Desinger(Logo,Brand)"
             duration="Nov~Present"
             />
           <Card
-            theme="black"
+            theme="dark"
             badge="2022"
             subTitle="Freelance"
             title="Graphic Desinger(Logo,Brand)"
             duration="Nov~Present"
             />
           <Card
-            theme="black"
+            theme="dark"
             badge="2022"
             subTitle="Freelance"
             title="Graphic Desinger(Logo,Brand)"
