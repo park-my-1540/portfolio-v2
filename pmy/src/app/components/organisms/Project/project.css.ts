@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import { styleVariants, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 export const arrow = style({
   position: 'relative',
@@ -26,5 +25,12 @@ export const arrow = style({
       transform: 'rotate(45deg)',
     }
   }
+});
+
+export const box = style({
+  position: 'relative',
+  width: '26rem',
+  height: '16rem',
+  border: '1px solid red'
 });
 

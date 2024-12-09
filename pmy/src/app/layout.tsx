@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css"
 import { lightTheme, darkTheme } from "@/styles/common/createThemeContract.css";
+import PageTransition from "@/components/layouts/transition/PageTransition";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={lightTheme}>
       <body>
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   );

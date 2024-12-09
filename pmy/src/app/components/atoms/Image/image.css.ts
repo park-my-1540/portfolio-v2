@@ -32,7 +32,7 @@ const variants = {
   },
   radius: {
     default: style({
-      borderRadius: 32
+      borderRadius: 0
     }),
     circle: style({
       borderRadius: "50%"
@@ -47,6 +47,7 @@ export const image = recipe({
   variants,
   defaultVariants: {
     sizes: "small",
+    radius: "default",
   },
 });
 

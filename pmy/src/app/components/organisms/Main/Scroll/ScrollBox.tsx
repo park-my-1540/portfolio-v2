@@ -2,18 +2,14 @@ import React, { useEffect, useRef } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import { gsap } from "gsap";
 
-import { viewState } from "@/jotai/viewAtom";
-import { useSetAtom } from "jotai";
-
-import Box from "@/components/layouts/Box/Box";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import "./locomotive-scroll.css";
 
 import Header from "@/components/organisms/Header/Header";
-import { MatterBox } from "@/components/layouts/MatterBox/MatterBox";
 import MainPage from "@/components/pages/MainPage";
 import AboutPage from "@/components/pages/AboutPage";
+import ProjectsPage from "@/components/pages/ProjectsPage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,6 +51,21 @@ const ScrollBox: React.FC = () => {
       pinType: containerRef.current.style.transform ? "transform" : "fixed",
     });
 
+    gsap.fromTo(
+      containerRef.current,
+      { backgroundColor: "var(--dark)" },
+      {
+        backgroundColor: "var(--light)",
+        scrollTrigger: {
+          trigger: ".color-light", // 밝은 색 섹션의 클래스
+          scroller: containerRef.current, // Locomotive Scroll 컨테이너
+          scrub: true,
+          start: "top center", // 애니메이션 시작 위치
+          end: "bottom center", // 애니메이션 끝나는 위치
+        },
+      }
+    );
+
     // 애니메이션 설정
     gsap.from(".line-1", {
       scrollTrigger: {
@@ -70,6 +81,7 @@ const ScrollBox: React.FC = () => {
       ease: "none",
     });
 
+    
     gsap.from(".line-2", {
       scrollTrigger: {
         trigger: ".orange",
@@ -151,12 +163,16 @@ const ScrollBox: React.FC = () => {
     <>
       <div className="smooth-scroll" ref={containerRef}>
         <Header/>
-        <div className="panel blue">
+        <div className="panel blue color-dark">
           <MainPage/>
         </div>
 
-        <section className="panel orange">
+        <section className="panel orange color-light">
           <AboutPage/>
+        </section>
+
+        <section className="panel yellow color-light">
+          <ProjectsPage/>
         </section>
 
         {/* <section className="panel red">
