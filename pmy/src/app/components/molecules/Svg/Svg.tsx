@@ -1,6 +1,6 @@
 import { vars } from "@/styles/common/createThemeContract.css";
 export default function Svg({titleRef}:{titleRef:React.RefObject<HTMLOrSVGElement>}) {
-  const test = vars.color.highlight.primary;
+  const test = vars.color.subPrimary;
     return (
         <>
          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 873 400" className="title" ref={titleRef}>

@@ -6,6 +6,5 @@ export const canvasWrap = style({
   width: '100%',
   height: '100%',
   textAlign: 'end',
-  // backgroundColor: "#75FFC0"
 });
 

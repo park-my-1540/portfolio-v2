@@ -7,12 +7,9 @@ import { header } from "./header.css";
 import { Image } from "@/components/atoms/Image/Image";
 
 export function Header() {
-  const {currentIdx, currentPage} = useAtomValue(viewState);
   return (
     <header>
-    {
-      currentPage === "main" && (
-        <Box 
+      <Box 
           className={header}
           display="flex" 
           direction="row" 
@@ -20,15 +17,12 @@ export function Header() {
           justify="between" 
           gap="large" 
           padding={20}
-          height={85}
+          height={40}
           >
           <Box display="flex" direction="row" align="center">
-            <Image url="./img/pmy.jpg" sizes="small" radius="circle" style={{"marginRight": 15}}/>
-            <Text sizes="large">Mee young</Text>
+            <Text sizes="small">Mee young</Text>
           </Box>
       </Box>
-      )
-    }
   </header>
   )
 }

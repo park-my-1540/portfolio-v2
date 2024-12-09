@@ -16,7 +16,7 @@ export const colors = {
   "white": "#fff",
   "gray": "#6c757d",
   "grayDark": "#343a40",
-  "grayLight": "rgba(26, 27, 28, .2)",
+  "grayLight": "#222",
   "primary": "#3a5dae",
   "success": "#28a745",
   "info": "#17a2b8",
