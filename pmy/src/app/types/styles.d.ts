@@ -11,7 +11,7 @@ export type ThemeMode = "light" | "dark";
 const responsiveValue = ["desktop", "tablet", "mobile"] as const;
 export type responsiveType = ValueOfUnion<typeof responsiveValue>
 
-const displayValue = ["flex", "inline", "inline-block", "block"] as const;
+const displayValue = ["flex", "inline", "inline-block", "block", "grid"] as const;
 export type displayType = ValueOfUnion<typeof displayValue>
 
 export type NumberOrString = number | string | undefined;

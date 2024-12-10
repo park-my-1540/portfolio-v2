@@ -27,7 +27,11 @@ const variants = {
     }),
     card: style({
       width: "100%",
-      height: 180,
+      height: 300,
+    }),
+    full: style({
+      width: "100%",
+      height: "80vh",
     }),
   },
   radius: {

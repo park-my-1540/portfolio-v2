@@ -1,5 +1,4 @@
-import About from "@/components/templates/About";
-
+import Project from "@/components/templates/Project";
 export default function index() {
-  return <About/>;
+  return <Project/>;
 }

@@ -28,5 +28,5 @@ export default function PageTransition({ children }: { children: React.ReactNode
     }
   }, [pathname, currentPath]);
 
-  return <div className="page">{children}</div>;
+  return <div className="page" style={{height:"100%"}}>{children}</div>;
 }

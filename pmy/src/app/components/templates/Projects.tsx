@@ -1,14 +1,20 @@
-"use client";
 
+import React from "react";
+import { useRouter } from "next/navigation";
+import { Image } from "@/components/atoms/Image/Image";
 import Box from "@/components/layouts/Box/Box";
-import { ResponsiveBox } from "@/components/layouts/ResponsiveBox/ResponsiveBox";
-import Project from "@/components/organisms/Project/Project";
-import Connect from "@/components/organisms/Connect/Connect";
 
-export default function About() {
-  return (
-    <>
-      <Project/>
-    </>
-  );
+export default function Project() {
+  const router = useRouter();
+  const onClick = () => {
+    router.push("/about"); // "/about" 페이지로 이동
+  }
+    return (
+        <>
+          <Box width="500" height={300} border="1px solid">
+            <Image url="./img/hardskill/pc2.jpg" sizes="card"/>
+            <button type="button" onClick = {onClick}>project</button>
+          </Box>
+        </>
+      );
 }

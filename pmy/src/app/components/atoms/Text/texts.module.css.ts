@@ -10,29 +10,29 @@ const base = {
 const variants = {
   sizes: {
     small: style({
-      fontSize: "12px",
+      fontSize: "0.75rem", // 12px
     }),
     smallmedium: style({
-      fontSize: "14px",
+      fontSize: "0.875rem", // 14px
     }),
     medium: style({
-      fontSize: "16px",
+      fontSize: "1rem", // 16px
     }),
     mediumlarge: style({
-      fontSize: "20px",
+      fontSize: "1.25rem", // 20px
     }),
     mediumlargeX2: style({
-      fontSize: "25px",
+      fontSize: "1.5625rem", // 25px
     }),
     large: style({
-      fontSize: "28px",
+      fontSize: "1.75rem", // 28px
     }),
     largeX2: style({
-      fontSize: "40px"
+      fontSize: "2.5rem", // 40px
     }),
     big: style({
-      fontSize: "70px",
-      lineHeight: "70px"
+      fontSize: "4.375rem", // 70px
+      lineHeight: "4.375rem", // 70px
     }),
   },
   weights: {
