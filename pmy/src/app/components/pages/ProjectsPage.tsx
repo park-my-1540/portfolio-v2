@@ -1,5 +1,5 @@
-import Projects from "@/components/templates/Projects";
-
+import Projects from '@/components/templates/Projects';
+import Gallery from '@/components/organisms/Gallery';
 export default function ProjectsPage() {
-  return <Projects/>;
+  return <Gallery />;
 }

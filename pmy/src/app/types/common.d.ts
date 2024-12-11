@@ -28,3 +28,15 @@ interface SwiperProps {
     swiperRef: React.RefObject<SwiperRefType>;
     pages: React.ReactNode[];
 }
+
+interface GalleryProps {
+    src: string,
+    title: number,
+    subtitle: string,
+    category: string,
+}
+
+interface GalleryItemProps extends GalleryProps {
+    index: number,
+    updateActiveImage: (index:number) => void,
+}

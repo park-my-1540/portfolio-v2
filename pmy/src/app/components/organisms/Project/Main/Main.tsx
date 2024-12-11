@@ -6,7 +6,7 @@ import { borderBox,paddingBox } from "./main.css"
 export default function Main() {
     return (
         <>
-         <Box>
+         <Box className="main">
             <Box>
               <Box width="100%" height="500px" className={borderBox} borderTop="1px solid">
                 <Image url="./img/projects/jandi/jandi.jpg" radius="default" sizes="full"/>

@@ -6,7 +6,7 @@ export default function Column() {
 
     return (
         <>
-         <Box height = "100%" border="1px solid">
+         <Box height = "100%" border="1px solid" className="column">
             <Box>
               <Image url="./img/projects/jandi/jandi.jpg" radius="default" sizes="card"/>
               <Text sizes="large">Jandi</Text>
