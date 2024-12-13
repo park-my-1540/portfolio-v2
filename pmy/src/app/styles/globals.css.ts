@@ -55,7 +55,6 @@ globalStyle("body", {
   "@layer": {
     [layers.reset]: {
       margin: 0,
-      padding: 30,
       backgroundColor: vars.color.bgPrimary,
       overflowX: 'hidden',
       overflowY: 'scroll',

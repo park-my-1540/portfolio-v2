@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
+import '@/styles/styles.css';
 import { lightTheme, darkTheme } from '@/styles/common/createThemeContract.css';
 import PageTransition from '@/components/layouts/transition/PageTransition';
 import Header from '@/components/organisms/Header/Header';

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import '@/styles/style.css';
 import useLocoScroll from '@/utils/hook/useLocoScroll';
 
 import MainPage from '@/components/pages/MainPage';

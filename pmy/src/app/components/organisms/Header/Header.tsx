@@ -1,12 +1,13 @@
 import React from 'react';
 import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
-import { header } from './header.css';
+import { header, inner } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
 export function Header() {
   return (
     <header className={header}>
       <Box
+        className={inner}
         display="flex"
         direction="row"
         align="center"

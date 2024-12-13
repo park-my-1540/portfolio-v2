@@ -28,3 +28,8 @@ html, body {
   height: calc(100vh - 130px);
   border: 1px solid;
 }
+
+.project {
+  border: 1px solid red;
+  margin: 100px 30px 30px;
+}
