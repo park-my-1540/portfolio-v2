@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 import * as animate from '@/utils/animate';
+import Box from '@/components/layouts/Box/Box';
 import { page } from './page.css';
 export default function PageTransition({
   children,
@@ -25,7 +26,9 @@ export default function PageTransition({
   return (
     <div>
       <div id="transition-element" className={page} ref={transitionRef}></div>
-      <div ref={pageRef}>{children}</div>;
+      <Box margin={30} ref={pageRef}>
+        {children}
+      </Box>
     </div>
   );
 }

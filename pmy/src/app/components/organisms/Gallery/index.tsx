@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useRouter } from 'next/navigation';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import useOnScreen from '@/utils/hook/useOnScreen';
-import cn from 'classnames';
 import { GalleryProps, GalleryItemProps } from '@/types/common';
-import './style.css';
-import Box from '@/components/layouts/Box/Box';
 import * as animate from '@/utils/animate';
+import Box from '@/components/layouts/Box/Box';
+import cn from 'classnames';
+import './style.css';
 
 const images = [
   {
-    src: 'https://images.unsplash.com/photo-1566204773863-cf63e6d4ab88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1345&q=100',
+    src: './img/projects/jandi/jandi.jpg',
     title: '111 Dracaena Trifasciata',
     subtitle: 'Live the Beauty',
     category: 'Shooting / Adv.Campaing',
   },
   {
-    src: 'https://images.unsplash.com/photo-1558603668-6570496b66f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=100',
+    src: './img/projects/adc/adcapsule.jpg',
     title: '222 Cereus Penuvianus',
     subtitle: 'Live the Beauty',
     category: 'Shooting / Adv.Campaing',
@@ -74,23 +73,13 @@ export default function Gallery({ src, title }: GalleryProps) {
   const ref = useRef(null);
 
   useEffect(() => {
-    // This does not seem to work without a settimeout
     setTimeout(() => {
-      let sections = gsap.utils.toArray('.gallery-item-wrapper');
-      gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: ref.current,
-          scroller: '#main-container',
-          pin: true,
-          scrub: true,
-          start: 'top top',
-          end: () =>
-            `+=${document.querySelector('.horizontal-container')?.scrollWidth!}`,
-        },
-      });
-      ScrollTrigger.refresh();
+      const sections: HTMLElement[] = gsap.utils.toArray(
+        '.gallery-item-wrapper',
+      );
+      const endVal = `+=${document.querySelector('.horizontal-container')?.scrollWidth!}`;
+
+      animate.triggerHorizontalSections(sections, ref, endVal);
     });
   }, []);
 

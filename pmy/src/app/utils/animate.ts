@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"; //???
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 type RefType = React.RefObject<HTMLDivElement>;
 
 export const pageIn = (transitionRef:RefType) => {
@@ -56,15 +56,51 @@ export const pageOut = (href: string, router: AppRouterInstance) => {
       );
   }
 };
+
 export const pageFadeIn = (pageRef:RefType) => {
   const animationWrapper = pageRef.current;
   if (animationWrapper) {
-    const tl = gsap.timeline();
-
     gsap.fromTo(
       animationWrapper,
       { opacity: 0 },
       { opacity: 1, duration: 0.5, ease: "power2.in" }
     );
+  }
+};
+
+export const scaleOnScroll = (lineRef:RefType, triggerRef:RefType) => {
+  const animationWrapper = lineRef.current;
+  if (animationWrapper) {
+    gsap.from(animationWrapper, {
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        scroller: '#main-container',
+        scrub: true,
+        pin: true,
+        start: 'top top',
+        end: '+=100%',
+      },
+      scaleX: 0,
+      transformOrigin: 'left center',
+      ease: 'none',
+    });
+  }
+};
+
+export const triggerHorizontalSections = (sections: HTMLElement[], triggerRef:RefType, calcVal: string) => {
+
+  if(sections){
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        scroller: '#main-container',
+        pin: true,
+        scrub: true,
+        start: 'top top',
+        end: () => calcVal
+      },
+    });
   }
 };

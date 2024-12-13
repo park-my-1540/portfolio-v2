@@ -1,9 +1,6 @@
-import React from "react";
-import { text, TextVariantProps } from "./texts.module.css";
-import { arrowStyle } from "./text.css"
-import { textColor, TextColorVariantProps } from "@/styles/common/theme.css";
-import { IconText } from "@/components/atoms/Icon/IconText";
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import { text, TextVariantProps } from './texts.module.css';
+import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
 
 type TextProps = {
   children: React.ReactNode;
@@ -19,33 +16,37 @@ type TextLinkProps = {
 };
 
 export const Text = ({
-  sizes = "medium",
-  weights = "normal",
+  sizes = 'medium',
+  weights = 'normal',
   vertical,
   textAlign,
   display,
   color,
   children,
   className,
-  arrow,
   ref,
   ...rest
 }: TextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
-    <p {...rest}  ref={ref} className={ `${className} ${text({
-      sizes, weights, display, vertical, textAlign
-    })} ${textColor({ color })}`}>
+    <p
+      {...rest}
+      ref={ref}
+      className={`${className} ${text({
+        sizes,
+        weights,
+        display,
+        vertical,
+        textAlign,
+      })} ${textColor({ color })}`}
+    >
       {children}
-      {
-        arrow && (<span className={arrowStyle}><IconText icon={faAngleUp}></IconText></span>)
-      }
     </p>
   );
 };
 
 export const TextLink = ({
-  sizes = "medium",
-  weights = "normal",
+  sizes = 'medium',
+  weights = 'normal',
   vertical,
   textAlign,
   onClick,
@@ -55,9 +56,18 @@ export const TextLink = ({
   ...rest
 }: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
-    <a href='#none' {...rest} className={ `${text({
-      sizes, weights, display, vertical, textAlign
-    })} ${textColor({ color })}`} onClick={onClick}>
+    <a
+      href="#none"
+      {...rest}
+      className={`${text({
+        sizes,
+        weights,
+        display,
+        vertical,
+        textAlign,
+      })} ${textColor({ color })}`}
+      onClick={onClick}
+    >
       {children}
     </a>
   );

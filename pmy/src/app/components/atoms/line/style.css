@@ -1,0 +1,9 @@
+.line {
+    width: 100%;
+    max-width: 800px;
+    height: 2px;
+    margin: 0 0 10px 0;
+    position: relative;
+    display: inline-block;
+    background-color: #000;
+  }

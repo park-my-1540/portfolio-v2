@@ -6,8 +6,6 @@ export type ThemeColor = keyof Theme["theme"];
 export type Color = keyof Theme["color"];
 export type ThemeMode = "light" | "dark";
 
-
-
 const responsiveValue = ["desktop", "tablet", "mobile"] as const;
 export type responsiveType = ValueOfUnion<typeof responsiveValue>
 
@@ -36,5 +34,6 @@ export type BoxProps = {
   borderTop?: string;
   borderBottom?: string;
   borderLeft?: string;
+  borderRight?: string;
   responsive?: Sprinkles
 };
