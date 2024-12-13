@@ -1,32 +1,31 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { gsap } from "gsap";
-
-
-export default function PageTransition({ children }: { children: React.ReactNode }) {
+import { usePathname } from 'next/navigation';
+import { useEffect, useState, useRef } from 'react';
+import * as animate from '@/utils/animate';
+import { page } from './page.css';
+export default function PageTransition({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname(); // 현재 경로
   const [currentPath, setCurrentPath] = useState(pathname);
+  const pageRef = useRef<HTMLDivElement>(null);
+  const transitionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (pathname !== currentPath) {
-      // 페이지 전환 시작 애니메이션
-      gsap.to(".page", {
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.out",
-        onComplete: () => setCurrentPath(pathname), // 경로 변경
-      });
-    } else {
-      // 페이지 전환 완료 애니메이션
-      gsap.fromTo(
-        ".page",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: "power2.in" }
-      );
+    if (!pageRef) {
+      return;
     }
-  }, [pathname, currentPath]);
+    animate.pageIn(transitionRef);
+    animate.pageFadeIn(pageRef);
+  }, [pathname, currentPath, pageRef]);
 
-  return <div className="page" style={{height:"100%"}}>{children}</div>;
+  return (
+    <div>
+      <div id="transition-element" className={page} ref={transitionRef}></div>
+      <div ref={pageRef}>{children}</div>;
+    </div>
+  );
 }

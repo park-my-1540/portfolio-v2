@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { useRouter } from 'next/navigation';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import useOnScreen from '@/utils/hook/useOnScreen';
 import cn from 'classnames';
 import { GalleryProps, GalleryItemProps } from '@/types/common';
 import './style.css';
 import Box from '@/components/layouts/Box/Box';
+import * as animate from '@/utils/animate';
 
 const images = [
   {
@@ -29,6 +31,7 @@ function GalleryItem({
   updateActiveImage,
   index,
 }: GalleryItemProps) {
+  const router = useRouter();
   const ref = useRef(null);
   const onScreen = useOnScreen(ref, 0.5);
 
@@ -38,8 +41,13 @@ function GalleryItem({
     }
   }, [onScreen, index]);
 
+  const goDetail = () => {
+    animate.pageOut('/project', router);
+  };
+
   return (
     <div
+      onClick={goDetail}
       className={cn('gallery-item-wrapper', { 'is-reveal': onScreen })}
       ref={ref}
     >
