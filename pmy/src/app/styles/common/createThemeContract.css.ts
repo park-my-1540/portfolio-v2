@@ -5,65 +5,78 @@ type ColorKey = keyof typeof colors;
 
 export const vars = createThemeContract({
   color: {
-    primary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
-    subPrimary: "", // primary: 보조 색상 (어두운)
-    tertiary: "", // tertiary: 서브 보조 색상 (약간 어두운)
-    bgPrimary: "", // bgPrimary: 메인 배경 색상
-    accent: "",
+    primary:"", // 흰색
+    complementary: "", // 검은색
+
+    text: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+      accent: "",  // 강조 색상 3: 강조
+    },
     // 강조 색상 세트
     highlight: {
       primary: "",  // 강조 색상 1: 주요 강조
       dark: "", // 강조 색상 2: 보조 강조
       accent: "",  // 강조 색상 3: 강조
       complementary: "", // 강조 색상 4: 보색 강조
-      complementary02: "",  // 강조 색상 5: 보색 강조 02
     },
-    textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
-    textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
-    muted:"",
-    border:"", // border
+    bg: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      dark: "", // 강조 색상 2: 보조 강조
+      accent: "",  // 강조 색상 3: 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+    }
   },
 });
 
 export const lightTheme = createTheme(vars, {
   color: {
-    primary: colors["blue" as ColorKey],
-    subPrimary: colors["dark" as ColorKey], 
-    tertiary: colors["grayDark" as ColorKey], 
-    bgPrimary: "", 
-    accent:colors["white" as ColorKey],
-    highlight: {
-      primary: colors["blue" as ColorKey],  
-      dark: colors["blue" as ColorKey], 
-      accent: colors["cyan" as ColorKey],  
-      complementary: colors["orange" as ColorKey], 
-      complementary02: colors["pink" as ColorKey],  
+    primary: colors["white" as ColorKey], // 흰색
+    complementary: colors["dark" as ColorKey], // 검은색
+
+    text: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+      accent: "",  // 강조 색상 3: 강조
     },
-    textInfo: colors["grayDark" as ColorKey], 
-    textLighted: colors["light" as ColorKey], 
-    muted: colors["muted" as ColorKey],
-    border: colors["grayLight" as ColorKey], 
-  },
-});
-export const darkTheme = createTheme(vars, {
-  color: {
-    primary: "", // primary: 주 색상 (메인 인터랙션, 버튼 등)
-    subPrimary: "", // primary: 보조 색상 (어두운)
-    tertiary: "", // tertiary: 서브 보조 색상 (약간 어두운)
-    bgPrimary: "", // bgPrimary: 메인 배경 색상
-    accent:"",
     // 강조 색상 세트
     highlight: {
       primary: "",  // 강조 색상 1: 주요 강조
       dark: "", // 강조 색상 2: 보조 강조
       accent: "",  // 강조 색상 3: 강조
       complementary: "", // 강조 색상 4: 보색 강조
-      complementary02: "",  // 강조 색상 5: 보색 강조 02
     },
-    textInfo: "", // accent: 강조 색상 (알림, 중요한 정보 표시)
-    textLighted: "", // 연한 색상 (알림, 중요한 정보 표시)
-    muted:"",
-    border:"", // border
+    bg: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      dark: "", // 강조 색상 2: 보조 강조
+      accent: "",  // 강조 색상 3: 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+    }
+  },
+});
+export const darkTheme = createTheme(vars, {
+  color: {
+    primary: colors["dark" as ColorKey], // 흰색
+    complementary: colors["white" as ColorKey], // 검은색
+
+    text: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+      accent: "",  // 강조 색상 3: 강조
+    },
+    // 강조 색상 세트
+    highlight: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      dark: "", // 강조 색상 2: 보조 강조
+      accent: "",  // 강조 색상 3: 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+    },
+    bg: {
+      primary: "",  // 강조 색상 1: 주요 강조
+      dark: "", // 강조 색상 2: 보조 강조
+      accent: "",  // 강조 색상 3: 강조
+      complementary: "", // 강조 색상 4: 보색 강조
+    }
   },
 });
 

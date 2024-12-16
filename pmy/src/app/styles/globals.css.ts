@@ -52,13 +52,16 @@ globalStyle("body, html", {
     },
   },
 });
+
 globalStyle("body", {
   "@layer": {
     [layers.reset]: {
       margin: 0,
-      backgroundColor: vars.color.bgPrimary,
       overflowX: 'hidden',
       overflowY: 'scroll',
+      backgroundColor: vars.color.primary,
+      color: vars.color.complementary,
+      transition: "background-color 0.3s ease-in-out",
     },
   },
 });

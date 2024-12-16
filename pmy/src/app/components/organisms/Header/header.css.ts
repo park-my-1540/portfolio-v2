@@ -1,12 +1,12 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "@/styles/common/createThemeContract.css";
 
 export const header = style({
     position: "absolute",
     top: 0,
     width: "100%",
     zIndex: 99,
-    background: "#FFF"
+    backgroundColor: "inherit",
+    color: "inherit",
 });
 
 export const inner = style({

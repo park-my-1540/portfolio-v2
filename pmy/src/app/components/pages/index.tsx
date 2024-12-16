@@ -12,14 +12,12 @@ const ScrollBox: React.FC = () => {
   useLocoScroll(!preloader, containerRef);
 
   return (
-    <>
-      <div className="smooth-scroll" id="main-container" ref={containerRef}>
-        <MainPage />
-        <AboutPage />
-        <ProjectsPage />
-        <section className="panel gray">DONE!</section>
-      </div>
-    </>
+    <div className="smooth-scroll" id="main-container" ref={containerRef}>
+      <MainPage />
+      <AboutPage />
+      <ProjectsPage />
+      <section className="panel gray">DONE!</section>
+    </div>
   );
 };
 
