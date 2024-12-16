@@ -48,6 +48,7 @@ globalStyle("body, html", {
       height: "100%",
       fontFamily: 'MangoRegular',
       overflowY : 'hidden',
+      cursor: 'none',
     },
   },
 });
