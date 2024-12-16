@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
 import { header, inner } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
+
+import { useSetAtom, useAtomValue } from 'jotai';
+import { themeState } from '@/jotai/themeAtom';
+import { ThemeMode } from '@/types/styles';
+
 export function Header() {
+  const setTheme = useSetAtom(themeState);
+  const changeTheme = useCallback(
+    (mode: ThemeMode) => {
+      setTheme({
+        mode: mode,
+      });
+    },
+    [setTheme],
+  );
+
   return (
     <header className={header}>
       <Box
@@ -26,20 +41,24 @@ export function Header() {
           <Position position="absolute" left="50%">
             <Box
               display="inline-block"
-              width="15"
-              height={15}
+              width="30"
+              height={30}
               border="1px solid"
               borderRadius="50%"
               backgroundColor="red"
-            ></Box>
+            >
+              <button onClick={() => changeTheme('light')}>dd</button>
+            </Box>
             <Box
               display="inline-block"
-              width="15"
-              height={15}
-              marginLeft="-3px"
+              width="30"
+              height={30}
+              marginLeft="-10px"
               backgroundColor="#000"
               borderRadius="50%"
-            ></Box>
+            >
+              <button onClick={() => changeTheme('dark')}>sd</button>
+            </Box>
           </Position>
         </Box>
       </Box>

@@ -24,7 +24,7 @@ const CustomCursor = () => {
       positionRef.current.mouseX =
         mouseX - secondaryCursor.current?.clientWidth / 2;
       positionRef.current.mouseY =
-        mouseY - secondaryCursor.current?.clientHeight / 2 - 100;
+        mouseY - secondaryCursor.current?.clientHeight / 2;
     });
 
     return () => {};

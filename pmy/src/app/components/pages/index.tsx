@@ -4,7 +4,6 @@ import useLocoScroll from '@/utils/hook/useLocoScroll';
 import MainPage from '@/components/pages/MainPage';
 import AboutPage from '@/components/pages/AboutPage';
 import ProjectsPage from '@/components/pages/ProjectsPage';
-import CustomCursor from '@/components/molecules/CustomCursor';
 
 const ScrollBox: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,7 +13,6 @@ const ScrollBox: React.FC = () => {
 
   return (
     <>
-      <CustomCursor />
       <div className="smooth-scroll" id="main-container" ref={containerRef}>
         <MainPage />
         <AboutPage />
