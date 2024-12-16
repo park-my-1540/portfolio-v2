@@ -12,3 +12,20 @@ export const header = style({
   lineHeight: "52px",
   fontSize: 24,
 });
+
+export const borderTopNone = style({
+  border: '1px solid',
+  borderTop: "none",
+});
+
+export const borderBox = style({
+  border: "1px solid",
+});
+
+export const borderTop = style({
+  borderTop: "1px solid",
+});
+
+export const paddingBox = style({
+  padding: "0.7rem"
+})

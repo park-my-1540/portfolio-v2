@@ -16,8 +16,8 @@ export const theme = {
 
 const variants = {
   color: {
-    primary: { color: vars.color.tertiary }, // 메인 text color
-    tertiary: { color: vars.color.tertiary }, // 옅은
+    primary: { color: vars.color.complementary }, // 메인 text color
+    tertiary: { color: vars.color.text.tertiary }, // 옅은
     accent: { color: vars.color.accent },
     textLighted: { color: vars.color.textLighted },
     muted: { color: vars.color.muted },

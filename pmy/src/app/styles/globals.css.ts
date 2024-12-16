@@ -88,15 +88,3 @@ globalStyle("button:disabled", {
   opacity: 0.5, // 비활성화된 버튼의 오퍼시티
   cursor: "not-allowed", // 비활성화된 상태에서 커서 스타일 변경
 });
-
-globalStyle("html", {
-  fontSize: "16px", // 기본 Desktop 폰트 크기
-  "@media": {
-    "screen and (max-width: 1024px)": {
-      fontSize: "18px", // Tablet 폰트 크기
-    },
-    "screen and (max-width: 768px)": {
-      fontSize: "20px", // Mobile 폰트 크기
-    },
-  },
-});

@@ -7,9 +7,9 @@ export const vars = createThemeContract({
   color: {
     primary:"", // 흰색
     complementary: "", // 검은색
-
     text: {
       primary: "",  // 강조 색상 1: 주요 강조
+      tertiary: "",
       complementary: "", // 강조 색상 4: 보색 강조
       accent: "",  // 강조 색상 3: 강조
     },
@@ -22,9 +22,11 @@ export const vars = createThemeContract({
     },
     bg: {
       primary: "",  // 강조 색상 1: 주요 강조
-      dark: "", // 강조 색상 2: 보조 강조
-      accent: "",  // 강조 색상 3: 강조
       complementary: "", // 강조 색상 4: 보색 강조
+      accent: "",  // 강조 색상 3: 강조
+    },
+    border: {
+      muted:"" // 흐린색상
     }
   },
 });
@@ -33,9 +35,9 @@ export const lightTheme = createTheme(vars, {
   color: {
     primary: colors["white" as ColorKey], // 흰색
     complementary: colors["dark" as ColorKey], // 검은색
-
     text: {
       primary: "",  // 강조 색상 1: 주요 강조
+      tertiary: colors["light" as ColorKey],
       complementary: "", // 강조 색상 4: 보색 강조
       accent: "",  // 강조 색상 3: 강조
     },
@@ -48,9 +50,11 @@ export const lightTheme = createTheme(vars, {
     },
     bg: {
       primary: "",  // 강조 색상 1: 주요 강조
-      dark: "", // 강조 색상 2: 보조 강조
-      accent: "",  // 강조 색상 3: 강조
       complementary: "", // 강조 색상 4: 보색 강조
+      accent: "",  // 강조 색상 3: 강조
+    },
+    border: {
+      muted: colors["muted" as ColorKey] // 흐린색상
     }
   },
 });
@@ -58,9 +62,9 @@ export const darkTheme = createTheme(vars, {
   color: {
     primary: colors["dark" as ColorKey], // 흰색
     complementary: colors["white" as ColorKey], // 검은색
-
     text: {
       primary: "",  // 강조 색상 1: 주요 강조
+      tertiary: colors["light" as ColorKey],
       complementary: "", // 강조 색상 4: 보색 강조
       accent: "",  // 강조 색상 3: 강조
     },
@@ -73,9 +77,11 @@ export const darkTheme = createTheme(vars, {
     },
     bg: {
       primary: "",  // 강조 색상 1: 주요 강조
-      dark: "", // 강조 색상 2: 보조 강조
       accent: "",  // 강조 색상 3: 강조
       complementary: "", // 강조 색상 4: 보색 강조
+    },
+    border: {
+      muted:""
     }
   },
 });

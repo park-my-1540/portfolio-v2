@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Box from '@/components/layouts/Box/Box';
 import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
-import { borderBox, paddingBox } from './main.css';
+import { borderTopNone, paddingBox } from '@/styles/style.css';
 import useLocoScroll from '@/utils/hook/useLocoScroll';
 
 export default function Main({}) {
@@ -18,7 +18,7 @@ export default function Main({}) {
             <Box
               width="100%"
               height="500px"
-              className={borderBox}
+              className={borderTopNone}
               borderTop="1px solid"
             >
               <Image
@@ -30,16 +30,16 @@ export default function Main({}) {
             <Text
               sizes="mediumlarge"
               weights="light"
-              className={`${borderBox} ${paddingBox}`}
+              className={`${borderTopNone} ${paddingBox}`}
             >
               Exploration sonore
             </Text>
           </Box>
-          <Text sizes="large" className={`${borderBox} ${paddingBox}`}>
+          <Text sizes="large" className={`${borderTopNone} ${paddingBox}`}>
             Jandi
           </Text>
           <Box
-            className={`${borderBox} ${paddingBox}`}
+            className={`${borderTopNone} ${paddingBox}`}
             paddingBottom="5rem"
             display="grid"
             responsive={{

@@ -9,7 +9,10 @@ export default function Project() {
     <>
       <div className="project">
         <Box
-          margin="0.5rem"
+          marginTop="1rem"
+          marginBottom="1rem"
+          marginLeft="30px"
+          marginRight="30px"
           display="grid"
           responsive={{
             gridTemplateColumns: {

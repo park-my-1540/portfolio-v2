@@ -23,3 +23,7 @@ html, body {
   height: calc(100vh - 130px);
   border: 1px solid;
 }
+
+.project{
+  padding-top: calc(20px + 1.6rem*2 + 0.85rem);
+}

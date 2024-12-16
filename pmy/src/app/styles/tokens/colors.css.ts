@@ -22,9 +22,9 @@ export const colors = {
   "info": "#17a2b8",
   "warning": "#ffc107",
   "danger": "#bf412e",
-  "light": "#00004787",
+  "light": "#00000080",
   "dark": "#1a1b1c",
-  "muted": "#1a1b1c47",
+  "muted": "#00000015",
   };
   
   export const colorProperties = defineProperties({

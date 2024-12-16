@@ -1,18 +1,20 @@
 import React from 'react';
-import { image,ImageVariantProps } from './image.css';
+import { image, ImageVariantProps } from './image.css';
 
-type ImageProps= {
-  url: string,
-  sizes: ImageVariantProps,
-  radius?: ImageVariantProps,
-  children?: React.ReactNode,
-} ;
+type ImageProps = {
+  url: string;
+  sizes: ImageVariantProps;
+  radius?: ImageVariantProps;
+  children?: React.ReactNode;
+  className?: string;
+};
 
 export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
   radius,
   url,
   children,
+  className,
   ...rest
 }) => {
   const style = {
@@ -20,6 +22,8 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
     backgroundImage: `url(${url})`,
   };
   return (
-    <p className={image({ sizes, radius })} style={style}>{children}</p>
+    <p className={`${className} ${image({ sizes, radius })}`} style={style}>
+      {children}
+    </p>
   );
 };
