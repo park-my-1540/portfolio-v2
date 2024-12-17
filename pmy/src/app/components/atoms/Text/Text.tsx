@@ -1,6 +1,7 @@
 import React from 'react';
 import { text, TextVariantProps } from './texts.module.css';
 import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
+import cn from 'classnames';
 
 type TextProps = {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ type TextProps = {
 type TextLinkProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
   onClick: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
@@ -31,13 +33,11 @@ export const Text = ({
     <p
       {...rest}
       ref={ref}
-      className={`${className} ${text({
-        sizes,
-        weights,
-        display,
-        vertical,
-        textAlign,
-      })} ${textColor({ color })}`}
+      className={cn(
+        className,
+        text({ sizes, weights, display, vertical, textAlign }),
+        textColor({ color }),
+      )}
     >
       {children}
     </p>
@@ -60,13 +60,11 @@ export const TextTitle = ({
     <h2
       {...rest}
       ref={ref}
-      className={`${className} ${text({
-        sizes,
-        weights,
-        display,
-        vertical,
-        textAlign,
-      })} ${textColor({ color })}`}
+      className={cn(
+        className,
+        text({ sizes, weights, display, vertical, textAlign }),
+        textColor({ color }),
+      )}
     >
       {children}
     </h2>
@@ -81,6 +79,7 @@ export const TextLink = ({
   onClick,
   display,
   color,
+  className,
   children,
   ...rest
 }: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
@@ -88,13 +87,11 @@ export const TextLink = ({
     <a
       href="#none"
       {...rest}
-      className={`${text({
-        sizes,
-        weights,
-        display,
-        vertical,
-        textAlign,
-      })} ${textColor({ color })}`}
+      className={cn(
+        className,
+        text({ sizes, weights, display, vertical, textAlign }),
+        textColor({ color }),
+      )}
       onClick={onClick}
     >
       {children}

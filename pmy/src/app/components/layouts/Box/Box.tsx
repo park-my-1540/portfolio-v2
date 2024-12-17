@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import * as flexstyles from './flex.css';
-import { clsx } from 'clsx'; // clsx import
+import { clsx } from 'clsx';
 import { pickProps } from '@/utils/utils';
-import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css'; // sprinkles import
+import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps, NumberOrString } from '@/types/styles';
 
 type FlexProps = {
@@ -44,9 +44,7 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
   justify,
   gap,
   className,
-  style,
   ref,
-  ...props
 }) => {
   const pickedProps = pickProps(
     {
@@ -129,17 +127,21 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
     borderLeft: pickedProps.borderLeft,
     borderRight: pickedProps.borderRight,
   };
+
+  type GapType = keyof typeof gap;
+
+  const classes = clsx(
+    responsive && sprinkles(responsive),
+    direction && flexstyles.flexDirection[direction],
+    align && flexstyles.alignItems[align],
+    justify && flexstyles.justifyContent[justify],
+    gap && flexstyles.gap[gap as GapType],
+    className,
+  );
   return (
     <div
       ref={ref}
-      className={clsx(
-        sprinkles(responsive), // responsive 스타일
-        flexstyles.flexDirection[direction], // Flex 스타일 (direction)
-        flexstyles.alignItems[align], // Flex 스타일 (align)
-        flexstyles.justifyContent[justify], // Flex 스타일 (justify)
-        flexstyles.gap[gap], // Flex 스타일 (gap)
-        className, // 외부에서 전달된 className도 병합
-      )}
+      className={classes}
       style={inlineStyle} // 동적 스타일을 인라인 스타일로 적용
     >
       {children}

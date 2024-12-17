@@ -16,7 +16,6 @@ export const responsiveProperties = defineProperties({
     height: sizeVars.height,
     padding: spaceVars,
     margin: spaceVars,
-    gap: spaceVars,
     justifyContent: [
       'stretch',
       'flex-start',
