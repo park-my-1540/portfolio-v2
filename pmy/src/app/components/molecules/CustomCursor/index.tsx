@@ -1,8 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import * as styles from './cursor.css';
 
+import { useSetAtom } from 'jotai';
+import { viewState } from '@/jotai/viewAtom';
+
 const CustomCursor = () => {
-  const secondaryCursor = useRef<HTMLDivElement | null>(null);
+  const mainCursor = useRef<HTMLDivElement | null>(null);
+  const setCursor = useSetAtom(viewState);
+
+  setCursor({ ref: mainCursor });
   const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,
@@ -20,11 +26,10 @@ const CustomCursor = () => {
       const mouseX = clientX;
       const mouseY = clientY;
 
-      if (!secondaryCursor.current) return;
-      positionRef.current.mouseX =
-        mouseX - secondaryCursor.current?.clientWidth / 2;
+      if (!mainCursor.current) return;
+      positionRef.current.mouseX = mouseX - mainCursor.current?.clientWidth / 2;
       positionRef.current.mouseY =
-        mouseY - secondaryCursor.current?.clientHeight / 2;
+        mouseY - mainCursor.current?.clientHeight / 2;
     });
 
     return () => {};
@@ -59,12 +64,12 @@ const CustomCursor = () => {
           positionRef.current.destinationY += distanceY;
         }
       }
-      if (secondaryCursor && secondaryCursor.current)
-        secondaryCursor.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
+      if (mainCursor && mainCursor.current)
+        mainCursor.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
     };
     followMouse();
   }, []);
-  return <div ref={secondaryCursor} className={styles.secondaryCursor} />;
+  return <div ref={mainCursor} className={styles.mainCursor} />;
 };
 
 export default CustomCursor;

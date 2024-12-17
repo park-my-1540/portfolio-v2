@@ -42,7 +42,7 @@ const translateRightDot = keyframes({
 });
 
 // 기본 스타일 정의
-export const secondaryCursor = style({
+export const mainCursor = style({
   width: '40px',
   height: '40px',
   zIndex: 999,

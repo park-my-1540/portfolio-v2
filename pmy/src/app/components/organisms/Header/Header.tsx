@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
-import { header, inner } from './header.css';
+import { header, inner, changeCircle, dark } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
-
 import { useSetAtom, useAtomValue } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
+import { viewState } from '@/jotai/viewAtom';
 import { ThemeMode } from '@/types/styles';
 
 export function Header() {
@@ -18,6 +18,15 @@ export function Header() {
     },
     [setTheme],
   );
+
+  const cursorRef = useAtomValue(viewState).ref;
+
+  const removePoint = useCallback(() => {
+    cursorRef.current?.classList.remove('point');
+  }, []);
+  const addPoint = useCallback(() => {
+    cursorRef.current?.classList.add('point');
+  }, []);
 
   return (
     <header className={header}>
@@ -39,26 +48,18 @@ export function Header() {
         <Box display="flex" direction="row" align="center" justify="center">
           <Text sizes="small">Mee young</Text>
           <Position position="absolute" left="50%">
-            <Box
-              display="inline-block"
-              width="30"
-              height={30}
-              border="1px solid"
-              borderRadius="50%"
-              backgroundColor="red"
-            >
-              <button onClick={() => changeTheme('light')}>dd</button>
-            </Box>
-            <Box
-              display="inline-block"
-              width="30"
-              height={30}
-              marginLeft="-10px"
-              backgroundColor="#000"
-              borderRadius="50%"
-            >
-              <button onClick={() => changeTheme('dark')}>sd</button>
-            </Box>
+            <button
+              onMouseEnter={addPoint}
+              onMouseLeave={removePoint}
+              onClick={() => changeTheme('light')}
+              className={`${changeCircle} changeTheme`}
+            />
+            <button
+              onMouseEnter={addPoint}
+              onMouseLeave={removePoint}
+              className={`${changeCircle} ${dark} changeTheme`}
+              onClick={() => changeTheme('dark')}
+            />
           </Position>
         </Box>
       </Box>
