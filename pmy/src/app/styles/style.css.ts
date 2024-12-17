@@ -1,6 +1,5 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/styles/common/createThemeContract.css";
-
 export const container = style({
   width: "100vw",
   height: "100vh",
@@ -27,7 +26,7 @@ export const borderTop = style({
 });
 
 export const paddingBox = style({
-  padding: "0.7rem"
+  padding: 'var(--padding-container)', // CSS 변수 사용
 })
 
 export const scrollbar = style({

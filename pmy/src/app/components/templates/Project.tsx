@@ -39,9 +39,9 @@ export default function Project() {
           display="grid"
           responsive={{
             gridTemplateColumns: {
-              desktop: 'oneThree',
-              tablet: 'two',
-              mobile: 'single',
+              desktop: 'full',
+              tablet: 'full',
+              mobile: 'full',
             },
             gridTemplateRows: {
               desktop: 'single',

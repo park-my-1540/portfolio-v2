@@ -19,7 +19,7 @@ const variants = {
       fontSize: "1rem", // 16px
     }),
     mediumlarge: style({
-      fontSize: "1.25rem", // 20px
+      fontSize: "1.3rem", // 20px
     }),
     mediumlargeX2: style({
       fontSize: "1.5625rem", // 25px

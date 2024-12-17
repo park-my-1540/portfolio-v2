@@ -27,14 +27,10 @@ export const responsiveProperties = defineProperties({
     ],
     alignItems: ['stretch', 'flex-start', 'center', 'flex-end'],
     gridTemplateColumns: {
+      full: 'repeat(24, minmax(0, 1fr))', // 1:3 비율
       oneThree: '1fr 3fr', // 1:3 비율
-      auto: 'auto',
-      none: 'none',
       single: 'repeat(1, 1fr)',
       two: 'repeat(2, 1fr)',
-      three: 'repeat(3, 1fr)',
-      four: 'repeat(4, 1fr)',
-      custom: 'repeat(4, 1fr)', // 추가 항목
     },
     gridTemplateRows: {
       auto: 'auto', // 행 크기가 내용에 따라 자동 조정
@@ -43,6 +39,11 @@ export const responsiveProperties = defineProperties({
       two: 'repeat(2, 1fr)', // 두 개의 행이 높이를 균등 분할
       three: 'repeat(3, 1fr)', // 세 개의 행이 높이를 균등 분할
       fill: 'repeat(auto-fill, minmax(0, 1fr))', // 가능한 모든 공간을 균등 분할
+    },
+    gridColumn: {
+      one: 'span 8/span 8',
+      three: 'span 16/span 16',
+      full: '1/-1'
     },
     gridColumnGap: spaceVars,
     gridRowGap: spaceVars,

@@ -28,6 +28,11 @@ export default function Column() {
           tablet: 'relative',
           mobile: 'relative',
         },
+        gridColumn: {
+          desktop: 'one',
+          tablet: 'full',
+          mobile: 'full',
+        },
       }}
     >
       <Box>

@@ -1,25 +1,26 @@
-"use client";
+'use client';
 
-import Box from "@/components/layouts/Box/Box";
-import Experience from "@/components/organisms/Experience/Experience";
-import HardSkill from "@/components/organisms/Hardskill/Hardskill";
-import { ResponsiveBox } from "@/components/layouts/ResponsiveBox/ResponsiveBox";
+import Box from '@/components/layouts/Box/Box';
+import Experience from '@/components/organisms/Experience/Experience';
+import HardSkill from '@/components/organisms/Hardskill/Hardskill';
+import { ResponsiveBox } from '@/components/layouts/ResponsiveBox/ResponsiveBox';
 
 export default function Resume() {
   return (
     <>
-        <Box
-          justify="end"
-          align="stretch"
-          height="100%"
-          responsive = {{
-            display: {
-              desktop: 'flex',
-              tablet: 'flex',
-              mobile: 'block',
-            },
-          }}>
-            <ResponsiveBox gap="mediumX2">
+      <Box
+        justify="end"
+        align="stretch"
+        height="100%"
+        responsive={{
+          display: {
+            desktop: 'flex',
+            tablet: 'flex',
+            mobile: 'block',
+          },
+        }}
+      >
+        {/* <ResponsiveBox gap="mediumX2">
               <Box 
                   display="flex" 
                   direction="column"
@@ -41,8 +42,8 @@ export default function Resume() {
                   >
                 <Experience/>  
               </Box>
-            </ResponsiveBox>
-        </Box>
+            </ResponsiveBox> */}
+      </Box>
     </>
-  )
+  );
 }

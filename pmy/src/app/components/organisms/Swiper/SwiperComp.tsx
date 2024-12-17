@@ -1,42 +1,63 @@
-import React from "react";
+import React from 'react';
+import { Image } from '@/components/atoms/Image/Image';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { swiperContainer, bullet } from "./swiper.css";
-import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
-import { SwiperProps } from "@/types/common";
+import {
+  borderTopNone,
+  borderBox,
+  borderTop,
+  paddingBox,
+} from '@/styles/style.css';
+import 'swiper/css';
+import './styles.css';
 
-export default function SwiperComp({
-  swiperRef,
-  onSlideChange,
-}: SwiperProps) {
-
+export default function SwiperComp() {
   return (
-    <Swiper 
-    className={swiperContainer}
-    direction={'horizontal'}  
-      speed = {1000}
-      slidesPerView={1}
-      spaceBetween={5}
-      modules={[Navigation, Pagination, Scrollbar, A11y, Mousewheel]}
-      navigation={{
-        nextEl: '.main-next',
-        prevEl: '.main-prev'
-      }} 
-      scrollbar={{ draggable: true }}
-      onSlideChange={(swiper) => console.log('zz')}
-      mousewheel={true}
-      keyboard={true}
-      ref={swiperRef}
-      pagination={{
-          el: '.main-pagination',
-          clickable:true,
-          renderBullet: function (index, className) {
-            return `<button type="button" class="${className} ${bullet}"></button>`;
-          },
-      }}>
+    <>
+      <Swiper slidesPerView={2.5} spaceBetween={30} className="mySwiper">
         <SwiperSlide>
-          <div style={{height: 400}}>호1롤로로호롤로로호롤로로호롤로로호롤로로호롤로로</div>
+          <Image
+            className={borderBox}
+            url="./img/projects/jandi/jandi.jpg"
+            sizes="card"
+          />
         </SwiperSlide>
-  
-  </Swiper>
-  )
+        <SwiperSlide>
+          <Image
+            className={borderBox}
+            url="./img/projects/jandi/jandi.jpg"
+            sizes="card"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            className={borderBox}
+            url="./img/projects/jandi/jandi.jpg"
+            sizes="card"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            className={borderBox}
+            url="./img/projects/jandi/jandi.jpg"
+            sizes="card"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            className={borderBox}
+            url="./img/projects/jandi/jandi.jpg"
+            sizes="card"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            className={borderBox}
+            url="./img/projects/jandi/jandi.jpg"
+            sizes="card"
+          />
+        </SwiperSlide>
+      </Swiper>
+    </>
+  );
 }

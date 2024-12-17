@@ -1,5 +1,5 @@
-import React from "react";
-import Box from "@/components/layouts/Box/Box";
+import React from 'react';
+import Box from '@/components/layouts/Box/Box';
 
 type ResponsiveBoxProps = {
   children: React.ReactNode;
@@ -15,13 +15,13 @@ type ResponsiveBoxProps = {
 
 export const ResponsiveBox = ({
   children,
-  width = "100%",
+  width = '100%',
   padding = 30,
   gap = 20,
   columns = {
-    desktop: "single",
-    tablet: "single",
-    mobile: "single",
+    desktop: 'single',
+    tablet: 'single',
+    mobile: 'single',
   },
   ...rest
 }: ResponsiveBoxProps) => (
@@ -29,9 +29,9 @@ export const ResponsiveBox = ({
     {...rest}
     responsive={{
       display: {
-        desktop: "grid",
-        tablet: "grid",
-        mobile: "grid",
+        desktop: 'grid',
+        tablet: 'grid',
+        mobile: 'grid',
       },
       gridTemplateColumns: {
         mobile: 'single',
@@ -39,9 +39,9 @@ export const ResponsiveBox = ({
         desktop: 'four', // 사용자 정의 레이아웃 사용
       },
       width: {
-        desktop: "expanded",
-        tablet: "shrink",
-        mobile: "full",
+        desktop: 'expanded',
+        tablet: 'shrink',
+        mobile: 'full',
       },
     }}
     padding={padding}

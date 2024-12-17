@@ -44,6 +44,35 @@ export const Text = ({
   );
 };
 
+export const TextTitle = ({
+  sizes = 'mediumlarge',
+  weights = 'normal',
+  vertical,
+  textAlign,
+  display,
+  color,
+  children,
+  className,
+  ref,
+  ...rest
+}: TextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
+  return (
+    <h2
+      {...rest}
+      ref={ref}
+      className={`${className} ${text({
+        sizes,
+        weights,
+        display,
+        vertical,
+        textAlign,
+      })} ${textColor({ color })}`}
+    >
+      {children}
+    </h2>
+  );
+};
+
 export const TextLink = ({
   sizes = 'medium',
   weights = 'normal',
