@@ -25,6 +25,7 @@ export const colors = {
   "light": "#00000080",
   "dark": "#1a1b1c",
   "muted": "#00000015",
+  "black": "#000",
   };
   
   export const colorProperties = defineProperties({

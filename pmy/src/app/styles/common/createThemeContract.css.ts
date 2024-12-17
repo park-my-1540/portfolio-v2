@@ -50,7 +50,7 @@ export const lightTheme = createTheme(vars, {
     },
     bg: {
       primary: "",  // 강조 색상 1: 주요 강조
-      complementary: "", // 강조 색상 4: 보색 강조
+      complementary: colors["black" as ColorKey], // 강조 색상 4: 보색 강조
       accent: "",  // 강조 색상 3: 강조
     },
     border: {
@@ -78,7 +78,7 @@ export const darkTheme = createTheme(vars, {
     bg: {
       primary: "",  // 강조 색상 1: 주요 강조
       accent: "",  // 강조 색상 3: 강조
-      complementary: "", // 강조 색상 4: 보색 강조
+      complementary: colors["white" as ColorKey], // 강조 색상 4: 보색 강조
     },
     border: {
       muted:""

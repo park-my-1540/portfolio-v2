@@ -11,9 +11,9 @@ import './style.css';
 const images = [
   {
     src: './img/projects/jandi/jandi.jpg',
-    title: '111 Dracaena Trifasciata',
-    subtitle: 'Live the Beauty',
-    category: 'Shooting / Adv.Campaing',
+    title: 'Jandi',
+    subtitle: 'Toss Lab, Inc',
+    category: 'Sass Provider',
   },
   {
     src: './img/projects/adc/adcapsule.jpg',

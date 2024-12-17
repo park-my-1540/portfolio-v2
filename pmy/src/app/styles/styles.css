@@ -26,4 +26,6 @@ html, body {
 
 .project{
   padding-top: calc(20px + 1.6rem*2 + 0.85rem);
+  height: 100vh;
+  overflow-y: scroll;
 }

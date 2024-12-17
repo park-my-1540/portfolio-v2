@@ -11,6 +11,7 @@ export const responsiveProperties = defineProperties({
   defaultCondition: 'desktop',
   properties: {
     display: ['none', 'block', 'flex', 'inline', "grid"],
+    position: ['relative', 'absolute', 'static', 'sticky'],
     width: sizeVars.width,
     height: sizeVars.height,
     padding: spaceVars,

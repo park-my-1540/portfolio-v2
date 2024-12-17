@@ -29,3 +29,20 @@ export const borderTop = style({
 export const paddingBox = style({
   padding: "0.7rem"
 })
+
+export const scrollbar = style({
+  selectors: {
+    '&::-webkit-scrollbar': {
+      width: '6px',
+      backgroundColor: vars.color.bg.primary,
+    },
+    '&::-webkit-scrollbar-track': {
+      WebkitBoxShadow: `inset 0 0 6px ${vars.color.primary}`,
+      backgroundColor: vars.color.bg.primary,
+      borderLeft: `1px solid ${vars.color.bg.primary}`,
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: vars.color.bg.complementary,
+    },
+  },
+});

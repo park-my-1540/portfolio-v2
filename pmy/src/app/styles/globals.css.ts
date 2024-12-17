@@ -58,7 +58,6 @@ globalStyle("body", {
     [layers.reset]: {
       margin: 0,
       overflowX: 'hidden',
-      overflowY: 'scroll',
       backgroundColor: vars.color.primary,
       color: vars.color.complementary,
       transition: "background-color 0.3s ease-in-out",
