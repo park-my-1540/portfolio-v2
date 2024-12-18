@@ -9,17 +9,19 @@ import { text, TextVariantProps } from './splitText.module.css';
 
 type SplitTextProps = {
   splitText: string;
+  url: string;
 };
 
 export const SplitText = ({
   splitText,
   sizes,
+  url,
 }: SplitTextProps & Partial<TextVariantProps>) => {
   useEffect(() => {
     Splitting();
   }, []);
   return (
-    <a href="#" className={`${link} link ${text({ sizes })}`}>
+    <a href={url} className={`${link} link ${text({ sizes })}`}>
       <Text
         color="primary"
         className={cn('txt', txt, text({ sizes }))}

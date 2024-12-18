@@ -73,7 +73,11 @@ export default function Column() {
         }}
       >
         <Text>Back to</Text>
-        <SplitText splitText="Home" sizes="largeX2" />
+        <SplitText
+          splitText="Home"
+          sizes="largeX2"
+          url="http://localhost:3000/"
+        />
       </Box>
 
       {/* back to Works */}

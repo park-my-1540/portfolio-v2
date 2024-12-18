@@ -1,4 +1,4 @@
-import { keyframes, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import {vars } from '@/styles/common/createThemeContract.css';
 
 export const link = style({
