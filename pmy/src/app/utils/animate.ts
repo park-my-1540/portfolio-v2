@@ -78,7 +78,7 @@ export const scaleOnScroll = (lineRef:RefType, triggerRef:RefType) => {
         scrub: true,
         pin: true,
         start: 'top top',
-        end: '+=100%',
+        end: '+=10%',
       },
       scaleX: 0,
       transformOrigin: 'left center',

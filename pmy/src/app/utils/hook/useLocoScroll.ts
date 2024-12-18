@@ -3,6 +3,8 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
 import 'locomotive-scroll/dist/locomotive-scroll.css';
+import { useSetAtom } from 'jotai';
+import { viewState } from '@/jotai/viewAtom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +14,9 @@ gsap.registerPlugin(ScrollTrigger);
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
 export default function useLocoScroll(start, containerRef) {
+
+  const setScrollState = useSetAtom(viewState);
+
   useEffect(() => {
     if (!start && !containerRef.current) return;
     let locoScroll:LocomotiveScroll = null;
@@ -25,8 +30,12 @@ export default function useLocoScroll(start, containerRef) {
       class: "is-reveal",
     });
 
-    locoScroll.on("scroll", () => {
+    locoScroll.on("scroll", (loco:LocomotiveScroll) => {
       ScrollTrigger.update();
+
+      if(loco.scroll.y > 0) {
+        setScrollState({ scrollStart: true });
+      }
     });
 
     ScrollTrigger.scrollerProxy(scrollEl, {

@@ -5,9 +5,15 @@ import MainPage from '@/components/pages/MainPage';
 import AboutPage from '@/components/pages/AboutPage';
 import ProjectsPage from '@/components/pages/ProjectsPage';
 
+import { useSetAtom } from 'jotai';
+import { viewState } from '@/jotai/viewAtom';
+
 const ScrollBox: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [preloader, setPreload] = useState(false);
+
+  const setContainerRef = useSetAtom(viewState);
+  setContainerRef({ containerRef: containerRef });
 
   useLocoScroll(!preloader, containerRef);
 
