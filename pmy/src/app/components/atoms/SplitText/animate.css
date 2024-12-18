@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap");
+
+.txt .char {
+  display: inline-block;
+  transform-origin: 50% 50% 0.4em;
+  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1);
+  transition-delay: calc(0ms + var(--char-index) * 25ms);
+  backface-visibility: hidden;
+  margin: 0 -0.02em;
+}
+
+.txt:nth-child(2) .char {
+    transform: rotate3d(1, -0.5, 0, 90deg);
+  }
+
+.link:hover .txt:nth-child(1) {
+    transform: translateY(100%); /* 아래로 사라짐 */
+  }
+  
+.link:hover .txt:nth-child(2) {
+    transform: translateY(0); /* 위에서 내려옴 */
+    opacity: 1;
+}
+  
+.link:hover .txt {
+  transform: translateX(var(3rem));
+}
+
+.link:hover .txt:nth-child(1) {
+  opacity: 0;
+}
+
+.link:hover .txt:nth-child(1) .char {
+  transform: rotate3d(1, 0.3, 0, -90deg);
+}
+
+.link:hover .txt:nth-child(2) {
+  opacity: 1;
+}
+
+.link:hover .txt:nth-child(2) .char {
+  transform: rotate3d(0, 0, 0, 90deg);
+}

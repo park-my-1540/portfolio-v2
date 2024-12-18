@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
 import { header, inner, changeCircle, dark } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
@@ -7,6 +6,7 @@ import { useSetAtom, useAtomValue } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
 import { viewState } from '@/jotai/viewAtom';
 import { ThemeMode } from '@/types/styles';
+import { SplitText } from '@/components/atoms/SplitText';
 
 export function Header() {
   const setTheme = useSetAtom(themeState);
@@ -46,7 +46,7 @@ export function Header() {
         }}
       >
         <Box display="flex" direction="row" align="center" justify="center">
-          <Text sizes="small">Mee young</Text>
+          <SplitText splitText="Mee Young" sizes="medium" />
           <Position position="absolute" left="50%">
             <button
               onMouseEnter={addPoint}

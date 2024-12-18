@@ -1,21 +1,17 @@
-import React, { useEffect } from 'react';
-import Splitting from 'splitting';
+import React from 'react';
 import Box from '@/components/layouts/Box/Box';
 import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
+import { SplitText } from '@/components/atoms/SplitText';
 import {
   borderTopNone,
   borderBox,
   borderTop,
   paddingBox,
 } from '@/styles/style.css';
-import { list, home, text, columnWrap } from './column.css';
-import './animate.css';
+import { list, columnWrap } from './column.css';
 
 export default function Column() {
-  useEffect(() => {
-    Splitting();
-  }, []);
   return (
     <Box
       className={`${borderTopNone} ${columnWrap}`}
@@ -77,14 +73,7 @@ export default function Column() {
         }}
       >
         <Text>Back to</Text>
-        <a href="#" className={`${home} home`}>
-          <span className={`${text} text`} data-splitting>
-            Home
-          </span>
-          <span className={`${text} text`} data-splitting>
-            Home
-          </span>
-        </a>
+        <SplitText splitText="Home" sizes="largeX2" />
       </Box>
 
       {/* back to Works */}
