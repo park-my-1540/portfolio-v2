@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
 export default function useLocoScroll(start, containerRef) {
-
+  let timer: ReturnType<typeof setTimeout>;
   const setScrollState = useSetAtom(viewState);
 
   useEffect(() => {
@@ -22,41 +22,62 @@ export default function useLocoScroll(start, containerRef) {
     let locoScroll:LocomotiveScroll = null;
 
     const scrollEl = containerRef.current;
+    if (!scrollEl) return;
 
+    const savedScrollPosition = sessionStorage.getItem('scrollPositionY');
+    
     locoScroll = new LocomotiveScroll({
       el: scrollEl,
       smooth: true,
       multiplier: 1,
       class: "is-reveal",
+      initPosition: {
+        y: savedScrollPosition !== null ? parseInt(savedScrollPosition) : 0
+      }
     });
 
     locoScroll.on("scroll", (loco:LocomotiveScroll) => {
       ScrollTrigger.update();
 
       if(loco.scroll.y > 0) {
-        setScrollState({ scrollStart: true });
+        setScrollState({ scrollStart: true, locoScroll });
       }
     });
+    
+    timer = setTimeout(()=>{
+      sessionStorage.removeItem('scrollPositionY');
+    })
 
-    ScrollTrigger.scrollerProxy(scrollEl, {
-      scrollTop(value) {
-        if (locoScroll) {
-          return arguments.length
-            ? locoScroll.scrollTo(value, 0, 0)
-            : locoScroll.scroll.instance.scroll.y;
-        }
-        return null;
-      },
-      scrollLeft(value) {
-        if (locoScroll) {
-          return arguments.length
-            ? locoScroll.scrollTo(value, 0, 0)
-            : locoScroll.scroll.instance.scroll.x;
-        }
-        return null;
-      },
-      pinType: containerRef.current.style.transform ? 'transform' : 'fixed',
-    });
+  // ScrollTrigger와 Locomotive Scroll 동기화
+  ScrollTrigger.scrollerProxy(scrollEl, {
+    scrollTop(value) {
+    if (locoScroll) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    }
+    return null;
+  },
+  scrollLeft(value) {
+    if (locoScroll) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.x;
+    }
+    return null;
+  },
+  // 중요한 부분 : pageContainer 요소의 크기와 위치를 ScrollTrigger에게 알려줌 => ScrollTrigger는 이 정보를 사용하여 스크롤 트리거 및 고정(pinning) 요소를 정확히 배치합니
+  getBoundingClientRect() {
+    return {
+      left: 0,
+      top: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  },
+    pinType: scrollEl.style.transform ? "transform" : "fixed",
+  });
+
 
     const lsUpdate = () => {
       if (locoScroll) {
@@ -81,9 +102,9 @@ export default function useLocoScroll(start, containerRef) {
 
     ScrollTrigger.addEventListener("refresh", lsUpdate);
     ScrollTrigger.refresh();
-
     return () => {
       if (locoScroll) {
+       clearTimeout(timer);
         ScrollTrigger.removeEventListener("refresh", lsUpdate);
         locoScroll.destroy();
         locoScroll = null;

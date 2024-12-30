@@ -9,11 +9,14 @@ import Line from '@/components/atoms/line';
 export default function Main() {
   const lineRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
-
+  let timer: ReturnType<typeof setTimeout>;
   useEffect(() => {
-    setTimeout(() => {
+    timer = setTimeout(() => {
       animate.scaleOnScroll(lineRef, triggerRef);
     });
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
   return (
     <>

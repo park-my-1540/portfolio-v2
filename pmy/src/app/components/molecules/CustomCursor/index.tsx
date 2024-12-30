@@ -8,7 +8,7 @@ const CustomCursor = () => {
   const mainCursor = useRef<HTMLDivElement | null>(null);
   const setCursor = useSetAtom(viewState);
 
-  setCursor({ ref: mainCursor });
+  setCursor({ cursorRef: mainCursor });
   const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,

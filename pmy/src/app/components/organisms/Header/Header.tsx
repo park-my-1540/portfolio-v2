@@ -19,7 +19,7 @@ export function Header() {
     [setTheme],
   );
 
-  const cursorRef = useAtomValue(viewState).ref;
+  const { cursorRef } = useAtomValue(viewState);
 
   const removePoint = useCallback(() => {
     cursorRef.current?.classList.remove('point');

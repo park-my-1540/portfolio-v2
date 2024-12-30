@@ -8,7 +8,7 @@ import { useAtomValue } from 'jotai';
 import { viewState } from '@/jotai/viewAtom';
 
 const MatterMain: React.FC = () => {
-  const scrollStart = useAtomValue(viewState).scrollStart;
+  const { scrollStart } = useAtomValue(viewState);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvasBoxRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<SVGSVGElement | null>(null);
@@ -66,13 +66,13 @@ const MatterMain: React.FC = () => {
     Matter.Composite.add(world, floor);
     engine.world.gravity.y = 2; // 기본값은 1. 3으로 설정하여 더 빠르게.
     // Dropping objects
+    let timer: ReturnType<typeof setTimeout>;
     const createFallingObjectsWithDelay = () => {
       const objectCount = 10; // 생성할 객체 수
       const delay = 200; // 각 객체 생성 간 시간차 (ms)
       const startingHeight = -100; // 객체가 생성될 초기 Y 좌표 (화면 상단 위)
-
       for (let i = 0; i < objectCount; i++) {
-        setTimeout(() => {
+        timer = setTimeout(() => {
           const randomX = Math.random() * canvasBoxRef.current?.offsetWidth; // 화면 내 무작위 위치
           const rectangle = Matter.Bodies.circle(randomX, startingHeight, 30, {
             density: 0.01, // 기본값은 0.001, 더 큰 값으로 설정
@@ -89,6 +89,7 @@ const MatterMain: React.FC = () => {
           Matter.Composite.add(world, rectangle);
         }, i * delay); // `i * delay`만큼 시간차 적용
       }
+      clearTimeout(timer);
     };
 
     createFallingObjectsWithDelay();

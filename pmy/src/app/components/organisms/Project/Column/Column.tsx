@@ -10,8 +10,11 @@ import {
   paddingBox,
 } from '@/styles/style.css';
 import { list, columnWrap } from './column.css';
+import { useRouter } from 'next/navigation';
 
 export default function Column() {
+  const router = useRouter();
+
   return (
     <Box
       className={`${borderTopNone} ${columnWrap}`}
@@ -76,11 +79,10 @@ export default function Column() {
         <SplitText
           splitText="Home"
           sizes="largeX2"
-          url="http://localhost:3000/"
+          // url="http://localhost:3000/"
+          onClick={() => router.push('/')}
         />
       </Box>
-
-      {/* back to Works */}
     </Box>
   );
 }

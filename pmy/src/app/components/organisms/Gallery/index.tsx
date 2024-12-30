@@ -7,6 +7,8 @@ import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
 import cn from 'classnames';
 import './style.css';
+import { useAtomValue } from 'jotai';
+import { viewState } from '@/jotai/viewAtom';
 
 const images = [
   {
@@ -40,7 +42,15 @@ function GalleryItem({
     }
   }, [onScreen, index]);
 
+  const { locoScroll } = useAtomValue(viewState);
   const goDetail = () => {
+    if (!locoScroll) {
+      return;
+    }
+    sessionStorage.setItem(
+      'scrollPositionY',
+      locoScroll.scroll.instance.scroll.y,
+    );
     animate.pageOut('/project', router);
   };
 
@@ -71,9 +81,10 @@ export default function Gallery({ src, title }: GalleryProps) {
   const [activeImage, setActiveImage] = useState(1);
 
   const ref = useRef(null);
+  let timer: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
-    setTimeout(() => {
+    timer = setTimeout(() => {
       const sections: HTMLElement[] = gsap.utils.toArray(
         '.gallery-item-wrapper',
       );
@@ -81,6 +92,9 @@ export default function Gallery({ src, title }: GalleryProps) {
 
       animate.triggerHorizontalSections(sections, ref, endVal);
     });
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleUpdateActiveImage = (index: number) => {
