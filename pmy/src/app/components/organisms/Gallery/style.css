@@ -18,7 +18,7 @@
 
 .gallery-counter {
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 100px;
     z-index: 1;
     mix-blend-mode: difference;
@@ -41,9 +41,8 @@
 }
 
 .gallery {
-    height: 80vh;
-    padding: 10vh 0;
-    /* width: 400%; */
+    height: 100vh;
+    padding: 20vh 0 10vh;
     display: flex;
     flex-wrap: nowrap
 }

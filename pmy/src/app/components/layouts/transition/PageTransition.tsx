@@ -5,13 +5,13 @@ import { useEffect, useState, useRef } from 'react';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
 import { page } from './page.css';
+
 export default function PageTransition({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname(); // 현재 경로
-  const [currentPath, setCurrentPath] = useState(pathname);
   const pageRef = useRef<HTMLDivElement>(null);
   const transitionRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +21,7 @@ export default function PageTransition({
     }
     animate.pageIn(transitionRef);
     animate.pageFadeIn(pageRef);
-  }, [pathname, currentPath, pageRef]);
+  }, [pathname, pageRef]);
 
   return (
     <div>

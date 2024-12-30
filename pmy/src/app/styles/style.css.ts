@@ -32,7 +32,7 @@ export const paddingBox = style({
 export const scrollbar = style({
   selectors: {
     '&::-webkit-scrollbar': {
-      width: '6px',
+      width: '5px',
       backgroundColor: vars.color.bg.primary,
     },
     '&::-webkit-scrollbar-track': {

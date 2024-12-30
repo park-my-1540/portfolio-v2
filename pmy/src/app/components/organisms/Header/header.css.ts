@@ -4,14 +4,14 @@ import { vars } from "@/styles/common/createThemeContract.css";
 export const header = style({
     position: "absolute",
     top: 0,
-    width: "100%",
+    width: "calc(100% - 10px)",
     zIndex: 99,
     backgroundColor: "inherit",
     color: "inherit",
 });
 
 export const inner = style({
-    width: "calc(100% - 60px)",
+    width: "calc(100% - 50px)",
     border: "1px solid",
     zIndex: 99,
     margin: "20px 30px 0",

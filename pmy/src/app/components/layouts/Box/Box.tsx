@@ -136,13 +136,13 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
     align && flexstyles.alignItems[align],
     justify && flexstyles.justifyContent[justify],
     gap && flexstyles.gap[gap as GapType],
-    className,
+    className && className,
   );
   return (
     <div
+      style={inlineStyle} // 동적 스타일을 인라인 스타일로 적용
       ref={ref}
       className={classes}
-      style={inlineStyle} // 동적 스타일을 인라인 스타일로 적용
     >
       {children}
     </div>

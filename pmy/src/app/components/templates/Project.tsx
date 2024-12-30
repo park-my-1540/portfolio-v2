@@ -29,32 +29,29 @@ export default function Project() {
   }, []);
 
   return (
-    <>
-      <div className={`${scrollbar} project`} ref={containerRef}>
-        <Box
-          marginTop="1rem"
-          marginBottom="1rem"
-          marginLeft="30px"
-          marginRight="30px"
-          display="grid"
-          responsive={{
-            gridTemplateColumns: {
-              desktop: 'full',
-              tablet: 'full',
-              mobile: 'full',
-            },
-            gridTemplateRows: {
-              desktop: 'single',
-              tablet: 'single',
-              mobile: 'single',
-            },
-            gridColumnGap: 'medium',
-          }}
-        >
-          <Column />
-          <Main />
-        </Box>
-      </div>
-    </>
+    <div className={`${scrollbar} project`} ref={containerRef}>
+      <Box
+        marginBottom="1rem"
+        marginLeft="30px"
+        marginRight="30px"
+        display="grid"
+        responsive={{
+          gridTemplateColumns: {
+            desktop: 'full',
+            tablet: 'full',
+            mobile: 'full',
+          },
+          gridTemplateRows: {
+            desktop: 'single',
+            tablet: 'single',
+            mobile: 'single',
+          },
+          gridColumnGap: 'medium',
+        }}
+      >
+        <Column />
+        <Main />
+      </Box>
+    </div>
   );
 }

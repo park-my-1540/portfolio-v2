@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
 import { header, inner, changeCircle, dark } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
@@ -20,18 +21,29 @@ export function Header() {
   );
 
   const { cursorRef } = useAtomValue(viewState);
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname(); // 현재 경로
+
+  useEffect(() => {
+    if (!headerRef?.current) return;
+
+    const method = pathname?.includes('project') ? 'add' : 'remove';
+    headerRef.current.classList[method]('sub');
+  }, [pathname]);
 
   const removePoint = useCallback(() => {
+    if (!cursorRef) return;
     cursorRef.current?.classList.remove('point');
   }, []);
   const addPoint = useCallback(() => {
+    if (!cursorRef) return;
     cursorRef.current?.classList.add('point');
   }, []);
 
   return (
-    <header className={header}>
+    <header className={header} ref={headerRef}>
       <Box
-        className={inner}
+        className={`${inner} inner`}
         display="flex"
         direction="row"
         align="center"

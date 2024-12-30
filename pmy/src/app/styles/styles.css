@@ -39,16 +39,13 @@ html, body {
   height: 100vh;
   box-sizing: border-box;
 }
-
-.panel.main {
+.panel-inner{
   margin: 105px 30px 0 30px;
-  width: auto;
-  height: calc(100vh - 130px);
   border: 1px solid;
 }
 
 .project{
-  padding-top: calc(20px + 1.6rem*2 + 0.85rem);
+  padding-top: calc(40px + 1.6rem*2 + 0.85rem);
   height: 100vh;
   overflow-y: scroll;
 }
@@ -57,4 +54,11 @@ html, body {
   background-color: red;
   width: 50px;
   height: 50px;
+}
+
+.sub{
+  width: calc(100% - 5px);
+}
+.sub .inner{
+  width: calc(100% - 60px);
 }

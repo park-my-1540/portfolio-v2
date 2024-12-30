@@ -7,6 +7,6 @@ export const list = style({
 })
 
 export const columnWrap = style({
-  top: '1rem',
+  top: '0',
   height : 'calc(100vh - (20px + 1.6rem*2 + 2.85rem))'
 })
