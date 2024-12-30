@@ -8,6 +8,7 @@ import { themeState } from '@/jotai/themeAtom';
 import { viewState } from '@/jotai/viewAtom';
 import { ThemeMode } from '@/types/styles';
 import { SplitText } from '@/components/atoms/SplitText';
+import { Text } from '@/components/atoms/Text/Text';
 
 export function Header() {
   const setTheme = useSetAtom(themeState);
@@ -74,6 +75,9 @@ export function Header() {
             />
           </Position>
         </Box>
+        <Text color="inherit" weights="bold" sizes="medium">
+          MENU?
+        </Text>
       </Box>
     </header>
   );

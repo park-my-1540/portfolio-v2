@@ -21,7 +21,7 @@ export default function About() {
   }, []);
 
   return (
-    <section className="panel orange color-light" ref={triggerRef}>
+    <section className="panel orange color-light" id="about" ref={triggerRef}>
       <div>
         <Line className="line-2" ref={lineRef} />
         <Box display="flex">
