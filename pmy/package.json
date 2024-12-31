@@ -14,6 +14,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@gsap/react": "^2.1.1",
+    "@notionhq/client": "^2.2.15",
     "@studio-freight/lenis": "^1.0.42",
     "@types/jquery": "^3.5.32",
     "@types/react": "^18.3.12",
@@ -39,8 +40,10 @@
     "swiper": "^11.1.14"
   },
   "devDependencies": {
+    "@types/locomotive-scroll": "^4.1.4",
     "@types/matter-js": "^0.19.7",
     "@types/node": "^20",
+    "@types/splitting": "^1.0.6",
     "@types/svg-path-parser": "^1.1.6",
     "@vanilla-extract/next-plugin": "^2.4.6",
     "eslint": "^8.57.1",
