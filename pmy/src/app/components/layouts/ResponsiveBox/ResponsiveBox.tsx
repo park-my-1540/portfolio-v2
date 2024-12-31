@@ -35,8 +35,8 @@ export const ResponsiveBox = ({
       },
       gridTemplateColumns: {
         mobile: 'single',
-        tablet: 'three',
-        desktop: 'four', // 사용자 정의 레이아웃 사용
+        tablet: 'single',
+        desktop: 'single', // 사용자 정의 레이아웃 사용
       },
       width: {
         desktop: 'expanded',
