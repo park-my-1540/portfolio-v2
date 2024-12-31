@@ -10,7 +10,7 @@ import { BoxProps } from "@/types/styles"
 export const pickProps = (props: BoxProps, keys: (keyof BoxProps)[]): Partial<BoxProps> => {
   return keys.reduce((acc, key) => {
     if (props[key]) {
-      acc[key] = props[key];
+      acc[key] = props[key] as any;
     }
     return acc;
   }, {} as Partial<BoxProps>);

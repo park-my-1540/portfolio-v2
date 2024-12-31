@@ -6,7 +6,7 @@ type viewType = {
   cursorRef?: React.RefObject<HTMLDivElement>|null;
   containerRef?: React.RefObject<HTMLDivElement>|null;
   scrollStart?: boolean;
-  locoScroll?:LocomotiveScroll;
+  locoScroll?: LocomotiveScroll | undefined;
 };
 
 // viewState atom 정의
@@ -14,5 +14,5 @@ export const viewState = atom<viewType>({
   cursorRef: null,
   containerRef: null,
   scrollStart: false,
-  locoScroll: null,
+  locoScroll: undefined,
 });

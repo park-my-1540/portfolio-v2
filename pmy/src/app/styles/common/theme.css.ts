@@ -1,35 +1,35 @@
 import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 import { vars } from "@/styles/common/createThemeContract.css";
 
+// 테마 정의
 export const theme = {
   color: {
-    white: vars.color.accent,
-    black: vars.color.subPrimary,
+    white: vars.color.complementary,
+    black: vars.color.border,
   },
   theme: {
     accent: vars.color.highlight.accent,
     complementary: vars.color.highlight.complementary,
-    black: vars.color.subPrimary,
-    white: vars.color.accent,
-  }
+    black: vars.color.border,
+    white: vars.color.complementary,
+  },
 } as const;
 
-const variants = {
-  color: {
-    primary: { color: vars.color.complementary }, // 메인 text color
-    tertiary: { color: vars.color.text.tertiary }, // 옅은
-    accent: { color: vars.color.accent },
-    textLighted: { color: vars.color.textLighted },
-    muted: { color: vars.color.muted },
-    inherit: { color: "inherit"},
-  }
-};
- 
+// variants 객체를 recipe로 바로 사용하도록 수정
 export const textColor = recipe({
-  variants,
+  base: {}, // 기본 스타일 필요 시 추가
+  variants: {
+    color: {
+      tertiary: { color: vars.color.text.tertiary }, // 옅은 색상
+      accent: { color: vars.color.highlight.accent },
+      textLighted: { color: vars.color.text.accent },
+      inherit: { color: "inherit" },
+    },
+  },
   defaultVariants: {
-    color: "primary"
-  }
+    color: "inherit", // 기본 색상 설정
+  },
 });
 
+// recipe에서 사용하는 Variant 타입 정의
 export type TextColorVariantProps = RecipeVariants<typeof textColor>;

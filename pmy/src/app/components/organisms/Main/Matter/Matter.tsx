@@ -14,7 +14,7 @@ const MatterMain: React.FC = () => {
   const titleRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
-    if (!scrollStart) return;
+    if (!scrollStart || !titleRef.current) return;
     // svg 가리기
     titleRef.current.style.opacity = '0';
     const engine = Matter.Engine.create({ enableSleeping: true });
@@ -73,6 +73,7 @@ const MatterMain: React.FC = () => {
       const startingHeight = -100; // 객체가 생성될 초기 Y 좌표 (화면 상단 위)
       for (let i = 0; i < objectCount; i++) {
         timer = setTimeout(() => {
+          if (!canvasBoxRef.current) return;
           const randomX = Math.random() * canvasBoxRef.current?.offsetWidth; // 화면 내 무작위 위치
           const rectangle = Matter.Bodies.circle(randomX, startingHeight, 30, {
             density: 0.01, // 기본값은 0.001, 더 큰 값으로 설정

@@ -13,10 +13,10 @@ export const bullet = style({
   height: "8px",
   margin: "5px 0",
   borderRadius: "50%",
-  background: vars.color.muted,
+  background: vars.color.complementary,
   selectors: {
     ["&.swiper-pagination-bullet-active"] : {
-      background: vars.color.highlight.complementary02,
+      background: vars.color.highlight.accent,
     },
     ["&.swiper-pagination-bullet-active:before"] : {
       content: "",
@@ -27,7 +27,7 @@ export const bullet = style({
       width: 14,
       height: 14,
       borderRadius: "50%",
-      border: `1px solid ${vars.color.highlight.complementary02}`,
+      border: `1px solid ${vars.color.highlight.accent}`,
     },
   }
 })
