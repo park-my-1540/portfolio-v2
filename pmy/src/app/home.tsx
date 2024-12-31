@@ -1,5 +1,6 @@
 'use client';
 import { lightTheme, darkTheme } from '@/styles/common/createThemeContract.css';
+import { LocalStorageService } from '@/utils/service/localStorageService';
 import PageTransition from '@/components/layouts/transition/PageTransition';
 import Header from '@/components/organisms/Header/Header';
 import CustomCursor from '@/components/molecules/CustomCursor';
@@ -12,11 +13,13 @@ export default function Home({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const currentTheme = useAtomValue(themeState);
+  const { mode } = useAtomValue(themeState);
+  const theme = LocalStorageService.hasKey('theme')
+    ? LocalStorageService.getItem('theme')
+    : mode;
+
   return (
-    <body
-      className={`${currentTheme.mode === 'dark' ? darkTheme : lightTheme}`}
-    >
+    <body className={`${theme === 'dark' ? darkTheme : lightTheme}`}>
       <CustomCursor />
       <Header />
       <PageTransition>{children}</PageTransition>

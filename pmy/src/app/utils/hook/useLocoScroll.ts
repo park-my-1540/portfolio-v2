@@ -31,9 +31,9 @@ export default function useLocoScroll(start, containerRef) {
       smooth: true,
       multiplier: 1,
       class: "is-reveal",
-      initPosition: {
-        y: savedScrollPosition !== null ? parseInt(savedScrollPosition) : 0
-      }
+      // initPosition: {
+      //   y: savedScrollPosition !== null ? parseInt(savedScrollPosition) : 0
+      // }
     });
 
     locoScroll.on("scroll", (loco:LocomotiveScroll) => {

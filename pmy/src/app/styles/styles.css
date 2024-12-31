@@ -40,7 +40,8 @@ html, body {
   box-sizing: border-box;
 }
 .panel-inner{
-  margin: 105px 30px 0 30px;
+  height: calc(100vh - (20px + 1.6rem*2 + 2.85rem));
+  margin: calc(10px + 1.6rem*2 + 2.85rem) 30px 0;
   border: 1px solid;
 }
 

@@ -1,4 +1,5 @@
 import React, { useCallback, useRef, useEffect } from 'react';
+import { LocalStorageService } from '@/utils/service/localStorageService';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
 import { header, inner, changeCircle, dark } from './header.css';
@@ -12,25 +13,9 @@ import { Text } from '@/components/atoms/Text/Text';
 
 export function Header() {
   const setTheme = useSetAtom(themeState);
-  const changeTheme = useCallback(
-    (mode: ThemeMode) => {
-      setTheme({
-        mode: mode,
-      });
-    },
-    [setTheme],
-  );
-
   const { cursorRef } = useAtomValue(viewState);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname(); // 현재 경로
-
-  useEffect(() => {
-    if (!headerRef?.current) return;
-
-    const method = pathname?.includes('project') ? 'add' : 'remove';
-    headerRef.current.classList[method]('sub');
-  }, [pathname]);
 
   const removePoint = useCallback(() => {
     if (!cursorRef) return;
@@ -40,6 +25,23 @@ export function Header() {
     if (!cursorRef) return;
     cursorRef.current?.classList.add('point');
   }, []);
+
+  const changeTheme = useCallback(
+    (mode: ThemeMode) => {
+      LocalStorageService.setItem('theme', mode);
+      setTheme({
+        mode: mode,
+      });
+    },
+    [setTheme],
+  );
+
+  useEffect(() => {
+    if (!headerRef?.current) return;
+
+    const method = pathname?.includes('project') ? 'add' : 'remove';
+    headerRef.current.classList[method]('sub');
+  }, [pathname]);
 
   return (
     <header className={header} ref={headerRef}>
