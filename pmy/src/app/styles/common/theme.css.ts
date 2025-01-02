@@ -20,6 +20,7 @@ export const textColor = recipe({
   base: {}, // 기본 스타일 필요 시 추가
   variants: {
     color: {
+      primary: { color: vars.color.text.primary }, // 옅은 색상
       tertiary: { color: vars.color.text.tertiary }, // 옅은 색상
       accent: { color: vars.color.highlight.accent },
       textLighted: { color: vars.color.text.accent },

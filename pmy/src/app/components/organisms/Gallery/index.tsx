@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useRouter } from 'next/navigation';
 import useOnScreen from '@/utils/hook/useOnScreen';
-import { GalleryProps, GalleryItemProps } from '@/types/common';
+import { GalleryItemProps } from '@/types/common';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
 import cn from 'classnames';
@@ -47,10 +47,10 @@ function GalleryItem({
     if (!locoScroll) {
       return;
     }
-    sessionStorage.setItem(
-      'scrollPositionY',
-      locoScroll.scroll.instance.scroll.y,
-    );
+    // sessionStorage.setItem(
+    //   'scrollPositionY',
+    //   locoScroll.scroll.instance.scroll.y,
+    // );
     animate.pageOut('/project', router);
   };
 
@@ -77,7 +77,7 @@ function GalleryItem({
   );
 }
 
-export default function Gallery({ src, title }: GalleryProps) {
+export default function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
 
   const ref = useRef(null);

@@ -23,7 +23,7 @@ export const Text = ({
   vertical,
   textAlign,
   display,
-  color,
+  color = 'inherit',
   children,
   className,
   ref,

@@ -18,7 +18,7 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   ...rest
 }) => {
   const style = {
-    ...rest?.style,
+    ...rest,
     backgroundImage: `url(${url})`,
   };
   return (

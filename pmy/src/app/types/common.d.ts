@@ -31,12 +31,35 @@ interface SwiperProps {
 
 interface GalleryProps {
     src: string,
-    title: number,
-    subtitle: string,
     category: string,
+    subtitle: string,
+    title: string,
 }
 
 interface GalleryItemProps extends GalleryProps {
     index: number,
     updateActiveImage: (index:number) => void,
 }
+
+type BlockType = 
+  | 'image'
+  | 'heading_3'
+  | 'paragraph'
+  | 'bulleted_list_item'
+  | 'numbered_list_item';
+
+
+interface Blocks {
+        id: string;
+        type: BlockType;
+        content: string;
+}
+
+interface BlockCollections {
+    rendered: string[];
+    text: string[];
+    list: string[];
+    ul: string[];
+    ol: string[];
+    images: string[];
+};

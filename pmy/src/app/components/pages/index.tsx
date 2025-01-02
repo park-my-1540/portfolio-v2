@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import useLocoScroll from '@/utils/hook/useLocoScroll';
 
-import MainPage from '@/components/pages/MainPage';
-import AboutPage from '@/components/pages/AboutPage';
-import ProjectsPage from '@/components/pages/ProjectsPage';
+import MainPage from './MainPage';
+import AboutPage from './AboutPage';
+import ProjectsPage from '../../../pages/projects';
 
 import { useSetAtom } from 'jotai';
 import { viewState } from '@/jotai/viewAtom';
