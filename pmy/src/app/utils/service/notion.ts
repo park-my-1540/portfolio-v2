@@ -1,10 +1,12 @@
 import { Client } from '@notionhq/client';
 import { DATABASE_ID, TOKEN } from '@/../../config';
+import { BlockItem, BlockContent, TextRichText } from '@/types/notionRes';
+
 // notion 클라이언트 인스턴스 생성
 const notion = new Client({
   auth: TOKEN, // 환경 변수에서 토큰 가져오기
 });
-const database_id = DATABASE_ID; // 환경 변수에서 데이터베이스 ID 가져오기
+const database_id: string = DATABASE_ID || ''; // 환경 변수에서 데이터베이스 ID 가져오기
 
 // Notion 데이터베이스에서 일정 정보를 가져오는 함수
 export async function getPageList() {
@@ -29,15 +31,16 @@ export async function getPageList() {
 }
 
 // 2. 페이지 블록 가져오기 함수
-export async function getPageBlocks(pageId:string) {
+export async function getPageBlocks(pageId: string): Promise<BlockContent[]> {
   try {
     const { results } = await notion.blocks.children.list({
       block_id: pageId,
     });
 
     // 블록 내용 처리
-    const blocks = results.map((block) => {
+    const blocks: BlockContent = results.map((block: BlockItem) => {
       let content = '';
+      console.log(block);
 
       // 블록 타입에 따라 처리
       switch (block.type) {
@@ -47,10 +50,11 @@ export async function getPageBlocks(pageId:string) {
         case 'heading_3':
         case 'bulleted_list_item':
         case 'numbered_list_item':
-        case 'to_do':
-        case 'quote':
           // 텍스트가 있는 경우만 추출
-          content = block[block.type]?.rich_text?.map((text) => text.plain_text).join('') || '';
+          content =
+            block[block.type]?.rich_text
+              ?.map((text: TextRichText) => text.plain_text)
+              .join('') || '';
           break;
         case 'image':
           // 이미지 URL 추출
@@ -58,7 +62,10 @@ export async function getPageBlocks(pageId:string) {
           break;
         case 'code':
           // 코드 블록의 텍스트 추출
-          content = block.code?.rich_text?.map((text) => text.plain_text).join('') || '';
+          content =
+            block.code?.rich_text
+              ?.map((text: TextRichText) => text.plain_text)
+              .join('') || '';
           break;
         case 'divider':
           content = '---'; // 구분선
@@ -81,24 +88,22 @@ export async function getPageBlocks(pageId:string) {
   }
 }
 
-
 // 3. 페이지와 블록 데이터 모두 가져오기
 export async function getPageWithBlocks() {
   try {
-    // 캘린더 데이터 가져오기
-    const calendar = await getPageList();
+    const page = await getPageList();
 
     // 각 페이지의 블록 데이터 가져오기
-    const calendarWithBlocks = await Promise.all(
-      calendar.map(async (item) => {
+    const pageWithBlocks = await Promise.all(
+      page.map(async (item) => {
         const blocks = await getPageBlocks(item.id);
         return { ...item, blocks };
-      })
+      }),
     );
 
-    return calendarWithBlocks;
+    return pageWithBlocks;
   } catch (error) {
-    console.error('Error fetching calendar with blocks:', error);
+    console.error('Error fetching page with blocks:', error);
     return [];
   }
 }

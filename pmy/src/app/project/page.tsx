@@ -1,16 +1,8 @@
 import Project from '@/components/templates/Project';
 import { getPageWithBlocks } from '@/utils/service/notion';
+import { Page } from '@/types/common';
+
 export default async function index() {
-  const quotes: quoteType = await getPageWithBlocks();
-  return <Project list={quotes} />;
+  const list: Page[] = await getPageWithBlocks();
+  return <Project list={list} />;
 }
-
-type propsType = {
-  params: { quoteID: number };
-};
-
-type quoteType = {
-  results: object[];
-  quote: string;
-  author: string;
-};

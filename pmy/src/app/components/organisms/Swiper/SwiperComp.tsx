@@ -11,7 +11,7 @@ import {
 import 'swiper/css';
 import './styles.css';
 
-export default function SwiperComp({ url }: string) {
+export default function SwiperComp() {
   return (
     <>
       <Swiper slidesPerView={2.5} spaceBetween={30} className="mySwiper">

@@ -6,20 +6,24 @@ import { borderTopNone, paddingBox } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
 import renderContent from '@/utils/service/filter';
 import ReactJsxParser from 'react-jsx-parser';
+import { pageListProps } from '@/types/common';
 
-function StringToComponent(componentStringArray: object[]) {
-  // JSX 문자열이 있을 때 SwiperComp와 같은 컴포넌트를 문자열로 포함시키지 않고,
-  // 실제로 컴포넌트를 렌더링하려면 JSX로 반환해야 합니다.
+function StringToComponent(componentStringArray: string[]) {
   const jsxContent = componentStringArray.join('');
   return (
     <ReactJsxParser
       jsx={jsxContent}
-      components={{ SwiperComp, Box, Text, TextTitle }}
+      components={{
+        SwiperComp: SwiperComp as React.ComponentType<any>,
+        Box: Box as React.ComponentType<any>,
+        Text: Text as React.ComponentType<any>,
+        TextTitle: TextTitle as React.ComponentType<any>,
+      }}
     />
   );
 }
 
-export default function Main({ list }) {
+export default function Main({ list }: pageListProps) {
   return (
     <>
       <Box
@@ -33,7 +37,9 @@ export default function Main({ list }) {
       >
         {/* <Text>어허이보리야</Text> */}
         {list.map((item, index) => {
-          // StringToComponent을 map 안에서 return으로 호출
+          console.log(item.blocks);
+          console.log(typeof item.blocks);
+
           return (
             <Box key={index} className={borderTopNone} borderTop="1px solid">
               {StringToComponent(renderContent(item.blocks))}

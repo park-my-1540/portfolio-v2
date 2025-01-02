@@ -5,8 +5,9 @@ import Main from '@/components/organisms/Project/Main/Main';
 import Column from '@/components/organisms/Project/Column/Column';
 import Lenis from '@studio-freight/lenis';
 import { scrollbar } from '@/styles/style.css';
+import { pageListProps } from '@/types/common';
 
-export default function Project({ list }) {
+export default function Project({ list }: pageListProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
