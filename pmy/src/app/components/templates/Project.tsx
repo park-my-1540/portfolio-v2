@@ -6,7 +6,7 @@ import Column from '@/components/organisms/Project/Column/Column';
 import Lenis from '@studio-freight/lenis';
 import { scrollbar } from '@/styles/style.css';
 
-export default function Project() {
+export default function Project({ list }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function Project() {
         }}
       >
         <Column />
-        <Main />
+        <Main list={list} />
       </Box>
     </div>
   );

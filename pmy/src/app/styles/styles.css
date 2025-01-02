@@ -63,3 +63,26 @@ html, body {
 .sub .inner{
   width: calc(100% - 60px);
 }
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+ol {
+  margin-left: 10rem;
+  display: block;
+  list-style-type: decimal;
+
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 1rem;
+}
+
+li {
+  display: list-item;
+  line-height: 1.4;
+  text-align: -webkit-match-parent;
+}

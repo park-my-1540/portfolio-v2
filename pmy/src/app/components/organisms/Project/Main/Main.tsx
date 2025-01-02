@@ -4,85 +4,65 @@ import { Image } from '@/components/atoms/Image/Image';
 import { Text, TextTitle } from '@/components/atoms/Text/Text';
 import { borderTopNone, paddingBox } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
+import renderContent from '@/utils/service/filter';
+import ReactJsxParser from 'react-jsx-parser';
 
-export default function Main({}) {
+function StringToComponent(componentStringArray: object[]) {
+  // JSX 문자열이 있을 때 SwiperComp와 같은 컴포넌트를 문자열로 포함시키지 않고,
+  // 실제로 컴포넌트를 렌더링하려면 JSX로 반환해야 합니다.
+  const jsxContent = componentStringArray.join('');
   return (
-    <Box
-      responsive={{
-        gridColumn: {
-          desktop: 'three',
-          tablet: 'full',
-          mobile: 'full',
-        },
-      }}
-    >
-      <Box>
-        <Box
-          width="100%"
-          height="500px"
-          className={borderTopNone}
-          borderTop="1px solid"
-        >
-          <Image
-            url="./img/projects/jandi/jandi.jpg"
-            radius="default"
-            sizes="full"
-          />
-        </Box>
-        <Text
-          sizes="mediumlarge"
-          weights="light"
-          className={`${borderTopNone} ${paddingBox}`}
-        >
-          Exploration sonore
-        </Text>
-      </Box>
-      <Text sizes="large" className={`${borderTopNone} ${paddingBox}`}>
-        Jandi
-      </Text>
+    <ReactJsxParser
+      jsx={jsxContent}
+      components={{ SwiperComp, Box, Text, TextTitle }}
+    />
+  );
+}
+
+export default function Main({ list }) {
+  return (
+    <>
       <Box
-        className={`${borderTopNone} ${paddingBox}`}
-        paddingBottom="5rem"
-        display="grid"
-        gap="large"
         responsive={{
-          gridTemplateColumns: {
-            desktop: 'two',
-            tablet: 'two',
-            mobile: 'single',
-          },
-          gridTemplateRows: {
-            desktop: 'single',
-            tablet: 'single',
-            mobile: 'single',
+          gridColumn: {
+            desktop: 'three',
+            tablet: 'full',
+            mobile: 'full',
           },
         }}
       >
-        <TextTitle>
-          Bisous Production propose un film abstrait puissant et délicat, où des
-          matières cristallines et liquides s’animent pour créer des images
-          captivantes, alliant réalisme et poésie visuelle.
-        </TextTitle>
-        <Text>
-          Mooders a relevé le défi de traduire cette richesse visuelle en une
-          expérience sonore immersive. Nous avons conçu un univers sonore jouant
-          sur la force et la subtilité, harmonisant piano éthéré, distorsions
-          puissantes et textures aquatiques pour refléter les contrastes visuels
-          du film.
-        </Text>
-      </Box>
-
-      {/* phase2 */}
-      <Box>
-        <Box width="100%" height="500px" className={borderTopNone}>
-          <SwiperComp />
+        {/* <Text>어허이보리야</Text> */}
+        {list.map((item, index) => {
+          // StringToComponent을 map 안에서 return으로 호출
+          return (
+            <Box key={index} className={borderTopNone} borderTop="1px solid">
+              {StringToComponent(renderContent(item.blocks))}
+            </Box>
+          );
+        })}
+        <Box>
+          <Box
+            width="100%"
+            height="500px"
+            className={borderTopNone}
+            borderTop="1px solid"
+          >
+            <Image
+              url="./img/projects/jandi/jandi.jpg"
+              radius="default"
+              sizes="full"
+            />
+          </Box>
+          <Text
+            sizes="mediumlarge"
+            weights="light"
+            className={`${borderTopNone} ${paddingBox}`}
+          >
+            Exploration sonore
+          </Text>
         </Box>
-        <Text
-          sizes="mediumlarge"
-          weights="light"
-          className={`${borderTopNone} ${paddingBox}`}
-        >
-          Exploration sonore
+        <Text sizes="large" className={`${borderTopNone} ${paddingBox}`}>
+          Jandi
         </Text>
         <Box
           className={`${borderTopNone} ${paddingBox}`}
@@ -102,11 +82,11 @@ export default function Main({}) {
             },
           }}
         >
-          <Text>
+          <TextTitle>
             Bisous Production propose un film abstrait puissant et délicat, où
             des matières cristallines et liquides s’animent pour créer des
             images captivantes, alliant réalisme et poésie visuelle.
-          </Text>
+          </TextTitle>
           <Text>
             Mooders a relevé le défi de traduire cette richesse visuelle en une
             expérience sonore immersive. Nous avons conçu un univers sonore
@@ -115,7 +95,52 @@ export default function Main({}) {
             contrastes visuels du film.
           </Text>
         </Box>
+
+        {/* phase2 */}
+        <Box>
+          <Box width="100%" height="500px" className={borderTopNone}>
+            <SwiperComp />
+          </Box>
+          <Text
+            sizes="mediumlarge"
+            weights="light"
+            className={`${borderTopNone} ${paddingBox}`}
+          >
+            Exploration sonore
+          </Text>
+          <Box
+            className={`${borderTopNone} ${paddingBox}`}
+            paddingBottom="5rem"
+            display="grid"
+            gap="large"
+            responsive={{
+              gridTemplateColumns: {
+                desktop: 'two',
+                tablet: 'two',
+                mobile: 'single',
+              },
+              gridTemplateRows: {
+                desktop: 'single',
+                tablet: 'single',
+                mobile: 'single',
+              },
+            }}
+          >
+            <Text>
+              Bisous Production propose un film abstrait puissant et délicat, où
+              des matières cristallines et liquides s’animent pour créer des
+              images captivantes, alliant réalisme et poésie visuelle.
+            </Text>
+            <Text>
+              Mooders a relevé le défi de traduire cette richesse visuelle en
+              une expérience sonore immersive. Nous avons conçu un univers
+              sonore jouant sur la force et la subtilité, harmonisant piano
+              éthéré, distorsions puissantes et textures aquatiques pour
+              refléter les contrastes visuels du film.
+            </Text>
+          </Box>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
