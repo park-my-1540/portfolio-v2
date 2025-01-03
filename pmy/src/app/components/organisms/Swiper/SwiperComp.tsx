@@ -1,63 +1,21 @@
 import React from 'react';
 import { Image } from '@/components/atoms/Image/Image';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  borderTopNone,
-  borderBox,
-  borderTop,
-  paddingBox,
-} from '@/styles/style.css';
+import { borderBox } from '@/styles/style.css';
 import 'swiper/css';
 import './styles.css';
+type SwiperCompProps = {
+  image: string[];
+};
 
-export default function SwiperComp() {
+export default function SwiperComp({ image }: SwiperCompProps) {
   return (
-    <>
-      <Swiper slidesPerView={2.5} spaceBetween={30} className="mySwiper">
-        <SwiperSlide>
-          <Image
-            className={borderBox}
-            url="./img/projects/jandi/jandi.jpg"
-            sizes="card"
-          />
+    <Swiper slidesPerView={1.2} spaceBetween={30} className="mySwiper">
+      {image.map((img, idx) => (
+        <SwiperSlide key={idx}>
+          <Image className={borderBox} url={img} sizes="card" cover="contain" />
         </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            className={borderBox}
-            url="./img/projects/jandi/jandi.jpg"
-            sizes="card"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            className={borderBox}
-            url="./img/projects/jandi/jandi.jpg"
-            sizes="card"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            className={borderBox}
-            url="./img/projects/jandi/jandi.jpg"
-            sizes="card"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            className={borderBox}
-            url="./img/projects/jandi/jandi.jpg"
-            sizes="card"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image
-            className={borderBox}
-            url="./img/projects/jandi/jandi.jpg"
-            sizes="card"
-          />
-        </SwiperSlide>
-      </Swiper>
-    </>
+      ))}
+    </Swiper>
   );
 }

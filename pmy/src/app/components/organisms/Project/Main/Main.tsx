@@ -2,14 +2,15 @@ import React from 'react';
 import Box from '@/components/layouts/Box/Box';
 import { Image } from '@/components/atoms/Image/Image';
 import { Text, TextTitle } from '@/components/atoms/Text/Text';
-import { borderTopNone, paddingBox } from '@/styles/style.css';
+import { borderTop, borderTopNone, paddingBox } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
 import renderContent from '@/utils/service/filter';
 import ReactJsxParser from 'react-jsx-parser';
 import { pageListProps } from '@/types/common';
 
-function StringToComponent(componentStringArray: string[]) {
-  const jsxContent = componentStringArray.join('');
+function StringToComponent(componentStringArray: string) {
+  const jsxContent = componentStringArray;
+
   return (
     <ReactJsxParser
       jsx={jsxContent}
@@ -18,6 +19,7 @@ function StringToComponent(componentStringArray: string[]) {
         Box: Box as React.ComponentType<any>,
         Text: Text as React.ComponentType<any>,
         TextTitle: TextTitle as React.ComponentType<any>,
+        Image: Image as React.ComponentType<any>,
       }}
     />
   );
@@ -27,6 +29,7 @@ export default function Main({ list }: pageListProps) {
   return (
     <>
       <Box
+        className={borderTop}
         responsive={{
           gridColumn: {
             desktop: 'three',
@@ -37,16 +40,13 @@ export default function Main({ list }: pageListProps) {
       >
         {/* <Text>어허이보리야</Text> */}
         {list.map((item, index) => {
-          console.log(item.blocks);
-          console.log(typeof item.blocks);
-
           return (
-            <Box key={index} className={borderTopNone} borderTop="1px solid">
+            <Box key={index} className={borderTopNone}>
               {StringToComponent(renderContent(item.blocks))}
             </Box>
           );
         })}
-        <Box>
+        {/* <Box>
           <Box
             width="100%"
             height="500px"
@@ -103,7 +103,7 @@ export default function Main({ list }: pageListProps) {
         </Box>
 
         {/* phase2 */}
-        <Box>
+        {/* <Box>
           <Box width="100%" height="500px" className={borderTopNone}>
             <SwiperComp />
           </Box>
@@ -145,7 +145,7 @@ export default function Main({ list }: pageListProps) {
               refléter les contrastes visuels du film.
             </Text>
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </>
   );

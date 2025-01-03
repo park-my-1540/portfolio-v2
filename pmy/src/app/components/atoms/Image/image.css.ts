@@ -1,13 +1,17 @@
-import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
-import { style } from "@vanilla-extract/css";
+import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { style } from '@vanilla-extract/css';
 
 const base = {
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
 };
 
 const variants = {
+  cover: {
+    cover: style({ backgroundSize: 'cover' }),
+    contain: style({ backgroundSize: 'contain' }),
+  },
   sizes: {
     small: style({
       width: 50,
@@ -26,32 +30,32 @@ const variants = {
       height: 300,
     }),
     card: style({
-      width: "100%",
+      width: '100%',
       height: 300,
     }),
     full: style({
-      width: "100%",
-      height: "80vh",
+      width: '100%',
+      height: '80vh',
     }),
   },
   radius: {
     default: style({
-      borderRadius: 0
+      borderRadius: 0,
     }),
     circle: style({
-      borderRadius: "50%"
+      borderRadius: '50%',
     }),
-  }
+  },
 };
 
 export const image = recipe({
   base: {
-    ...base
+    ...base,
   },
   variants,
   defaultVariants: {
-    sizes: "small",
-    radius: "default",
+    sizes: 'small',
+    radius: 'default',
   },
 });
 
