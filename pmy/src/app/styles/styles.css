@@ -86,3 +86,207 @@ li {
   line-height: 1.4;
   text-align: -webkit-match-parent;
 }
+
+
+#main-container {
+  width: 100vw;
+  overflow: hidden;
+  padding: 0 5vw;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+section {
+  padding: 100px 0;
+}
+#scroll-container {
+  width: 100vw;
+  overflow: hidden;
+}
+
+.vertical-scroll {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.horizontal-scroll {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 20px;
+  white-space: nowrap;
+  padding: 0 20px;
+}
+
+.item {
+  width: 300px;
+  height: 300px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border-radius: 10px;
+  user-select: none;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+}
+
+#main-container {
+  overflow: auto;
+  position: relative;
+  /* height: 100vh; */
+}
+
+.gallery-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery {
+  display: flex;
+  width: 400%;
+  height: 100vh;
+  position: relative;
+}
+
+.gallery-item-wrapper {
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+
+
+
+
+
+/* Wrapper 스타일 */
+.gallery-wrap {
+  background-color: #d53f41;
+  margin-left: -5vw;
+  margin-right: -5vw;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory; /* 가로 스크롤 스냅 활성화 */
+  display: flex;
+  scroll-behavior: smooth; /* 스크롤 애니메이션 */
+  height: 80vh; /* 높이를 일정하게 설정 */
+  padding: 10vh 0;
+}
+
+/* Counter 스타일 */
+.gallery-counter {
+  position: absolute;
+  top: 10%;
+  left: 100px;
+  z-index: 1;
+  mix-blend-mode: difference;
+  line-height: 16px;
+  color: #dbd8d6;
+  font-family: "Bai Jamjuree";
+  font-weight: 600;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.gallery-counter .divider {
+  content: "";
+  background-color: white;
+  width: 6.25vw;
+  margin: 7px 10px;
+  height: 1px;
+  display: inline-block;
+}
+
+/* 가로 스크롤 영역 */
+.gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%; /* 부모 영역의 가로 크기 채우기 */
+}
+
+/* 각 아이템 */
+.gallery-item-wrapper {
+  scroll-snap-align: start; /* 스크롤 스냅 포인트 */
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100vw; /* 한 화면에 하나씩 차지 */
+  position: relative;
+}
+
+.gallery-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gallery-item-image {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+  filter: grayscale(100%) sepia(20%) brightness(80%);
+}
+
+.gallery-item-wrapper.is-reveal .gallery-item-image {
+  transform: scale(1);
+  filter: none;
+}
+
+/* 텍스트 정보 */
+.gallery-item-info {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  color: white;
+}
+
+.gallery-info-title {
+  font-family: "Bai Jamjuree";
+  font-weight: 600;
+  font-size: 6vw;
+}
+
+.gallery-info-subtitle {
+  font-family: "Bodoni Moda";
+  font-size: 4vw;
+  -webkit-text-stroke: 2px white;
+  color: transparent;
+}
+
+.gallery-info-category {
+  font-family: "Bai Jamjuree";
+  font-size: 24px;
+  margin-top: 1vh;
+}
+
+.gallery {
+  height: 100vh;
+}
+
+
+
