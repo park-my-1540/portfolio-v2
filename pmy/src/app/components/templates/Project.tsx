@@ -15,8 +15,6 @@ export default function Project({ list }: pageListProps) {
 
     const lenis = new Lenis({
       wrapper: containerRef.current, // 스크롤 컨테이너 지정
-      content: containerRef.current.firstChild, // 스크롤 컨텐츠
-      smooth: true,
     });
 
     function raf(time: number) {

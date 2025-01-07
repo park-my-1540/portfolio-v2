@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { link, txt } from './style.css';
 import { Text } from '@/components/atoms/Text/Text';
-import Splitting from 'splitting';
+// import Splitting from 'splitting';
 import './animate.css';
 import cn from 'classnames';
 
@@ -20,7 +20,7 @@ export const SplitText = ({
   onClick,
 }: SplitTextProps & Partial<TextVariantProps>) => {
   useEffect(() => {
-    Splitting();
+    // Splitting();
   }, []);
   return (
     <a

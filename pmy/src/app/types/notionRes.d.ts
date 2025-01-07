@@ -1,8 +1,8 @@
-interface TextRichText {
+export interface TextRichText {
   plain_text: string;
 }
 
-interface NotionImage {
+export interface NotionImage {
   external?: { url: string };
   file?: { url: string };
 }
@@ -22,7 +22,7 @@ type BlockType =
   | 'code'
   | 'divider';
 
-interface Block {
+export interface Block {
   id: string;
   type: BlockType;
   paragraph?: { rich_text: TextRichText[] };
@@ -36,13 +36,13 @@ interface Block {
   divider?: {};
 }
 
-interface BlockContent {
+export interface BlockContent {
   id: string;
   type: BlockType;
   content: string;
 }
 
-interface BlockItem {
+export interface BlockItem {
   archived: boolean;
   created_by: object;
   created_time: object;

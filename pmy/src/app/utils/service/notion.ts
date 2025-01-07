@@ -38,7 +38,7 @@ export async function getPageBlocks(pageId: string): Promise<BlockContent[]> {
     });
 
     // 블록 내용 처리
-    const blocks: BlockContent = results.map((block: BlockItem) => {
+    const blocks: any = results.map((block: any) => {
       let content = '';
 
       // 블록 타입에 따라 처리
