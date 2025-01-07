@@ -10,10 +10,16 @@
 
 .gallery-wrap {
     background-color: #d53f41;
-    height: 100vh;
+    margin-left: -5vw;
+    margin-right: -5vw;
 }
 .gallery {
     margin-right: -100vw;
+    height: 80vh;
+    padding: 20vh 0 10vh;
+    width: 400%;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .gallery-counter {
@@ -38,13 +44,6 @@
     margin: 7px 10px;
     height: 1px;
     display: inline-block
-}
-
-.gallery {
-    height: 100vh;
-    padding: 20vh 0 10vh;
-    display: flex;
-    flex-wrap: nowrap
 }
 
 .gallery .gallery-item-info {
@@ -115,5 +114,4 @@
     -webkit-filter: grayscale(100%) sepia(20%) brightness(80%);
     filter: grayscale(100%) sepia(20%) brightness(80%)
 }
-
             

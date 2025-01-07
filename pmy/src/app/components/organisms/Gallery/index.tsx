@@ -80,30 +80,13 @@ function GalleryItem({
 export default function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
 
-  const ref = useRef(null);
-  let timer: ReturnType<typeof setTimeout>;
-
-  useEffect(() => {
-    timer = setTimeout(() => {
-      const sections: HTMLElement[] = gsap.utils.toArray(
-        '.gallery-item-wrapper',
-      );
-      const endVal = `+=${document.querySelector('.horizontal-container')?.scrollWidth!}`;
-
-      animate.triggerHorizontalSections(sections, ref, endVal);
-    });
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   const handleUpdateActiveImage = (index: number) => {
     setActiveImage(index + 1);
   };
 
   return (
-    <section className="gallery-wrap" ref={ref}>
-      <div className="gallery horizontal-container">
+    <section data-scroll-section className="section-wrapper gallery-wrap">
+      <div className="gallery">
         <div className="gallery-counter">
           <span>{activeImage}</span>
           <span className="divider" />
@@ -111,7 +94,7 @@ export default function Gallery() {
         </div>
         {images.map((image, index) => (
           <GalleryItem
-            key={index}
+            key={`${image.src}-${index}`} // 고유한 key 생성
             index={index}
             {...image}
             updateActiveImage={handleUpdateActiveImage}
