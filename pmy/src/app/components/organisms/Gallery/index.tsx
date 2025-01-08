@@ -12,12 +12,14 @@ import { viewState } from '@/jotai/viewAtom';
 
 const images = [
   {
+    id: 'jandi',
     src: './img/projects/jandi/jandi.jpg',
     title: 'Jandi',
     subtitle: 'Toss Lab, Inc',
     category: 'Sass Provider',
   },
   {
+    id: 'adc',
     src: './img/projects/adc/adcapsule.jpg',
     title: '222 Cereus Penuvianus',
     subtitle: 'Live the Beauty',
@@ -26,6 +28,7 @@ const images = [
 ];
 function GalleryItem({
   src,
+  id,
   category,
   subtitle,
   title,
@@ -43,17 +46,15 @@ function GalleryItem({
   }, [onScreen, index]);
 
   const { locoScroll } = useAtomValue(viewState);
-  const goDetail = () => {
-    // sessionStorage.setItem(
-    //   'scrollPositionY',
-    //   locoScroll.scroll.instance.scroll.y,
-    // );
-    animate.pageOut('/project', router);
+  const goDetail = (id: string) => {
+    if (!locoScroll) return;
+    sessionStorage.setItem('detail', id);
+    animate.pageOut('/test', router);
   };
 
   return (
     <div
-      onClick={goDetail}
+      onClick={() => goDetail(id)}
       className={cn('gallery-item-wrapper', { 'is-reveal': onScreen })}
       ref={ref}
     >

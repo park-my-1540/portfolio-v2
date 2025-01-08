@@ -9,7 +9,69 @@ import gsap from 'gsap';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Locomotive Scroll과 ScrollTrigger를 통합하는 커스텀 훅
+/**
+ * Locomotive Scroll의 현재 스크롤 위치를 기준으로 요소의 스크롤 값 계산하여 반환
+ * @param elementSelector
+ * @param locoScroll
+ */
+const getScrollPositionOfElement = (
+  elementSelector: string,
+  locoScroll: React.RefObject<LocomotiveScroll | null>,
+) => {
+  const element = document.querySelector(elementSelector);
+  if (!element || !locoScroll.current) return;
+
+  const scrollInstance = locoScroll.current.scroll.instance;
+  const { top } = element.getBoundingClientRect();
+
+  return top + scrollInstance.scroll.y;
+};
+
+/**
+ * detail key 값이 있다면 갤러리 섹션으로 스크롤 이동
+ * @param scrollRef
+ */
+const moveToGalleryPosition = (
+  scrollRef: React.RefObject<LocomotiveScroll | null>,
+) => {
+  if (!sessionStorage.getItem('detail') || !scrollRef.current) return;
+
+  scrollRef.current.scrollTo(
+    getScrollPositionOfElement('.gallery-wrap', scrollRef),
+    {
+      duration: 0,
+    },
+  );
+};
+
+/**
+ * set gallery timeline
+ * @param tl - timeline
+ */
+const setGalleryTimeline = (tl) => {
+  const galleryEl = document.querySelector('.gallery') as HTMLElement;
+  const sections = gsap.utils.toArray('.gallery-item-wrapper');
+
+  if (!galleryEl || !tl) return;
+  tl = gsap.timeline({
+    scrollTrigger: {
+      start: 'top top',
+      trigger: galleryEl,
+      scroller: '#main-container',
+      end: () => `+=${galleryEl.offsetWidth}`,
+      pin: true,
+      scrub: 0.5,
+      snap: 1 / (sections.length - 1),
+    },
+  });
+
+  tl.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: 'none',
+  });
+  return tl;
+};
+
 /**
  * Locomotive Scroll과 GSAP의 ScrollTrigger를 통합하여 스크롤 이벤트를 처리합니다.
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
@@ -18,14 +80,14 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const setScrollState = useSetAtom(viewState);
   const pathname = usePathname(); // 현재 경로
   const locoScrollRef = useRef<LocomotiveScroll | null>(null);
-  const tl = useRef<gsap.core.Timeline | null>(null);
+  let tl = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!ref.current) return;
 
     const initializeLocoScroll = async () => {
-      const { default: LocomotiveScroll } = await import('locomotive-scroll');
       const { default: gsap } = await import('gsap');
+      const { default: LocomotiveScroll } = await import('locomotive-scroll');
       const { default: ScrollTrigger } = await import('gsap/ScrollTrigger');
 
       gsap.registerPlugin(ScrollTrigger);
@@ -41,6 +103,8 @@ export default function useLocoScroll(start: boolean, ref: any) {
           multiplier: 1,
           class: 'is-reveal',
         });
+
+        setScrollState({ locoScroll: locoScrollRef.current });
 
         locoScrollRef.current.on('scroll', () => {
           ScrollTrigger.update();
@@ -74,35 +138,15 @@ export default function useLocoScroll(start: boolean, ref: any) {
           },
         });
 
-        // 갤러리 애니메이션 설정
-        const galleryEl = document.querySelector('.gallery') as HTMLElement;
-        const sections = gsap.utils.toArray('.gallery-item-wrapper');
-
-        if (galleryEl) {
-          tl.current = gsap.timeline({
-            scrollTrigger: {
-              start: 'top top',
-              trigger: galleryEl,
-              scroller: '#main-container',
-              end: () => `+=${galleryEl.offsetWidth}`,
-              pin: true,
-              scrub: 0.5,
-              snap: 1 / (sections.length - 1),
-            },
-          });
-
-          tl.current.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: 'none',
-          });
-        }
-
         // ScrollTrigger 새로고침
         const refreshScrollTrigger = () => {
           if (locoScrollRef.current) {
             locoScrollRef.current.update();
           }
         };
+
+        tl.current = setGalleryTimeline(tl);
+        moveToGalleryPosition(locoScrollRef);
 
         ScrollTrigger.addEventListener('refresh', refreshScrollTrigger);
         ScrollTrigger.refresh();
