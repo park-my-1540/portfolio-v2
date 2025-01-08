@@ -51,7 +51,6 @@ export function Header() {
         direction="row"
         align="center"
         justify="between"
-        padding="small"
         responsive={{
           padding: {
             desktop: 'large',

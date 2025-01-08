@@ -1,8 +1,8 @@
-import gsap from "gsap";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import gsap from 'gsap';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 type RefType = React.RefObject<HTMLDivElement>;
 
-export const pageIn = (transitionRef:RefType) => {
+export const pageIn = (transitionRef: RefType) => {
   const transitionElement = transitionRef.current;
   if (transitionElement) {
     const tl = gsap.timeline();
@@ -17,26 +17,26 @@ export const pageIn = (transitionRef:RefType) => {
       .to(
         transitionElement,
         {
-          borderTopLeftRadius: "50vh",
-          borderBottomLeftRadius: "50vh",
+          borderTopLeftRadius: '50vh',
+          borderBottomLeftRadius: '50vh',
           duration: 0.4,
         },
-        "<"
+        '<',
       );
   }
 };
 
 export const pageOut = (href: string, router: AppRouterInstance) => {
-  const animationWrapper = document.getElementById("transition-element");
+  const animationWrapper = document.getElementById('transition-element');
   if (animationWrapper) {
     const tl = gsap.timeline();
 
     tl.set(animationWrapper, {
       xPercent: -100,
-      borderTopRightRadius: "50vh",
-      borderBottomRightRadius: "50vh",
-      borderTopLeftRadius: "0",
-      borderBottomLeftRadius: "0",
+      borderTopRightRadius: '50vh',
+      borderBottomRightRadius: '50vh',
+      borderTopLeftRadius: '0',
+      borderBottomLeftRadius: '0',
     })
       .to(animationWrapper, {
         xPercent: 0,
@@ -48,27 +48,27 @@ export const pageOut = (href: string, router: AppRouterInstance) => {
       .to(
         animationWrapper,
         {
-          borderTopRightRadius: "0",
-          borderBottomRightRadius: "0",
+          borderTopRightRadius: '0',
+          borderBottomRightRadius: '0',
           duration: 0.4,
         },
-        "<"
+        '<',
       );
   }
 };
 
-export const pageFadeIn = (pageRef:RefType) => {
+export const pageFadeIn = (pageRef: RefType) => {
   const animationWrapper = pageRef.current;
   if (animationWrapper) {
     gsap.fromTo(
       animationWrapper,
       { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "power2.in" }
+      { opacity: 1, duration: 0.5, ease: 'power2.in' },
     );
   }
 };
 
-export const scaleOnScroll = (lineRef:RefType, triggerRef:RefType) => {
+export const scaleOnScroll = (lineRef: RefType, triggerRef: RefType) => {
   const animationWrapper = lineRef.current;
   if (animationWrapper) {
     gsap.from(animationWrapper, {
@@ -78,7 +78,7 @@ export const scaleOnScroll = (lineRef:RefType, triggerRef:RefType) => {
         scrub: true,
         pin: true,
         start: 'top top',
-        end: '+=200%',
+        end: '+=100%',
       },
       scaleX: 0,
       transformOrigin: 'left center',
@@ -87,9 +87,12 @@ export const scaleOnScroll = (lineRef:RefType, triggerRef:RefType) => {
   }
 };
 
-export const triggerHorizontalSections = (sections: HTMLElement[], triggerRef:RefType, calcVal: string) => {
-
-  if(sections){
+export const triggerHorizontalSections = (
+  sections: HTMLElement[],
+  triggerRef: RefType,
+  calcVal: string,
+) => {
+  if (sections) {
     gsap.to(sections, {
       xPercent: -100 * (sections.length - 1),
       ease: 'none',
@@ -99,7 +102,7 @@ export const triggerHorizontalSections = (sections: HTMLElement[], triggerRef:Re
         pin: true,
         scrub: true,
         start: 'top top',
-        end: () => calcVal
+        end: () => calcVal,
       },
     });
   }

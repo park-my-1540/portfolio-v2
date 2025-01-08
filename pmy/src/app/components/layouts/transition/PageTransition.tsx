@@ -26,9 +26,7 @@ export default function PageTransition({
   return (
     <div>
       <div id="transition-element" className={page} ref={transitionRef}></div>
-      <Box margin={30} ref={pageRef}>
-        {children}
-      </Box>
+      <Box ref={pageRef}>{children}</Box>
     </div>
   );
 }

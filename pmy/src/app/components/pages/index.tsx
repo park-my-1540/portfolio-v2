@@ -7,7 +7,7 @@ import ProjectsPage from '../../../pages/projects';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import * as animate from '@/utils/animate';
-
+import Box from '@/components/layouts/Box/Box';
 import useLocoScroll from '@/utils/hook/useLocoScroll';
 import Gallery from '@/components/organisms/Gallery/';
 
@@ -30,17 +30,24 @@ const ScrollBox: React.FC = () => {
 
   return (
     <div data-scroll-container id="main-container" ref={ref}>
-      <div className="vertical-scroll" data-scroll-section>
-        <h1 data-scroll>Vertical Section</h1>
-        <p data-scroll>Scroll down to see more...</p>
-      </div>
+      <Box
+        responsive={{
+          paddingX: {
+            desktop: 'large',
+            tablet: 'large',
+            mobile: 'xLarge',
+          },
+        }}
+      >
+        <MainPage />
+        <AboutPage />
+        <Gallery />
 
-      <Gallery />
-
-      <div className="vertical-scroll" data-scroll-section>
-        <h1 data-scroll>Another Vertical Section</h1>
-        <p data-scroll>Scroll more to explore!</p>
-      </div>
+        <div className="vertical-scroll" data-scroll-section>
+          <h1 data-scroll>Another Vertical Section</h1>
+          <p data-scroll>Scroll more to explore!</p>
+        </div>
+      </Box>
     </div>
   );
 };

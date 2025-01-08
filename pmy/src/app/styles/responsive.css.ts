@@ -5,16 +5,21 @@ import { spaceVars } from './tokens/space.css';
 export const responsiveProperties = defineProperties({
   conditions: {
     mobile: { '@media': 'screen and (max-width: 768px)' },
-    tablet: { '@media': 'screen and (min-width: 768px) and (max-width: 1024px)' },
+    tablet: {
+      '@media': 'screen and (min-width: 768px) and (max-width: 1024px)',
+    },
     desktop: { '@media': 'screen and (min-width: 1024px)' },
   },
   defaultCondition: 'desktop',
   properties: {
-    display: ['none', 'block', 'flex', 'inline', "grid"],
+    display: ['none', 'block', 'flex', 'inline', 'grid'],
     position: ['relative', 'absolute', 'static', 'sticky'],
     width: sizeVars.width,
     height: sizeVars.height,
-    padding: spaceVars,
+    paddingTop: spaceVars,
+    paddingBottom: spaceVars,
+    paddingLeft: spaceVars,
+    paddingRight: spaceVars,
     margin: spaceVars,
     justifyContent: [
       'stretch',
@@ -42,12 +47,17 @@ export const responsiveProperties = defineProperties({
     gridColumn: {
       one: 'span 8/span 8',
       three: 'span 16/span 16',
-      full: '1/-1'
+      full: '1/-1',
     },
     gridColumnGap: spaceVars,
     gridRowGap: spaceVars,
     gridAutoFlow: ['row', 'column', 'row dense', 'column dense'],
     gridAutoColumns: ['auto', 'min-content', 'max-content', '1fr'],
     gridAutoRows: ['auto', 'min-content', 'max-content', '1fr'],
+  },
+  shorthands: {
+    padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
+    paddingX: ['paddingLeft', 'paddingRight'],
+    paddingY: ['paddingTop', 'paddingBottom'],
   },
 });
