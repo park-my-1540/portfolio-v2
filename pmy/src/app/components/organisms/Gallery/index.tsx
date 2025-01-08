@@ -44,9 +44,6 @@ function GalleryItem({
 
   const { locoScroll } = useAtomValue(viewState);
   const goDetail = () => {
-    if (!locoScroll) {
-      return;
-    }
     // sessionStorage.setItem(
     //   'scrollPositionY',
     //   locoScroll.scroll.instance.scroll.y,

@@ -12,16 +12,21 @@ export default function About() {
   let timer: ReturnType<typeof setTimeout>;
   useEffect(() => {
     // This does not seem to work without a settimeout
-    timer = setTimeout(() => {
-      animate.scaleOnScroll(lineRef, triggerRef);
-    });
+    // timer = setTimeout(() => {
+    //   animate.scaleOnScroll(lineRef, triggerRef);
+    // });
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
   return (
-    <section className="panel orange color-light" id="about" ref={triggerRef}>
+    <section
+      className="panel orange color-light"
+      id="about"
+      data-scroll-section
+      ref={triggerRef}
+    >
       <div>
         <Line className="line-2" ref={lineRef} />
         <Box display="flex">

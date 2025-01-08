@@ -19,9 +19,12 @@ export default function Main() {
     };
   }, []);
   return (
-    <section className="panel main color-dark" ref={triggerRef}>
+    <section
+      className="panel main color-dark"
+      data-scroll-section
+      ref={triggerRef}
+    >
       <div className="panel-inner">
-        <Line className="line-2" ref={lineRef} />
         {/* <script src="https://www.jsdelivr.com/package/npm/poly-decomp"></script>
         <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
