@@ -45,9 +45,7 @@ function GalleryItem({
     }
   }, [onScreen, index]);
 
-  const { locoScroll } = useAtomValue(viewState);
   const goDetail = (id: string) => {
-    if (!locoScroll) return;
     sessionStorage.setItem('detail', id);
     animate.pageOut('/test', router);
   };

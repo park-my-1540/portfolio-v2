@@ -1,37 +1,23 @@
 'use client';
-
-import React, { useEffect, useRef } from 'react';
-import * as animate from '@/utils/animate';
-import { MatterBox } from '@/components/layouts/MatterBox/MatterBox';
+import React from 'react';
+import Box from '@/components/layouts/Box/Box';
+import MatterBox from '@/components/layouts/MatterBox/MatterBox';
 import ScrollArrow from '@/components/molecules/ScrollArrow';
 import Line from '@/components/atoms/line';
 
 export default function Main() {
-  const lineRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
-  let timer: ReturnType<typeof setTimeout>;
-  useEffect(() => {
-    timer = setTimeout(() => {
-      animate.scaleOnScroll(lineRef, triggerRef);
-    });
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
   return (
-    <section
-      className="panel main color-dark"
-      data-scroll-section
-      ref={triggerRef}
-    >
-      <div className="panel-inner">
-        {/* <script src="https://www.jsdelivr.com/package/npm/poly-decomp"></script>
-        <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script> */}
-        <MatterBox />
-        <ScrollArrow />
-      </div>
+    <section data-scroll-section>
+      <Box paddingTop="calc(10px + 1.6rem*2 + 2.85rem)" className="main">
+        <Box
+          height="calc(100vh - (20px + 1.6rem*2 + 2.85rem))"
+          border="1px solid"
+        >
+          <Line className="line-2" />
+          <MatterBox />
+          <ScrollArrow />
+        </Box>
+      </Box>
     </section>
   );
 }

@@ -87,23 +87,61 @@ export const scaleOnScroll = (lineRef: RefType, triggerRef: RefType) => {
   }
 };
 
-export const triggerHorizontalSections = (
-  sections: HTMLElement[],
-  triggerRef: RefType,
-  calcVal: string,
-) => {
-  if (sections) {
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        scroller: '#main-container',
-        pin: true,
-        scrub: true,
-        start: 'top top',
-        end: () => calcVal,
-      },
-    });
-  }
+/**
+ * set gallery timeline
+ * @param tl - timeline
+ */
+export const triggerMainSections = (tl) => {
+  const lineEl = document.querySelector('.line-2') as HTMLElement;
+  const sections = document.querySelector('.main') as HTMLElement;
+
+  if (!lineEl || !tl) return;
+  tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sections,
+      scroller: '#main-container', // Locomotive Scroll을 사용하는 경우 설정
+      scrub: true,
+      pin: true,
+      start: 'top top', // 트리거 시작 지점
+      end: '+=200%', // 트리거 종료 지점
+    },
+  });
+
+  tl.from(lineEl, {
+    scaleX: 0,
+    transformOrigin: 'left center',
+    ease: 'none',
+  }).to(lineEl, {
+    xPercent: -100,
+    ease: 'none',
+  });
+  return tl;
+};
+
+/**
+ * set gallery timeline
+ * @param tl - timeline
+ */
+export const triggerHorizontalSections = (tl) => {
+  const galleryEl = document.querySelector('.gallery') as HTMLElement;
+  const sections = gsap.utils.toArray('.gallery-item-wrapper');
+
+  if (!galleryEl || !tl) return;
+  tl = gsap.timeline({
+    scrollTrigger: {
+      start: 'top top',
+      trigger: galleryEl,
+      scroller: '#main-container',
+      end: () => `+=${galleryEl.offsetWidth}`,
+      pin: true,
+      scrub: 0.5,
+      snap: 1 / (sections.length - 1),
+    },
+  });
+
+  tl.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: 'none',
+  });
+  return tl;
 };

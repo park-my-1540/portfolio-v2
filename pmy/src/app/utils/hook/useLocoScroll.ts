@@ -6,6 +6,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
 import gsap from 'gsap';
+import * as animate from '@/utils/animate';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,34 +46,6 @@ const moveToGalleryPosition = (
 };
 
 /**
- * set gallery timeline
- * @param tl - timeline
- */
-const setGalleryTimeline = (tl) => {
-  const galleryEl = document.querySelector('.gallery') as HTMLElement;
-  const sections = gsap.utils.toArray('.gallery-item-wrapper');
-
-  if (!galleryEl || !tl) return;
-  tl = gsap.timeline({
-    scrollTrigger: {
-      start: 'top top',
-      trigger: galleryEl,
-      scroller: '#main-container',
-      end: () => `+=${galleryEl.offsetWidth}`,
-      pin: true,
-      scrub: 0.5,
-      snap: 1 / (sections.length - 1),
-    },
-  });
-
-  tl.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: 'none',
-  });
-  return tl;
-};
-
-/**
  * Locomotive Scroll과 GSAP의 ScrollTrigger를 통합하여 스크롤 이벤트를 처리합니다.
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
@@ -80,7 +53,11 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const setScrollState = useSetAtom(viewState);
   const pathname = usePathname(); // 현재 경로
   const locoScrollRef = useRef<LocomotiveScroll | null>(null);
-  let tl = useRef<gsap.core.Timeline | null>(null);
+
+  const gallery_tl = useRef<gsap.core.Timeline | null>(null);
+  const main_tl = useRef<gsap.core.Timeline | null>(null);
+
+  let timer;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -106,8 +83,11 @@ export default function useLocoScroll(start: boolean, ref: any) {
 
         setScrollState({ locoScroll: locoScrollRef.current });
 
-        locoScrollRef.current.on('scroll', () => {
+        locoScrollRef.current.on('scroll', (loco) => {
           ScrollTrigger.update();
+          if (loco.scroll.y > 0) {
+            setScrollState({ scrollStart: true });
+          }
         });
 
         // ScrollTrigger와 Locomotive Scroll 동기화
@@ -145,8 +125,15 @@ export default function useLocoScroll(start: boolean, ref: any) {
           }
         };
 
-        tl.current = setGalleryTimeline(tl);
-        moveToGalleryPosition(locoScrollRef);
+        // gsap timeline
+        main_tl.current = animate.triggerMainSections(main_tl);
+        gallery_tl.current = animate.triggerHorizontalSections(gallery_tl);
+
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          moveToGalleryPosition(locoScrollRef);
+          sessionStorage.removeItem('detail');
+        });
 
         ScrollTrigger.addEventListener('refresh', refreshScrollTrigger);
         ScrollTrigger.refresh();
@@ -165,17 +152,24 @@ export default function useLocoScroll(start: boolean, ref: any) {
         locoScrollRef.current = null;
       }
 
-      if (tl.current) {
-        tl.current.kill();
-        tl.current = null;
+      if (gallery_tl.current) {
+        gallery_tl.current.kill();
+        gallery_tl.current = null;
+      }
+      if (main_tl.current) {
+        main_tl.current.kill();
+        main_tl.current = null;
       }
     };
   }, [ref]);
 
   // 경로 변경 시 ScrollTrigger 인스턴스 새로고침
   useEffect(() => {
-    if (tl.current && tl.current.scrollTrigger) {
-      tl.current.scrollTrigger.refresh();
+    if (gallery_tl.current && gallery_tl.current.scrollTrigger) {
+      gallery_tl.current.scrollTrigger.refresh();
+    }
+    if (main_tl.current && main_tl.current.scrollTrigger) {
+      main_tl.current.scrollTrigger.refresh();
     }
   }, [pathname]);
 }
