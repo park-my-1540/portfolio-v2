@@ -2,7 +2,7 @@ import { SwiperRef } from 'swiper/react';
 import { ValueOfUnion } from '@/utils/utils';
 
 const pageValue = ['main', 'about', 'some'] as const;
-
+type DatabaseKey = 'ADC' | 'JDI' | 'LIST';
 type PageType = ValueOfUnion<typeof pageValue>;
 type SwiperRefType = SwiperRef;
 
@@ -29,10 +29,12 @@ interface SwiperProps {
 }
 
 interface GalleryProps {
-  src: string;
-  category: string;
-  subtitle: string;
+  img: string;
+  id: string;
+  position: string;
+  service: string;
   title: string;
+  type: DatabaseKey;
 }
 
 interface GalleryItemProps extends GalleryProps {

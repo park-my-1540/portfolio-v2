@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
 import { useRouter } from 'next/navigation';
 import useOnScreen from '@/utils/hook/useOnScreen';
 import { GalleryItemProps } from '@/types/common';
@@ -8,29 +7,13 @@ import Box from '@/components/layouts/Box/Box';
 import cn from 'classnames';
 import './style.css';
 import { useAtomValue } from 'jotai';
-import { viewState } from '@/jotai/viewAtom';
+import { galleryListState } from '@/jotai/galleryListAtom';
 
-const images = [
-  {
-    id: 'jandi',
-    src: './img/projects/jandi/jandi.jpg',
-    title: 'Jandi',
-    subtitle: 'Toss Lab, Inc',
-    category: 'Sass Provider',
-  },
-  {
-    id: 'adc',
-    src: './img/projects/adc/adcapsule.jpg',
-    title: '222 Cereus Penuvianus',
-    subtitle: 'Live the Beauty',
-    category: 'Shooting / Adv.Campaing',
-  },
-];
 function GalleryItem({
-  src,
-  id,
-  category,
-  subtitle,
+  img,
+  type,
+  position,
+  service,
   title,
   updateActiveImage,
   index,
@@ -45,14 +28,14 @@ function GalleryItem({
     }
   }, [onScreen, index]);
 
-  const goDetail = (id: string) => {
-    sessionStorage.setItem('detail', id);
-    animate.pageOut('/test', router);
+  const goDetail = (type: string) => {
+    sessionStorage.setItem('detail', type);
+    animate.pageOut(`/project/${type}`, router);
   };
 
   return (
     <div
-      onClick={() => goDetail(id)}
+      onClick={() => goDetail(type)}
       className={cn('gallery-item-wrapper', { 'is-reveal': onScreen })}
       ref={ref}
     >
@@ -60,12 +43,12 @@ function GalleryItem({
       <Box width="100%" height="100%">
         <div className="gallery-item-info">
           <h1 className="gallery-info-title">{title}</h1>
-          <h2 className="gallery-info-subtitle">{subtitle}</h2>
-          <p className="gallery-info-category">{category}</p>
+          <h2 className="gallery-info-subtitle">{service}</h2>
+          <p className="gallery-info-category">{position}</p>
         </div>
         <div
           className="gallery-item-image"
-          style={{ backgroundImage: `url(${src})` }}
+          style={{ backgroundImage: `url(${img})` }}
         ></div>
       </Box>
       <div></div>
@@ -79,6 +62,7 @@ export default function Gallery() {
   const handleUpdateActiveImage = (index: number) => {
     setActiveImage(index + 1);
   };
+  const list = useAtomValue(galleryListState);
 
   return (
     <section data-scroll-section className="section-wrapper gallery-wrap">
@@ -86,11 +70,11 @@ export default function Gallery() {
         <div className="gallery-counter">
           <span>{activeImage}</span>
           <span className="divider" />
-          <span>{images.length}</span>
+          <span>{list.length}</span>
         </div>
-        {images.map((image, index) => (
+        {list.map((image, index) => (
           <GalleryItem
-            key={`${image.src}-${index}`} // 고유한 key 생성
+            key={`${image}-${index}`}
             index={index}
             {...image}
             updateActiveImage={handleUpdateActiveImage}

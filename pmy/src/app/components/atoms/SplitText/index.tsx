@@ -19,9 +19,6 @@ export const SplitText = ({
   url,
   onClick,
 }: SplitTextProps & Partial<TextVariantProps>) => {
-  useEffect(() => {
-    // Splitting();
-  }, []);
   return (
     <a
       href={url}

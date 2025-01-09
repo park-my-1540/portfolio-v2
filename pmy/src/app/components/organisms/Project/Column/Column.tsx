@@ -43,24 +43,30 @@ export default function Column() {
             sizes="card"
           />
           <Text sizes="large" className={`${paddingBox} ${borderTop}`}>
-            Jandi
+            Adcapsulesoft
           </Text>
         </Box>
         <Box className={`${paddingBox} ${borderTop}`}>
           <Text sizes="mediumlarge" className={list}>
-            DISTORTED BEAUTY
+            SASS PROVIDER
           </Text>
           <Text sizes="small" color="tertiary" className={list}>
             Services
           </Text>
           <Text sizes="small" className={list}>
-            SOUND DESIGN
+            SASS PROVIDER
           </Text>
           <Text sizes="small" color="tertiary" className={list}>
-            CREDITS
+            기간
           </Text>
           <Text sizes="small" className={list}>
-            DA & 3D - Bisous productions
+            2020.01~ 2024.02
+          </Text>
+          <Text sizes="small" color="tertiary" className={list}>
+            직군
+          </Text>
+          <Text sizes="small" className={list}>
+            퍼블리셔
           </Text>
         </Box>
       </Box>
