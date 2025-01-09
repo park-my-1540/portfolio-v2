@@ -48,8 +48,8 @@ export default function Project({ list }: pageListProps) {
           gridColumnGap: 'medium',
         }}
       >
-        <Column />
-        <Main list={list} />
+        <Column filtered={list[0].filtered} />
+        <Main blocks={list[0].blocks} />
       </Box>
     </div>
   );

@@ -3,18 +3,13 @@ import Box from '@/components/layouts/Box/Box';
 import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';
-import {
-  borderTopNone,
-  borderBox,
-  borderTop,
-  paddingBox,
-} from '@/styles/style.css';
+import { GalleryProps } from '@/types/common';
+import { borderTopNone, borderTop, paddingBox } from '@/styles/style.css';
 import { list, columnWrap } from './column.css';
 import { useRouter } from 'next/navigation';
-
-export default function Column() {
+export default function Column({ filtered }: { filtered: GalleryProps }) {
   const router = useRouter();
-
+  const { duration, img, position, service, title } = filtered[0];
   return (
     <Box
       className={`${borderTopNone} ${columnWrap}`}
@@ -38,35 +33,35 @@ export default function Column() {
         <Box>
           <Image
             className={borderTop}
-            url="./img/projects/jandi/jandi.jpg"
+            url={img}
             radius="default"
             sizes="card"
           />
           <Text sizes="large" className={`${paddingBox} ${borderTop}`}>
-            Adcapsulesoft
+            {title}
           </Text>
         </Box>
         <Box className={`${paddingBox} ${borderTop}`}>
           <Text sizes="mediumlarge" className={list}>
-            SASS PROVIDER
+            여기엔 뭔말을쓸까나
           </Text>
           <Text sizes="small" color="tertiary" className={list}>
             Services
           </Text>
           <Text sizes="small" className={list}>
-            SASS PROVIDER
+            {service}
           </Text>
           <Text sizes="small" color="tertiary" className={list}>
-            기간
+            Duration
           </Text>
           <Text sizes="small" className={list}>
-            2020.01~ 2024.02
+            {duration}
           </Text>
           <Text sizes="small" color="tertiary" className={list}>
-            직군
+            Position
           </Text>
           <Text sizes="small" className={list}>
-            퍼블리셔
+            {position}
           </Text>
         </Box>
       </Box>

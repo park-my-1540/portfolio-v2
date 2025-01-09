@@ -12,7 +12,6 @@ export default async function ProjectPage({
 
   // 각 페이지의 블록 데이터 가져오기
   const list = await getPageWithBlocks(pageId);
-
   return <Project list={list} />;
 }
 

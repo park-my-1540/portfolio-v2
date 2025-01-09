@@ -1,7 +1,12 @@
 // app/utils/notion.ts
 import { Client } from '@notionhq/client';
 import { DATABASE_ID, TOKEN } from '@/../../config';
-import { BlockItem, BlockContent, TextRichText } from '@/types/notionRes';
+import {
+  NotionPage,
+  BlockContent,
+  TextRichText,
+  Block,
+} from '@/types/notionRes';
 import { DatabaseKey } from '@/types/common';
 // Notion 클라이언트 인스턴스 생성
 const notion = new Client({
@@ -38,16 +43,15 @@ export async function getPageList(
       `https://api.notion.com/v1/databases/${database_id}/query`,
       'POST',
     );
-
     // returnIdsOnly가 true일 경우, id만 반환
     if (returnIdsOnly) {
-      return data.results.map((page: any) => ({
+      return data.results.map((page: NotionPage) => ({
         id: page.id,
       }));
     }
 
     // 기본적으로 상세 정보를 반환
-    return data.results.map((page: any) => ({
+    return data.results.map((page: NotionPage) => ({
       id: page.id,
       duration: `${page.properties?.Duration?.date.start}~${page.properties?.Duration?.date.end}`,
       position: page.properties?.Position?.rich_text[0]?.plain_text,
@@ -73,7 +77,7 @@ export async function getPageBlocks(
     );
 
     // 블록 내용 처리
-    const blocks: BlockContent[] = data.results.map((block: any) => {
+    const blocks: BlockContent[] = data.results.map((block: Block) => {
       let content = '';
 
       switch (block.type) {
@@ -122,10 +126,13 @@ export async function getPageBlocks(
 export async function getPageWithBlocks(pageId: DatabaseKey) {
   try {
     const page = await getPageList(pageId, true);
+    const list = await getPageList('LIST');
+    const filtered = list.filter((item) => item.type === pageId);
+
     const pageWithBlocks = await Promise.all(
       page.map(async (item) => {
         const blocks = await getPageBlocks(item.id);
-        return { ...item, blocks };
+        return { ...item, blocks, filtered };
       }),
     );
 

@@ -6,7 +6,7 @@ import { borderTop, borderTopNone, paddingBox } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
 import renderContent from '@/utils/service/filter';
 import ReactJsxParser from 'react-jsx-parser';
-import { pageListProps } from '@/types/common';
+import { Blocks } from '@/types/common';
 
 function StringToComponent(componentStringArray: string) {
   const jsxContent = componentStringArray;
@@ -25,7 +25,7 @@ function StringToComponent(componentStringArray: string) {
   );
 }
 
-export default function Main({ list }: pageListProps) {
+export default function Main({ blocks }: { blocks: Blocks[] }) {
   return (
     <>
       <Box
@@ -38,14 +38,9 @@ export default function Main({ list }: pageListProps) {
           },
         }}
       >
-        {/* <Text>어허이보리야</Text> */}
-        {list.map((item, index) => {
-          return (
-            <Box key={index} className={borderTopNone}>
-              {StringToComponent(renderContent(item.blocks))}
-            </Box>
-          );
-        })}
+        <Box className={borderTopNone}>
+          {StringToComponent(renderContent(blocks))}
+        </Box>
         {/* <Box>
           <Box
             width="100%"

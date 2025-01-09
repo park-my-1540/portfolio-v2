@@ -67,6 +67,7 @@ interface BlockCollections {
 interface Page {
   id: string;
   blocks: Blocks[]; // Blocks는 위에서 정의한 Block[]
+  filtered: GalleryProps[];
 }
 
 interface pageListProps {
