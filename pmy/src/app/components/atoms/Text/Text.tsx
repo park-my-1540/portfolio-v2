@@ -85,7 +85,7 @@ export const TextLink = ({
 }: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
     <a
-      href="#none"
+      href="javascript:void(0)"
       {...rest}
       className={cn(
         className,
