@@ -39,7 +39,7 @@ export default function Home({ list }: { list: GalleryProps[] }) {
         <AboutPage />
         <ProjectsPage />
 
-        <div className="vertical-scroll" data-scroll-section>
+        <div className="vertical-scroll" data-scroll-section id="contact">
           <h1 data-scroll>Another Vertical Section</h1>
           <p data-scroll>Scroll more to explore!</p>
         </div>

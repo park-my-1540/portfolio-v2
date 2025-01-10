@@ -7,7 +7,7 @@ import Line from '@/components/atoms/line';
 
 export default function Main() {
   return (
-    <section data-scroll-section>
+    <section data-scroll-section id="main">
       <Box paddingTop="calc(10px + 1.6rem*2 + 2.85rem)" className="main">
         <Box
           height="calc(100vh - (20px + 1.6rem*2 + 2.85rem))"

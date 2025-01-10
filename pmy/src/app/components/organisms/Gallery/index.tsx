@@ -65,7 +65,11 @@ export default function Gallery() {
   const list = useAtomValue(galleryListState);
 
   return (
-    <section data-scroll-section className="section-wrapper gallery-wrap">
+    <section
+      data-scroll-section
+      className="section-wrapper gallery-wrap"
+      id="project"
+    >
       <div className="gallery">
         <div className="gallery-counter">
           <span>{activeImage}</span>

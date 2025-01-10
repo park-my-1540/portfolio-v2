@@ -22,7 +22,7 @@ export default function About() {
 
   return (
     <section
-      className="panel orange color-light"
+      className="panel color-light"
       id="about"
       data-scroll-section
       ref={triggerRef}
