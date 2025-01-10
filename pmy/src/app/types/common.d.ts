@@ -34,6 +34,7 @@ interface GalleryProps {
   position: string;
   service: string;
   title: string;
+  company: string;
   type: DatabaseKey;
 }
 

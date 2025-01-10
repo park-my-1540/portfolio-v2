@@ -153,11 +153,12 @@ interface NotionListProperties {
 
 /** jobList - tag */
 interface NotionJobProperties {
-  Position: NotionPropertyRichText;
+  position: NotionPropertyRichText;
   service: NotionPropertyRichText;
   생성일: NotionPropertyDate;
   type: NotionPropertyRichText;
-  Duration: NotionPropertyDate;
+  company: NotionPropertyRichText;
+  duration: NotionPropertyDate;
   이름: NotionPropertyTitle;
 }
 

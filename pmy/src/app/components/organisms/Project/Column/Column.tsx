@@ -9,7 +9,7 @@ import { list, columnWrap } from './column.css';
 import { useRouter } from 'next/navigation';
 export default function Column({ filtered }: { filtered: GalleryProps }) {
   const router = useRouter();
-  const { duration, img, position, service, title } = filtered[0];
+  const { duration, img, position, service, title, company } = filtered[0];
   return (
     <Box
       className={`${borderTopNone} ${columnWrap}`}
@@ -43,7 +43,7 @@ export default function Column({ filtered }: { filtered: GalleryProps }) {
         </Box>
         <Box className={`${paddingBox} ${borderTop}`}>
           <Text sizes="mediumlarge" className={list}>
-            여기엔 뭔말을쓸까나
+            {company}
           </Text>
           <Text sizes="small" color="tertiary" className={list}>
             Services

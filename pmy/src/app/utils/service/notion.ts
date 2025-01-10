@@ -53,12 +53,15 @@ export async function getPageList(
     // 기본적으로 상세 정보를 반환
     return data.results.map((page: NotionPage) => ({
       id: page.id,
-      duration: `${page.properties?.Duration?.date.start}~${page.properties?.Duration?.date.end}`,
-      position: page.properties?.Position?.rich_text[0]?.plain_text,
-      service: page.properties?.service?.rich_text[0]?.plain_text,
-      type: page.properties?.type?.rich_text[0]?.plain_text,
-      img: page.cover?.file?.url,
-      title: page.properties?.이름?.title[0]?.plain_text,
+      duration:
+        `${page.properties?.duration?.date.start}~${page.properties?.duration?.date.end}` ||
+        '',
+      position: page.properties?.position?.rich_text[0]?.plain_text || '',
+      service: page.properties?.service?.rich_text[0]?.plain_text || '',
+      type: page.properties?.type?.rich_text[0]?.plain_text || '',
+      img: page.cover?.file?.url || '',
+      title: page.properties?.이름?.title[0]?.plain_text || '',
+      company: page.properties?.company?.rich_text[0]?.plain_text || '',
     }));
   } catch (error) {
     console.error('Error fetching list data:', error);

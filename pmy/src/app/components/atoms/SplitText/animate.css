@@ -4,8 +4,6 @@
 .txt .char {
   display: inline-block;
   transform-origin: 50% 50% 0.4em;
-  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1);
-  transition-delay: calc(0ms + var(--char-index) * 25ms);
   backface-visibility: hidden;
   margin: 0 -0.02em;
 }
