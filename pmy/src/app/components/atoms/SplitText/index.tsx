@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { link, txt } from './style.css';
+import { link, txt, sameType } from './style.css';
 import { Text } from '@/components/atoms/Text/Text';
 // import Splitting from 'splitting';
 import './animate.css';
@@ -10,39 +10,38 @@ import { text, TextVariantProps } from './splitText.module.css';
 type SplitTextProps = {
   splitText: string;
   url?: string;
+  type?: string;
   onClick?: () => void;
 };
 
 export const SplitText = ({
   splitText,
   sizes,
+  weights,
   url,
+  type,
   onClick,
 }: SplitTextProps & Partial<TextVariantProps>) => {
+  const clsname = type === 'same' ? sameType : txt;
+  const link = url ? url : 'javascript:void(0)';
   return (
     <a
-      href={url}
+      href={link}
       className={`${link} link ${text({ sizes })}`}
       onClick={onClick}
     >
-      <Text
-        color="primary"
-        className={cn('txt', txt, text({ sizes }))}
-        weights="light"
-        sizes={sizes}
+      <p
+        className={cn('txt', clsname, text({ sizes, weights }))}
         data-splitting
       >
         {splitText}
-      </Text>
-      <Text
-        color="primary"
-        className={cn('txt', txt, text({ sizes }))}
-        weights="light"
-        sizes={sizes}
+      </p>
+      <p
+        className={cn('txt', clsname, text({ sizes, weights }))}
         data-splitting
       >
         {splitText}
-      </Text>
+      </p>
     </a>
   );
 };
