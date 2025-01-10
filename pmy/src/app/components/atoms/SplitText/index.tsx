@@ -23,10 +23,10 @@ export const SplitText = ({
   onClick,
 }: SplitTextProps & Partial<TextVariantProps>) => {
   const clsname = type === 'same' ? sameType : txt;
-  const link = url ? url : 'javascript:void(0)';
+  const linkUrl = url ? url : 'javascript:void(0)';
   return (
     <a
-      href={link}
+      href={linkUrl}
       className={`${link} link ${text({ sizes })}`}
       onClick={onClick}
     >
