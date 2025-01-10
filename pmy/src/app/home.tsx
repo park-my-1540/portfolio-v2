@@ -4,7 +4,7 @@ import { LocalStorageService } from '@/utils/service/localStorageService';
 import PageTransition from '@/components/layouts/transition/PageTransition';
 import Header from '@/components/organisms/Header/Header';
 import CustomCursor from '@/components/molecules/CustomCursor';
-
+import Modal from '@/components/molecules/Modal';
 import { useAtomValue } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
 
@@ -20,6 +20,7 @@ export default function Home({
 
   return (
     <body className={`${theme === 'dark' ? darkTheme : lightTheme}`}>
+      <Modal />
       <CustomCursor />
       <Header />
       <PageTransition>{children}</PageTransition>

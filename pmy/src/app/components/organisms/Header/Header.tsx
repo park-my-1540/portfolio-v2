@@ -4,15 +4,20 @@ import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
 import { header, inner, changeCircle, dark } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
-import { useSetAtom, useAtomValue } from 'jotai';
+import { useSetAtom, useAtomValue, useAtom } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
 import { viewState } from '@/jotai/viewAtom';
+import { modalState } from '@/jotai/modalAtom';
+
 import { ThemeMode } from '@/types/styles';
 import { SplitText } from '@/components/atoms/SplitText';
-import { Text } from '@/components/atoms/Text/Text';
+import { TextLink } from '@/components/atoms/Text/Text';
+import Menu from '@/components/molecules/Menu';
 
 export function Header() {
   const setTheme = useSetAtom(themeState);
+  const [modalOpen, setModalOpen] = useAtom(modalState);
+
   const { cursorRef } = useAtomValue(viewState);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname(); // 현재 경로
@@ -35,6 +40,10 @@ export function Header() {
     },
     [setTheme],
   );
+
+  const onClickMenu = useCallback(() => {
+    setModalOpen((prevState) => !prevState);
+  }, [setModalOpen]);
 
   useEffect(() => {
     if (!headerRef?.current) return;
@@ -76,9 +85,15 @@ export function Header() {
             />
           </Position>
         </Box>
-        <Text color="inherit" weights="bold" sizes="medium">
-          MENU?
-        </Text>
+        <TextLink
+          color="inherit"
+          weights="bold"
+          sizes="medium"
+          onClick={onClickMenu}
+        >
+          MENU
+        </TextLink>
+        {modalOpen && <Menu />}
       </Box>
     </header>
   );
