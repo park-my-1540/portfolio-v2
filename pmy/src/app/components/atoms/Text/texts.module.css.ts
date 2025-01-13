@@ -5,6 +5,7 @@ const base = {
   margin: '0',
   lineHeight: '1.3',
   cursor: 'pointer',
+  WebkitFontSmoothing: 'antialiased',
 };
 
 const variants = {
@@ -33,6 +34,10 @@ const variants = {
     big: style({
       fontSize: '4.375rem', // 70px
       lineHeight: '4.375rem', // 70px
+    }),
+    title: style({
+      fontSize: '6vw', // 70px
+      lineHeight: '6vw', // 70px
     }),
   },
   weights: {

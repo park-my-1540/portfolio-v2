@@ -8,6 +8,8 @@ import cn from 'classnames';
 import './style.css';
 import { useAtomValue } from 'jotai';
 import { galleryListState } from '@/jotai/galleryListAtom';
+import { Text, TextTitle } from '@/components/atoms/Text/Text';
+import * as style from './gallery.css';
 
 function GalleryItem({
   img,
@@ -41,11 +43,13 @@ function GalleryItem({
     >
       <div></div>
       <Box width="100%" height="100%">
-        <div className="gallery-item-info">
-          <h1 className="gallery-info-title">{title}</h1>
-          <h2 className="gallery-info-subtitle">{service}</h2>
-          <p className="gallery-info-category">{position}</p>
-        </div>
+        <Box className={style.galleryItemInfo}>
+          <TextTitle sizes="title">{title}</TextTitle>
+          <TextTitle className={style.galleryInfoSubtitle} sizes="title">
+            {service}
+          </TextTitle>
+          <Text sizes="mediumlargeX2">{position}</Text>
+        </Box>
         <div
           className="gallery-item-image"
           style={{ backgroundImage: `url(${img})` }}
@@ -65,17 +69,13 @@ export default function Gallery() {
   const list = useAtomValue(galleryListState);
 
   return (
-    <section
-      data-scroll-section
-      className="section-wrapper gallery-wrap"
-      id="project"
-    >
-      <div className="gallery">
-        <div className="gallery-counter">
+    <section data-scroll-section className={style.galleryWrap} id="project">
+      <Box className={`${style.gallery} gallery`}>
+        <Box className={style.galleryCounter}>
           <span>{activeImage}</span>
-          <span className="divider" />
+          <Box className={style.divider} />
           <span>{list.length}</span>
-        </div>
+        </Box>
         {list.map((image, index) => (
           <GalleryItem
             key={`${image}-${index}`}
@@ -84,7 +84,7 @@ export default function Gallery() {
             updateActiveImage={handleUpdateActiveImage}
           />
         ))}
-      </div>
+      </Box>
     </section>
   );
 }

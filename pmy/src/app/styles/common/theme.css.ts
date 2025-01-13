@@ -1,5 +1,5 @@
-import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
-import { vars } from "@/styles/common/createThemeContract.css";
+import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { vars } from '@/styles/common/createThemeContract.css';
 
 // 테마 정의
 export const theme = {
@@ -23,12 +23,12 @@ export const textColor = recipe({
       primary: { color: vars.color.text.primary }, // 옅은 색상
       tertiary: { color: vars.color.text.tertiary }, // 옅은 색상
       accent: { color: vars.color.highlight.accent },
-      textLighted: { color: vars.color.text.accent },
-      inherit: { color: "inherit" },
+      textLighted: { color: vars.color.text.light },
+      inherit: { color: 'inherit' },
     },
   },
   defaultVariants: {
-    color: "inherit", // 기본 색상 설정
+    color: 'inherit', // 기본 색상 설정
   },
 });
 

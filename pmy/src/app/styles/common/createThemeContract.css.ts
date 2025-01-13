@@ -1,88 +1,91 @@
-import { createThemeContract, createTheme } from "@vanilla-extract/css";
-import { colors } from "@/styles/tokens/colors.css";
+import { createThemeContract, createTheme } from '@vanilla-extract/css';
+import { colors } from '@/styles/tokens/colors.css';
 
 type ColorKey = keyof typeof colors;
 
 export const vars = createThemeContract({
   color: {
-    primary:"", // 흰색
-    complementary: "", // 검은색
+    primary: '', // 흰색
+    complementary: '', // 검은색
     text: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      tertiary: "",
-      complementary: "", // 강조 색상 4: 보색 강조
-      accent: "",  // 강조 색상 3: 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      tertiary: '',
+      complementary: '', // 강조 색상 4: 보색 강조
+      accent: '', // 강조 색상 3: 강조
+      light: '', // 옅은 색상
     },
     // 강조 색상 세트
     highlight: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      dark: "", // 강조 색상 2: 보조 강조
-      accent: "",  // 강조 색상 3: 강조
-      complementary: "", // 강조 색상 4: 보색 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      dark: '', // 강조 색상 2: 보조 강조
+      accent: '', // 강조 색상 3: 강조
+      complementary: '', // 강조 색상 4: 보색 강조
     },
     bg: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      complementary: "", // 강조 색상 4: 보색 강조
-      accent: "",  // 강조 색상 3: 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      complementary: '', // 강조 색상 4: 보색 강조
+      accent: '', // 강조 색상 3: 강조
     },
     border: {
-      muted:"" // 흐린색상
-    }
+      muted: '', // 흐린색상
+    },
   },
 });
 
 export const lightTheme = createTheme(vars, {
   color: {
-    primary: colors["white" as ColorKey], // 흰색
-    complementary: colors["dark" as ColorKey], // 검은색
+    primary: colors['white' as ColorKey], // 흰색
+    complementary: colors['dark' as ColorKey], // 검은색
     text: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      tertiary: colors["light" as ColorKey],
-      complementary: "", // 강조 색상 4: 보색 강조
-      accent: "",  // 강조 색상 3: 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      tertiary: colors['light' as ColorKey],
+      complementary: '', // 강조 색상 4: 보색 강조
+      accent: '', // 강조 색상 3: 강조
+      light: colors['gray' as ColorKey],
     },
     // 강조 색상 세트
     highlight: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      dark: "", // 강조 색상 2: 보조 강조
-      accent: "",  // 강조 색상 3: 강조
-      complementary: "", // 강조 색상 4: 보색 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      dark: '', // 강조 색상 2: 보조 강조
+      accent: '', // 강조 색상 3: 강조
+      complementary: '', // 강조 색상 4: 보색 강조
     },
     bg: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      complementary: colors["black" as ColorKey], // 강조 색상 4: 보색 강조
-      accent: "",  // 강조 색상 3: 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      complementary: colors['black' as ColorKey], // 강조 색상 4: 보색 강조
+      accent: '', // 강조 색상 3: 강조
     },
     border: {
-      muted: colors["muted" as ColorKey] // 흐린색상
-    }
+      muted: colors['muted' as ColorKey], // 흐린색상
+    },
   },
 });
 export const darkTheme = createTheme(vars, {
   color: {
-    primary: colors["dark" as ColorKey], // 흰색
-    complementary: colors["white" as ColorKey], // 검은색
+    primary: colors['dark' as ColorKey], // 흰색
+    complementary: colors['white' as ColorKey], // 검은색
     text: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      tertiary: colors["light" as ColorKey],
-      complementary: "", // 강조 색상 4: 보색 강조
-      accent: "",  // 강조 색상 3: 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      tertiary: colors['light' as ColorKey],
+      complementary: '', // 강조 색상 4: 보색 강조
+      accent: '', // 강조 색상 3: 강조
+      light: colors['gray' as ColorKey],
     },
     // 강조 색상 세트
     highlight: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      dark: "", // 강조 색상 2: 보조 강조
-      accent: "",  // 강조 색상 3: 강조
-      complementary: "", // 강조 색상 4: 보색 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      dark: '', // 강조 색상 2: 보조 강조
+      accent: '', // 강조 색상 3: 강조
+      complementary: '', // 강조 색상 4: 보색 강조
     },
     bg: {
-      primary: "",  // 강조 색상 1: 주요 강조
-      accent: "",  // 강조 색상 3: 강조
-      complementary: colors["white" as ColorKey], // 강조 색상 4: 보색 강조
+      primary: '', // 강조 색상 1: 주요 강조
+      accent: '', // 강조 색상 3: 강조
+      complementary: colors['white' as ColorKey], // 강조 색상 4: 보색 강조
     },
     border: {
-      muted:""
-    }
+      muted: '',
+    },
   },
 });
 
