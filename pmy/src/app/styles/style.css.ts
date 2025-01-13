@@ -1,17 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-export const container = style({
-  width: '100vw',
-  height: '100vh',
-});
 
-export const header = style({
-  height: 52,
-  padding: '0 20px',
-  lineHeight: '52px',
-  fontSize: 24,
-});
-
+// border - style
 export const borderTopNone = style({
   border: '1px solid',
   borderTop: 'none',
@@ -25,8 +15,17 @@ export const borderTop = style({
   borderTop: '1px solid',
 });
 
+// layout
+export const pageContainer = style({
+  paddingTop: 'calc( (var(--padding-container)*4) + var(--textHeight))',
+});
+
+export const pageInner = style({
+  height: 'calc(100vh - ((var(--padding-container)*5) + var(--textHeight)))',
+});
+
 export const paddingBox = style({
-  padding: 'var(--padding-container)', // CSS 변수 사용
+  padding: 'var(--padding-container)',
 });
 
 export const scrollbar = style({
@@ -46,14 +45,6 @@ export const scrollbar = style({
   },
 });
 
-export const pageContainer = style({
-  paddingTop: 'calc( (var(--padding-container)*4) + var(--textHeight))',
-});
-
-export const pageInner = style({
-  height: 'calc(100vh - ((var(--padding-container)*5) + var(--textHeight)))',
-});
-
 export const project = style({
   height: '100vh',
   overflowY: 'scroll',
@@ -68,4 +59,14 @@ export const project = style({
       top: 0,
     },
   },
+});
+
+// dim
+export const dim = style({
+  position: 'fixed',
+  width: '100vw',
+  height: '100vh',
+  background: 'rgb(13 13 13)',
+  opacity: 0.7,
+  zIndex: 99,
 });

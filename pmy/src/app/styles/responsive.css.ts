@@ -46,8 +46,8 @@ export const responsiveProperties = defineProperties({
       fill: 'repeat(auto-fill, minmax(0, 1fr))', // 가능한 모든 공간을 균등 분할
     },
     gridColumn: {
-      one: 'span 8/span 8',
-      three: 'span 16/span 16',
+      one: 'span 6/span 6',
+      three: 'span 18/span 18',
       full: '1/-1',
     },
     gridColumnGap: spaceVars,

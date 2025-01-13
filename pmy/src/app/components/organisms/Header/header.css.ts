@@ -10,6 +10,7 @@ export const header = style({
 });
 
 export const inner = style({
+  position: 'relative',
   border: '1px solid',
   zIndex: 99,
   backgroundColor: 'white',
@@ -26,4 +27,21 @@ export const changeCircle = style({
 export const dark = style({
   background: vars.color.complementary,
   marginLeft: -10,
+});
+
+export const menuBtn = style({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  position: 'absolute',
+  right: 0,
+  height: '100%',
+  padding: '0 1.6rem',
+  borderLeft: `1px solid ${vars.color.complementary}`,
+  selectors: {
+    '&:hover': {
+      background: vars.color.complementary,
+      color: vars.color.primary,
+    },
+  },
 });

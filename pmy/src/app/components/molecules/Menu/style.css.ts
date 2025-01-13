@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 export const wrapper = style({
   position: 'absolute',
-  top: 'calc(10px + 1.6rem*2 + 2.85rem)',
+  top: 'calc(12px + 1.6rem + 2.85rem)',
   right: 0,
   width: '100%',
   zIndex: 9,

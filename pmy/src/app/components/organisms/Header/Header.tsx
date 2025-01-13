@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useEffect } from 'react';
 import { LocalStorageService } from '@/utils/service/localStorageService';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
-import { header, inner, changeCircle, dark } from './header.css';
+import { header, inner, changeCircle, dark, menuBtn } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
 import { useSetAtom, useAtomValue, useAtom } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
@@ -95,14 +95,16 @@ export function Header() {
             />
           </Position>
         </Box>
+
         <TextLink
-          color="inherit"
           weights="bold"
-          sizes="medium"
+          sizes="smallmedium"
+          className={menuBtn}
           onClick={onClickMenu}
         >
-          MENU
+          {modalOpen ? 'CLOSE' : 'MENU'}
         </TextLink>
+
         {modalOpen && <Menu />}
       </Box>
     </Box>
