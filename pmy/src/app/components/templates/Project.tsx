@@ -34,7 +34,7 @@ export default function Project({ list }: pageListProps) {
       ref={containerRef}
     >
       <Box
-        marginBottom="1rem"
+        paddingBottom={'var(--padding-container)'}
         display="grid"
         responsive={{
           paddingX: {

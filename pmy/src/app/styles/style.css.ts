@@ -55,7 +55,7 @@ export const pageInner = style({
 });
 
 export const project = style({
-  height: 'calc( 100vh + 15px)',
+  height: '100vh',
   overflowY: 'scroll',
   selectors: {
     '&::before': {
