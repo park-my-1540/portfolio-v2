@@ -55,7 +55,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
           splitText={item}
           sizes="large"
           weights="bold"
-          onClick={() => moveToSectionPosition('#main')}
+          onClick={() => moveToSectionPosition(`#${item}`)}
         />
       </Box>
     </Box>
@@ -68,7 +68,7 @@ export default function Menu() {
 
   const menuList = [
     {
-      item: 'home',
+      item: 'main',
       desc: 'parkmys portfolio',
     },
     {
@@ -109,7 +109,6 @@ export default function Menu() {
 
   const getScrollPositionOfElement = (elementSelector: string) => {
     const element = document.querySelector(elementSelector);
-
     if (!element || !scrollRef.current) return;
 
     const scrollInstance = scrollRef.current?.scroll.instance;

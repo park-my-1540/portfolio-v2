@@ -86,7 +86,10 @@ export default function useLocoScroll(start: boolean, ref: any) {
         locoScrollRef.current.on('scroll', (loco) => {
           ScrollTrigger.update();
           if (loco.scroll.y > 0) {
-            setScrollState({ scrollStart: true });
+            setScrollState((prevState) => ({
+              ...prevState,
+              scrollStart: true,
+            }));
           }
         });
 
