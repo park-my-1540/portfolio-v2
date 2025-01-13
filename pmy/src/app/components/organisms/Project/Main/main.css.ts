@@ -1,10 +1,10 @@
-import { style } from "@vanilla-extract/css";
+import { style } from '@vanilla-extract/css';
 
 export const borderBox = style({
   border: '1px solid',
-  borderTop: "none",
+  borderTop: 'none',
 });
 
 export const paddingBox = style({
-  padding: "0.7rem"
-})
+  padding: '0.7rem',
+});

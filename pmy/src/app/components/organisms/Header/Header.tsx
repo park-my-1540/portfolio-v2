@@ -53,7 +53,17 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className={header} ref={headerRef}>
+    <Box
+      className={header}
+      ref={headerRef}
+      responsive={{
+        padding: {
+          desktop: 'large',
+          tablet: 'large',
+          mobile: 'xLarge',
+        },
+      }}
+    >
       <Box
         className={`${inner} inner`}
         display="flex"
@@ -95,7 +105,7 @@ export function Header() {
         </TextLink>
         {modalOpen && <Menu />}
       </Box>
-    </header>
+    </Box>
   );
 }
 

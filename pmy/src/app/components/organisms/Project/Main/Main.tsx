@@ -29,6 +29,7 @@ export default function Main({ blocks }: { blocks: Blocks[] }) {
   return (
     <>
       <Box
+        width={'calc(100% + 5px)'}
         className={borderTop}
         responsive={{
           gridColumn: {

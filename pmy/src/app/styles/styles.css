@@ -4,6 +4,7 @@
   --link-translate-x: 3rem;
   --padding-container: 1rem;
   --height-swiper: 39vh;
+  --textHeight: 2.85rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -34,11 +35,6 @@ html, body {
   overflow-scrolling: touch;
 } 
 
-.project{
-  padding-top: calc(40px + 1.6rem*2 + 0.85rem);
-  height: 100vh;
-  overflow-y: scroll;
-}
 
 .point{
   background-color: red;
@@ -46,12 +42,6 @@ html, body {
   height: 50px;
 }
 
-.sub{
-  width: calc(100% - 5px);
-}
-.sub .inner{
-  width: calc(100% - 60px);
-}
 
 ul {
   display: block;
@@ -76,57 +66,7 @@ li {
   text-align: -webkit-match-parent;
 }
 
-
-body {
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-}
 section {
   padding: 100px 0;
 }
 
-.vertical-scroll {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f5f5;
-}
-
-.horizontal-scroll {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: #e0e0e0;
-}
-
-.scroll-content {
-  display: flex;
-  gap: 20px;
-  white-space: nowrap;
-  padding: 0 20px;
-}
-
-.item {
-  width: 300px;
-  height: 300px;
-  background-color: #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  border-radius: 10px;
-  user-select: none;
-}
-
-h1 {
-  font-size: 2rem;
-  color: #333;
-}
-
-p {
-  font-size: 1rem;
-  color: #555;
-}

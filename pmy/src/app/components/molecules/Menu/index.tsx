@@ -133,6 +133,11 @@ export default function Menu() {
           tablet: 'row',
           mobile: 'column',
         },
+        paddingX: {
+          desktop: 'large',
+          tablet: 'large',
+          mobile: 'xLarge',
+        },
       }}
     >
       {menuList.map((item, index) => {

@@ -6,6 +6,7 @@ import Column from '@/components/organisms/Project/Column/Column';
 import Lenis from '@studio-freight/lenis';
 import { scrollbar } from '@/styles/style.css';
 import { pageListProps } from '@/types/common';
+import { pageContainer, project } from '@/styles/style.css';
 
 export default function Project({ list }: pageListProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,13 +29,19 @@ export default function Project({ list }: pageListProps) {
   }, []);
 
   return (
-    <div className={`${scrollbar} project`} ref={containerRef}>
+    <div
+      className={`${scrollbar} ${project} ${pageContainer}`}
+      ref={containerRef}
+    >
       <Box
         marginBottom="1rem"
-        marginLeft="30px"
-        marginRight="30px"
         display="grid"
         responsive={{
+          paddingX: {
+            desktop: 'large',
+            tablet: 'large',
+            mobile: 'xLarge',
+          },
           gridTemplateColumns: {
             desktop: 'full',
             tablet: 'full',
