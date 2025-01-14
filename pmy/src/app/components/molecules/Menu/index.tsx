@@ -29,8 +29,9 @@ function MenuItem({ menu, moveToSectionPosition }) {
           </Text>
         )}
         {link &&
-          link.map((item) => (
+          link.map((item, index) => (
             <SplitText
+              key={index}
               type="same"
               splitText={item.item}
               sizes="small"

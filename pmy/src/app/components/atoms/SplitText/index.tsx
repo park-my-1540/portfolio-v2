@@ -1,7 +1,4 @@
-import React, { useEffect } from 'react';
 import { link, txt, sameType } from './style.css';
-import { Text } from '@/components/atoms/Text/Text';
-// import Splitting from 'splitting';
 import './animate.css';
 import cn from 'classnames';
 

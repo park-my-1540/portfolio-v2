@@ -5,6 +5,7 @@ import Box from '@/components/layouts/Box/Box';
 import MainPage from './MainPage';
 import AboutPage from './AboutPage';
 import ProjectsPage from './ProjectsPage';
+import ContactPage from './ContactPage';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import useLocoScroll from '@/utils/hook/useLocoScroll';
@@ -38,11 +39,7 @@ export default function Home({ list }: { list: GalleryProps[] }) {
         <MainPage />
         <AboutPage />
         <ProjectsPage />
-
-        <div className="vertical-scroll" data-scroll-section id="contact">
-          <h1 data-scroll>Another Vertical Section</h1>
-          <p data-scroll>Scroll more to explore!</p>
-        </div>
+        <ContactPage />
       </Box>
     </div>
   );

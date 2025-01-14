@@ -1,11 +1,11 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
+import { vars } from '@/styles/common/createThemeContract.css';
 
 const base = {
   margin: '0',
   lineHeight: '1.3',
   cursor: 'pointer',
-  WebkitFontSmoothing: 'antialiased',
 };
 
 const variants = {
@@ -67,6 +67,13 @@ const variants = {
   textAlign: {
     center: style({
       textAlign: 'center',
+    }),
+  },
+  stroke: {
+    stroke: style({
+      color: 'transparent !important',
+      WebkitFontSmoothing: 'antialiased',
+      WebkitTextStroke: `2px ${vars.color.complementary}`,
     }),
   },
 };
