@@ -14,10 +14,12 @@ import { SplitText } from '@/components/atoms/SplitText';
 import { TextLink } from '@/components/atoms/Text/Text';
 import Menu from '@/components/molecules/Menu';
 
+import * as animate from '@/utils/animate';
+
 export function Header() {
   const setTheme = useSetAtom(themeState);
-  const [modalOpen, setModalOpen] = useAtom(modalState);
-
+  const setModalOpen = useSetAtom(modalState);
+  const modalOpen = useAtomValue(modalState);
   const { cursorRef } = useAtomValue(viewState);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname(); // 현재 경로
@@ -42,8 +44,14 @@ export function Header() {
   );
 
   const onClickMenu = useCallback(() => {
+    if (!modalOpen) {
+      animate.triggerMenu();
+    } else {
+      console.log('reverse');
+      animate.reversetriggerMenu();
+    }
     setModalOpen((prevState) => !prevState);
-  }, [setModalOpen]);
+  }, [setModalOpen, modalOpen]);
 
   useEffect(() => {
     if (!headerRef?.current) return;
@@ -105,7 +113,8 @@ export function Header() {
           {modalOpen ? 'CLOSE' : 'MENU'}
         </TextLink>
 
-        {modalOpen && <Menu />}
+        <Menu />
+        {/* {modalOpen && <Menu />} */}
       </Box>
     </Box>
   );

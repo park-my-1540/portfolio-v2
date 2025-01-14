@@ -12,7 +12,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
   const { item, desc, link } = menu;
 
   return (
-    <Box className={menuItem}>
+    <Box className={`${menuItem} menu`}>
       <Box
         className={menuInner}
         responsive={{

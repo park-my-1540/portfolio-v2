@@ -1,3 +1,4 @@
+import { reverse } from 'dns';
 import gsap from 'gsap';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 type RefType = React.RefObject<HTMLDivElement>;
@@ -144,4 +145,27 @@ export const triggerHorizontalSections = (tl) => {
     ease: 'none',
   });
   return tl;
+};
+
+/**
+ * set gallery timeline
+ * @param tl - timeline
+ */
+export const triggerMenu = () => {
+  const sections = gsap.utils.toArray('.menu');
+  const tl = gsap.to(sections, {
+    transform: 'translate(0%, 0%)',
+    visibility: 'visible',
+    duration: 0.1,
+    stagger: 0.05,
+  });
+};
+export const reversetriggerMenu = () => {
+  const sections = gsap.utils.toArray('.menu');
+  const tl = gsap.to(sections, {
+    transform: 'translate(0%, -110%)',
+    visibility: 'hidden',
+    duration: 0.1,
+    stagger: 0.05,
+  });
 };
