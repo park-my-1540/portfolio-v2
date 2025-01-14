@@ -44,12 +44,8 @@ export function Header() {
   );
 
   const onClickMenu = useCallback(() => {
-    if (!modalOpen) {
-      animate.triggerMenu();
-    } else {
-      console.log('reverse');
-      animate.reversetriggerMenu();
-    }
+    modalOpen ? animate.closeMenu() : animate.openMenu();
+
     setModalOpen((prevState) => !prevState);
   }, [setModalOpen, modalOpen]);
 
@@ -112,9 +108,7 @@ export function Header() {
         >
           {modalOpen ? 'CLOSE' : 'MENU'}
         </TextLink>
-
         <Menu />
-        {/* {modalOpen && <Menu />} */}
       </Box>
     </Box>
   );

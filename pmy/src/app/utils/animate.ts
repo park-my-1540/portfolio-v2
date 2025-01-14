@@ -151,21 +151,20 @@ export const triggerHorizontalSections = (tl) => {
  * set gallery timeline
  * @param tl - timeline
  */
-export const triggerMenu = () => {
+export const openMenu = () => {
   const sections = gsap.utils.toArray('.menu');
-  const tl = gsap.to(sections, {
+  gsap.to(sections, {
     transform: 'translate(0%, 0%)',
     visibility: 'visible',
-    duration: 0.1,
-    stagger: 0.05,
+    duration: 0.3,
+    stagger: 0.02,
   });
 };
-export const reversetriggerMenu = () => {
+export const closeMenu = () => {
   const sections = gsap.utils.toArray('.menu');
-  const tl = gsap.to(sections, {
+  gsap.to(sections, {
     transform: 'translate(0%, -110%)',
-    visibility: 'hidden',
-    duration: 0.1,
-    stagger: 0.05,
+    duration: 0.3,
+    stagger: 0.02,
   });
 };
