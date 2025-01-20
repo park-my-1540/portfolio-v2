@@ -33,7 +33,25 @@
 html, body {
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
+  background-color: #1000ff;
 } 
+
+.contact{
+  width: 100%;
+  height: 75vh;
+}
+.target {
+  margin-top: 200px;
+  transform: scale(1.4, 1.2);
+}
+.targetInner {
+  background-color: #ff69b4;
+  margin: 0 auto;
+  padding: var(--padding-container);
+  border-radius: 50px;
+  width: 80vw;
+  height: 60vh;
+}
 
 
 .point{
@@ -64,4 +82,78 @@ li {
   display: list-item;
   line-height: 1.4;
   text-align: -webkit-match-parent;
+}
+
+
+:root {
+  --bg-color-hsl: 59, 3%, 94%;
+  --bg-color: hsl(var(--bg-color-hsl));
+  --bg-color-translucent: hsla(var(--bg-color-hsl), 0.95);
+  --bg-color-highlight: hsl(60, 90%, 50%);
+  --color-text: hsl(192, 14%, 20%);
+  --color-text-highlight: hsl(192, 14%, 0%);
+  --page-width: 80ch;
+  --paragraph-font-size: min(max(1.2rem, 4vw), 1.4rem);
+  --header-font-size: min(max(2rem, 8vw), 4rem);
+  --space: 2rem;
+  --padding: 8vmin;
+  --duration: 1s;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.text-highlight {
+  all: unset;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: color calc(var(--duration) / 4) var(--ease),
+    background-color calc(var(--duration) / 4) var(--ease),
+    background-size var(--duration) var(--ease);
+
+  &.active {
+    color: var(--color-text-highlight);
+    background-size: 100% 100%;
+  }
+
+  [data-highlight="background"] & {
+    background-image: linear-gradient(
+      var(--bg-color-highlight),
+      var(--bg-color-highlight)
+    );
+  }
+
+  [data-highlight="half"] & {
+    --line-size: 0.5em;
+    background-image: linear-gradient(
+      transparent calc(100% - var(--line-size)),
+      var(--bg-color-highlight) var(--line-size)
+    );
+  }
+
+  [data-highlight="underline"] & {
+    --line-size: 0.15em;
+    background-image: linear-gradient(
+      transparent calc(100% - var(--line-size)),
+      var(--color-text) var(--line-size)
+    );
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    clip-path: inset(100%);
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  &::before {
+    content: " [highlight start] ";
+  }
+
+  &::after {
+    content: " [highlight end] ";
+  }
 }

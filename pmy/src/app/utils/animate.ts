@@ -120,6 +120,32 @@ export const triggerMainSections = (tl) => {
 };
 
 /**
+ * set contact timeline
+ * @param tl - timeline
+ */
+export const triggerContactSections = (tl) => {
+  const lineEl = document.querySelector('.target') as HTMLElement;
+  const sections = document.querySelector('#project') as HTMLElement;
+  console.log(sections);
+  tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sections,
+      scroller: '#main-container', // Locomotive Scroll을 사용하는 경우 설정
+      scrub: true,
+      start: 'top top', // 트리거 시작 지점
+      end: '+=200%', // 트리거 종료 지점
+    },
+  });
+
+  tl.to(lineEl, {
+    scaleX: 0.8,
+    screenY: 0.5,
+    ease: 'none',
+  });
+  return tl;
+};
+
+/**
  * set gallery timeline
  * @param tl - timeline
  */
@@ -137,6 +163,40 @@ export const triggerHorizontalSections = (tl) => {
       pin: true,
       scrub: 0.5,
       snap: 1 / (sections.length - 1),
+    },
+  });
+
+  tl.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: 'none',
+  });
+  return tl;
+};
+/**
+ * set gallery timeline
+ * @param tl - timeline
+ */
+export const triggerHighlightsText = (tl) => {
+  const galleryEl = document.querySelector('.about') as HTMLElement;
+  const sections = gsap.utils.toArray('.text-highlight');
+
+  tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: galleryEl,
+      start: '-100px center',
+      scroller: '#main-container',
+      onEnter: () => {
+        console.log('onEnter');
+        setTimeout(() => {
+          sections.forEach((section) => section.classList.add('active'));
+        }, 200);
+      },
+      onEnterBack: () => {
+        console.log('onEnterBack');
+        setTimeout(() => {
+          sections.forEach((section) => section.classList.add('active'));
+        }, 200);
+      },
     },
   });
 

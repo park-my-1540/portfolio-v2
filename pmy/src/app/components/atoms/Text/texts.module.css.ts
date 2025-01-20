@@ -39,6 +39,9 @@ const variants = {
       fontSize: '6vw', // 70px
       lineHeight: '6vw', // 70px
     }),
+    full: style({
+      fontSize: '12vw', // 70px
+    }),
   },
   weights: {
     light: style({

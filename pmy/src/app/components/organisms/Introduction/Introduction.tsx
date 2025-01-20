@@ -13,6 +13,17 @@ export default function Introduction() {
 
           <Box className="sia">
             <Text style={{ paddingTop: 25 }} sizes="mediumlarge">
+              <div data-highlight="half">
+                <mark className="text-highlight">
+                  At the edge of forever descended from astronomers vanquish the
+                </mark>
+                At the edge of forever descended from astronomers vanquish the
+                At the edge of forever descended from astronomers vanquish the
+                <mark className="text-highlight">
+                  At the edge of forever descended from astronomers vanquish the
+                </mark>
+                edge of forever descended from astronomers vanquish the
+              </div>
               사용자들이 즐거움을 느끼며 사용하고 싶은 다이나믹한 UI를 개발하는
               것에
               <br /> 가장 즐거움을 느낍니다.

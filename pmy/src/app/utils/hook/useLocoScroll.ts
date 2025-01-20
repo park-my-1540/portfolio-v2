@@ -55,7 +55,9 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const locoScrollRef = useRef<LocomotiveScroll | null>(null);
 
   const gallery_tl = useRef<gsap.core.Timeline | null>(null);
+  const highlights_tl = useRef<gsap.core.Timeline | null>(null);
   const main_tl = useRef<gsap.core.Timeline | null>(null);
+  const contact_tl = useRef<gsap.core.Timeline | null>(null);
 
   let timer;
 
@@ -130,7 +132,9 @@ export default function useLocoScroll(start: boolean, ref: any) {
 
         // gsap timeline
         main_tl.current = animate.triggerMainSections(main_tl);
+        highlights_tl.current = animate.triggerHighlightsText(highlights_tl);
         gallery_tl.current = animate.triggerHorizontalSections(gallery_tl);
+        contact_tl.current = animate.triggerContactSections(contact_tl);
 
         clearTimeout(timer);
         timer = setTimeout(() => {
@@ -159,6 +163,14 @@ export default function useLocoScroll(start: boolean, ref: any) {
         gallery_tl.current.kill();
         gallery_tl.current = null;
       }
+      if (highlights_tl.current) {
+        highlights_tl.current.kill();
+        highlights_tl.current = null;
+      }
+      if (contact_tl.current) {
+        contact_tl.current.kill();
+        contact_tl.current = null;
+      }
       if (main_tl.current) {
         main_tl.current.kill();
         main_tl.current = null;
@@ -170,6 +182,12 @@ export default function useLocoScroll(start: boolean, ref: any) {
   useEffect(() => {
     if (gallery_tl.current && gallery_tl.current.scrollTrigger) {
       gallery_tl.current.scrollTrigger.refresh();
+    }
+    if (highlights_tl.current && highlights_tl.current.scrollTrigger) {
+      highlights_tl.current.scrollTrigger.refresh();
+    }
+    if (contact_tl.current && contact_tl.current.scrollTrigger) {
+      contact_tl.current.scrollTrigger.refresh();
     }
     if (main_tl.current && main_tl.current.scrollTrigger) {
       main_tl.current.scrollTrigger.refresh();

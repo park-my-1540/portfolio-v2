@@ -98,6 +98,8 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
       typeof value === 'number' ||
       value?.startsWith('calc') ||
       value?.endsWith('%') ||
+      value?.endsWith('vh') ||
+      value?.endsWith('vw') ||
       value?.endsWith('rem') ||
       value === undefined
     ) {
