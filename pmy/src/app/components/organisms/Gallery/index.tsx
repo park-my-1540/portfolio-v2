@@ -49,14 +49,16 @@ function GalleryItem({
           </TextTitle>
           <TextTitle
             className={style.galleryInfoSubtitle}
-            color="primary"
+            color="transparent"
             sizes="title"
+            family="roboto"
           >
             {service}
           </TextTitle>
           <Text sizes="mediumlargeX2" color="primary" family="roboto">
             {position}
           </Text>
+          <button className={style.btnDefault}>ABOUT</button>
         </Box>
         <div
           className="gallery-item-image"

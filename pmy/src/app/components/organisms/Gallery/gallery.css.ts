@@ -37,7 +37,7 @@ export const divider = style({
 
 export const galleryItemInfo = style({
   position: 'absolute',
-  bottom: '10%',
+  bottom: '5%',
   zIndex: 1,
   transform: 'translateX(-20%)',
   fontFamily: 'Roboto',
@@ -52,4 +52,11 @@ export const galleryInfoSubtitle = style({
   fontWeight: 400,
   WebkitFontSmoothing: 'antialiased',
   WebkitTextStroke: `2px ${vars.color.text.light}`,
+});
+export const btnDefault = style({
+  marginTop: '2rem',
+  padding: '0.5rem 1rem',
+  borderRadius: '1rem',
+  backgroundColor: vars.color.point,
+  fontFamily: 'MangoBold',
 });

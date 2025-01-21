@@ -25,6 +25,7 @@ export const textColor = recipe({
       accent: { color: vars.color.text.accent },
       textLighted: { color: vars.color.text.light },
       inherit: { color: 'inherit' },
+      transparent: { color: 'transparent' },
     },
   },
   defaultVariants: {
