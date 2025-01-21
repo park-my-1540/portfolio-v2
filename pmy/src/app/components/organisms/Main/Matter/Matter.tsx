@@ -68,17 +68,18 @@ const MatterMain: React.FC = () => {
     // Dropping objects
     let timer: ReturnType<typeof setTimeout>;
     const createFallingObjectsWithDelay = () => {
-      const objectCount = 10; // 생성할 객체 수
-      const delay = 200; // 각 객체 생성 간 시간차 (ms)
+      const objectCount = 15; // 생성할 객체 수
+      const delay = 100; // 각 객체 생성 간 시간차 (ms)
       const startingHeight = -100; // 객체가 생성될 초기 Y 좌표 (화면 상단 위)
       for (let i = 0; i < objectCount; i++) {
         timer = setTimeout(() => {
           if (!canvasBoxRef.current) return;
-          const randomX = Math.random() * canvasBoxRef.current?.offsetWidth; // 화면 내 무작위 위치
+          const randomX =
+            Math.random() * (canvasBoxRef.current?.offsetWidth - 500); // 화면 내 무작위 위치
           const rectangle = Matter.Bodies.circle(randomX, startingHeight, 30, {
-            density: 0.01, // 기본값은 0.001, 더 큰 값으로 설정
+            density: 0.05, // 기본값은 0.001, 더 큰 값으로 설정
             frictionAir: 0.01, // 공기 저항 유지
-            restitution: 0.1, // 반발력 설정 (충돌 후 튀는 정도)
+            restitution: 0.3, // 반발력 설정 (충돌 후 튀는 정도)
             render: {
               fillStyle: '#219B9D',
             },

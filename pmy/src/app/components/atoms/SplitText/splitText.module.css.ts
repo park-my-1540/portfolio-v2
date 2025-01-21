@@ -62,6 +62,14 @@ const variants = {
       fontFamily: 'MangoBold',
     }),
   },
+  family: {
+    roboto: style({
+      fontFamily: 'Roboto',
+    }),
+    MangoRegular: style({
+      fontFamily: 'MangoRegular',
+    }),
+  },
 };
 
 export const text = recipe({

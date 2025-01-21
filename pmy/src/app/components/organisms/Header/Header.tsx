@@ -83,7 +83,7 @@ export function Header() {
         }}
       >
         <Box display="flex" direction="row" align="center" justify="center">
-          <SplitText splitText="Mee Young" sizes="medium" />
+          <SplitText splitText="Mee Young" sizes="medium" weights="bold" />
           <Position position="absolute" left="50%">
             <button
               onMouseEnter={addPoint}

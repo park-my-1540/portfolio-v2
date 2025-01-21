@@ -44,7 +44,7 @@ function GalleryItem({
       <div></div>
       <Box width="100%" height="100%">
         <Box className={style.galleryItemInfo}>
-          <TextTitle sizes="title" color="primary">
+          <TextTitle sizes="title" color="primary" family="roboto">
             {title}
           </TextTitle>
           <TextTitle
@@ -54,7 +54,7 @@ function GalleryItem({
           >
             {service}
           </TextTitle>
-          <Text sizes="mediumlargeX2" color="primary">
+          <Text sizes="mediumlargeX2" color="primary" family="roboto">
             {position}
           </Text>
         </Box>

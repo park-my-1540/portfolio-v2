@@ -40,6 +40,7 @@ export const galleryItemInfo = style({
   bottom: '10%',
   zIndex: 1,
   transform: 'translateX(-20%)',
+  fontFamily: 'Roboto',
   color: vars.color.primary,
 });
 
@@ -47,6 +48,7 @@ export const galleryInfoSubtitle = style({
   position: 'relative',
   lineHeight: '6vw',
   color: 'transparent',
+  fontFamily: 'Roboto',
   fontWeight: 400,
   WebkitFontSmoothing: 'antialiased',
   WebkitTextStroke: `2px ${vars.color.text.light}`,

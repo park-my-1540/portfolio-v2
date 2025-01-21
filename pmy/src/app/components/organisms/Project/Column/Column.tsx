@@ -4,7 +4,12 @@ import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';
 import { GalleryProps } from '@/types/common';
-import { borderTopNone, borderTop, paddingBox } from '@/styles/style.css';
+import {
+  borderTopNone,
+  borderTop,
+  paddingBox,
+  paddingYNoneBox,
+} from '@/styles/style.css';
 import { list, columnWrap } from './column.css';
 import { useRouter } from 'next/navigation';
 export default function Column({ filtered }: { filtered: GalleryProps }) {
@@ -37,37 +42,62 @@ export default function Column({ filtered }: { filtered: GalleryProps }) {
             radius="default"
             sizes="card"
           />
-          <Text sizes="large" className={`${paddingBox} ${borderTop}`}>
+          <Text
+            sizes="large"
+            color="accent"
+            className={`${paddingBox} ${borderTop}`}
+            family="roboto"
+          >
             {title}
           </Text>
         </Box>
-        <Box className={`${paddingBox} ${borderTop}`}>
-          <Text sizes="mediumlarge" className={list}>
+        <Box className={`${paddingYNoneBox} ${borderTop}`}>
+          <Text
+            sizes="mediumlarge"
+            className={list}
+            color="accent"
+            weights="bold"
+          >
             {company}
           </Text>
-          <Text sizes="small" color="tertiary" className={list}>
+          <Text
+            sizes="smallmedium"
+            className={list}
+            color="accent"
+            weights="bold"
+          >
             Services
           </Text>
-          <Text sizes="small" className={list}>
+          <Text sizes="smallmedium" className={list} weights="bold">
             {service}
           </Text>
-          <Text sizes="small" color="tertiary" className={list}>
+          <Text
+            sizes="smallmedium"
+            className={list}
+            color="accent"
+            weights="bold"
+          >
             Duration
           </Text>
-          <Text sizes="small" className={list}>
+          <Text sizes="smallmedium" className={list} weights="bold">
             {duration}
           </Text>
-          <Text sizes="small" color="tertiary" className={list}>
+          <Text
+            sizes="smallmedium"
+            className={list}
+            color="accent"
+            weights="bold"
+          >
             Position
           </Text>
-          <Text sizes="small" className={list}>
+          <Text sizes="smallmedium" className={list} weights="bold">
             {position}
           </Text>
         </Box>
       </Box>
 
       <Box
-        className={`${paddingBox}`}
+        className={`${paddingYNoneBox}`}
         responsive={{
           display: {
             desktop: 'block',

@@ -57,6 +57,14 @@ const variants = {
       fontFamily: 'MangoBold',
     }),
   },
+  family: {
+    roboto: style({
+      fontFamily: 'Roboto',
+    }),
+    MangoRegular: style({
+      fontFamily: 'MangoRegular',
+    }),
+  },
   display: {
     inlineBlock: style({
       display: 'inline-block',

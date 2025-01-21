@@ -11,16 +11,15 @@ export const header = style({
 
 export const inner = style({
   position: 'relative',
-  border: '1px solid',
+  borderTop: '2px solid',
   zIndex: 99,
-  backgroundColor: vars.color.primary,
 });
 
 export const changeCircle = style({
   display: 'inline-block',
   width: 30,
   height: 30,
-  border: `1px solid ${vars.color.complementary}`,
+  border: `2px solid ${vars.color.complementary}`,
   borderRadius: '50%',
 });
 
@@ -37,7 +36,6 @@ export const menuBtn = style({
   right: 0,
   height: '100%',
   padding: '0 1.6rem',
-  borderLeft: `1px solid ${vars.color.complementary}`,
   selectors: {
     '&:hover': {
       background: vars.color.complementary,
@@ -47,5 +45,6 @@ export const menuBtn = style({
 });
 
 export const sub = style({
+  border: '2px solid',
   background: vars.color.light,
 });

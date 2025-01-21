@@ -3,16 +3,16 @@ import { vars } from '@/styles/common/createThemeContract.css';
 
 // border - style
 export const borderTopNone = style({
-  border: '1px solid',
+  border: '2px solid',
   borderTop: 'none',
 });
 
 export const borderBox = style({
-  border: '1px solid',
+  border: '2px solid',
 });
 
 export const borderTop = style({
-  borderTop: '1px solid',
+  borderTop: '2px solid',
 });
 
 // layout
@@ -26,6 +26,9 @@ export const pageInner = style({
 
 export const paddingBox = style({
   padding: 'var(--padding-container)',
+});
+export const paddingYNoneBox = style({
+  padding: '0 var(--padding-container)',
 });
 
 export const scrollbar = style({

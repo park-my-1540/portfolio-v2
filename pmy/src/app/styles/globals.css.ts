@@ -11,20 +11,20 @@ import * as layers from './layers.css';
 globalFontFace('MangoLight', {
   fontWeight: 400,
   fontStyle: 'normal',
-  src: 'url("/fonts/MangoDdobak-L(ttf).ttf") format("truetype")',
+  src: 'url("/fonts/Pretendard-Light.otf") format("truetype")',
 });
 
 // Regular 폰트 설정
 globalFontFace('MangoRegular', {
   fontWeight: 700,
   fontStyle: 'normal',
-  src: 'url("/fonts/MangoDdobak-R(ttf).ttf") format("truetype")',
+  src: 'url("/fonts/Pretendard-Regular.otf") format("truetype")',
 });
 // Bold 폰트 설정
 globalFontFace('MangoBold', {
   fontWeight: 700,
   fontStyle: 'normal',
-  src: 'url("/fonts/MangoDdobak-B(ttf).ttf") format("truetype")',
+  src: 'url("/fonts/Pretendard-Bold.otf") format("truetype")',
 });
 
 globalStyle('#__next', {

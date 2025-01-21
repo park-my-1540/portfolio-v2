@@ -3,7 +3,7 @@ import { vars } from '@/styles/common/createThemeContract.css';
 
 export const list = style({
   padding: '.6rem 0 .4rem',
-  borderBottom: `1px solid ${vars.color.border.muted}`,
+  borderBottom: `1px solid ${vars.color.complementary}`,
 });
 
 export const columnWrap = style({
