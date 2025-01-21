@@ -1,4 +1,3 @@
-import { reverse } from 'dns';
 import gsap from 'gsap';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 type RefType = React.RefObject<HTMLDivElement>;
@@ -89,7 +88,7 @@ export const scaleOnScroll = (lineRef: RefType, triggerRef: RefType) => {
 };
 
 /**
- * set gallery timeline
+ * set main timeline
  * @param tl - timeline
  */
 export const triggerMainSections = (tl) => {
@@ -172,43 +171,78 @@ export const triggerHorizontalSections = (tl) => {
   });
   return tl;
 };
+
 /**
- * set gallery timeline
+ * @param tl - timeline
+ */
+// export const triggerHighlightsText = (tl) => {
+//   const galleryEl = document.querySelector('.about') as HTMLElement;
+//   const sections = gsap.utils.toArray('.text-highlight');
+
+//   tl = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: galleryEl,
+//       start: '-100px center',
+//       scroller: '#main-container',
+//       onEnter: () => {
+//         console.log('onEnter');
+//         setTimeout(() => {
+//           sections.forEach((section) => section.classList.add('active'));
+//         }, 200);
+//       },
+//       onEnterBack: () => {
+//         console.log('onEnterBack');
+//         setTimeout(() => {
+//           sections.forEach((section) => section.classList.add('active'));
+//         }, 200);
+//       },
+//     },
+//   });
+
+//   tl.to(sections, {
+//     xPercent: -100 * (sections.length - 1),
+//     ease: 'none',
+//   });
+//   return tl;
+// };
+
+/**
+ * word에 대해 개별적인 애니메이션 설정.
+ * 스크롤에 따라 색상이 변경되고 지나오면 다시 투명해지도록
  * @param tl - timeline
  */
 export const triggerHighlightsText = (tl) => {
-  const galleryEl = document.querySelector('.about') as HTMLElement;
-  const sections = gsap.utils.toArray('.text-highlight');
+  const spans = gsap.utils.toArray('.word');
 
-  tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: galleryEl,
-      start: '-100px center',
-      scroller: '#main-container',
-      onEnter: () => {
-        console.log('onEnter');
-        setTimeout(() => {
-          sections.forEach((section) => section.classList.add('active'));
-        }, 200);
+  spans.forEach((span, index) => {
+    // 개별적인 타임라인 생성.
+    tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: span, // span에 트리거
+        scroller: '#main-container',
+        start: 'top 100%', // span이 뷰포트에 진입하면 시작
+        end: 'bottom 20%', // span이 뷰포트를 벗어나면 종료
+        scrub: true, // 스크롤 애니메이션을 부드럽게 처리
       },
-      onEnterBack: () => {
-        console.log('onEnterBack');
-        setTimeout(() => {
-          sections.forEach((section) => section.classList.add('active'));
-        }, 200);
-      },
-    },
+    });
+
+    // span이 뷰포트에 들어오면 색상이 변경되었다가 점점 투명해지는 애니메이션
+    tl.to(span, {
+      color: '#C4D9FF', // 활성화 색상
+      duration: 0.5,
+      delay: index * 0.1, // 단어별 순차적 딜레이
+    }).to(span, {
+      color: '#C4D9FF50', // 비활성화 색상 (반투명)
+      duration: 0.5,
+      delay: 0.5, // 활성화 후 잠시 대기
+    });
   });
 
-  tl.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: 'none',
-  });
   return tl;
 };
 
 /**
- * set gallery timeline
+ * menu open/close timeline
  * @param tl - timeline
  */
 export const openMenu = () => {

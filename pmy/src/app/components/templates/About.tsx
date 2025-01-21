@@ -7,34 +7,19 @@ import Introduction from '@/components/organisms/Introduction/Introduction';
 import Line from '@/components/atoms/line';
 
 export default function About() {
-  const lineRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
-  let timer: ReturnType<typeof setTimeout>;
-  useEffect(() => {
-    // This does not seem to work without a settimeout
-    // timer = setTimeout(() => {
-    //   animate.scaleOnScroll(lineRef, triggerRef);
-    // });
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   return (
-    <section
-      className="panel color-light about"
-      id="about"
-      data-scroll-section
-      ref={triggerRef}
-    >
-      <div>
-        <Line className="line-2" ref={lineRef} />
-        <Box display="flex">
-          <Box display="flex" direction="column">
-            <Introduction />
-          </Box>
-        </Box>
-      </div>
+    <section className="panel" id="about" data-scroll-section>
+      <Box
+        display="flex"
+        direction="column"
+        justify="center"
+        align="center"
+        borderTop="1px solid"
+        marginTop={150}
+        paddingTop={50}
+      >
+        <Introduction />
+      </Box>
     </section>
   );
 }
