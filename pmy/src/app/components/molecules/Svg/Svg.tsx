@@ -4,7 +4,7 @@ export default function Svg({
 }: {
   titleRef: React.RefObject<SVGSVGElement>;
 }) {
-  const test = vars.color.complementary;
+  const test = vars.color.point;
   return (
     <>
       <svg

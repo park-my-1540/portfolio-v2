@@ -13,7 +13,7 @@ export const inner = style({
   position: 'relative',
   border: '1px solid',
   zIndex: 99,
-  backgroundColor: 'white',
+  backgroundColor: vars.color.primary,
 });
 
 export const changeCircle = style({
@@ -44,4 +44,8 @@ export const menuBtn = style({
       color: vars.color.primary,
     },
   },
+});
+
+export const sub = style({
+  background: vars.color.light,
 });

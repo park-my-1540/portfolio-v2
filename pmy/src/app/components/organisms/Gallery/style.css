@@ -15,6 +15,7 @@
 .gallery .gallery-item-image {
     background-size: cover;
     background-position: 50%;
+    border-radius: 50px;
     -webkit-transform-origin: center;
     transform-origin: center;
     width: 100%;

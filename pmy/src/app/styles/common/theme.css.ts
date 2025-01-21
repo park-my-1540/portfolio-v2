@@ -22,7 +22,7 @@ export const textColor = recipe({
     color: {
       primary: { color: vars.color.text.primary }, // 옅은 색상
       tertiary: { color: vars.color.text.tertiary }, // 옅은 색상
-      accent: { color: vars.color.highlight.accent },
+      accent: { color: vars.color.text.accent },
       textLighted: { color: vars.color.text.light },
       inherit: { color: 'inherit' },
     },

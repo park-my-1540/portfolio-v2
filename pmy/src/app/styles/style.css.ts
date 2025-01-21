@@ -48,13 +48,14 @@ export const scrollbar = style({
 export const project = style({
   height: '100vh',
   overflowY: 'scroll',
+  backgroundColor: vars.color.light,
   selectors: {
     '&::before': {
       content: '',
       display: 'block',
       width: 'calc(100% - 5px)',
       height: 40,
-      background: vars.color.primary,
+      background: vars.color.light,
       position: 'absolute',
       top: 0,
     },

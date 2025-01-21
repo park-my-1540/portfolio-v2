@@ -1,10 +1,13 @@
 import { defineProperties } from '@vanilla-extract/sprinkles';
 
 export const colors = {
-  blue: '#3a5dae',
+  blue: '#1000ff',
+  lightblue: '#5D8EFF',
+  lightblue02: 'rgb(196, 217, 255)',
+  lightblue03: '#dbe5ff',
   indigo: '#6610f2',
   purple: '#6f42c1',
-  pink: '#e83e8c',
+  pink: '#ff69b4',
   red: '#bf412e',
   orange: '#fd7e14',
   yellow: '#ffc107',

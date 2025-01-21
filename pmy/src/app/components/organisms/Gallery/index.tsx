@@ -44,11 +44,19 @@ function GalleryItem({
       <div></div>
       <Box width="100%" height="100%">
         <Box className={style.galleryItemInfo}>
-          <TextTitle sizes="title">{title}</TextTitle>
-          <TextTitle className={style.galleryInfoSubtitle} sizes="title">
+          <TextTitle sizes="title" color="primary">
+            {title}
+          </TextTitle>
+          <TextTitle
+            className={style.galleryInfoSubtitle}
+            color="primary"
+            sizes="title"
+          >
             {service}
           </TextTitle>
-          <Text sizes="mediumlargeX2">{position}</Text>
+          <Text sizes="mediumlargeX2" color="primary">
+            {position}
+          </Text>
         </Box>
         <div
           className="gallery-item-image"

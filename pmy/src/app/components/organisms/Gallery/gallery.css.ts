@@ -3,7 +3,6 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 
 export const galleryWrap = style({
-  backgroundColor: '#d53f41',
   marginLeft: '-5vw',
   marginRight: '-5vw',
 });

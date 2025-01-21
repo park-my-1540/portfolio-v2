@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useEffect } from 'react';
 import { LocalStorageService } from '@/utils/service/localStorageService';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
-import { header, inner, changeCircle, dark, menuBtn } from './header.css';
+import { header, inner, changeCircle, dark, menuBtn, sub } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
 import { useSetAtom, useAtomValue, useAtom } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
@@ -53,13 +53,12 @@ export function Header() {
     if (!headerRef?.current) return;
 
     const method = pathname?.includes('project') ? 'add' : 'remove';
-    headerRef.current.classList[method]('sub');
+    headerRef.current.classList[method](sub);
   }, [pathname]);
 
   return (
     <Box
       className={header}
-      ref={headerRef}
       responsive={{
         padding: {
           desktop: 'large',
@@ -69,6 +68,7 @@ export function Header() {
       }}
     >
       <Box
+        ref={headerRef}
         className={`${inner} inner`}
         display="flex"
         direction="row"
