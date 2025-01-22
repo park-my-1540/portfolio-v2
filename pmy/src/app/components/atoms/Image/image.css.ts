@@ -45,6 +45,9 @@ const variants = {
     circle: style({
       borderRadius: '50%',
     }),
+    round: style({
+      borderRadius: '11px',
+    }),
   },
 };
 

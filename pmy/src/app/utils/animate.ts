@@ -262,3 +262,23 @@ export const closeMenu = () => {
     stagger: 0.02,
   });
 };
+
+/**
+ * menu open/close timeline
+ * @param tl - timeline
+ */
+export const openToggle = (ref) => {
+  gsap.to(ref.current, {
+    transform: 'translate(0%, 0%)',
+    visibility: 'visible',
+    duration: 0.3,
+    stagger: 0.02,
+  });
+};
+export const closeToggle = (ref) => {
+  gsap.to(ref.current, {
+    transform: 'translate(-102%, 0%)',
+    duration: 0.3,
+    stagger: 0.02,
+  });
+};

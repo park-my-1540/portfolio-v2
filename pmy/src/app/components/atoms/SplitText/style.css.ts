@@ -42,12 +42,10 @@ export const sameType = style({
     '&:nth-child(1)': {
       transform: 'translateY(0)',
       opacity: 1,
-      // fontFamily: 'Roboto',
     },
     '&:nth-child(2)': {
       transform: 'translateY(-100%)',
       opacity: 0,
-      // fontFamily: 'Roboto',
     },
   },
 });
