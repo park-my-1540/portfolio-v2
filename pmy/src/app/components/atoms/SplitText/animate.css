@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap");
 
+*,:after,:before {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
+
 .txt .char {
   display: inline-block;
   transform-origin: 50% 50% 0.4em;
@@ -39,4 +51,72 @@
 
 .link:hover .txt:nth-child(2) .char {
   transform: rotate3d(0, 0, 0, 90deg);
+}
+
+.same .word .char {
+  position: relative;
+  transition-delay: calc(0.017s *var(--char-index));
+  transition-duration: .4s;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-timing-function: cubic-bezier(0,0,.2,1)
+}
+
+.same:hover .char {
+  --tw-translate-y:100%;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+.same:hover .char::before {
+  visibility: visible;
+}
+
+.same .word {
+  overflow: hidden
+}
+
+.same .word .char:before {
+  content: attr(data-char);
+  left: 0;
+  position: absolute;
+  top: -100%
+}
+
+.link {
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  min-width: 100px;
+  color: var(--color-complementary); /* vars.color.complementary */
+  /* fontStyle: 'italic'; */
+}
+
+.txt,.sameType {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.txt:nth-child(1) {
+  transform: translateY(0);
+  opacity: 1;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.txt:nth-child(2) {
+  transform: translateY(-100%);
+  opacity: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.sameType:nth-child(1) {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sameType:nth-child(2) {
+  transform: translateY(-100%);
+  opacity: 0;
 }

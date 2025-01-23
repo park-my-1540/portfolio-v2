@@ -1,4 +1,3 @@
-import { link, txt, sameType } from './style.css';
 import './animate.css';
 import cn from 'classnames';
 import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
@@ -18,42 +17,31 @@ export const SplitText = ({
   bgColor,
   weights,
   url,
-  type,
+  type = 'txt',
   onClick,
 }: SplitTextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
-  const className = type === 'same' ? sameType : txt;
   const linkUrl = url ? url : 'javascript:void(0)';
   return (
-    <a
-      href={linkUrl}
-      className={`${link} link ${text({ sizes })}`}
-      onClick={onClick}
-    >
+    <a href={linkUrl} className={text({ sizes })} onClick={onClick}>
+      {type !== 'same' && (
+        <p
+          className={cn(
+            type,
+            text({ sizes, weights }),
+            textColor({ color, bgColor }),
+          )}
+          data-splitting="chars"
+        >
+          {splitText}
+        </p>
+      )}
       <p
         className={cn(
-          'txt',
-          className,
-          text({
-            sizes,
-            weights,
-          }),
+          type,
+          text({ sizes, weights }),
           textColor({ color, bgColor }),
         )}
-        data-splitting
-      >
-        {splitText}
-      </p>
-      <p
-        className={cn(
-          'txt',
-          className,
-          text({
-            sizes,
-            weights,
-          }),
-          textColor({ color, bgColor }),
-        )}
-        data-splitting
+        data-splitting="chars"
       >
         {splitText}
       </p>

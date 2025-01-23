@@ -17,8 +17,7 @@ const variants = {
     }),
     smallmedium: style({
       fontSize: '0.875rem',
-      height: '1.375rem',
-      lineHeight: '1.375rem',
+      height: '1rem',
     }),
     medium: style({
       fontSize: '1rem',
