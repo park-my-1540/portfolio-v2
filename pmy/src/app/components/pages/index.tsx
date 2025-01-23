@@ -11,6 +11,7 @@ import gsap from 'gsap';
 import useLocoScroll from '@/utils/hook/useLocoScroll';
 import { useSetAtom } from 'jotai';
 import { galleryListState } from '@/jotai/galleryListAtom';
+import { vars } from '@/styles/common/createThemeContract.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,8 +40,14 @@ export default function Home({ list }: { list: GalleryProps[] }) {
         <MainPage />
         <AboutPage />
         <ProjectsPage />
-        <ContactPage />
+        <section className="panel" id="forScrollGsap" data-scroll-section>
+          <Box height={300}></Box>
+        </section>
       </Box>
+      <ContactPage />
+      <footer data-scroll-section>
+        <Box height={100} backgroundColor={vars.color.point}></Box>
+      </footer>
     </div>
   );
 }

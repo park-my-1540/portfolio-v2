@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 
 // border - style
@@ -73,4 +73,65 @@ export const dim = style({
   background: 'rgb(13 13 13)',
   opacity: 0.7,
   zIndex: 99,
+});
+
+// button
+export const bgBtn = style({
+  padding: '0.3rem 0.7rem',
+  borderRadius: '.9rem',
+});
+
+//icon
+export const iconArrow = style({
+  display: 'inline-block',
+  width: '1.3rem',
+  height: '1.3rem',
+  position: 'relative',
+  top: 12,
+  left: 10,
+  borderLeft: `2px solid ${vars.color.text.accent}`,
+  transform: 'rotate(45deg)',
+  transition:
+    'all 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s cubic-bezier(0.5, 0, 0, 1)',
+  selectors: {
+    '&::before': {
+      content: '',
+      display: 'block',
+      width: 'calc(100% - 7px)',
+      height: 2,
+      position: 'absolute',
+      top: 3,
+      left: -3,
+      transform: 'rotate(45deg)',
+      background: vars.color.text.accent,
+    },
+    '&::after': {
+      content: '',
+      display: 'block',
+      width: 'calc(100% - 7px)',
+      height: 2,
+      position: 'absolute',
+      top: 3,
+      left: -11,
+      transform: 'rotate(-45deg)',
+      background: vars.color.text.accent,
+    },
+  },
+});
+
+export const arrowLink = style({
+  display: 'flex',
+  position: 'relative',
+  paddingRight: '3rem',
+  selectors: {
+    '&:hover': {
+      color: vars.color.light,
+    },
+  },
+});
+
+globalStyle(`${arrowLink}:hover ${iconArrow}`, {
+  color: vars.color.light,
+  top: 3,
+  left: 13,
 });

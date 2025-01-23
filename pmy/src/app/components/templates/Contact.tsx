@@ -2,48 +2,61 @@
 
 import Box from '@/components/layouts/Box/Box';
 import { SplitText } from '@/components/atoms/SplitText';
-import { Text, TextTitle } from '@/components/atoms/Text/Text';
-import { borderTop, borderBox } from '@/styles/style.css';
+import { Text, TextLink } from '@/components/atoms/Text/Text';
+import { arrowLink, iconArrow, bgBtn } from '@/styles/style.css';
 import { vars } from '@/styles/common/createThemeContract.css';
 export default function Contact() {
   return (
-    <section className="panel contact" id="contact" data-scroll-section>
-      <Box
-        className="target"
-        marginTop={200}
-        style={{ transform: 'scale(1.4, 1.2)' }}
-      >
+    <section className="panel" id="contact" data-scroll-section>
+      <Box>
         <Box
+          className="target"
           display="flex"
           direction="column"
-          justify="center"
+          justify="around"
           align="center"
           marginLeft="auto"
           marginRight="auto"
           padding="var(--padding-container)"
-          borderRadius="50px"
-          width="80vw"
-          height="60vh"
+          borderRadius="60px"
+          width="100vw"
+          height="70vh"
           backgroundColor={vars.color.point}
         >
-          <Text sizes="large" color="accent">
+          <Text
+            sizes="mediumlarge"
+            color="point"
+            weights="bold"
+            bgColor="accent"
+            className={bgBtn}
+          >
+            CONTACT
+          </Text>
+          <Text
+            sizes="largeX3"
+            color="accent"
+            weights="bold"
+            decoration="underline"
+          >
             parkmy722698@gmail.com
           </Text>
-          <Box display="flex" direction="row" marginTop={50}>
-            <SplitText
-              type="same"
-              splitText="GIT"
-              sizes="medium"
-              weights="light"
-              url="URL"
-            />
-            <SplitText
-              type="same"
-              splitText="NOTION"
-              sizes="medium"
-              weights="light"
-              url="URL"
-            />
+          <Box display="flex" direction="row">
+            <TextLink
+              sizes="mediumlarge"
+              onClick=""
+              color="accent"
+              className={arrowLink}
+            >
+              GIT <span className={iconArrow}></span>
+            </TextLink>
+            <TextLink
+              sizes="mediumlarge"
+              onClick=""
+              color="accent"
+              className={arrowLink}
+            >
+              NOTION <span className={iconArrow}></span>
+            </TextLink>
           </Box>
         </Box>
       </Box>

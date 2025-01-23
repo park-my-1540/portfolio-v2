@@ -123,9 +123,9 @@ export const triggerMainSections = (tl) => {
  * @param tl - timeline
  */
 export const triggerContactSections = (tl) => {
-  const lineEl = document.querySelector('.target') as HTMLElement;
-  const sections = document.querySelector('#project') as HTMLElement;
-  console.log(sections);
+  const el = document.querySelector('.target') as HTMLElement;
+  const sections = document.querySelector('#forScrollGsap') as HTMLElement;
+
   tl = gsap.timeline({
     scrollTrigger: {
       trigger: sections,
@@ -136,8 +136,8 @@ export const triggerContactSections = (tl) => {
     },
   });
 
-  tl.to(lineEl, {
-    scaleX: 0.8,
+  tl.to(el, {
+    scaleX: 0.5,
     screenY: 0.5,
     ease: 'none',
   });
