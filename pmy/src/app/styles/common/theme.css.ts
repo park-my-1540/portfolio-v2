@@ -24,8 +24,17 @@ export const textColor = recipe({
       tertiary: { color: vars.color.text.tertiary }, // 옅은 색상
       accent: { color: vars.color.text.accent },
       textLighted: { color: vars.color.text.light },
+      point: { color: vars.color.point },
       inherit: { color: 'inherit' },
       transparent: { color: 'transparent' },
+    },
+    bgColor: {
+      primary: { backgroundColor: vars.color.text.primary }, // 옅은 색상
+      tertiary: { backgroundColor: vars.color.text.tertiary }, // 옅은 색상
+      accent: { backgroundColor: vars.color.text.accent },
+      textLighted: { backgroundColor: vars.color.text.light },
+      inherit: { backgroundColor: 'inherit' },
+      transparent: { backgroundColor: 'transparent' },
     },
   },
   defaultVariants: {

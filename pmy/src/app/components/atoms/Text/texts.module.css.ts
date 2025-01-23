@@ -31,6 +31,9 @@ const variants = {
     largeX2: style({
       fontSize: '2.5rem', // 40px
     }),
+    largeX3: style({
+      fontSize: '3.5rem', // 40px
+    }),
     big: style({
       fontSize: '4.375rem', // 70px
       lineHeight: '4.375rem', // 70px
@@ -41,6 +44,7 @@ const variants = {
     }),
     full: style({
       fontSize: '12vw', // 70px
+      letterSpacing: '-.6rem',
     }),
   },
   weights: {
@@ -85,6 +89,11 @@ const variants = {
       color: 'transparent !important',
       WebkitFontSmoothing: 'antialiased',
       WebkitTextStroke: `2px ${vars.color.complementary}`,
+    }),
+  },
+  decoration: {
+    underline: style({
+      textDecoration: 'underline',
     }),
   },
 };

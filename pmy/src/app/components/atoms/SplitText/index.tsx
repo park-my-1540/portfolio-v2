@@ -1,7 +1,7 @@
 import { link, txt, sameType } from './style.css';
 import './animate.css';
 import cn from 'classnames';
-
+import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
 import { text, TextVariantProps } from './splitText.module.css';
 
 type SplitTextProps = {
@@ -14,12 +14,14 @@ type SplitTextProps = {
 export const SplitText = ({
   splitText,
   sizes,
+  color,
+  bgColor,
   weights,
   url,
   type,
   onClick,
-}: SplitTextProps & Partial<TextVariantProps>) => {
-  const clsname = type === 'same' ? sameType : txt;
+}: SplitTextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
+  const className = type === 'same' ? sameType : txt;
   const linkUrl = url ? url : 'javascript:void(0)';
   return (
     <a
@@ -28,13 +30,29 @@ export const SplitText = ({
       onClick={onClick}
     >
       <p
-        className={cn('txt', clsname, text({ sizes, weights }))}
+        className={cn(
+          'txt',
+          className,
+          text({
+            sizes,
+            weights,
+          }),
+          textColor({ color, bgColor }),
+        )}
         data-splitting
       >
         {splitText}
       </p>
       <p
-        className={cn('txt', clsname, text({ sizes, weights }))}
+        className={cn(
+          'txt',
+          className,
+          text({
+            sizes,
+            weights,
+          }),
+          textColor({ color, bgColor }),
+        )}
         data-splitting
       >
         {splitText}

@@ -5,7 +5,7 @@ import { vars } from '@/styles/common/createThemeContract.css';
 const base = {
   margin: '0',
   lineHeight: '1.2',
-  color: vars.color.complementary,
+  // color: vars.color.complementary,
 };
 
 const variants = {

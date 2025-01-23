@@ -21,7 +21,9 @@ export const Text = ({
   sizes = 'medium',
   weights = 'normal',
   vertical,
+  decoration,
   textAlign,
+  bgColor,
   family,
   display,
   stroke,
@@ -37,8 +39,17 @@ export const Text = ({
       ref={ref}
       className={cn(
         className,
-        text({ sizes, weights, display, vertical, textAlign, stroke, family }),
-        textColor({ color }),
+        text({
+          sizes,
+          weights,
+          display,
+          vertical,
+          textAlign,
+          stroke,
+          family,
+          decoration,
+        }),
+        textColor({ color, bgColor }),
       )}
     >
       {children}
@@ -52,6 +63,8 @@ export const TextTitle = ({
   vertical,
   textAlign,
   family,
+  bgColor,
+  decoration,
   display,
   stroke,
   color,
@@ -66,8 +79,17 @@ export const TextTitle = ({
       ref={ref}
       className={cn(
         className,
-        text({ sizes, weights, display, vertical, textAlign, stroke, family }),
-        textColor({ color }),
+        text({
+          sizes,
+          weights,
+          display,
+          vertical,
+          textAlign,
+          stroke,
+          family,
+          decoration,
+        }),
+        textColor({ color, bgColor }),
       )}
     >
       {children}
