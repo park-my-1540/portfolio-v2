@@ -7,6 +7,7 @@ import { SplitText } from '@/components/atoms/SplitText';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useAtomValue } from 'jotai';
 import { viewState } from '@/jotai/viewAtom';
+import { borderTop } from '@/styles/style.css';
 
 function MenuItem({ menu, moveToSectionPosition }) {
   const { item, desc, link } = menu;
@@ -24,7 +25,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
         }}
       >
         {desc && (
-          <Text sizes="small" weights="light">
+          <Text sizes="smallmedium" weights="light">
             {desc}
           </Text>
         )}
@@ -34,7 +35,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
               key={index}
               type="same"
               splitText={item.item}
-              sizes="small"
+              sizes="smallmedium"
               weights="light"
               url={item.url}
             />
@@ -42,7 +43,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
       </Box>
       <Box
         height="5rem"
-        borderTop="1px solid"
+        className={borderTop}
         responsive={{
           padding: {
             desktop: 'large',
@@ -52,6 +53,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
         }}
       >
         <SplitText
+          color="tertiary"
           type="same"
           splitText={item}
           sizes="large"

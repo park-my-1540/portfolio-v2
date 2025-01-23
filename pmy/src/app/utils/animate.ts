@@ -212,7 +212,8 @@ export const triggerHorizontalSections = (tl) => {
  * @param tl - timeline
  */
 export const triggerHighlightsText = (tl) => {
-  const spans = gsap.utils.toArray('.word');
+  const desc = document.querySelector('.desc') as HTMLElement;
+  const spans = gsap.utils.toArray('.word', desc);
 
   spans.forEach((span, index) => {
     // 개별적인 타임라인 생성.
