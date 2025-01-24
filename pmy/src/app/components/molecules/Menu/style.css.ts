@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 export const wrapper = style({
+  display: 'none',
   overflow: 'hidden',
   position: 'absolute',
   top: 'calc(12px + 1.6rem + 2.85rem)',

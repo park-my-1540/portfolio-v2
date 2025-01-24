@@ -247,8 +247,11 @@ export const triggerHighlightsText = (tl) => {
  * @param tl - timeline
  */
 export const openMenu = () => {
-  const sections = gsap.utils.toArray('.menu');
-  gsap.to(sections, {
+  const el = gsap.utils.toArray('.menu');
+  const wrap = document.querySelector('.menuWrap') as HTMLElement;
+
+  wrap.style.display = 'flex';
+  gsap.to(el, {
     transform: 'translate(0%, 0%)',
     visibility: 'visible',
     duration: 0.3,
@@ -256,9 +259,16 @@ export const openMenu = () => {
   });
 };
 export const closeMenu = () => {
-  const sections = gsap.utils.toArray('.menu');
-  gsap.to(sections, {
+  const wrap = document.querySelector('.menuWrap') as HTMLElement;
+  const el = gsap.utils.toArray('.menu');
+
+  gsap.to(el, {
     transform: 'translate(0%, -110%)',
+    duration: 0.3,
+    stagger: 0.02,
+  });
+  gsap.to(wrap, {
+    display: 'none',
     duration: 0.3,
     stagger: 0.02,
   });

@@ -127,8 +127,7 @@ export default function Menu() {
 
   return (
     <Box
-      className={wrapper}
-      display="flex"
+      className={`menuWrap ${wrapper}`}
       gap="small"
       responsive={{
         flexDirection: {

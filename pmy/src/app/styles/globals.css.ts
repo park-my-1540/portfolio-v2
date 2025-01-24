@@ -44,7 +44,7 @@ globalStyle('body, html', {
     [layers.reset]: {
       height: '100%',
       fontFamily: 'MangoRegular',
-      overflowY: 'hidden',
+      // overflowY: 'hidden',
       // cursor: 'none',
     },
   },
