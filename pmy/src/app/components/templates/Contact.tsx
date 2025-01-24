@@ -17,7 +17,6 @@ export default function Contact() {
           align="center"
           marginLeft="auto"
           marginRight="auto"
-          padding="var(--padding-container)"
           borderRadius="60px"
           width="100vw"
           height="70vh"
@@ -37,6 +36,7 @@ export default function Contact() {
             color="accent"
             weights="bold"
             decoration="underline"
+            style={{ padding: '0 3rem' }}
           >
             parkmy722698@gmail.com
           </Text>
