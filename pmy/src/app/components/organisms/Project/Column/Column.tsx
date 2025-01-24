@@ -3,7 +3,7 @@ import Box from '@/components/layouts/Box/Box';
 import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';
-import { GalleryProps } from '@/types/common';
+import { Filtered } from '@/types/common';
 import {
   borderTopNone,
   borderTop,
@@ -12,7 +12,7 @@ import {
 } from '@/styles/style.css';
 import { list, columnWrap } from './column.css';
 import { useRouter } from 'next/navigation';
-export default function Column({ filtered }: { filtered: GalleryProps }) {
+export default function Column({ filtered }: { filtered: Filtered[] }) {
   const router = useRouter();
   const { duration, img, position, service, title, company } = filtered[0];
   return (

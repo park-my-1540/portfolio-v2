@@ -5,12 +5,11 @@ import Main from '@/components/organisms/Project/Main/Main';
 import Column from '@/components/organisms/Project/Column/Column';
 import Lenis from '@studio-freight/lenis';
 import { scrollbar } from '@/styles/style.css';
-import { pageListProps } from '@/types/common';
+import { NotionRes } from '@/types/common';
 import { pageContainer, project } from '@/styles/style.css';
 
-export default function Project({ list }: pageListProps) {
+export default function Project({ list }: { list: NotionRes }) {
   const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -55,8 +54,8 @@ export default function Project({ list }: pageListProps) {
           gridColumnGap: 'medium',
         }}
       >
-        <Column filtered={list[0].filtered} />
-        <Main blocks={list[0].blocks} />
+        <Column filtered={list.filtered} />
+        <Main blocks={list.pageWithBlocks} />
       </Box>
     </div>
   );

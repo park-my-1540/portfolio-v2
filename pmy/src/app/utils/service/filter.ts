@@ -1,5 +1,5 @@
 import { borderTopNone, borderTop, paddingBox } from '@/styles/style.css';
-import { Blocks, BlockCollections } from '@/types/common';
+import { PageWithBlocks, BlockCollections } from '@/types/common';
 
 // 이미지 렌더링 함수
 const renderImages = (images: string[]) => {
@@ -8,7 +8,7 @@ const renderImages = (images: string[]) => {
     : `<Box width="100%" height="500px"><Image url="${images}" radius="default" sizes="full"/></Box>`;
 };
 
-export default function renderContent(blocksData: Blocks[]) {
+export default function renderContent(blocksData: PageWithBlocks) {
   const block: BlockCollections = {
     rendered: [],
     text: [],
@@ -24,9 +24,8 @@ export default function renderContent(blocksData: Blocks[]) {
   let olFlag = false;
   let ulFlag = false;
 
-  blocksData.forEach((blk) => {
+  blocksData.blocks.forEach((blk) => {
     const { type, content, id } = blk;
-
     switch (type) {
       case 'heading_3':
         block.text.push(`<TextTitle key={blk.id}>${content}</TextTitle>`);

@@ -135,11 +135,10 @@ export async function getPageWithBlocks(pageId: DatabaseKey) {
     const pageWithBlocks = await Promise.all(
       page.map(async (item) => {
         const blocks = await getPageBlocks(item.id);
-        return { ...item, blocks, filtered };
+        return { blocks };
       }),
     );
-
-    return pageWithBlocks;
+    return { pageWithBlocks, filtered };
   } catch (error) {
     console.error('Error fetching page with blocks:', error);
     return [];

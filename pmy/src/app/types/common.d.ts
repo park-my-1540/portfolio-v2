@@ -43,18 +43,39 @@ interface GalleryItemProps extends GalleryProps {
   updateActiveImage: (index: number) => void;
 }
 
-type BlockType =
-  | 'image'
-  | 'heading_3'
-  | 'paragraph'
-  | 'bulleted_list_item'
-  | 'numbered_list_item';
+///////
+interface NotionRes {
+  pageWithBlocks: PageWithBlocks[];
+  filtered: Filtered[];
+}
+
+interface PageWithBlocks {
+  blocks: Blocks[];
+}
 
 interface Blocks {
   id: string;
   type: BlockType;
   content: string;
 }
+
+interface Filtered {
+  company: string;
+  duration: string;
+  id: string;
+  img: string;
+  position: string;
+  service: string;
+  title: string;
+  type: string;
+}
+
+type BlockType =
+  | 'image'
+  | 'heading_3'
+  | 'paragraph'
+  | 'bulleted_list_item'
+  | 'numbered_list_item';
 
 interface BlockCollections {
   rendered: string[];
@@ -65,12 +86,8 @@ interface BlockCollections {
   images: string[];
 }
 
-interface Page {
-  id: string;
-  blocks: Blocks[]; // Blocks는 위에서 정의한 Block[]
-  filtered: GalleryProps[];
-}
-
-interface pageListProps {
-  list: Page[]; // Page 타입의 배열
-}
+// interface Page {
+//   id: string;
+//   blocks: Blocks[]; // Blocks는 위에서 정의한 Block[]
+//   filtered: Filtered[];
+// }

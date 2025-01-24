@@ -6,7 +6,7 @@ import { borderTop, borderTopNone, paddingBox } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
 import renderContent from '@/utils/service/filter';
 import ReactJsxParser from 'react-jsx-parser';
-import { Blocks } from '@/types/common';
+import { PageWithBlocks } from '@/types/common';
 
 function StringToComponent(componentStringArray: string) {
   const jsxContent = componentStringArray;
@@ -25,7 +25,7 @@ function StringToComponent(componentStringArray: string) {
   );
 }
 
-export default function Main({ blocks }: { blocks: Blocks[] }) {
+export default function Main({ blocks }: { blocks: PageWithBlocks[] }) {
   return (
     <>
       <Box
@@ -40,7 +40,7 @@ export default function Main({ blocks }: { blocks: Blocks[] }) {
         }}
       >
         <Box className={borderTopNone}>
-          {StringToComponent(renderContent(blocks))}
+          {blocks.map((block) => StringToComponent(renderContent(block)))}
         </Box>
         {/* <Box>
           <Box
