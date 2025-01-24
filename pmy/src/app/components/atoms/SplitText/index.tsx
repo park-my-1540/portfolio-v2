@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import './animate.css';
 import cn from 'classnames';
 import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
 import { text, TextVariantProps } from './splitText.module.css';
+import Splitting from 'splitting';
+import 'splitting/dist/splitting.css';
 
 type SplitTextProps = {
   splitText: string;
@@ -20,9 +23,12 @@ export const SplitText = ({
   type = 'txt',
   onClick,
 }: SplitTextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
+  useEffect(() => {
+    Splitting();
+  }, []);
   const linkUrl = url ? url : 'javascript:void(0)';
   return (
-    <a href={linkUrl} className={text({ sizes })} onClick={onClick}>
+    <a href={linkUrl} className={cn('link', text({ sizes }))} onClick={onClick}>
       {type !== 'same' && (
         <p
           className={cn(
