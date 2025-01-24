@@ -7,6 +7,18 @@ export const header = style({
   width: '100%',
   zIndex: 99,
   color: 'inherit',
+  selectors: {
+    '&::before': {
+      content: '',
+      display: 'block',
+      width: 'calc(100% - 5px)',
+      height: 50,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      backgroundColor: vars.color.light,
+    },
+  },
 });
 
 export const inner = style({

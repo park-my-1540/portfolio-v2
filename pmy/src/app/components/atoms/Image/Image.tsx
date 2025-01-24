@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { image, ImageVariantProps } from './image.css';
 
 type ImageProps = {
@@ -19,13 +19,26 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   className,
   ...rest
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // for smooth image load
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = url;
+    img.onload = () => setIsLoaded(true);
+    img.onerror = () => console.error(`Failed to load image: ${url}`);
+  }, [url]);
+
   const style = {
     ...rest,
-    backgroundImage: `url(${url})`,
+    backgroundImage: isLoaded ? `url(${url})` : undefined,
   };
+
   return (
     <p
-      className={`${className} ${image({ sizes, radius, cover })}`}
+      className={`${className} ${image({ sizes, radius, cover })} ${
+        isLoaded ? 'loaded' : 'loading'
+      }`}
       style={style}
     >
       {children}

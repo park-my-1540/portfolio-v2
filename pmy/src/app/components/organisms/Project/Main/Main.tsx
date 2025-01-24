@@ -40,7 +40,11 @@ export default function Main({ blocks }: { blocks: PageWithBlocks[] }) {
         }}
       >
         <Box className={borderTopNone}>
-          {blocks.map((block) => StringToComponent(renderContent(block)))}
+          {blocks.map((block, index) => (
+            <React.Fragment key={index}>
+              {StringToComponent(renderContent(block))}
+            </React.Fragment>
+          ))}
         </Box>
         {/* <Box>
           <Box
