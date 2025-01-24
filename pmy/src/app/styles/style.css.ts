@@ -1,5 +1,7 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
+import { sizeVars } from './tokens/sizes.css';
+import { spaceVars } from './tokens/space.css';
 
 // border - style
 export const borderTopNone = style({
@@ -134,4 +136,18 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
   color: vars.color.light,
   top: 3,
   left: 13,
+});
+
+export const paddingContainer = style({
+  '@media': {
+    'screen and (max-width: 768px)': {
+      padding: spaceVars.large,
+    },
+    'screen and (min-width: 768px) and (max-width: 1024px)': {
+      padding: spaceVars.large,
+    },
+    'screen and (min-width: 1024px)': {
+      padding: spaceVars.xLarge,
+    },
+  },
 });

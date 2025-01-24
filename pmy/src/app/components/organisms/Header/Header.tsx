@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useEffect } from 'react';
 import { LocalStorageService } from '@/utils/service/localStorageService';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
+import { paddingContainer } from '@/styles/style.css';
 import { header, inner, changeCircle, dark, menuBtn, sub } from './header.css';
 import { Position } from '@/components/layouts/Position/Position';
 import { useSetAtom, useAtomValue, useAtom } from 'jotai';
@@ -57,30 +58,14 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <Box
-      className={header}
-      responsive={{
-        padding: {
-          desktop: 'large',
-          tablet: 'large',
-          mobile: 'xLarge',
-        },
-      }}
-    >
+    <Box className={`${paddingContainer} ${header}`}>
       <Box
         ref={headerRef}
-        className={`${inner} inner`}
+        className={`${inner} inner ${paddingContainer}`}
         display="flex"
         direction="row"
         align="center"
         justify="between"
-        responsive={{
-          padding: {
-            desktop: 'large',
-            tablet: 'large',
-            mobile: 'xLarge',
-          },
-        }}
       >
         <Box display="flex" direction="row" align="center" justify="center">
           <SplitText splitText="Mee Young" sizes="medium" weights="bold" />
