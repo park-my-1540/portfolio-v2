@@ -1,6 +1,6 @@
 .gallery .gallery-item-wrapper {
     display: grid;
-    grid-template-columns: 20vw 1fr 200px;
+    /* grid-template-columns: 20vw 1fr 200px; */
     height: 100%;
     width: 100vw
 }

@@ -36,6 +36,8 @@ export const responsiveProperties = defineProperties({
       oneThree: '1fr 3fr', // 1:3 비율
       single: 'repeat(1, 1fr)',
       two: 'repeat(2, 1fr)',
+      wideNarrow: '20vw 1fr 15vw',
+      mediumNarrow: '15vw 1fr 10vw',
     },
     gridTemplateRows: {
       auto: 'auto', // 행 크기가 내용에 따라 자동 조정

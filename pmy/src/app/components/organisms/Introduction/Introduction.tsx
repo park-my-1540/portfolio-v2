@@ -11,7 +11,15 @@ export default function Introduction() {
   }, []);
   return (
     <>
-      <Box width="70%">
+      <Box
+        responsive={{
+          width: {
+            desktop: 'sixty',
+            tablet: 'seventy',
+            mobile: 'full',
+          },
+        }}
+      >
         <Text style={{ paddingTop: 25 }} sizes="largeX2" weights="bold">
           <div data-highlight="half" data-splitting="lines" className="desc">
             저는 4년차 웹퍼블리셔 그리고 프론트엔드 개발자로 2년 일한

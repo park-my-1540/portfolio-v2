@@ -38,7 +38,11 @@ function GalleryItem({
   return (
     <div
       onClick={() => goDetail(type)}
-      className={cn('gallery-item-wrapper', { 'is-reveal': onScreen })}
+      className={cn(
+        'gallery-item-wrapper',
+        { 'is-reveal': onScreen },
+        `${style.galleryContainer}`,
+      )}
       ref={ref}
     >
       <div></div>

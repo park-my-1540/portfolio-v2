@@ -1,6 +1,6 @@
 :root {
-  font-size: 16px;
-  --fontSize: 16px;
+  font-size: 18px;
+  --fontSize: 18px;
   --link-translate-x: 3rem;
   --padding-container: 1rem;
   --height-swiper: 39vh;
@@ -9,17 +9,17 @@
 
 @media screen and (max-width: 1024px) {
     :root {
-      font-size: 18px;
+      font-size: 16px;
       --link-translate-x: 2rem;
-      --fontSize: 18px;
+      --fontSize: 16px;
       --padding-container: 1.6rem;
       --height-swiper: 22vh;
     }
   }
 @media screen and (max-width: 768px) {
     :root {
-      font-size: 20px;
-      --fontSize: 20px;
+      font-size: 15px;
+      --fontSize: 15px;
       --link-translate-x: 2rem;
       --padding-container: 1.6rem;
       --height-swiper: 50vw;

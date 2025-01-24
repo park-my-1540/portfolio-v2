@@ -60,3 +60,20 @@ export const btnDefault = style({
   backgroundColor: vars.color.point,
   fontFamily: 'MangoBold',
 });
+
+export const galleryContainer = style({
+  '@media': {
+    'screen and (max-width: 768px)': {
+      gridTemplateColumns: '13vw 1fr 8vw',
+      // background: '#5D8EFF',
+    },
+    'screen and (min-width: 768px) and (max-width: 1024px)': {
+      gridTemplateColumns: '15vw 1fr 10vw',
+      // background: '#ff69b4',
+    },
+    'screen and (min-width: 1024px)': {
+      gridTemplateColumns: '20vw 1fr 200px',
+      // background: '#dbe5ff',
+    },
+  },
+});
