@@ -10,10 +10,22 @@ export const sizeVars = {
     seventy: '70%', // 70% 너비
   },
   height: {
-    small: '30px', // 작은 버튼 또는 입력 필드
+    small: '5rem', // 작은 버튼 또는 입력 필드
     medium: '50px', // 일반적인 요소 크기 (예: 네비게이션 바, 버튼)
-    large: '90%', // 큰 요소 (예: 이미지, 큰 카드)
+    large: '15vh', // 큰 요소 (예: 이미지, 큰 카드)
     full: '100%', // 부모 요소의 전체 높이
     screen: '100vh', // 화면 전체 높이 (뷰포트의 높이)
+  },
+  font: {
+    small: '1.75rem', // 작은 버튼 또는 입력 필드
+    medium: '1.75rem', // 일반적인 요소 크기 (예: 네비게이션 바, 버튼)
+    large: '4.375rem', // 큰 요소 (예: 이미지, 큰 카드)
+  },
+  gap: {
+    none: '0px',
+    small: '8px',
+    medium: '16px',
+    mediumX2: '40px',
+    large: '50px',
   },
 };

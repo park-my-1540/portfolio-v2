@@ -1,10 +1,11 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/styles/common/createThemeContract.css';
 
 const base = {
   margin: '0',
   lineHeight: '1.2',
+  display: 'flex',
+  alignItems: 'end',
   // color: vars.color.complementary,
 };
 
@@ -77,7 +78,6 @@ export const text = recipe({
   },
   variants,
   defaultVariants: {
-    sizes: 'small',
     weights: 'normal',
   },
 });

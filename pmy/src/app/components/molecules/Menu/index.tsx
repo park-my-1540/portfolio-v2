@@ -13,14 +13,28 @@ function MenuItem({ menu, moveToSectionPosition }) {
   const { item, desc, link } = menu;
 
   return (
-    <Box className={`${menuItem} menu`}>
+    <Box
+      className={`${menuItem} menu`}
+      responsive={{
+        width: {
+          desktop: 'large',
+          tablet: 'large',
+          mobile: 'full',
+        },
+      }}
+    >
       <Box
         className={menuInner}
         responsive={{
           padding: {
             desktop: 'mediumLarge',
             tablet: 'mediumLarge',
-            mobile: 'small',
+            mobile: 'mediumLargeX2',
+          },
+          display: {
+            desktop: 'block',
+            tablet: 'block',
+            mobile: 'none',
           },
         }}
       >
@@ -42,21 +56,33 @@ function MenuItem({ menu, moveToSectionPosition }) {
           ))}
       </Box>
       <Box
-        height="5rem"
         className={borderTop}
+        display="flex"
+        align="end"
         responsive={{
           padding: {
-            desktop: 'large',
-            tablet: 'large',
-            mobile: 'small',
+            desktop: 'mediumLarge',
+            tablet: 'mediumLarge',
+            mobile: 'mediumLargeX2',
+          },
+          height: {
+            desktop: 'small',
+            tablet: 'small',
+            mobile: 'large',
           },
         }}
       >
         <SplitText
+          responsive={{
+            fontSize: {
+              desktop: 'small',
+              tablet: 'small',
+              mobile: 'large',
+            },
+          }}
           color="tertiary"
           type="same"
           splitText={item}
-          sizes="large"
           weights="bold"
           onClick={() => moveToSectionPosition(`#${item}`)}
         />
@@ -128,8 +154,12 @@ export default function Menu() {
   return (
     <Box
       className={`menuWrap ${wrapper}`}
-      gap="small"
       responsive={{
+        gap: {
+          desktop: 'small',
+          tablet: 'small',
+          mobile: 'none',
+        },
         flexDirection: {
           desktop: 'row',
           tablet: 'row',

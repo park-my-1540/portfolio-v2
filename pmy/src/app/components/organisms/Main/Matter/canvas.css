@@ -18,8 +18,8 @@
     position: absolute;
     top: 60%;
     left: 50%;
-    margin-left: -50vw;
-    width: 100vw;
+    margin-left: -50%;
+    width: 100%;
     height: auto;
     pointer-events: none;
     transform: translate3d(0, -50%, 0);

@@ -17,6 +17,8 @@ export const responsiveProperties = defineProperties({
     flexDirection: ['column', 'row'],
     width: sizeVars.width,
     height: sizeVars.height,
+    gap: sizeVars.gap,
+    fontSize: sizeVars.font,
     paddingTop: spaceVars,
     paddingBottom: spaceVars,
     paddingLeft: spaceVars,

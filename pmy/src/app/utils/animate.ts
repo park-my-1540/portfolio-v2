@@ -261,9 +261,10 @@ export const openMenu = () => {
 export const closeMenu = () => {
   const wrap = document.querySelector('.menuWrap') as HTMLElement;
   const el = gsap.utils.toArray('.menu');
+  const y = wrap.clientHeight;
 
   gsap.to(el, {
-    transform: 'translate(0%, -110%)',
+    transform: `translate(0%, -${y}px)`,
     duration: 0.3,
     stagger: 0.02,
   });

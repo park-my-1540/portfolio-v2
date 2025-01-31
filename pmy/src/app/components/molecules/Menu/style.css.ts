@@ -10,12 +10,10 @@ export const wrapper = style({
   zIndex: 9,
 });
 export const menuItem = style({
-  width: '25%',
   textTransform: 'uppercase',
   letterSpacing: '0.5px',
   background: 'white',
   border: '2px solid',
-
   visibility: 'hidden',
   transform: 'translate(0%, -110%)',
 });
