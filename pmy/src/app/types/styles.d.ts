@@ -1,16 +1,20 @@
-import { ValueOfUnion } from "@/utils/utils";
-import { sprinkles, Sprinkles } from "@/styles/common/sprinkles.css"; // sprinkles import
-import { themeVariants } from "@/styles/common/themeVariants"
-export type Theme = typeof themeVariants;
-export type ThemeColor = keyof Theme["theme"];
-export type Color = keyof Theme["color"];
-export type ThemeMode = "light" | "dark";
+import { ValueOfUnion } from '@/utils/utils';
+import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css'; // sprinkles import
+import { themeVariants } from '@/styles/common/themeVariants';
 
-const responsiveValue = ["desktop", "tablet", "mobile"] as const;
-export type responsiveType = ValueOfUnion<typeof responsiveValue>
+export type ThemeMode = 'light' | 'dark';
 
-const displayValue = ["flex", "inline", "inline-block", "block", "grid"] as const;
-export type displayType = ValueOfUnion<typeof displayValue>
+const responsiveValue = ['desktop', 'tablet', 'mobile'] as const;
+export type responsiveType = ValueOfUnion<typeof responsiveValue>;
+
+const displayValue = [
+  'flex',
+  'inline',
+  'inline-block',
+  'block',
+  'grid',
+] as const;
+export type displayType = ValueOfUnion<typeof displayValue>;
 
 export type NumberOrString = number | string | undefined;
 
@@ -35,5 +39,5 @@ export type BoxProps = {
   borderBottom?: string;
   borderLeft?: string;
   borderRight?: string;
-  responsive?: Sprinkles
+  responsive?: Sprinkles;
 };

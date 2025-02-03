@@ -1,20 +1,6 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { vars } from '@/styles/common/createThemeContract.css';
 
-// 테마 정의
-export const theme = {
-  color: {
-    white: vars.color.complementary,
-    black: vars.color.border,
-  },
-  theme: {
-    accent: vars.color.highlight.accent,
-    complementary: vars.color.highlight.complementary,
-    black: vars.color.border,
-    white: vars.color.complementary,
-  },
-} as const;
-
 // variants 객체를 recipe로 바로 사용하도록 수정
 export const textColor = recipe({
   base: {}, // 기본 스타일 필요 시 추가

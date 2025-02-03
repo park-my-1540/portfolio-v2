@@ -12,7 +12,7 @@ export const wrapper = style({
 export const menuItem = style({
   textTransform: 'uppercase',
   letterSpacing: '0.5px',
-  background: 'white',
+  background: vars.color.primary,
   border: '2px solid',
   visibility: 'hidden',
   transform: 'translate(0%, -110%)',

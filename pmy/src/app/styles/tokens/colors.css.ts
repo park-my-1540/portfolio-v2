@@ -3,7 +3,7 @@ import { defineProperties } from '@vanilla-extract/sprinkles';
 export const colors = {
   blue: '#1000ff',
   lightblue: '#5D8EFF',
-  lightblue02: 'rgb(196, 217, 255)',
+  lightblue02: '#c4d9ff',
   lightblue03: '#dbe5ff',
   indigo: '#6610f2',
   purple: '#6f42c1',
@@ -15,7 +15,7 @@ export const colors = {
   teal: '#20c997',
   cyan: '#17a2b8',
   white: '#fff',
-  gray: '#dbd8d6',
+  gray: '#9da2ab',
   grayDark: '#343a40',
   grayLight: '#222',
   primary: '#3a5dae',
@@ -28,15 +28,3 @@ export const colors = {
   muted: '#00000015',
   black: '#000',
 };
-
-export const colorProperties = defineProperties({
-  conditions: {
-    lightMode: {},
-    darkMode: { '@media': '(prefers-color-scheme: dark)' },
-  },
-  defaultCondition: 'lightMode',
-  properties: {
-    color: colors,
-    background: colors,
-  },
-});

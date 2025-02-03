@@ -1,5 +1,4 @@
 import { vars } from '@/styles/common/createThemeContract.css';
-import { title } from './style.css';
 export default function Svg({
   titleRef,
 }: {

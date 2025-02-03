@@ -37,15 +37,15 @@ export const scrollbar = style({
   selectors: {
     '&::-webkit-scrollbar': {
       width: '5px',
-      backgroundColor: vars.color.bg.primary,
+      backgroundColor: vars.color.primary,
     },
     '&::-webkit-scrollbar-track': {
       WebkitBoxShadow: `inset 0 0 6px ${vars.color.primary}`,
-      backgroundColor: vars.color.bg.primary,
-      borderLeft: `1px solid ${vars.color.bg.primary}`,
+      backgroundColor: vars.color.primary,
+      borderLeft: `1px solid ${vars.color.primary}`,
     },
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: vars.color.bg.complementary,
+      backgroundColor: vars.color.complementary,
     },
   },
 });
@@ -147,7 +147,7 @@ export const paddingContainer = style({
       padding: spaceVars.large,
     },
     'screen and (min-width: 1024px)': {
-      padding: spaceVars.xLarge,
+      padding: spaceVars.large,
     },
   },
 });
