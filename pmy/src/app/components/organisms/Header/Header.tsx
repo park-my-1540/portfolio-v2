@@ -58,14 +58,30 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <Box className={`${paddingContainer} ${header}`}>
+    <Box
+      className={header}
+      responsive={{
+        padding: {
+          desktop: 'large',
+          tablet: 'large',
+          mobile: 'xLarge',
+        },
+      }}
+    >
       <Box
         ref={headerRef}
-        className={`${inner} inner ${paddingContainer}`}
+        className={`${inner} inner`}
         display="flex"
         direction="row"
         align="center"
         justify="between"
+        responsive={{
+          padding: {
+            desktop: 'large',
+            tablet: 'large',
+            mobile: 'medium',
+          },
+        }}
       >
         <Box display="flex" direction="row" align="center" justify="center">
           <SplitText splitText="Mee Young" sizes="medium" weights="bold" />

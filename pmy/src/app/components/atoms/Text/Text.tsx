@@ -14,7 +14,8 @@ type TextLinkProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
-  url: string;
+  url?: string;
+  onClick?: () => void;
 };
 
 export const Text = ({
@@ -101,6 +102,7 @@ export const TextLink = ({
   sizes = 'medium',
   weights = 'normal',
   vertical,
+  onClick,
   textAlign,
   url,
   display,
@@ -111,6 +113,7 @@ export const TextLink = ({
 }: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
     <a
+      onClick={onClick}
       href={url}
       target="blank"
       {...rest}

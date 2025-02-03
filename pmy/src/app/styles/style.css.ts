@@ -1,6 +1,5 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import { sizeVars } from './tokens/sizes.css';
 import { spaceVars } from './tokens/space.css';
 
 // border - style
@@ -37,15 +36,15 @@ export const scrollbar = style({
   selectors: {
     '&::-webkit-scrollbar': {
       width: '5px',
-      backgroundColor: vars.color.primary,
+      backgroundColor: vars.color.scrollbar.track,
     },
     '&::-webkit-scrollbar-track': {
-      WebkitBoxShadow: `inset 0 0 6px ${vars.color.primary}`,
-      backgroundColor: vars.color.primary,
-      borderLeft: `1px solid ${vars.color.primary}`,
+      WebkitBoxShadow: `inset 0 0 6px ${vars.color.scrollbar.track}`,
+      backgroundColor: vars.color.scrollbar.track,
+      borderLeft: `1px solid ${vars.color.scrollbar.track}`,
     },
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: vars.color.complementary,
+      backgroundColor: vars.color.scrollbar.thumb,
     },
   },
 });

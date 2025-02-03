@@ -15,6 +15,10 @@ export const vars = createThemeContract({
       accent: '', // 강조 텍스트 색상
       light: '', // 비활성화된 텍스트 색상
     },
+    scrollbar: {
+      track: '', // bg
+      thumb: '',
+    },
   },
 });
 
@@ -30,6 +34,10 @@ export const lightTheme = createTheme(vars, {
       accent: colors['blue' as ColorKey],
       light: colors['gray' as ColorKey],
     },
+    scrollbar: {
+      track: colors['lightblue' as ColorKey],
+      thumb: colors['blue' as ColorKey],
+    },
   },
 });
 export const darkTheme = createTheme(vars, {
@@ -43,6 +51,10 @@ export const darkTheme = createTheme(vars, {
       tertiary: colors['light' as ColorKey],
       accent: colors['white' as ColorKey],
       light: colors['gray' as ColorKey],
+    },
+    scrollbar: {
+      track: colors['dark' as ColorKey],
+      thumb: colors['lightblue' as ColorKey],
     },
   },
 });
