@@ -20,12 +20,10 @@ const MatterMain: React.FC = () => {
     const engine = Matter.Engine.create({ enableSleeping: true });
     const world = engine.world;
 
-    if (!canvasBoxRef.current) {
+    if (!canvasBoxRef.current || !titleRef.current) {
       return;
     }
-    if (!titleRef.current) {
-      return;
-    }
+
     const render = Matter.Render.create({
       element: canvasBoxRef.current,
       engine: engine,
@@ -152,7 +150,7 @@ const MatterMain: React.FC = () => {
 
         const rectangle = Matter.Bodies.rectangle(
           bounding.left + bounding.width / 2 - 30,
-          bounding.top + bounding.height / 2 - 120,
+          bounding.top + bounding.height / 2 - 124,
           bounding.width,
           bounding.height + 20,
           {
