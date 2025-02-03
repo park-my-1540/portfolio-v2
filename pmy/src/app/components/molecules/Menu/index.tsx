@@ -3,7 +3,7 @@ import { wrapper, menuItem, menuInner } from './style.css';
 import Box from '@/components/layouts/Box/Box';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';
-
+import * as url from '@/constants';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useAtomValue } from 'jotai';
 import { viewState } from '@/jotai/viewAtom';
@@ -109,11 +109,11 @@ export default function Menu() {
       link: [
         {
           item: 'jandi',
-          url: 'http://localhost:3000/project/JDI',
+          url: url.ROUTES.PROJECTS_JDI,
         },
         {
           item: 'adcapsule',
-          url: 'http://localhost:3000/project/ADC',
+          url: url.ROUTES.PROJECTS_ADC,
         },
       ],
     },
@@ -122,11 +122,11 @@ export default function Menu() {
       link: [
         {
           item: 'git',
-          url: 'url',
+          url: url.GIT,
         },
         {
           item: 'notion',
-          url: 'url',
+          url: url.NOTION,
         },
       ],
     },

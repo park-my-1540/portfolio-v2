@@ -14,7 +14,7 @@ type TextLinkProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
-  onClick: React.MouseEventHandler<HTMLAnchorElement>;
+  url: string;
 };
 
 export const Text = ({
@@ -102,7 +102,7 @@ export const TextLink = ({
   weights = 'normal',
   vertical,
   textAlign,
-  onClick,
+  url,
   display,
   color,
   className,
@@ -111,14 +111,14 @@ export const TextLink = ({
 }: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
     <a
-      href="javascript:void(0)"
+      href={url}
+      target="blank"
       {...rest}
       className={cn(
         className,
         text({ sizes, weights, display, vertical, textAlign }),
         textColor({ color }),
       )}
-      onClick={onClick}
     >
       {children}
     </a>

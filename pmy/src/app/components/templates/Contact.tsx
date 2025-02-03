@@ -1,10 +1,11 @@
 'use client';
 
 import Box from '@/components/layouts/Box/Box';
-import { SplitText } from '@/components/atoms/SplitText';
 import { Text, TextLink } from '@/components/atoms/Text/Text';
 import { arrowLink, iconArrow, bgBtn } from '@/styles/style.css';
 import { vars } from '@/styles/common/createThemeContract.css';
+import * as url from '@/constants';
+
 export default function Contact() {
   return (
     <section className="panel" id="contact" data-scroll-section>
@@ -43,7 +44,7 @@ export default function Contact() {
           <Box display="flex" direction="row">
             <TextLink
               sizes="mediumlarge"
-              onClick=""
+              url={url.GIT}
               color="accent"
               className={arrowLink}
             >
@@ -51,7 +52,7 @@ export default function Contact() {
             </TextLink>
             <TextLink
               sizes="mediumlarge"
-              onClick=""
+              url={url.NOTION}
               color="accent"
               className={arrowLink}
             >

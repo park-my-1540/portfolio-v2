@@ -110,7 +110,6 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
         <SplitText
           splitText="Home"
           sizes="largeX2"
-          // url="http://localhost:3000/"
           onClick={() => router.push('/')}
         />
       </Box>
