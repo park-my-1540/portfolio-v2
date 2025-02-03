@@ -30,13 +30,6 @@ export default function ImageSwiper({
       mousewheel={true}
       keyboard={true}
       ref={swiperRef}
-      pagination={{
-        el: '.main-pagination',
-        clickable: true,
-        renderBullet: function (index, className) {
-          return `<button type="button" class="${className} ${bullet}"></button>`;
-        },
-      }}
     >
       {pages.map((page, index) => (
         <SwiperSlide key={index}>{page}</SwiperSlide>

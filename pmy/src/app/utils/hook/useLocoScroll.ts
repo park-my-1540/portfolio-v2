@@ -39,7 +39,7 @@ const moveToGalleryPosition = (
   if (!sessionStorage.getItem('detail') || !scrollRef.current) return;
 
   scrollRef.current.scrollTo(
-    getScrollPositionOfElement('.gallery-wrap', scrollRef),
+    getScrollPositionOfElement('#project', scrollRef),
     {
       duration: 0,
     },
