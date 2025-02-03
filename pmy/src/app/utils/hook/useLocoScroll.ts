@@ -60,17 +60,16 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const main_tl = useRef<gsap.core.Timeline | null>(null);
   const contact_tl = useRef<gsap.core.Timeline | null>(null);
 
-  let timer;
+  let timer, timer2;
 
-  /**
-   * resize 발생 시 고정핀 계산위해 scroll 처음으로 위치 시킨 후 refresh
-   * 중간에서 refresh 할 경우 viewport 밖의 timeline 멈춤.
-   */
   useEffect(() => {
     const handleResize = debounce(() => {
       locoScrollRef.current?.scrollTo(0, { duration: 0 });
-      locoScrollRef.current?.update();
-      ScrollTrigger.refresh(); // 새로 계산
+      clearTimeout(timer2);
+      timer2 = setTimeout(() => {
+        locoScrollRef.current?.update();
+        ScrollTrigger.refresh(); // 새로 계산
+      }, 500);
     }, 300);
 
     window.addEventListener('resize', handleResize);
