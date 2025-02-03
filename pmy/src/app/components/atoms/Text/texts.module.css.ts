@@ -6,7 +6,6 @@ const base = {
   margin: '0',
   lineHeight: '1.3',
   cursor: 'pointer',
-  wordBreak: 'break-word',
 };
 
 const variants = {

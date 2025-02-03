@@ -7,7 +7,7 @@ import { text, TextVariantProps } from './splitText.module.css';
 import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
-
+import { BoxProps } from '@/types/styles';
 type SplitTextProps = {
   splitText: string;
   url?: string;
@@ -26,6 +26,7 @@ export const SplitText = ({
   type = 'txt',
   onClick,
 }: SplitTextProps &
+  BoxProps &
   Partial<TextVariantProps & TextColorVariantProps & Sprinkles>) => {
   useEffect(() => {
     Splitting();

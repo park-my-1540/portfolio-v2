@@ -44,8 +44,8 @@ export const btn = style({
 export const wrap = style({
   position: 'absolute',
   bottom: '10%',
-  right: -458,
-  background: '#acc9ff',
+  right: '-41%',
+  background: vars.color.text.tertiary,
   // background: vars.color.point,
   borderRadius: '15px',
 });

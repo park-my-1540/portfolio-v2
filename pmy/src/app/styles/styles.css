@@ -30,6 +30,9 @@
   transition: background-color 0.3s ease-in-out;
 }
 
+p {
+  word-break: break-word;
+}
 html, body {
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
