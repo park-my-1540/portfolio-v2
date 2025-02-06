@@ -6,6 +6,9 @@ export interface NotionImage {
   external?: { url: string };
   file?: { url: string };
 }
+export interface NotionVideo {
+  file?: { url: string };
+}
 
 interface CodeBlock {
   rich_text: TextRichText[];
@@ -19,8 +22,8 @@ type BlockType =
   | 'bulleted_list_item'
   | 'numbered_list_item'
   | 'image'
-  | 'code'
-  | 'divider';
+  | 'quote'
+  | 'video';
 
 export interface Block {
   id: string;
@@ -33,6 +36,7 @@ export interface Block {
   numbered_list_item?: { rich_text: TextRichText[] };
   image?: NotionImage;
   code?: CodeBlock;
+  video?: NotionVideo;
   divider?: {};
 }
 /**

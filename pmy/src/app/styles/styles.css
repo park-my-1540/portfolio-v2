@@ -32,6 +32,10 @@
 
 p {
   word-break: break-word;
+  white-space: break-spaces;
+}
+h2 {
+  white-space: break-spaces;
 }
 html, body {
   -webkit-overflow-scrolling: touch;
@@ -155,4 +159,12 @@ li {
 .loaded {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+}
+
+.order {
+
+}
+
+.bullet {
+
 }

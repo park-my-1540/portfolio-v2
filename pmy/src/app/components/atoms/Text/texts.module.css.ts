@@ -36,15 +36,19 @@ const variants = {
     }),
     big: style({
       fontSize: '4.375rem', // 70px
-      lineHeight: '4.375rem', // 70px
+      lineHeight: '4.375rem !important', // 70px
     }),
     title: style({
       fontSize: '6vw', // 70px
-      lineHeight: '6vw', // 70px
+      lineHeight: '6vw !important', // 70px
     }),
     full: style({
       fontSize: '12vw', // 70px
       letterSpacing: '-.6rem',
+    }),
+    quote: style({
+      fontSize: '1rem', // 12px
+      lineHeight: '1.5 !important',
     }),
   },
   weights: {

@@ -72,7 +72,10 @@ interface Filtered {
 
 type BlockType =
   | 'image'
+  | 'video'
+  | 'heading_1'
   | 'heading_3'
+  | 'quote'
   | 'paragraph'
   | 'bulleted_list_item'
   | 'numbered_list_item';
@@ -80,14 +83,10 @@ type BlockType =
 interface BlockCollections {
   rendered: string[];
   text: string[];
+  title: string[];
   list: string[];
   ul: string[];
   ol: string[];
   images: string[];
+  quote: string[];
 }
-
-// interface Page {
-//   id: string;
-//   blocks: Blocks[]; // Blocks는 위에서 정의한 Block[]
-//   filtered: Filtered[];
-// }
