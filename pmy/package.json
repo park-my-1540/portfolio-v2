@@ -28,7 +28,8 @@
     "react-dom": "^18",
     "react-jsx-parser": "^2.2.2",
     "splitting": "^1.1.0",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "vercel": "^41.0.2"
   },
   "devDependencies": {
     "@types/locomotive-scroll": "^4.1.4",
