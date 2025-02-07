@@ -2,12 +2,11 @@ import Project from '@/components/templates/Project';
 import { getPageWithBlocks } from '@/utils/service/notion';
 import { DatabaseKey, NotionRes } from '@/types/common';
 //서버에서 실행
-export default async function ProjectPage({
-  params,
-}: {
-  params: { id: DatabaseKey };
-}) {
-  const { id: pageId } = params; // params.id는 url 에서 추출된 동적 경로
+
+export type paramsType = Promise<{ id: DatabaseKey }>;
+
+export default async function PhotoPage(props: { params: paramsType }) {
+  const { id: pageId } = await props.params; // params.id는 url 에서 추출된 동적 경로
 
   // 각 페이지의 블록 데이터 가져오기
   const result = await getPageWithBlocks(pageId);
