@@ -32,14 +32,15 @@
     "vercel": "^41.0.2"
   },
   "devDependencies": {
-    "@types/locomotive-scroll": "^4.1.4",
     "@types/matter-js": "^0.19.7",
     "@types/node": "^20",
     "@types/splitting": "^1.0.6",
     "@vanilla-extract/next-plugin": "^2.4.6",
     "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "html-webpack-plugin": "^5.6.3",
     "prettier": "^3.3.3",

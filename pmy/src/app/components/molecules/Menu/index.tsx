@@ -139,7 +139,6 @@ export default function Menu() {
   const getScrollPositionOfElement = (elementSelector: string) => {
     const element = document.querySelector(elementSelector);
     if (!element || !scrollRef.current) return;
-
     const scrollInstance = scrollRef.current?.scroll.instance;
     const { top } = element.getBoundingClientRect();
     return top + scrollInstance.scroll.y;
