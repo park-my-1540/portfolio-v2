@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <section data-scroll-section id="main">
       <Box className={`main ${pageContainer}`}>
-        <Box className={pageInner} border="1px solid">
+        <Box className={pageInner}>
           <Line className="line-2" />
           <MatterBox />
           <ScrollArrow />

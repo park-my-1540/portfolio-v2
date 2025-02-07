@@ -29,13 +29,13 @@ interface SwiperProps {
 }
 
 interface GalleryProps {
-  img: string;
   id: string;
-  position: string;
-  service: string;
-  title: string;
-  company: string;
-  type: DatabaseKey;
+  type: string;
+  img?: string;
+  position?: string;
+  service?: string;
+  title?: string;
+  company?: string;
 }
 
 interface GalleryItemProps extends GalleryProps {
@@ -60,20 +60,21 @@ interface Blocks {
 }
 
 interface Filtered {
-  company: string;
-  duration: string;
   id: string;
-  img: string;
-  position: string;
-  service: string;
-  title: string;
   type: string;
+  company?: string;
+  duration?: string;
+  img?: string;
+  position?: string;
+  service?: string;
+  title?: string;
 }
 
 type BlockType =
   | 'image'
   | 'video'
   | 'heading_1'
+  | 'heading_2'
   | 'heading_3'
   | 'quote'
   | 'paragraph'

@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import Box from '@/components/layouts/Box/Box';
 import { Text } from '@/components/atoms/Text/Text';
-import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 import 'splitting/dist/splitting-cells.css';
 
 export default function Introduction() {
   useEffect(() => {
-    Splitting({ type: 'lines' }); // Splitting을 줄 단위로 실행
+    const initialize = async () => {
+      const { default: Splitting } = await import('splitting');
+      Splitting({ type: 'lines' });
+    };
+    initialize();
   }, []);
   return (
     <>

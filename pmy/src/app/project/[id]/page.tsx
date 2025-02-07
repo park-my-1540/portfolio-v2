@@ -16,7 +16,6 @@ export default async function PhotoPage(props: { params: paramsType }) {
     result && 'pageWithBlocks' in result
       ? result
       : { pageWithBlocks: [], filtered: [] };
-
   return <Project list={list} />;
 }
 

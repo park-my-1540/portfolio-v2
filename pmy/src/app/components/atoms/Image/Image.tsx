@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { image, ImageVariantProps } from './image.css';
 
 type ImageProps = {
-  url: string;
+  url: string | undefined;
   sizes: ImageVariantProps;
   cover?: ImageVariantProps;
   radius?: ImageVariantProps;
@@ -14,7 +14,7 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
   radius,
   cover,
-  url,
+  url = '',
   children,
   className,
   ...rest

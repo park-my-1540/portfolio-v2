@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { clsx } from 'clsx';
 import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
 import { text, TextVariantProps } from './splitText.module.css';
-import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps } from '@/types/styles';
@@ -29,7 +28,11 @@ export const SplitText = ({
   BoxProps &
   Partial<TextVariantProps & TextColorVariantProps & Sprinkles>) => {
   useEffect(() => {
-    Splitting();
+    const initialize = async () => {
+      const { default: Splitting } = await import('splitting');
+      Splitting();
+    };
+    initialize();
   }, []);
   const linkUrl = url ? url : 'javascript:void(0)';
   const classes = clsx(
