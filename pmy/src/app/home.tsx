@@ -1,6 +1,6 @@
 'use client';
 import { lightTheme, darkTheme } from '@/styles/common/createThemeContract.css';
-import { LocalStorageService } from '@/utils/service/localStorageService';
+import { LocalStorageService } from '@/service/storage/localStorageService';
 import PageTransition from '@/components/layouts/transition/PageTransition';
 import Header from '@/components/organisms/Header/Header';
 import CustomCursor from '@/components/molecules/CustomCursor';

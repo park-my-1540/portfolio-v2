@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import useOnScreen from '@/utils/hook/useOnScreen';
+import useOnScreen from '@/hook/useOnScreen';
 import { GalleryItemProps } from '@/types/common';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';

@@ -4,7 +4,7 @@ import { Image } from '@/components/atoms/Image/Image';
 import { Text, TextTitle } from '@/components/atoms/Text/Text';
 import { borderTop, borderTopNone, paddingBox } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
-import renderContent from '@/utils/service/filter';
+import renderContent from '@/service/content/renderService';
 import ReactJsxParser from 'react-jsx-parser';
 import { PageWithBlocks } from '@/types/common';
 

@@ -1,5 +1,5 @@
-import Page from '@/components/pages/index';
-import { getPageList } from '@/utils/service/notion';
+import Page from '@/components/sections/index';
+import { getPageList } from '@/service/notion/notionService';
 
 export default async function Home() {
   const pages = await getPageList('LIST');

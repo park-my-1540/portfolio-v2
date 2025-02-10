@@ -4,7 +4,7 @@ import Box from '@/components/layouts/Box/Box';
 import { Text, TextLink } from '@/components/atoms/Text/Text';
 import { arrowLink, iconArrow, bgBtn } from '@/styles/style.css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import * as url from '@/constants';
+import * as url from '@/constants/constants';
 
 export default function Contact() {
   return (

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useEffect } from 'react';
-import { LocalStorageService } from '@/utils/service/localStorageService';
+import { LocalStorageService } from '@/service/storage/localStorageService';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
 import { paddingContainer } from '@/styles/style.css';

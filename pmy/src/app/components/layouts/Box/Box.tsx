@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import * as flexstyles from './flex.css';
 import { clsx } from 'clsx';
-import { pickProps } from '@/utils/utils';
+import { pickProps } from '@/utils/helpers';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps, NumberOrString } from '@/types/styles';
 

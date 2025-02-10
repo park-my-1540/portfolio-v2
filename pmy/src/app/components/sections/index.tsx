@@ -2,13 +2,13 @@
 import React, { useEffect, useRef } from 'react';
 import { GalleryProps } from '@/types/common';
 import Box from '@/components/layouts/Box/Box';
-import MainPage from './MainPage';
-import AboutPage from './AboutPage';
-import ProjectsPage from './ProjectsPage';
-import ContactPage from './ContactPage';
+import MainPage from './MainSection';
+import AboutPage from './AboutSection';
+import ProjectsPage from './ProjectsSection';
+import ContactPage from './ContactSection';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
-import useLocoScroll from '@/utils/hook/useLocoScroll';
+import useLocoScroll from '@/hook/useLocoScroll';
 import { useSetAtom } from 'jotai';
 import { galleryListState } from '@/jotai/galleryListAtom';
 import { vars } from '@/styles/common/createThemeContract.css';

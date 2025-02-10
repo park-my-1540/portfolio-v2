@@ -1,4 +1,4 @@
-import { ValueOfUnion } from '@/utils/utils';
+import { ValueOfUnion } from '@/utils/helpers';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css'; // sprinkles import
 import { themeVariants } from '@/styles/common/themeVariants';
 

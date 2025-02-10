@@ -1,5 +1,6 @@
 import Project from '@/components/templates/Project';
-import { getPageWithBlocks } from '@/utils/service/notion';
+import { getPageWithBlocks } from '@/service/notion/notionService';
+// import { getPageWithBlocks } from '@/service/notion/notion';
 import { DatabaseKey, NotionRes } from '@/types/common';
 //서버에서 실행
 
@@ -16,6 +17,7 @@ export default async function PhotoPage(props: { params: paramsType }) {
     result && 'pageWithBlocks' in result
       ? result
       : { pageWithBlocks: [], filtered: [] };
+
   return <Project list={list} />;
 }
 
