@@ -1,4 +1,5 @@
 import React from 'react';
+import { SwiperRef } from 'swiper/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   Navigation,
@@ -7,7 +8,12 @@ import {
   A11y,
   Mousewheel,
 } from 'swiper/modules';
-import { SwiperProps } from '@/types/common';
+
+interface SwiperProps {
+  onSlideChange: (index: number) => void;
+  swiperRef: React.RefObject<SwiperRef>;
+  pages: React.ReactNode[];
+}
 
 export default function ImageSwiper({
   swiperRef,

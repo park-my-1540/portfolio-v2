@@ -3,7 +3,7 @@
  */
 import { Client } from '@notionhq/client';
 import { TOKEN } from '@/../../config';
-import { DatabaseKey } from './notionType';
+import { DatabaseKey } from '@/types/common';
 const notion = new Client({ auth: TOKEN });
 
 export async function getDatabaseQuery(databaseId: DatabaseKey) {

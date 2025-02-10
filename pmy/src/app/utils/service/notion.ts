@@ -5,13 +5,10 @@ import {
   BlockObjectResponse,
   PartialBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import {
-  NotionPage,
-  BlockContent,
-  TextRichText,
-  Block,
-} from '@/types/notionRes';
-import { BlockType, DatabaseKey } from '@/types/common';
+
+import { NotionPage } from '@/types/notionRes';
+import { BlockContent, TextRichText, Block, DatabaseKey } from '@/types/common';
+
 // Notion 클라이언트 인스턴스 생성
 const notion = new Client({
   auth: TOKEN,

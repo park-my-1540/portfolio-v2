@@ -7,13 +7,8 @@ import {
   BlockObjectResponse,
   PartialBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import {
-  NotionPage,
-  BlockContent,
-  TextRichText,
-  Block,
-} from '@/types/notionRes';
-import { DatabaseKey } from './notionType';
+import { NotionPage } from '@/types/notionRes';
+import { BlockContent, TextRichText, Block, DatabaseKey } from '@/types/common';
 
 // 1. Notion 데이터베이스에서 일정 정보를 가져오는 함수
 export async function getPageList(

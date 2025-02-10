@@ -1,32 +1,6 @@
-import { SwiperRef } from 'swiper/react';
 import { ValueOfUnion } from '@/utils/helpers';
 
-const pageValue = ['main', 'about', 'some'] as const;
-// type DatabaseKey = 'ADC' | 'JDI' | 'LIST';
-type PageType = ValueOfUnion<typeof pageValue>;
-type SwiperRefType = SwiperRef;
-
-interface BaseProps {}
-
-interface HeaderProps extends BaseProps {
-  title: string;
-}
-
-interface NavigationProps extends BaseProps {
-  slideRef: React.RefObject<HTMLElement>;
-  enumPage: readonly PageType[];
-  onBulletClick: (index: number) => void;
-}
-
-interface ScrollIndicatorProps extends BaseProps {
-  slideRef: React.RefObject<HTMLDivElement>;
-}
-
-interface SwiperProps {
-  onSlideChange: (index: number) => void;
-  swiperRef: React.RefObject<SwiperRefType>;
-  pages: React.ReactNode[];
-}
+type DatabaseKey = 'ADC' | 'JDI' | 'LIST';
 
 interface GalleryProps {
   id: string;
@@ -44,50 +18,76 @@ interface GalleryItemProps extends GalleryProps {
 }
 
 // ///////
-// interface NotionRes {
-//   pageWithBlocks: PageWithBlocks[];
-//   filtered: Filtered[];
-// }
+interface NotionRes {
+  pageWithBlocks: PageWithBlocks[];
+  filtered: Filtered[];
+}
 
-// interface PageWithBlocks {
-//   blocks: Blocks[];
-// }
+interface PageWithBlocks {
+  blocks: Blocks[];
+}
 
-// interface Blocks {
-//   id: string;
-//   type: BlockType;
-//   content: string;
-// }
+interface Blocks {
+  id: string;
+  type: BlockType;
+  content: string;
+}
 
-// interface Filtered {
-//   id: string;
-//   type: string;
-//   company?: string;
-//   duration?: string;
-//   img?: string;
-//   position?: string;
-//   service?: string;
-//   title?: string;
-// }
+interface Filtered {
+  id: string;
+  type: string;
+  company?: string;
+  duration?: string;
+  img?: string;
+  position?: string;
+  service?: string;
+  title?: string;
+}
 
-// type BlockType =
-//   | 'image'
-//   | 'video'
-//   | 'heading_1'
-//   | 'heading_2'
-//   | 'heading_3'
-//   | 'quote'
-//   | 'paragraph'
-//   | 'bulleted_list_item'
-//   | 'numbered_list_item';
+type BlockType =
+  | 'image'
+  | 'video'
+  | 'heading_1'
+  | 'heading_2'
+  | 'heading_3'
+  | 'quote'
+  | 'paragraph'
+  | 'bulleted_list_item'
+  | 'numbered_list_item';
 
-// interface BlockCollections {
-//   rendered: string[];
-//   text: string[];
-//   title: string[];
-//   list: string[];
-//   ul: string[];
-//   ol: string[];
-//   images: string[];
-//   quote: string[];
-// }
+interface BlockCollections {
+  rendered: string[];
+  text: string[];
+  title: string[];
+  list: string[];
+  ul: string[];
+  ol: string[];
+  images: string[];
+  quote: string[];
+}
+
+interface TextRichText {
+  plain_text: string;
+}
+
+interface Block {
+  id: string;
+  type: BlockType;
+  paragraph?: { rich_text: TextRichText[] };
+  heading_1?: { rich_text: TextRichText[] };
+  heading_2?: { rich_text: TextRichText[] };
+  heading_3?: { rich_text: TextRichText[] };
+  bulleted_list_item?: { rich_text: TextRichText[] };
+  numbered_list_item?: { rich_text: TextRichText[] };
+  image?: NotionImage;
+  video?: { file?: { url: string } };
+}
+
+/**
+ * 정제한 데이터
+ */
+interface BlockContent {
+  id: string;
+  type: BlockType;
+  content: string;
+}

@@ -1,79 +1,17 @@
-export interface TextRichText {
-  plain_text: string;
-}
+/** response properties type */
 
-export interface NotionImage {
+type NotionImage = {
   external?: { url: string };
   file?: { url: string };
-}
-export interface NotionVideo {
-  file?: { url: string };
-}
+};
 
-interface CodeBlock {
-  rich_text: TextRichText[];
-}
-
-type BlockType =
-  | 'paragraph'
-  | 'heading_1'
-  | 'heading_2'
-  | 'heading_3'
-  | 'bulleted_list_item'
-  | 'numbered_list_item'
-  | 'image'
-  | 'quote'
-  | 'video';
-
-export interface Block {
-  id: string;
-  type: BlockType;
-  paragraph?: { rich_text: TextRichText[] };
-  heading_1?: { rich_text: TextRichText[] };
-  heading_2?: { rich_text: TextRichText[] };
-  heading_3?: { rich_text: TextRichText[] };
-  bulleted_list_item?: { rich_text: TextRichText[] };
-  numbered_list_item?: { rich_text: TextRichText[] };
-  image?: NotionImage;
-  code?: CodeBlock;
-  video?: NotionVideo;
-  divider?: {};
-}
-/**
- * 정제한 데이터
- */
-export interface BlockContent {
-  id: string;
-  type: BlockType;
-  content: string;
-}
-
-// export interface BlockItem {
-//   archived: boolean;
-//   created_by: object;
-//   created_time: object;
-//   has_children: boolean;
-//   id: string;
-//   in_trash: boolean;
-//   last_edited_by: object;
-//   last_edited_time: string;
-//   object: string;
-//   paragraph: { rich_text: TextRichText[]; color: 'string' };
-//   parent: {
-//     type: string;
-//     page_id: string;
-//   };
-//   type: BlockType;
-// }
-
-/** page */
-interface NotionUser {
+type NotionUser = {
   object: 'user';
   id: string;
-}
+};
 
 /** property - 다중선택 */
-interface NotionPropertyMultiSelect {
+type NotionPropertyMultiSelect = {
   id: string;
   type: 'multi_select';
   multi_select: {
@@ -81,17 +19,17 @@ interface NotionPropertyMultiSelect {
     name: string;
     color: string;
   }[];
-}
+};
 
 /** property - url */
-interface NotionPropertyUrl {
+type NotionPropertyUrl = {
   id: string;
   type: 'url';
   url: string;
-}
+};
 
 /** property - 날짜 */
-interface NotionPropertyDate {
+type NotionPropertyDate = {
   id: string;
   type: 'date';
   date: {
@@ -99,10 +37,10 @@ interface NotionPropertyDate {
     end: string;
     time_zone: string | null;
   };
-}
+};
 
 /** property - RichText */
-interface NotionPropertyRichText {
+type NotionPropertyRichText = {
   id: string;
   type: 'rich_text';
   rich_text: {
@@ -122,9 +60,9 @@ interface NotionPropertyRichText {
     plain_text: string;
     href: null;
   }[];
-}
+};
 
-interface NotionPropertyTitle {
+type NotionPropertyTitle = {
   id: string;
   type: 'title';
   title: {
@@ -144,9 +82,9 @@ interface NotionPropertyTitle {
     plain_text: string;
     href: null;
   }[];
-}
+};
 
-/** gallery - tag */
+/** properties - gallery */
 interface NotionListProperties {
   태그: NotionPropertyMultiSelect;
   Github: NotionPropertyUrl;
@@ -155,7 +93,7 @@ interface NotionListProperties {
   이름: NotionPropertyTitle;
 }
 
-/** jobList - tag */
+/** properties - jobList */
 interface NotionJobProperties {
   position: NotionPropertyRichText;
   service: NotionPropertyRichText;
@@ -166,6 +104,7 @@ interface NotionJobProperties {
   이름: NotionPropertyTitle;
 }
 
+/* response - getDatabaseQuery */
 export interface NotionPage {
   object: 'page';
   id: string;

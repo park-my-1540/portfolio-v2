@@ -1,8 +1,6 @@
 import Project from '@/components/templates/Project';
 import { getPageWithBlocks } from '@/service/notion/notionService';
-// import { getPageWithBlocks } from '@/service/notion/notion';
 import { DatabaseKey, NotionRes } from '@/types/common';
-//서버에서 실행
 
 export type paramsType = Promise<{ id: DatabaseKey }>;
 
