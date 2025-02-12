@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useCallback } from 'react';
 import { wrapper, menuItem, menuInner } from './index.css';
 import Box from '@/components/layouts/Box/Box';
 import { Text } from '@/components/atoms/Text/Text';
@@ -81,7 +81,7 @@ function MenuItem({ item, desc, link, moveToSectionPosition }) {
         {link &&
           link.map((item, index) => (
             <SplitText
-              key={index}
+              key={item}
               type="same"
               splitText={item.item}
               sizes="smallmedium"
@@ -134,18 +134,18 @@ export default function Menu() {
     scrollRef.current = locoScroll;
   }
 
-  const getScrollPositionOfElement = (elementSelector: string) => {
+  const getScrollPositionOfElement = useCallback((elementSelector: string) => {
     const element = document.querySelector(elementSelector);
     if (!element || !scrollRef.current) return;
     const scrollInstance = scrollRef.current?.scroll.instance;
     const { top } = element.getBoundingClientRect();
     return top + scrollInstance.scroll.y;
-  };
-  const moveToSectionPosition = (className: string) => {
+  }, []);
+  const moveToSectionPosition = useCallback((className: string) => {
     if (!scrollRef.current) return;
     const position = getScrollPositionOfElement(className);
     scrollRef.current.scrollTo(position, { duration: 0 });
-  };
+  }, []);
 
   return (
     <Box
@@ -169,7 +169,7 @@ export default function Menu() {
             item={item.item}
             desc={item.desc}
             link={item.link}
-            key={index}
+            key={`${index}-${item}`}
             moveToSectionPosition={moveToSectionPosition}
           />
         );

@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Box from '@/components/layouts/Box/Box';
 import Main from '@/components/organisms/Project/Main/Main';
 import Column from '@/components/organisms/Project/Column/Column';

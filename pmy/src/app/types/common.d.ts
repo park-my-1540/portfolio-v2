@@ -2,14 +2,17 @@ import { ValueOfUnion } from '@/utils/helpers';
 
 type DatabaseKey = 'ADC' | 'JDI' | 'LIST';
 
-interface GalleryProps {
-  id: string;
-  type: string;
+interface GalleryContentProps {
   img?: string;
   position?: string;
   service?: string;
   title?: string;
   company?: string;
+}
+
+interface GalleryProps extends GalleryContentProps {
+  id: string;
+  type: string;
 }
 
 interface GalleryItemProps extends GalleryProps {
