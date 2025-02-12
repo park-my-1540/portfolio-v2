@@ -9,9 +9,44 @@ import { useAtomValue } from 'jotai';
 import { locoScrollState } from '@/jotai/locoScrollAtom';
 import { borderTop } from '@/styles/style.css';
 
-function MenuItem({ menu, moveToSectionPosition }) {
-  const { item, desc, link } = menu;
+const menuList = [
+  {
+    item: 'main',
+    desc: 'parkmys portfolio',
+  },
+  {
+    item: 'about',
+    desc: 'about my me',
+  },
+  {
+    item: 'project',
+    link: [
+      {
+        item: 'jandi',
+        url: url.ROUTES.PROJECTS_JDI,
+      },
+      {
+        item: 'adcapsule',
+        url: url.ROUTES.PROJECTS_ADC,
+      },
+    ],
+  },
+  {
+    item: 'contact',
+    link: [
+      {
+        item: 'git',
+        url: url.GIT,
+      },
+      {
+        item: 'notion',
+        url: url.NOTION,
+      },
+    ],
+  },
+];
 
+function MenuItem({ item, desc, link, moveToSectionPosition }) {
   return (
     <Box
       className={`${menuItem} menu`}
@@ -95,43 +130,6 @@ export default function Menu() {
   const locoScroll = useAtomValue(locoScrollState);
   const scrollRef = useRef<LocomotiveScroll | null>(null);
 
-  const menuList = [
-    {
-      item: 'main',
-      desc: 'parkmys portfolio',
-    },
-    {
-      item: 'about',
-      desc: 'about my skrr',
-    },
-    {
-      item: 'project',
-      link: [
-        {
-          item: 'jandi',
-          url: url.ROUTES.PROJECTS_JDI,
-        },
-        {
-          item: 'adcapsule',
-          url: url.ROUTES.PROJECTS_ADC,
-        },
-      ],
-    },
-    {
-      item: 'contact',
-      link: [
-        {
-          item: 'git',
-          url: url.GIT,
-        },
-        {
-          item: 'notion',
-          url: url.NOTION,
-        },
-      ],
-    },
-  ];
-
   if (locoScroll) {
     scrollRef.current = locoScroll;
   }
@@ -145,9 +143,8 @@ export default function Menu() {
   };
   const moveToSectionPosition = (className: string) => {
     if (!scrollRef.current) return;
-    scrollRef.current.scrollTo(getScrollPositionOfElement(className), {
-      duration: 0,
-    });
+    const position = getScrollPositionOfElement(className);
+    scrollRef.current.scrollTo(position, { duration: 0 });
   };
 
   return (
@@ -169,7 +166,9 @@ export default function Menu() {
       {menuList.map((item, index) => {
         return (
           <MenuItem
-            menu={item}
+            item={item.item}
+            desc={item.desc}
+            link={item.link}
             key={index}
             moveToSectionPosition={moveToSectionPosition}
           />
