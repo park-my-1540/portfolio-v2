@@ -10,10 +10,10 @@ export default function Skill() {
   const toggleRef = useRef<HTMLDivElement>(null);
   const [isOpen, setOpen] = useState(false);
 
-  const onClick = useCallback(() => {
+  const onClick = () => {
     setOpen((prevState) => !prevState);
     isOpen ? animate.openToggle(toggleRef) : animate.closeToggle(toggleRef);
-  }, [setOpen, isOpen]);
+  };
 
   return (
     <Box className={wrap} ref={toggleRef}>

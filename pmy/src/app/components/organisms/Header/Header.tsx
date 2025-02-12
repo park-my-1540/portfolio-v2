@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { LocalStorageService } from '@/service/storage/localStorageService';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
@@ -39,24 +39,21 @@ const MenuToggle = () => {
 const ThemeToggle = () => {
   const setTheme = useSetAtom(themeState);
   const { cursorRef } = useAtomValue(cursorState);
-  const changeTheme = useCallback(
-    (mode: ThemeMode) => {
-      LocalStorageService.setItem('theme', mode);
-      setTheme({
-        mode: mode,
-      });
-    },
-    [setTheme],
-  );
+  const changeTheme = (mode: ThemeMode) => {
+    LocalStorageService.setItem('theme', mode);
+    setTheme({
+      mode: mode,
+    });
+  };
 
-  const removePoint = useCallback(() => {
+  const removePoint = () => {
     if (!cursorRef) return;
     cursorRef.current?.classList.remove('point');
-  }, []);
-  const addPoint = useCallback(() => {
+  };
+  const addPoint = () => {
     if (!cursorRef) return;
     cursorRef.current?.classList.add('point');
-  }, []);
+  };
 
   return (
     <Box display="flex" direction="row" align="center" justify="center">
