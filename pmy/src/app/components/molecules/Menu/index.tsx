@@ -6,7 +6,7 @@ import { SplitText } from '@/components/atoms/SplitText';
 import * as url from '@/constants/constants';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useAtomValue } from 'jotai';
-import { viewState } from '@/jotai/viewAtom';
+import { locoScrollState } from '@/jotai/locoScrollAtom';
 import { borderTop } from '@/styles/style.css';
 
 function MenuItem({ menu, moveToSectionPosition }) {
@@ -92,7 +92,7 @@ function MenuItem({ menu, moveToSectionPosition }) {
 }
 
 export default function Menu() {
-  const { locoScroll } = useAtomValue(viewState);
+  const locoScroll = useAtomValue(locoScrollState);
   const scrollRef = useRef<LocomotiveScroll | null>(null);
 
   const menuList = [

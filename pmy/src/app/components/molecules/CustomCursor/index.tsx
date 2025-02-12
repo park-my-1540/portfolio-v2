@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import * as styles from './index.css';
 
 import { useSetAtom } from 'jotai';
-import { viewState } from '@/jotai/viewAtom';
+import { cursorState } from '@/jotai/cursorAtom';
 
 const CustomCursor = () => {
   const mainCursor = useRef<HTMLDivElement | null>(null);
-  const setCursor = useSetAtom(viewState);
+  const setCursor = useSetAtom(cursorState);
 
   setCursor({ cursorRef: mainCursor });
   const positionRef = useRef({

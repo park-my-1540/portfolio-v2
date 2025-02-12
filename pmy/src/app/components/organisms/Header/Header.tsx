@@ -6,7 +6,7 @@ import { header, inner, changeCircle, dark, menuBtn, sub } from './index.css';
 import { Position } from '@/components/layouts/PositionContainer/Position';
 import { useSetAtom, useAtomValue, useAtom } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
-import { viewState } from '@/jotai/viewAtom';
+import { cursorState } from '@/jotai/cursorAtom';
 import { modalState } from '@/jotai/modalAtom';
 
 import { ThemeMode } from '@/types/styles';
@@ -18,9 +18,12 @@ import * as animate from '@/utils/animate';
 
 export function Header() {
   const setTheme = useSetAtom(themeState);
+
   const setModalOpen = useSetAtom(modalState);
   const modalOpen = useAtomValue(modalState);
-  const { cursorRef } = useAtomValue(viewState);
+
+  const { cursorRef } = useAtomValue(cursorState);
+
   const headerRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname(); // 현재 경로
 

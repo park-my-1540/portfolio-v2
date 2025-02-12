@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useSetAtom } from 'jotai';
-import { viewState } from '@/jotai/viewAtom';
+import { scrollStartState } from '@/jotai/scrollStartAtom';
+import { locoScrollState } from '@/jotai/locoScrollAtom';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
@@ -51,7 +52,8 @@ const moveToGalleryPosition = (
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
 export default function useLocoScroll(start: boolean, ref: any) {
-  const setScrollState = useSetAtom(viewState);
+  const setScrollStartState = useSetAtom(scrollStartState);
+  const setLocoScrollState = useSetAtom(locoScrollState);
   const pathname = usePathname(); // 현재 경로
   const locoScrollRef = useRef<LocomotiveScroll | null>(null);
 
@@ -104,15 +106,12 @@ export default function useLocoScroll(start: boolean, ref: any) {
           },
         });
 
-        setScrollState({ locoScroll: locoScrollRef.current });
+        setLocoScrollState(locoScrollRef.current);
 
         locoScrollRef.current.on('scroll', (loco) => {
           ScrollTrigger.update();
           if (loco.scroll.y > 0) {
-            setScrollState((prevState) => ({
-              ...prevState,
-              scrollStart: true,
-            }));
+            setScrollStartState(true);
           }
         });
 

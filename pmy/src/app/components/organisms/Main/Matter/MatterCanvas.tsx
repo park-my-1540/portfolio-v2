@@ -6,10 +6,10 @@ import Box from '@/components/layouts/Box/Box';
 import { canvas } from './index.css';
 import Svg from './Svg';
 import { useAtomValue } from 'jotai';
-import { viewState } from '@/jotai/viewAtom';
+import { scrollStartState } from '@/jotai/scrollStartAtom';
 
 const MatterMain: React.FC = () => {
-  const { scrollStart } = useAtomValue(viewState);
+  const scrollStart = useAtomValue(scrollStartState);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvasBoxRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<SVGSVGElement | null>(null);

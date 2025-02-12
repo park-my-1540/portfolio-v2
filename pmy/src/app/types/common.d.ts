@@ -17,7 +17,6 @@ interface GalleryItemProps extends GalleryProps {
   updateActiveImage: (index: number) => void;
 }
 
-// ///////
 interface NotionRes {
   pageWithBlocks: PageWithBlocks[];
   filtered: Filtered[];
