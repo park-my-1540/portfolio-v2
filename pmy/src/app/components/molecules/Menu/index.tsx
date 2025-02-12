@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { wrapper, menuItem, menuInner } from './style.css';
+import { wrapper, menuItem, menuInner } from './index.css';
 import Box from '@/components/layouts/Box/Box';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';

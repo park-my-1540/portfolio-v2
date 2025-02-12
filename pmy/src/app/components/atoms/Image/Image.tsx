@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { image, ImageVariantProps } from './image.css';
+import { image, ImageVariantProps } from './index.css';
 
 type ImageProps = {
   url: string | undefined;

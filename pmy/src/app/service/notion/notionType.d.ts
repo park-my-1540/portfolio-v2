@@ -1,5 +1,4 @@
 /** response properties type */
-
 type NotionImage = {
   external?: { url: string };
   file?: { url: string };

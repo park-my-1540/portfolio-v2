@@ -1,7 +1,7 @@
 import Box from '@/components/layouts/Box/Box';
 import { Text } from '@/components/atoms/Text/Text';
 import { vars } from '@/styles/common/createThemeContract.css';
-import { wrap, spinAgain } from './style.css';
+import { wrap, spinAgain } from './index.css';
 
 export default function ScrollArrow() {
   return (

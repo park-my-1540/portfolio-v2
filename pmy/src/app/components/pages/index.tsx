@@ -2,10 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 import { GalleryProps } from '@/types/common';
 import Box from '@/components/layouts/Box/Box';
-import MainPage from './MainSection';
-import AboutPage from './AboutSection';
-import ProjectsPage from './ProjectsSection';
-import ContactPage from './ContactSection';
+
+import About from '@/components/templates/About';
+import Contact from '@/components/templates/Contact';
+import Main from '@/components/templates/Main';
+import Gallery from '@/components/organisms/Gallery';
+
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import useLocoScroll from '@/hook/useLocoScroll';
@@ -37,14 +39,14 @@ export default function Home({ list }: { list: GalleryProps[] }) {
           },
         }}
       >
-        <MainPage />
-        <AboutPage />
-        <ProjectsPage />
+        <Main />
+        <About />
+        <Gallery />
         <section className="panel" id="forScrollGsap" data-scroll-section>
           <Box height={300}></Box>
         </section>
       </Box>
-      <ContactPage />
+      <Contact />
       <footer data-scroll-section>
         <Box height={100} backgroundColor={vars.color.point}></Box>
       </footer>

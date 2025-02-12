@@ -2,8 +2,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import Matter from 'matter-js';
-import './canvas.css';
-import Svg from '@/components/molecules/Svg/Svg';
+import Box from '@/components/layouts/Box/Box';
+import { canvas } from './index.css';
+import Svg from './Svg';
 import { useAtomValue } from 'jotai';
 import { viewState } from '@/jotai/viewAtom';
 
@@ -181,10 +182,10 @@ const MatterMain: React.FC = () => {
   }, [scrollStart]);
   return (
     <>
-      <div className="canvasBox" ref={canvasBoxRef}>
+      <Box position="relative" width="100%" height="100%" ref={canvasBoxRef}>
         <Svg titleRef={titleRef} />
-        <canvas className="canvas" ref={canvasRef}></canvas>
-      </div>
+        <canvas className={canvas} ref={canvasRef}></canvas>
+      </Box>
     </>
   );
 };

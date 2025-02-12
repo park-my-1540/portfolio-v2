@@ -10,7 +10,7 @@ import {
   paddingBox,
   paddingYNoneBox,
 } from '@/styles/style.css';
-import { list, columnWrap } from './column.css';
+import { list, columnWrap } from './index.css';
 import { useRouter } from 'next/navigation';
 export default function Column({ filtered }: { filtered: Filtered[] }) {
   const router = useRouter();

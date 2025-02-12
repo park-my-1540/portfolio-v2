@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import * as flexstyles from './flex.css';
+import * as flexstyles from './index.css';
 import { clsx } from 'clsx';
 import { pickProps } from '@/utils/helpers';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';

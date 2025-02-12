@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import Box from '@/components/layouts/Box/Box';
-import { wrap, btn, line } from './style.css';
+import { wrap, btn, line } from './index.css';
 import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
 import { paddingBox } from '@/styles/style.css';

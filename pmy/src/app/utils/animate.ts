@@ -92,7 +92,7 @@ export const scaleOnScroll = (lineRef: RefType, triggerRef: RefType) => {
  * @param tl - timeline
  */
 export const triggerMainSections = (tl) => {
-  const lineEl = document.querySelector('.line-2') as HTMLElement;
+  const lineEl = document.querySelector('.line') as HTMLElement;
   const sections = document.querySelector('.main') as HTMLElement;
 
   if (!lineEl || !tl) return;

@@ -7,7 +7,7 @@ import {
   BlockObjectResponse,
   PartialBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import { NotionPage } from '@/types/notionRes';
+import { NotionPage } from './notionType';
 import { BlockContent, TextRichText, Block, DatabaseKey } from '@/types/common';
 
 // 1. Notion 데이터베이스에서 일정 정보를 가져오는 함수

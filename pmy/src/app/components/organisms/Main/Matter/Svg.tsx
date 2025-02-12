@@ -1,4 +1,5 @@
 import { vars } from '@/styles/common/createThemeContract.css';
+import { title } from './index.css';
 export default function Svg({
   titleRef,
 }: {
@@ -13,7 +14,7 @@ export default function Svg({
         viewBox="0 0 1615 557"
         fill="none"
         ref={titleRef}
-        className="title"
+        className={title}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path

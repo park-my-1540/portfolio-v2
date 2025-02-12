@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import * as styles from './cursor.css';
+import * as styles from './index.css';
 
 import { useSetAtom } from 'jotai';
 import { viewState } from '@/jotai/viewAtom';
