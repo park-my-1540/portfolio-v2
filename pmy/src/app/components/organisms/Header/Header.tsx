@@ -16,26 +16,29 @@ import Menu from '@/components/molecules/Menu';
 
 import * as animate from '@/utils/animate';
 
-export function Header() {
-  const setTheme = useSetAtom(themeState);
-
+const MenuToggle = () => {
   const setModalOpen = useSetAtom(modalState);
   const modalOpen = useAtomValue(modalState);
+  const onClickMenu = () => {
+    modalOpen ? animate.closeMenu() : animate.openMenu();
+    setModalOpen((prev) => !prev);
+  };
 
+  return (
+    <TextLink
+      weights="bold"
+      sizes="smallmedium"
+      className={menuBtn}
+      onClick={onClickMenu}
+    >
+      {modalOpen ? 'CLOSE' : 'MENU'}
+    </TextLink>
+  );
+};
+
+const ThemeToggle = () => {
+  const setTheme = useSetAtom(themeState);
   const { cursorRef } = useAtomValue(cursorState);
-
-  const headerRef = useRef<HTMLDivElement | null>(null);
-  const pathname = usePathname(); // 현재 경로
-
-  const removePoint = useCallback(() => {
-    if (!cursorRef) return;
-    cursorRef.current?.classList.remove('point');
-  }, []);
-  const addPoint = useCallback(() => {
-    if (!cursorRef) return;
-    cursorRef.current?.classList.add('point');
-  }, []);
-
   const changeTheme = useCallback(
     (mode: ThemeMode) => {
       LocalStorageService.setItem('theme', mode);
@@ -46,11 +49,39 @@ export function Header() {
     [setTheme],
   );
 
-  const onClickMenu = useCallback(() => {
-    modalOpen ? animate.closeMenu() : animate.openMenu();
+  const removePoint = useCallback(() => {
+    if (!cursorRef) return;
+    cursorRef.current?.classList.remove('point');
+  }, []);
+  const addPoint = useCallback(() => {
+    if (!cursorRef) return;
+    cursorRef.current?.classList.add('point');
+  }, []);
 
-    setModalOpen((prevState) => !prevState);
-  }, [setModalOpen, modalOpen]);
+  return (
+    <Box display="flex" direction="row" align="center" justify="center">
+      <SplitText splitText="Mee Young" sizes="medium" weights="bold" />
+      <Position position="absolute" left="50%">
+        <button
+          onMouseEnter={addPoint}
+          onMouseLeave={removePoint}
+          onClick={() => changeTheme('light')}
+          className={`${changeCircle} changeTheme`}
+        />
+        <button
+          onMouseEnter={addPoint}
+          onMouseLeave={removePoint}
+          className={`${changeCircle} ${dark} changeTheme`}
+          onClick={() => changeTheme('dark')}
+        />
+      </Position>
+    </Box>
+  );
+};
+
+export function Header() {
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname(); // 현재 경로
 
   useEffect(() => {
     if (!headerRef?.current) return;
@@ -85,32 +116,8 @@ export function Header() {
           },
         }}
       >
-        <Box display="flex" direction="row" align="center" justify="center">
-          <SplitText splitText="Mee Young" sizes="medium" weights="bold" />
-          <Position position="absolute" left="50%">
-            <button
-              onMouseEnter={addPoint}
-              onMouseLeave={removePoint}
-              onClick={() => changeTheme('light')}
-              className={`${changeCircle} changeTheme`}
-            />
-            <button
-              onMouseEnter={addPoint}
-              onMouseLeave={removePoint}
-              className={`${changeCircle} ${dark} changeTheme`}
-              onClick={() => changeTheme('dark')}
-            />
-          </Position>
-        </Box>
-
-        <TextLink
-          weights="bold"
-          sizes="smallmedium"
-          className={menuBtn}
-          onClick={onClickMenu}
-        >
-          {modalOpen ? 'CLOSE' : 'MENU'}
-        </TextLink>
+        <ThemeToggle />
+        <MenuToggle />
         <Menu />
       </Box>
     </Box>
