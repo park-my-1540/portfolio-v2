@@ -48,6 +48,36 @@ const moveToGalleryPosition = (
 };
 
 /**
+ * 타이머 핸들러
+ */
+const debounceResizeHandler = (
+  locoScrollRef: React.RefObject<LocomotiveScroll | null>,
+  timer: any,
+) => {
+  const handleResize = debounce(() => {
+    locoScrollRef.current?.scrollTo(0, { duration: 0 });
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      locoScrollRef.current?.update();
+      ScrollTrigger.refresh(); // 새로 계산
+    }, 500);
+  }, 300);
+
+  return handleResize;
+};
+
+/**
+ * ScrollTrigger 새로고침 함수
+ */
+const refreshScrollTriggers = (timelines) => {
+  timelines.forEach((tl) => {
+    if (tl && tl.scrollTrigger) {
+      tl.scrollTrigger.refresh();
+    }
+  });
+};
+
+/**
  * Locomotive Scroll과 GSAP의 ScrollTrigger를 통합하여 스크롤 이벤트를 처리합니다.
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
@@ -57,22 +87,15 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const pathname = usePathname(); // 현재 경로
   const locoScrollRef = useRef<LocomotiveScroll | null>(null);
 
-  const gallery_tl = useRef<gsap.core.Timeline | null>(null);
-  const highlights_tl = useRef<gsap.core.Timeline | null>(null);
-  const main_tl = useRef<gsap.core.Timeline | null>(null);
-  const contact_tl = useRef<gsap.core.Timeline | null>(null);
+  const galleryTimeline = useRef<gsap.core.Timeline | null>(null),
+    aboutTimeline = useRef<gsap.core.Timeline | null>(null),
+    mainTimeline = useRef<gsap.core.Timeline | null>(null),
+    contactTimeline = useRef<gsap.core.Timeline | null>(null);
 
-  let timer, timer2;
+  let timer, resizeTimer;
 
   useEffect(() => {
-    const handleResize = debounce(() => {
-      locoScrollRef.current?.scrollTo(0, { duration: 0 });
-      clearTimeout(timer2);
-      timer2 = setTimeout(() => {
-        locoScrollRef.current?.update();
-        ScrollTrigger.refresh(); // 새로 계산
-      }, 500);
-    }, 300);
+    const handleResize = debounceResizeHandler(locoScrollRef, resizeTimer);
 
     window.addEventListener('resize', handleResize);
 
@@ -151,10 +174,12 @@ export default function useLocoScroll(start: boolean, ref: any) {
         };
 
         // gsap timeline
-        main_tl.current = animate.triggerMainSections(main_tl);
-        highlights_tl.current = animate.triggerHighlightsText(highlights_tl);
-        gallery_tl.current = animate.triggerHorizontalSections(gallery_tl);
-        contact_tl.current = animate.triggerContactSections(contact_tl);
+        mainTimeline.current = animate.triggerMainSections(mainTimeline);
+        aboutTimeline.current = animate.triggerHighlightsText(aboutTimeline);
+        galleryTimeline.current =
+          animate.triggerHorizontalSections(galleryTimeline);
+        contactTimeline.current =
+          animate.triggerContactSections(contactTimeline);
 
         clearTimeout(timer);
         timer = setTimeout(() => {
@@ -178,39 +203,24 @@ export default function useLocoScroll(start: boolean, ref: any) {
         locoScrollRef.current.destroy();
         locoScrollRef.current = null;
       }
-
-      if (gallery_tl.current) {
-        gallery_tl.current.kill();
-        gallery_tl.current = null;
-      }
-      if (highlights_tl.current) {
-        highlights_tl.current.kill();
-        highlights_tl.current = null;
-      }
-      if (contact_tl.current) {
-        contact_tl.current.kill();
-        contact_tl.current = null;
-      }
-      if (main_tl.current) {
-        main_tl.current.kill();
-        main_tl.current = null;
-      }
+      [galleryTimeline, aboutTimeline, mainTimeline, contactTimeline].forEach(
+        (tl) => {
+          if (tl.current) {
+            tl.current.kill();
+            tl.current = null;
+          }
+        },
+      );
     };
   }, [ref]);
 
   // 경로 변경 시 ScrollTrigger 인스턴스 새로고침
   useEffect(() => {
-    if (gallery_tl.current && gallery_tl.current.scrollTrigger) {
-      gallery_tl.current.scrollTrigger.refresh();
-    }
-    if (highlights_tl.current && highlights_tl.current.scrollTrigger) {
-      highlights_tl.current.scrollTrigger.refresh();
-    }
-    if (contact_tl.current && contact_tl.current.scrollTrigger) {
-      contact_tl.current.scrollTrigger.refresh();
-    }
-    if (main_tl.current && main_tl.current.scrollTrigger) {
-      main_tl.current.scrollTrigger.refresh();
-    }
+    refreshScrollTriggers([
+      galleryTimeline.current,
+      aboutTimeline.current,
+      mainTimeline.current,
+      contactTimeline.current,
+    ]);
   }, [pathname]);
 }
