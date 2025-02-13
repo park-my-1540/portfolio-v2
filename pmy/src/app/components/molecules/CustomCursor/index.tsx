@@ -1,14 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 import * as styles from './index.css';
 
-import { useSetAtom } from 'jotai';
-import { cursorState } from '@/jotai/cursorAtom';
-
+import { useAtomValue } from 'jotai';
+import { cursorsState } from '@/jotai/cursorsAtom';
 const CustomCursor = () => {
   const mainCursor = useRef<HTMLDivElement | null>(null);
-  const setCursor = useSetAtom(cursorState);
+  const cursorType = useAtomValue(cursorsState);
 
-  setCursor({ cursorRef: mainCursor });
+  useEffect(() => {
+    if (mainCursor.current) {
+      mainCursor.current.classList.remove('project', 'pointer', 'point');
+
+      if (cursorType) {
+        mainCursor.current.classList.add(cursorType);
+      }
+    }
+  }, [cursorType]);
+
   const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,

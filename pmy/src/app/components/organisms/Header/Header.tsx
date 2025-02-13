@@ -4,9 +4,8 @@ import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
 import { header, inner, changeCircle, dark, menuBtn, sub } from './index.css';
 import { Position } from '@/components/layouts/PositionContainer/Position';
-import { useSetAtom, useAtomValue, useAtom } from 'jotai';
+import { useSetAtom, useAtomValue } from 'jotai';
 import { themeState } from '@/jotai/themeAtom';
-import { cursorState } from '@/jotai/cursorAtom';
 import { modalState } from '@/jotai/modalAtom';
 
 import { ThemeMode } from '@/types/styles';
@@ -14,6 +13,7 @@ import { SplitText } from '@/components/atoms/SplitText';
 import { TextLink } from '@/components/atoms/Text/Text';
 import Menu from '@/components/molecules/Menu';
 import * as modal from '@/utils/modal';
+import * as cursor from '@/utils/cursor';
 
 const MenuToggle = () => {
   const modalOpen = useAtomValue(modalState);
@@ -35,7 +35,6 @@ const MenuToggle = () => {
 
 const ThemeToggle = () => {
   const setTheme = useSetAtom(themeState);
-  const { cursorRef } = useAtomValue(cursorState);
   const changeTheme = (mode: ThemeMode) => {
     LocalStorageService.setItem('theme', mode);
     setTheme({
@@ -43,38 +42,23 @@ const ThemeToggle = () => {
     });
   };
 
-  const removePoint = () => {
-    if (!cursorRef) return;
-    cursorRef.current?.classList.remove('point');
-  };
-  const addPoint = () => {
-    if (!cursorRef) return;
-    cursorRef.current?.classList.add('point');
-  };
-
   return (
-    <Box display="flex" direction="row" align="center" justify="center">
-      <SplitText
-        splitText="Mee Young"
-        sizes="medium"
-        weights="bold"
-        type="same"
-      />
+    <>
       <Position position="absolute" left="50%">
         <button
-          onMouseEnter={addPoint}
-          onMouseLeave={removePoint}
+          onMouseEnter={() => cursor.set('point')}
+          onMouseLeave={() => cursor.set(null)}
           onClick={() => changeTheme('light')}
           className={`${changeCircle} changeTheme`}
         />
         <button
-          onMouseEnter={addPoint}
-          onMouseLeave={removePoint}
+          onMouseEnter={() => cursor.set('point')}
+          onMouseLeave={() => cursor.set(null)}
           className={`${changeCircle} ${dark} changeTheme`}
           onClick={() => changeTheme('dark')}
         />
       </Position>
-    </Box>
+    </>
   );
 };
 
@@ -115,7 +99,15 @@ export function Header() {
           },
         }}
       >
-        <ThemeToggle />
+        <Box display="flex" direction="row" align="center" justify="center">
+          <SplitText
+            splitText="Mee Young"
+            sizes="medium"
+            weights="bold"
+            type="same"
+          />
+          <ThemeToggle />
+        </Box>
         <MenuToggle />
         <Menu />
       </Box>

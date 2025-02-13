@@ -43,8 +43,8 @@ const translateRightDot = keyframes({
 
 // 기본 스타일 정의
 export const mainCursor = style({
-  width: '40px',
-  height: '40px',
+  width: '24px',
+  height: '24px',
   zIndex: 999,
   borderRadius: '50%',
   pointerEvents: 'none',
@@ -53,7 +53,8 @@ export const mainCursor = style({
   position: 'fixed',
   background: 'white',
   mixBlendMode: 'difference',
-  transition: 'width 0.25s ease-in-out, height 0.25s ease-in-out',
+  transition:
+    'background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
 });
 
 export const animations = {

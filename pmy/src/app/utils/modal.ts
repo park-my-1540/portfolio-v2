@@ -1,4 +1,3 @@
-// 📂 src/utils/modal.ts
 import { modalState } from '@/jotai/modalAtom';
 import { getDefaultStore } from 'jotai';
 import * as animate from '@/utils/animate';

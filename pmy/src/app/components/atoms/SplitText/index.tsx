@@ -7,6 +7,8 @@ import { text, TextVariantProps } from './splitText.module.css';
 import 'splitting/dist/splitting.css';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps } from '@/types/styles';
+import * as cursor from '@/utils/cursor';
+
 type SplitTextProps = {
   splitText: string;
   url?: string;
@@ -42,7 +44,13 @@ export const SplitText = ({
   );
 
   return (
-    <a href={linkUrl} className={classes} onClick={onClick}>
+    <a
+      href={linkUrl}
+      className={classes}
+      onClick={onClick}
+      onMouseEnter={() => cursor.set('pointer')}
+      onMouseLeave={() => cursor.set(null)}
+    >
       {type !== 'same' && (
         <p
           className={cn(

@@ -2,7 +2,7 @@ import React from 'react';
 import { text, TextVariantProps } from './texts.module.css';
 import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
 import cn from 'classnames';
-
+import * as cursor from '@/utils/cursor';
 type TextProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
@@ -113,6 +113,8 @@ export const TextLink = ({
 }: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
     <a
+      onMouseEnter={() => cursor.set('pointer')}
+      onMouseLeave={() => cursor.set(null)}
       onClick={onClick}
       href={url}
       target="blank"

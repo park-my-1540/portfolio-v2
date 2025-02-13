@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import { styleVariants, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 
 export const btn = style({
@@ -12,7 +11,6 @@ export const btn = style({
   height: '5rem',
   borderTopLeftRadius: '0.9rem',
   borderBottomLeftRadius: '0.9rem',
-  cursor: 'pointer',
   selectors: {
     '&::after': {
       content: '',

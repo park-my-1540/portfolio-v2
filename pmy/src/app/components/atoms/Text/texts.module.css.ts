@@ -5,7 +5,6 @@ import { vars } from '@/styles/common/createThemeContract.css';
 const base = {
   margin: '0',
   lineHeight: '1.3',
-  cursor: 'pointer',
 };
 
 const variants = {
