@@ -1,13 +1,13 @@
 import { dim } from '@/styles/style.css';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { modalState } from '@/jotai/modalAtom';
-import * as animate from '@/utils/animate';
+import * as modal from '@/utils/modal';
 export default function Modal() {
   const modalOpen = useAtomValue(modalState);
-  const setModalOpen = useSetAtom(modalState);
+
   const closeMenu = () => {
-    setModalOpen(false);
-    animate.closeMenu();
+    modal.closeModal();
   };
+
   return modalOpen && <div className={dim} onClick={closeMenu}></div>;
 }

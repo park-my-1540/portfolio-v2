@@ -8,6 +8,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import { useAtomValue } from 'jotai';
 import { locoScrollState } from '@/jotai/locoScrollAtom';
 import { borderTop } from '@/styles/style.css';
+import * as modal from '@/utils/modal';
 
 const menuList = [
   {
@@ -145,6 +146,8 @@ export default function Menu() {
     if (!scrollRef.current) return;
     const position = getScrollPositionOfElement(className);
     scrollRef.current.scrollTo(position, { duration: 0 });
+
+    modal.closeModal();
   }, []);
 
   return (

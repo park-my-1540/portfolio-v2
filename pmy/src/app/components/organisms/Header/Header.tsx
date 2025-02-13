@@ -13,15 +13,12 @@ import { ThemeMode } from '@/types/styles';
 import { SplitText } from '@/components/atoms/SplitText';
 import { TextLink } from '@/components/atoms/Text/Text';
 import Menu from '@/components/molecules/Menu';
-
-import * as animate from '@/utils/animate';
+import * as modal from '@/utils/modal';
 
 const MenuToggle = () => {
-  const setModalOpen = useSetAtom(modalState);
   const modalOpen = useAtomValue(modalState);
   const onClickMenu = () => {
-    modalOpen ? animate.closeMenu() : animate.openMenu();
-    setModalOpen((prev) => !prev);
+    modalOpen ? modal.closeModal() : modal.openModal();
   };
 
   return (
@@ -57,7 +54,12 @@ const ThemeToggle = () => {
 
   return (
     <Box display="flex" direction="row" align="center" justify="center">
-      <SplitText splitText="Mee Young" sizes="medium" weights="bold" />
+      <SplitText
+        splitText="Mee Young"
+        sizes="medium"
+        weights="bold"
+        type="same"
+      />
       <Position position="absolute" left="50%">
         <button
           onMouseEnter={addPoint}
