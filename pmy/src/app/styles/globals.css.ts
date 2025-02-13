@@ -45,7 +45,7 @@ globalStyle('body, html', {
       height: '100%',
       fontFamily: 'MangoRegular',
       // overflowY: 'hidden',
-      // cursor: 'none',
+      cursor: 'none',
     },
   },
 });
@@ -65,7 +65,6 @@ globalStyle('body', {
 globalStyle('button', {
   '@layer': {
     [layers.reset]: {
-      cursor: 'pointer',
       transition: 'opacity 0.3s ease', // 오퍼시티 전환 효과
     },
   },

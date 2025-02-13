@@ -8,10 +8,9 @@ export const galleryWrap = style({
 });
 
 export const gallery = style({
-  marginRight: '-100vw',
   height: '100vh',
   padding: '15vh 0 10vh',
-  width: '400%',
+  width: '200%',
   display: 'flex',
   flexWrap: 'nowrap',
 });
@@ -19,7 +18,7 @@ export const gallery = style({
 export const galleryCounter = style({
   position: 'absolute',
   top: '17%',
-  left: '2%',
+  left: '5%',
   zIndex: 1,
   mixBlendMode: 'difference',
   color: vars.color.text.light,
@@ -37,43 +36,33 @@ export const divider = style({
 
 export const galleryItemInfo = style({
   position: 'absolute',
-  bottom: '5%',
+  bottom: '15%',
   zIndex: 1,
   transform: 'translateX(-20%)',
-  fontFamily: 'Roboto',
-  color: vars.color.primary,
+  fontFamily: 'MangoBold',
+  color: vars.color.complementary02,
 });
 
 export const galleryInfoSubtitle = style({
   position: 'relative',
   lineHeight: '6vw',
   color: 'transparent',
-  fontFamily: 'Roboto',
+  fontFamily: 'MangoBold',
   fontWeight: 400,
   WebkitFontSmoothing: 'antialiased',
-  WebkitTextStroke: `2px ${vars.color.text.light}`,
-});
-export const btnDefault = style({
-  marginTop: '2rem',
-  padding: '0.5rem 1rem',
-  borderRadius: '1rem',
-  backgroundColor: vars.color.point,
-  fontFamily: 'MangoBold',
+  WebkitTextStroke: `2px ${vars.color.complementary02}`,
 });
 
 export const galleryContainer = style({
   '@media': {
     'screen and (max-width: 768px)': {
       gridTemplateColumns: '13vw 1fr 8vw',
-      // background: '#5D8EFF',
     },
     'screen and (min-width: 768px) and (max-width: 1024px)': {
       gridTemplateColumns: '15vw 1fr 10vw',
-      // background: '#ff69b4',
     },
     'screen and (min-width: 1024px)': {
       gridTemplateColumns: '20vw 1fr 200px',
-      // background: '#dbe5ff',
     },
   },
 });

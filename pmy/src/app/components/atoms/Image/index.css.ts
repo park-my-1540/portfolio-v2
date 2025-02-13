@@ -33,6 +33,10 @@ const variants = {
       width: '100%',
       height: 300,
     }),
+    slide: style({
+      width: 'auto',
+      height: 450,
+    }),
     full: style({
       width: '100%',
       height: '80vh',

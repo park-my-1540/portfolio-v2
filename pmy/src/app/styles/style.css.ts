@@ -4,16 +4,16 @@ import { spaceVars } from './tokens/space.css';
 
 // border - style
 export const borderTopNone = style({
-  border: '2px solid',
+  border: '1.5px solid',
   borderTop: 'none',
 });
 
 export const borderBox = style({
-  border: '2px solid',
+  border: '1.5px solid',
 });
 
 export const borderTop = style({
-  borderTop: '2px solid',
+  borderTop: '1.5px solid',
 });
 
 // layout
@@ -53,6 +53,7 @@ export const project = style({
   height: '100vh',
   overflowY: 'scroll',
   backgroundColor: vars.color.light,
+  color: vars.color.dark,
   selectors: {
     '&::before': {
       content: '',

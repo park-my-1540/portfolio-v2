@@ -10,37 +10,26 @@ import { useAtomValue } from 'jotai';
 import { galleryListState } from '@/jotai/galleryListAtom';
 import { Text, TextTitle } from '@/components/atoms/Text/Text';
 import * as style from './gallery.css';
+import * as cursor from '@/utils/cursor';
 
-const GalleryContent = ({
-  title,
-  service,
-  position,
-  img,
-}: GalleryContentProps) => {
+const GalleryContent = ({ title, service, position }: GalleryContentProps) => {
   return (
-    <Box width="100%" height="100%">
-      <Box className={style.galleryItemInfo}>
-        <TextTitle sizes="title" color="primary" family="roboto">
-          {title}
-        </TextTitle>
-        <TextTitle
-          className={style.galleryInfoSubtitle}
-          color="transparent"
-          sizes="title"
-          family="roboto"
-        >
-          {service}
-        </TextTitle>
-        <Text sizes="mediumlargeX2" color="primary" family="roboto">
-          {position}
-        </Text>
-        <button className={style.btnDefault}>ABOUT</button>
-      </Box>
-      <div
-        className="gallery-item-image"
-        style={{ backgroundImage: `url(${img})` }}
-      ></div>
-    </Box>
+    <>
+      <TextTitle sizes="title" weights="bold">
+        {title}
+      </TextTitle>
+      <TextTitle
+        className={style.galleryInfoSubtitle}
+        color="transparent"
+        sizes="title"
+        weights="bold"
+      >
+        {service}
+      </TextTitle>
+      <Text sizes="large" weights="bold" style={{ marginTop: 5 }}>
+        {position}
+      </Text>
+    </>
   );
 };
 
@@ -49,7 +38,7 @@ function GalleryItem({ updateActiveImage, index, ...rest }: GalleryItemProps) {
   const ref = useRef(null);
   const onScreen = useOnScreen(ref, 0.5);
 
-  const { type, ...item } = rest;
+  const { type, img, ...item } = rest;
 
   useEffect(() => {
     if (onScreen) {
@@ -61,10 +50,10 @@ function GalleryItem({ updateActiveImage, index, ...rest }: GalleryItemProps) {
     sessionStorage.setItem('detail', type);
     animate.pageOut(`/project/${type}`, router);
   };
+
   const MemorizedGalleryContent = React.memo(GalleryContent);
   return (
     <div
-      onClick={() => goDetail(type)}
       className={cn(
         'gallery-item-wrapper',
         { 'is-reveal': onScreen },
@@ -73,7 +62,18 @@ function GalleryItem({ updateActiveImage, index, ...rest }: GalleryItemProps) {
       ref={ref}
     >
       <div></div>
-      <MemorizedGalleryContent {...item} />
+      <Box width="100%" height="100%" className="sia">
+        <Box className={style.galleryItemInfo}>
+          <MemorizedGalleryContent {...item} />
+        </Box>
+        <div
+          onClick={() => goDetail(type)}
+          className="gallery-item-image"
+          onMouseEnter={() => cursor.set('project')}
+          onMouseLeave={() => cursor.set(null)}
+          style={{ backgroundImage: `url(${img})` }}
+        ></div>
+      </Box>
       <div></div>
     </div>
   );
@@ -89,7 +89,7 @@ export default function Gallery() {
 
   return (
     <section data-scroll-section className={style.galleryWrap} id="project">
-      <Box className={`${style.gallery} gallery`}>
+      <Box className={`${style.gallery} gallery`} data-scroll-speed="10">
         <Box className={style.galleryCounter}>
           <span>{activeImage}</span>
           <Box className={style.divider} />

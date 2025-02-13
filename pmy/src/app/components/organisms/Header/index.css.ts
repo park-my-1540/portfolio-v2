@@ -25,7 +25,7 @@ export const changeCircle = style({
 
 export const dark = style({
   background: vars.color.complementary,
-  marginLeft: -10,
+  marginLeft: -6,
 });
 
 export const menuBtn = style({
@@ -45,17 +45,18 @@ export const menuBtn = style({
 });
 
 export const sub = style({
-  border: '2px solid',
+  border: '1.5px solid',
   background: vars.color.light,
+  color: vars.color.dark,
   selectors: {
     '&::before': {
       content: '',
       display: 'block',
       width: 'calc(100% - 5px)',
-      height: 50,
+      height: '100%',
       position: 'absolute',
-      top: 0,
-      left: 0,
+      top: 'calc(-100% - 2px)',
+      left: 7,
       backgroundColor: vars.color.light,
     },
   },

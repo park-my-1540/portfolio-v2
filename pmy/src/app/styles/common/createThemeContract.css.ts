@@ -7,8 +7,10 @@ export const vars = createThemeContract({
   color: {
     primary: '', // 주 색상
     complementary: '', // 반대 색상
+    complementary02: '', // 반대 색상
     point: '', // 강조 색상
     light: '', // 흐린 색상
+    dark: '',
     text: {
       primary: '', // 기본 텍스트 색상
       tertiary: '', // 보조 텍스트 색상 (설명 텍스트 등)
@@ -26,8 +28,10 @@ export const lightTheme = createTheme(vars, {
   color: {
     primary: colors['blue' as ColorKey],
     complementary: colors['lightblue' as ColorKey],
+    complementary02: colors['lightblue03' as ColorKey],
     point: colors['pink' as ColorKey],
-    light: colors['lightblue03' as ColorKey],
+    light: colors['lightblue04' as ColorKey],
+    dark: colors['dark' as ColorKey],
     text: {
       primary: colors['white' as ColorKey],
       tertiary: colors['lightblue02' as ColorKey],
@@ -44,8 +48,10 @@ export const darkTheme = createTheme(vars, {
   color: {
     primary: colors['dark' as ColorKey],
     complementary: colors['lightblue' as ColorKey],
+    complementary02: colors['lightblue03' as ColorKey],
     point: colors['pink' as ColorKey],
     light: colors['dark' as ColorKey],
+    dark: colors['dark' as ColorKey],
     text: {
       primary: colors['gray' as ColorKey],
       tertiary: colors['light' as ColorKey],

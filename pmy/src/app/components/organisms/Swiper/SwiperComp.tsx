@@ -11,10 +11,10 @@ type SwiperCompProps = {
 
 export default function SwiperComp({ image }: SwiperCompProps) {
   return (
-    <Swiper slidesPerView={1.2} spaceBetween={30} className={swiperItem}>
+    <Swiper slidesPerView={1.5} spaceBetween={30} className={swiperItem}>
       {image.map((img, idx) => (
         <SwiperSlide key={idx}>
-          <Image className={borderBox} url={img} sizes="card" cover="contain" />
+          <Image className={borderBox} url={img} sizes="slide" cover="cover" />
         </SwiperSlide>
       ))}
     </Swiper>

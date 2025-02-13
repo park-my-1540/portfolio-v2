@@ -42,55 +42,30 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
             radius="default"
             sizes="card"
           />
-          <Text
-            sizes="large"
-            color="accent"
-            className={`${paddingBox} ${borderTop}`}
-            family="roboto"
-          >
+          <Text sizes="large" className={`${paddingBox} ${borderTop}`}>
             {title}
           </Text>
         </Box>
         <Box className={`${paddingYNoneBox} ${borderTop}`}>
-          <Text
-            sizes="mediumlarge"
-            className={list}
-            color="accent"
-            weights="bold"
-          >
+          <Text sizes="mediumlarge" className={list}>
             {company}
           </Text>
-          <Text
-            sizes="smallmedium"
-            className={list}
-            color="accent"
-            weights="bold"
-          >
+          <Text sizes="smallmedium" className={list}>
             Services
           </Text>
-          <Text sizes="smallmedium" className={list} weights="bold">
+          <Text sizes="smallmedium" className={list}>
             {service}
           </Text>
-          <Text
-            sizes="smallmedium"
-            className={list}
-            color="accent"
-            weights="bold"
-          >
+          <Text sizes="smallmedium" className={list}>
             Duration
           </Text>
-          <Text sizes="smallmedium" className={list} weights="bold">
+          <Text sizes="smallmedium" className={list}>
             {duration}
           </Text>
-          <Text
-            sizes="smallmedium"
-            className={list}
-            color="accent"
-            weights="bold"
-          >
+          <Text sizes="smallmedium" className={list}>
             Position
           </Text>
-          <Text sizes="smallmedium" className={list} weights="bold">
+          <Text sizes="smallmedium" className={list}>
             {position}
           </Text>
         </Box>

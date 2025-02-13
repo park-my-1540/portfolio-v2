@@ -3,7 +3,7 @@
   --fontSize: 18px;
   --link-translate-x: 3rem;
   --padding-container: 1rem;
-  --height-swiper: 39vh;
+  --height-swiper: 50vh;
   --textHeight: 2.85rem;
 }
 
@@ -46,13 +46,45 @@ html, body {
   width: 100%;
   height: 80vh;
 }
-
-.point{
+.cursor {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   background-color: red;
-  width: 100px;
-  height: 100px;
+  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.pointer {
+  width: 48px;
+  height: 48px;
+  background-color: #6a2876;
+  border-color: #6a2876;
 }
 
+.point {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  display: inline-block; /* 부모 요소가 inline이면 inline-block으로 변경 */
+}
+
+.project{
+  background-color: #ff69b4e5;
+  color: #1000ff;
+  width: 150px;
+  height: 150px;
+  mix-blend-mode: normal;
+  font-family: 'MangoBold';
+}
+
+.project::after{
+  content: 'ABOUT';
+  font-size: 21px;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+  padding-top: 43%;
+  font-family: 'MangoBold';
+}
 
 ul {
   display: block;
@@ -75,23 +107,6 @@ li {
   display: list-item;
   line-height: 1.4;
   text-align: -webkit-match-parent;
-}
-
-
-:root {
-  --bg-color-hsl: 59, 3%, 94%;
-  --bg-color: hsl(var(--bg-color-hsl));
-  --bg-color-translucent: hsla(var(--bg-color-hsl), 0.95);
-  --bg-color-highlight: hsl(60, 90%, 50%);
-  --color-text: hsl(192, 14%, 20%);
-  --color-text-highlight: hsl(192, 14%, 0%);
-  --page-width: 80ch;
-  --paragraph-font-size: min(max(1.2rem, 4vw), 1.4rem);
-  --header-font-size: min(max(2rem, 8vw), 4rem);
-  --space: 2rem;
-  --padding: 8vmin;
-  --duration: 1s;
-  --ease: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .text-highlight {

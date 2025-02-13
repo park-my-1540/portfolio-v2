@@ -7,6 +7,7 @@ import About from '@/components/templates/About';
 import Contact from '@/components/templates/Contact';
 import Main from '@/components/templates/Main';
 import Gallery from '@/components/organisms/Gallery';
+import Footer from '@/components/organisms/Footer/Footer';
 
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
@@ -47,9 +48,7 @@ export default function Home({ list }: { list: GalleryProps[] }) {
         </section>
       </Box>
       <Contact />
-      <footer data-scroll-section>
-        <Box height={100} backgroundColor={vars.color.point}></Box>
-      </footer>
+      <Footer />
     </div>
   );
 }
