@@ -1,16 +1,16 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { vars } from '@/styles/common/createThemeContract.css';
-
+import { colors } from '../tokens/colors.css';
 // variants 객체를 recipe로 바로 사용하도록 수정
 export const textColor = recipe({
   base: {}, // 기본 스타일 필요 시 추가
   variants: {
     color: {
       primary: { color: vars.color.text.primary }, // 옅은 색상
-      tertiary: { color: vars.color.complementary }, // 옅은 색상
+      tertiary: { color: colors.lightblue }, // 옅은 색상
       accent: { color: vars.color.text.accent },
       textLighted: { color: vars.color.text.light },
-      point: { color: vars.color.point },
+      point: { color: colors.pink },
       inherit: { color: 'inherit' },
       transparent: { color: 'transparent' },
     },

@@ -83,9 +83,9 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
       >
         <Text>Back to</Text>
         <SplitText
-          splitText="Home"
+          splitText="WORKS"
           sizes="largeX2"
-          onClick={() => router.push('/')}
+          onClick={() => router.back()}
         />
       </Box>
     </Box>

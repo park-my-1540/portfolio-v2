@@ -54,6 +54,7 @@ export const project = style({
   overflowY: 'scroll',
   backgroundColor: vars.color.light,
   color: vars.color.dark,
+  transition: 'background-color 0.3s ease-in-out',
   selectors: {
     '&::before': {
       content: '',
@@ -63,6 +64,8 @@ export const project = style({
       background: vars.color.light,
       position: 'absolute',
       top: 0,
+      zIndex: 9,
+      transition: 'background-color 0.3s ease-in-out',
     },
   },
 });

@@ -93,7 +93,7 @@ export function Header() {
         justify="between"
         responsive={{
           padding: {
-            desktop: 'large',
+            desktop: 'mediumLargeX2',
             tablet: 'large',
             mobile: 'medium',
           },
