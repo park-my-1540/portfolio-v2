@@ -1,4 +1,5 @@
 'use client';
+import React, { useEffect, useRef } from 'react';
 import { lightTheme, darkTheme } from '@/styles/common/createThemeContract.css';
 import { LocalStorageService } from '@/service/storage/localStorageService';
 import PageTransition from '@/components/layouts/transition/PageTransition';
@@ -13,13 +14,22 @@ export default function Home({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const bodyRef = useRef<HTMLBodyElement>(null);
   const { mode } = useAtomValue(themeState);
   const theme = LocalStorageService.hasKey('theme')
     ? LocalStorageService.getItem('theme')
-    : mode;
+    : useAtomValue(themeState).mode;
+
+  useEffect(() => {
+    bodyRef.current?.classList.remove(lightTheme, darkTheme);
+    bodyRef.current?.classList.add(theme === 'dark' ? darkTheme : lightTheme);
+  }, [theme, mode]);
 
   return (
-    <body className={`${theme === 'dark' ? darkTheme : lightTheme}`}>
+    <body
+      className={`${theme === 'dark' ? darkTheme : lightTheme}`}
+      ref={bodyRef}
+    >
       <Modal />
       <CustomCursor />
       <Header />
