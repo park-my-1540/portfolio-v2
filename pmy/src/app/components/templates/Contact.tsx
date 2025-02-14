@@ -3,9 +3,8 @@
 import Box from '@/components/layouts/Box/Box';
 import { Text, TextLink } from '@/components/atoms/Text/Text';
 import { arrowLink, iconArrow, bgBtn } from '@/styles/style.css';
-import { vars } from '@/styles/common/createThemeContract.css';
 import * as url from '@/constants/constants';
-
+import { colors } from '@/styles/tokens/colors.css';
 export default function Contact() {
   return (
     <section className="panel" id="contact" data-scroll-section>
@@ -21,7 +20,7 @@ export default function Contact() {
           borderRadius="60px"
           width="100vw"
           height="70vh"
-          backgroundColor={vars.color.point}
+          backgroundColor={colors.pink}
         >
           <Text
             sizes="mediumlarge"

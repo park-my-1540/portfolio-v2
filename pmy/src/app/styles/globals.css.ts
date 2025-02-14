@@ -4,7 +4,7 @@ import './reset.css';
 import { globalStyle } from '@vanilla-extract/css';
 import { globalFontFace } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-
+import { colors } from './tokens/colors.css';
 import * as layers from './layers.css';
 
 // Medium 폰트 설정
@@ -56,7 +56,7 @@ globalStyle('body', {
       margin: 0,
       overflowX: 'hidden',
       backgroundColor: vars.color.primary,
-      color: vars.color.complementary,
+      color: colors.lightblue,
       transition: 'background-color 0.3s ease-in-out',
     },
   },

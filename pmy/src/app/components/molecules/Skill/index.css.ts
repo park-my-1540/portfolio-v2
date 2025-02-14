@@ -1,12 +1,12 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-
+import { colors } from '@/styles/tokens/colors.css';
 export const btn = style({
   position: 'absolute',
   top: '50%',
   marginTop: '-2.5rem',
   left: '-2rem',
-  background: vars.color.point,
+  background: colors.pink,
   width: '2rem',
   height: '5rem',
   borderTopLeftRadius: '0.9rem',
@@ -19,7 +19,7 @@ export const btn = style({
       height: 0,
       borderStyle: 'solid',
       borderWidth: '0px 5px 5px 0px',
-      borderColor: `transparent ${vars.color.point} transparent transparent`,
+      borderColor: `transparent ${colors.pink} transparent transparent`,
       position: 'absolute',
       bottom: -3,
       right: 0,
@@ -31,7 +31,7 @@ export const btn = style({
       height: 0,
       borderStyle: 'solid',
       borderWidth: '0px 0px 5px 5px',
-      borderColor: `transparent transparent ${vars.color.point} transparent`,
+      borderColor: `transparent transparent ${colors.pink} transparent`,
       position: 'absolute',
       top: -3,
       right: 0,
@@ -44,7 +44,6 @@ export const wrap = style({
   bottom: '10%',
   right: '-41%',
   background: vars.color.text.tertiary,
-  // background: vars.color.point,
   borderRadius: '15px',
 });
 

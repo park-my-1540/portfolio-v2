@@ -1,12 +1,13 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-
+import { colors } from '@/styles/tokens/colors.css';
 export const header = style({
   position: 'absolute',
   top: 0,
   width: '100%',
   zIndex: 99,
   color: 'inherit',
+  transition: 'background-color 0.3s ease-in-out',
 });
 
 export const inner = style({
@@ -19,13 +20,15 @@ export const changeCircle = style({
   display: 'inline-block',
   width: 30,
   height: 30,
-  border: `2px solid ${vars.color.complementary}`,
+  border: `2px solid ${colors.lightblue}`,
+  background: vars.color.header.background,
   borderRadius: '50%',
 });
 
 export const dark = style({
-  background: vars.color.complementary,
-  marginLeft: -6,
+  background: colors.dark,
+  borderColor: vars.color.header.border,
+  marginLeft: -10,
 });
 
 export const menuBtn = style({
@@ -38,7 +41,7 @@ export const menuBtn = style({
   padding: '0 1.6rem',
   selectors: {
     '&:hover': {
-      background: vars.color.complementary,
+      background: colors.lightblue,
       color: vars.color.primary,
     },
   },
@@ -48,16 +51,4 @@ export const sub = style({
   border: '1.5px solid',
   background: vars.color.light,
   color: vars.color.dark,
-  selectors: {
-    '&::before': {
-      content: '',
-      display: 'block',
-      width: 'calc(100% - 5px)',
-      height: '100%',
-      position: 'absolute',
-      top: 'calc(-100% - 2px)',
-      left: 7,
-      backgroundColor: vars.color.light,
-    },
-  },
 });

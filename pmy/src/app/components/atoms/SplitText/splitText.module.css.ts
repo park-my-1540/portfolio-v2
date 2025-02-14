@@ -6,7 +6,6 @@ const base = {
   lineHeight: '1.2',
   display: 'flex',
   alignItems: 'end',
-  // color: vars.color.complementary,
 };
 
 const variants = {

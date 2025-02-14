@@ -1,10 +1,9 @@
-import { vars } from '@/styles/common/createThemeContract.css';
 import Box from '@/components/layouts/Box/Box';
-
+import { colors } from '@/styles/tokens/colors.css';
 const Footer: React.FC = () => {
   return (
     <footer data-scroll-section>
-      <Box height={100} backgroundColor={vars.color.point}></Box>
+      <Box height={100} backgroundColor={colors.pink}></Box>
     </footer>
   );
 };

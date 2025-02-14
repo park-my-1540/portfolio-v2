@@ -1,11 +1,12 @@
 import { vars } from '@/styles/common/createThemeContract.css';
 import { title } from './index.css';
+import { colors } from '@/styles/tokens/colors.css';
 export default function Svg({
   titleRef,
 }: {
   titleRef: React.RefObject<SVGSVGElement>;
 }) {
-  const pointColor = vars.color.point;
+  const pointColor = colors.pink;
   return (
     <>
       <svg

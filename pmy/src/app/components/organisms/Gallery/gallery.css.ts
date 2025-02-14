@@ -1,7 +1,7 @@
 // gallery.css.ts
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-
+import { colors } from '@/styles/tokens/colors.css';
 export const galleryWrap = style({
   marginLeft: '-5vw',
   marginRight: '-5vw',
@@ -40,7 +40,7 @@ export const galleryItemInfo = style({
   zIndex: 1,
   transform: 'translateX(-20%)',
   fontFamily: 'MangoBold',
-  color: vars.color.complementary02,
+  color: colors.lightblue03,
 });
 
 export const galleryInfoSubtitle = style({
@@ -50,7 +50,7 @@ export const galleryInfoSubtitle = style({
   fontFamily: 'MangoBold',
   fontWeight: 400,
   WebkitFontSmoothing: 'antialiased',
-  WebkitTextStroke: `2px ${vars.color.complementary02}`,
+  WebkitTextStroke: `2px ${colors.lightblue03}`,
 });
 
 export const galleryContainer = style({
