@@ -4,7 +4,7 @@ import { DatabaseKey, NotionRes } from '@/types/common';
 
 export type paramsType = Promise<{ id: DatabaseKey }>;
 
-export default async function PhotoPage(props: { params: paramsType }) {
+export default async function Page(props: { params: paramsType }) {
   const { id: pageId } = await props.params; // params.id는 url 에서 추출된 동적 경로
 
   // 각 페이지의 블록 데이터 가져오기

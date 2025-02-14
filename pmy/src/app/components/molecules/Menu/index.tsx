@@ -82,7 +82,7 @@ function MenuItem({ item, desc, link, moveToSectionPosition }) {
         {link &&
           link.map((item, index) => (
             <SplitText
-              key={item}
+              key={`${item}-${index}`}
               type="same"
               splitText={item.item}
               sizes="smallmedium"
