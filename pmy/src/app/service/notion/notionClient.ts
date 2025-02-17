@@ -1,10 +1,8 @@
 /**
  * @fileoverview API 요청만 처리
  */
-import { Client } from '@notionhq/client';
 import { TOKEN } from '@/../../config';
 import { DatabaseKey } from '@/types/common';
-const notion = new Client({ auth: TOKEN });
 
 const BASE_URL = 'https://api.notion.com/v1';
 

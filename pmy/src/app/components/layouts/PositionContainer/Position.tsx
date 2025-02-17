@@ -1,13 +1,15 @@
 import React from 'react';
 import * as styles from '@/styles/common/position.css';
+import { ValueOfUnion } from '@/utils/helpers';
+import { NumberOrString } from '@/types/styles';
 
 type PositionProps = {
-  position?: keyof typeof styles.positionVariants;
+  position?: ValueOfUnion<typeof styles.positionVariants>;
   className?: string;
-  top?: number | string;
-  right?: number | string;
-  bottom?: number | string;
-  left?: number | string;
+  top?: NumberOrString;
+  right?: NumberOrString;
+  bottom?: NumberOrString;
+  left?: NumberOrString;
   children?: React.ReactNode;
   style?: React.CSSProperties;
 };

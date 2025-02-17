@@ -10,44 +10,47 @@ import { locoScrollState } from '@/jotai/locoScrollAtom';
 import { borderTop } from '@/styles/style.css';
 import * as modal from '@/utils/modal';
 
-const menuList = [
+export interface SubMenu {
+  name: string;
+  path: string;
+}
+export interface MainMenu {
+  name: string;
+  desc?: string;
+  path?: string;
+  subMenus?: SubMenu[];
+}
+
+export type MenuItem = MainMenu | SubMenu;
+
+const menuList: MenuItem[] = [
   {
-    item: 'main',
-    desc: 'parkmys portfolio',
+    name: 'Main',
+    desc: "meeyoung's portfolio",
   },
   {
-    item: 'about',
-    desc: 'about my me',
+    name: 'About',
+    desc: 'About Me',
   },
   {
-    item: 'project',
-    link: [
-      {
-        item: 'jandi',
-        url: url.ROUTES.PROJECTS_JDI,
-      },
-      {
-        item: 'adcapsule',
-        url: url.ROUTES.PROJECTS_ADC,
-      },
+    name: 'Project',
+    subMenus: [
+      { name: 'Jandi', path: url.ROUTES.PROJECTS_JDI },
+      { name: 'Adcapsule', path: url.ROUTES.PROJECTS_ADC },
     ],
   },
   {
-    item: 'contact',
-    link: [
-      {
-        item: 'git',
-        url: url.GIT,
-      },
-      {
-        item: 'notion',
-        url: url.NOTION,
-      },
+    name: 'Contact',
+    subMenus: [
+      { name: 'Git', path: url.GIT },
+      { name: 'Notion', path: url.NOTION },
     ],
   },
 ];
 
-function MenuItem({ item, desc, link, moveToSectionPosition }) {
+function MenuItem({ item, moveToSectionPosition }) {
+  const { name, desc, subMenus } = item;
+
   return (
     <Box
       className={`${menuItem} menu`}
@@ -79,15 +82,15 @@ function MenuItem({ item, desc, link, moveToSectionPosition }) {
             {desc}
           </Text>
         )}
-        {link &&
-          link.map((item, index) => (
+        {subMenus &&
+          subMenus.map((item, index) => (
             <SplitText
-              key={`${item}-${index}`}
+              key={`${item.name}-${index}`}
               type="same"
-              splitText={item.item}
+              splitText={item.name}
               sizes="smallmedium"
               weights="light"
-              url={item.url}
+              url={item.path}
             />
           ))}
       </Box>
@@ -118,9 +121,9 @@ function MenuItem({ item, desc, link, moveToSectionPosition }) {
           }}
           color="tertiary"
           type="same"
-          splitText={item}
+          splitText={name}
           weights="bold"
-          onClick={() => moveToSectionPosition(`#${item}`)}
+          onClick={() => moveToSectionPosition(`#${name}`)}
         />
       </Box>
     </Box>
@@ -169,10 +172,8 @@ export default function Menu() {
       {menuList.map((item, index) => {
         return (
           <MenuItem
-            item={item.item}
-            desc={item.desc}
-            link={item.link}
             key={`${index}-${item}`}
+            item={item}
             moveToSectionPosition={moveToSectionPosition}
           />
         );

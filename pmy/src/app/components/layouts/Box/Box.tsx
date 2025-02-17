@@ -4,13 +4,14 @@ import { clsx } from 'clsx';
 import { pickProps } from '@/utils/helpers';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps, NumberOrString } from '@/types/styles';
+import { ValueOfUnion } from '@/utils/helpers';
 
 type FlexProps = {
   children?: ReactNode;
-  direction?: keyof typeof flexstyles.flexDirection;
-  align?: keyof typeof flexstyles.alignItems;
-  justify?: keyof typeof flexstyles.justifyContent;
-  gap?: keyof typeof flexstyles.gap;
+  direction?: ValueOfUnion<typeof flexstyles.flexDirection>;
+  align?: ValueOfUnion<typeof flexstyles.alignItems>;
+  justify?: ValueOfUnion<typeof flexstyles.justifyContent>;
+  gap?: ValueOfUnion<typeof flexstyles.gap>;
   className?: string;
   style?: React.CSSProperties;
   ref?: React.RefObject<HTMLDivElement>;
@@ -131,7 +132,7 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
     borderRight: pickedProps.borderRight,
   };
 
-  type GapType = keyof typeof gap;
+  type GapType = ValueOfUnion<typeof gap>;
 
   const classes = clsx(
     responsive && sprinkles(responsive),

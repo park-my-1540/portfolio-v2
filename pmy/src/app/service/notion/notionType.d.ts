@@ -4,29 +4,6 @@ type NotionImage = {
   file?: { url: string };
 };
 
-type NotionUser = {
-  object: 'user';
-  id: string;
-};
-
-/** property - 다중선택 */
-type NotionPropertyMultiSelect = {
-  id: string;
-  type: 'multi_select';
-  multi_select: {
-    id: string;
-    name: string;
-    color: string;
-  }[];
-};
-
-/** property - url */
-type NotionPropertyUrl = {
-  id: string;
-  type: 'url';
-  url: string;
-};
-
 /** property - 날짜 */
 type NotionPropertyDate = {
   id: string;
@@ -38,65 +15,29 @@ type NotionPropertyDate = {
   };
 };
 
-/** property - RichText */
-type NotionPropertyRichText = {
-  id: string;
-  type: 'rich_text';
-  rich_text: {
-    type: 'text';
-    text: {
-      content: string;
-      link: null;
-    };
-    annotations: {
-      bold: boolean;
-      italic: boolean;
-      strikethrough: boolean;
-      underline: boolean;
-      code: boolean;
-      color: string;
-    };
-    plain_text: string;
-    href: null;
-  }[];
+/** 공통 구조 */
+type NotionTextContent = {
+  type: 'text';
+  text: {
+    content: string;
+    link: null;
+  };
+  plain_text: string;
+  href: null;
 };
 
-type NotionPropertyTitle = {
+type NotionProperty<T extends 'rich_text' | 'title'> = {
   id: string;
-  type: 'title';
-  title: {
-    type: 'text';
-    text: {
-      content: string;
-      link: null;
-    };
-    annotations: {
-      bold: boolean;
-      italic: boolean;
-      strikethrough: boolean;
-      underline: boolean;
-      code: boolean;
-      color: string;
-    };
-    plain_text: string;
-    href: null;
-  }[];
-};
+  type: T;
+} & Record<T, NotionTextContent>;
 
-/** properties - gallery */
-interface NotionListProperties {
-  태그: NotionPropertyMultiSelect;
-  Github: NotionPropertyUrl;
-  WorkPeriod: NotionPropertyDate;
-  Desc: NotionPropertyRichText;
-  이름: NotionPropertyTitle;
-}
+type NotionPropertyRichText = NotionProperty<'rich_text'>;
+type NotionPropertyTitle = NotionProperty<'title'>;
 
 /** properties - jobList */
 interface NotionJobProperties {
   position: NotionPropertyRichText;
   service: NotionPropertyRichText;
-  생성일: NotionPropertyDate;
   type: NotionPropertyRichText;
   company: NotionPropertyRichText;
   duration: NotionPropertyDate;
@@ -105,21 +46,7 @@ interface NotionJobProperties {
 
 /* response - getDatabaseQuery */
 export interface NotionPage {
-  object: 'page';
   id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: NotionUser;
-  last_edited_by: NotionUser;
   cover: NotionImage;
-  icon: null;
-  parent: {
-    type: 'database_id';
-    database_id: string;
-  };
-  archived: boolean;
-  in_trash: boolean;
   properties: NotionJobProperties;
-  url: string;
-  public_url: string | null;
 }
