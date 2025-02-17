@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { GalleryProps } from '@/types/common';
+import { Filtered } from '@/types/common';
 import Box from '@/components/layouts/Box/Box';
 
 import About from '@/components/templates/About';
@@ -18,7 +18,7 @@ import { vars } from '@/styles/common/createThemeContract.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home({ list }: { list: GalleryProps[] }) {
+export default function Home({ list }: { list: Filtered[] }) {
   const setList = useSetAtom(galleryListState);
   setList(list);
 

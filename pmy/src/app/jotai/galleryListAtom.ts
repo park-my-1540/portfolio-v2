@@ -2,6 +2,6 @@
  * @fileoverview main gallery item list
  */
 import { atom } from 'jotai';
-import { GalleryProps } from '@/types/common';
+import { ProjectProps } from '@/types/common';
 
-export const galleryListState = atom<GalleryProps[]>([]);
+export const galleryListState = atom<ProjectProps[]>([]);

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useOnScreen from '@/hook/useOnScreen';
-import { GalleryItemProps, GalleryContentProps } from '@/types/common';
+import { ProjectItemProps, ProjectContentProps } from '@/types/common';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
 import cn from 'classnames';
@@ -12,7 +12,7 @@ import { Text, TextTitle } from '@/components/atoms/Text/Text';
 import * as style from './gallery.css';
 import * as cursor from '@/utils/cursor';
 
-const GalleryContent = ({ title, service, position }: GalleryContentProps) => {
+const GalleryContent = ({ title, service, position }: ProjectContentProps) => {
   return (
     <>
       <TextTitle sizes="title" weights="bold">
@@ -33,7 +33,7 @@ const GalleryContent = ({ title, service, position }: GalleryContentProps) => {
   );
 };
 
-function GalleryItem({ updateActiveImage, index, ...rest }: GalleryItemProps) {
+function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
   const router = useRouter();
   const ref = useRef(null);
   const onScreen = useOnScreen(ref, 0.5);

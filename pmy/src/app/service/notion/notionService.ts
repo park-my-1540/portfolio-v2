@@ -8,7 +8,7 @@ import {
   PartialBlockObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import { NotionPage } from './notionType';
-import { BlockContent, TextRichText, Block, DatabaseKey } from '@/types/common';
+import { Blocks, TextRichText, Block, DatabaseKey } from '@/types/common';
 
 // 1. Notion 데이터베이스에서 일정 정보를 가져오는 함수
 export async function getPageList(
@@ -47,14 +47,12 @@ export async function getPageList(
 }
 
 // 2. 페이지 블록 가져오기 함수
-export async function getPageBlocks(
-  pageId: DatabaseKey,
-): Promise<BlockContent[]> {
+export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
   try {
     const data = await getPageChildren(pageId);
 
     // 블록 내용 처리
-    const blocks: BlockContent[] = data.results.map(
+    const blocks: Blocks[] = data.results.map(
       (block: (PartialBlockObjectResponse | BlockObjectResponse) & Block) => {
         let content = '';
         switch (block.type) {
