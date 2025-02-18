@@ -53,7 +53,7 @@ export default function HardSkill() {
   return (
     <Box display="flex" justify="center" width="80%">
       {skills.slice(0, -2).map((item, index) => (
-        <Box key={`${index}-${item.name}`} className={content}>
+        <Box key={`${index}-${item.name}`} className={`${content} skillBox`}>
           <Text sizes="large" weights="bold" color="primary">
             {item.name}
           </Text>
@@ -74,7 +74,7 @@ export default function HardSkill() {
       ))}
 
       {/* 🔹 마지막 두 개(Community + Deployment)를 하나의 박스에 합쳐 렌더링 */}
-      <Box className={content}>
+      <Box className={`${content} skillBox`}>
         <Text sizes="large" weights="bold" color="primary">
           {skills[skills.length - 2].name} {/* Community */}
         </Text>

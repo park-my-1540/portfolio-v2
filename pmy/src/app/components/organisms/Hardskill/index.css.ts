@@ -16,6 +16,8 @@ export const content = style({
   textAlign: 'center',
   background: '#acc9ff',
   borderRadius: 30,
+  transform: 'translate(0%, 50%)',
+  opacity: 0,
 });
 export const inner = style({
   width: '60%',

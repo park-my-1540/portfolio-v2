@@ -211,6 +211,36 @@ export const triggerHighlightsText = (tl) => {
 };
 
 /**
+ * @param tl - timeline
+ */
+export const triggerSkill = (tl) => {
+  const about = document.querySelector('#about') as HTMLElement;
+  const skill = document.querySelector('#skill') as HTMLElement;
+  const box = gsap.utils.toArray('.skillBox', skill);
+  box.forEach((span, index) => {
+    // 개별적인 타임라인 생성.
+    tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: about,
+        scroller: '#main-container',
+        start: 'bottom 60%', // bottom이 뷰포트 80에 도달하면 시작
+        end: 'bottom 10%', // bottom이 뷰포트 10까지 스크롤 될떄까지 진행
+        scrub: true,
+      },
+    });
+
+    tl.to(span, {
+      transform: 'translate(0%,0%)',
+      duration: 0.5,
+      opacity: 1,
+      delay: index * 0.1, // 단어별 순차적 딜레이
+    });
+  });
+
+  return tl;
+};
+
+/**
  * menu open/close timeline
  * @param tl - timeline
  */

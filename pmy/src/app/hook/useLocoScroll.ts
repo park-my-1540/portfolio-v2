@@ -90,6 +90,7 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const galleryTimeline = useRef<gsap.core.Timeline | null>(null),
     aboutTimeline = useRef<gsap.core.Timeline | null>(null),
     mainTimeline = useRef<gsap.core.Timeline | null>(null),
+    skillTimeline = useRef<gsap.core.Timeline | null>(null),
     contactTimeline = useRef<gsap.core.Timeline | null>(null);
 
   let timer, resizeTimer;
@@ -178,6 +179,7 @@ export default function useLocoScroll(start: boolean, ref: any) {
         aboutTimeline.current = animate.triggerHighlightsText(aboutTimeline);
         galleryTimeline.current =
           animate.triggerHorizontalSections(galleryTimeline);
+        skillTimeline.current = animate.triggerSkill(skillTimeline);
         contactTimeline.current =
           animate.triggerContactSections(contactTimeline);
 
@@ -203,14 +205,18 @@ export default function useLocoScroll(start: boolean, ref: any) {
         locoScrollRef.current.destroy();
         locoScrollRef.current = null;
       }
-      [galleryTimeline, aboutTimeline, mainTimeline, contactTimeline].forEach(
-        (tl) => {
-          if (tl.current) {
-            tl.current.kill();
-            tl.current = null;
-          }
-        },
-      );
+      [
+        galleryTimeline,
+        aboutTimeline,
+        skillTimeline,
+        mainTimeline,
+        contactTimeline,
+      ].forEach((tl) => {
+        if (tl.current) {
+          tl.current.kill();
+          tl.current = null;
+        }
+      });
     };
   }, [ref]);
 
@@ -218,6 +224,7 @@ export default function useLocoScroll(start: boolean, ref: any) {
   useEffect(() => {
     refreshScrollTriggers([
       galleryTimeline.current,
+      skillTimeline.current,
       aboutTimeline.current,
       mainTimeline.current,
       contactTimeline.current,
