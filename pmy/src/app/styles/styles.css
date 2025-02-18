@@ -9,6 +9,9 @@ html, body {
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
 } 
+.border {
+  border: 1px solid red
+}
 
 #contact{
   width: 100%;

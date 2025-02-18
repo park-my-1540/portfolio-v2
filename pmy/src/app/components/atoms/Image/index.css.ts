@@ -17,6 +17,10 @@ const variants = {
       width: 50,
       height: 50,
     }),
+    rectangle: style({
+      width: 200,
+      height: 80,
+    }),
     smallmedium: style({
       width: 100,
       height: 100,

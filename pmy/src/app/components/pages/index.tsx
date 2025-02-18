@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Filtered } from '@/types/common';
 import Box from '@/components/layouts/Box/Box';
 
+import Skill from '@/components/templates/Skill';
 import About from '@/components/templates/About';
 import Contact from '@/components/templates/Contact';
 import Main from '@/components/templates/Main';
@@ -42,6 +43,7 @@ export default function Home({ list }: { list: Filtered[] }) {
         }}
       >
         <About />
+        <Skill />
         <Gallery />
         <section className="panel" id="forScrollGsap" data-scroll-section>
           <Box height={300}></Box>
