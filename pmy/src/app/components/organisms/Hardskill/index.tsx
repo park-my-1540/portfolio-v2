@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
 import { Image } from '@/components/atoms/Image/Image';
-import { listBox, content, inner } from './index.css';
+import { listBox, content, inner, rectangle, small } from './index.css';
 
 const skills = [
   {
@@ -51,7 +51,17 @@ const skills = [
 
 export default function HardSkill() {
   return (
-    <Box display="flex" justify="center" width="80%">
+    <Box
+      display="flex"
+      justify="center"
+      responsive={{
+        width: {
+          desktop: 'eighty',
+          tablet: 'full',
+          mobile: 'full',
+        },
+      }}
+    >
       {skills.slice(0, -2).map((item, index) => (
         <Box key={`${index}-${item.name}`} className={`${content} skillBox`}>
           <Text sizes="large" weights="bold" color="primary">
@@ -63,6 +73,7 @@ export default function HardSkill() {
               <Box key={`${skill.name}-${skillIndex}`} className={listBox}>
                 <Image
                   sizes={`${skill.type === 'md' ? 'rectangle' : 'small'}`}
+                  className={skill.type === 'md' ? rectangle : small}
                   radius="round"
                   url={skill.url}
                   alt={skill.name}
@@ -73,7 +84,6 @@ export default function HardSkill() {
         </Box>
       ))}
 
-      {/* 🔹 마지막 두 개(Community + Deployment)를 하나의 박스에 합쳐 렌더링 */}
       <Box className={`${content} skillBox`}>
         <Text sizes="large" weights="bold" color="primary">
           {skills[skills.length - 2].name} {/* Community */}
@@ -83,6 +93,7 @@ export default function HardSkill() {
           {skills[skills.length - 2].skill.map((skill, skillIndex) => (
             <Box key={`${skill.name}-${skillIndex}`} className={listBox}>
               <Image
+                className={skill.type === 'md' ? rectangle : small}
                 sizes={`${skill.type === 'md' ? 'rectangle' : 'small'}`}
                 radius="round"
                 url={skill.url}
@@ -94,7 +105,7 @@ export default function HardSkill() {
           <Text
             sizes="large"
             weights="bold"
-            style={{ whiteSpace: 'noWrap', margin: '40px 0 20px' }}
+            style={{ whiteSpace: 'nowrap', margin: '40px 0 20px' }}
             color="primary"
           >
             {skills[skills.length - 1].name}
@@ -103,7 +114,8 @@ export default function HardSkill() {
           {skills[skills.length - 1].skill.map((skill, skillIndex) => (
             <Box key={`${skill.name}-${skillIndex}`} className={listBox}>
               <Image
-                sizes={`${skill.type === 'sm' ? 'small' : 'rectangle'}`}
+                className={skill.type === 'md' ? rectangle : small}
+                sizes={`${skill.type === 'md' ? 'rectangle' : 'small'}`}
                 radius="round"
                 url={skill.url}
                 alt={skill.name}

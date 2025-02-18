@@ -2,15 +2,8 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
 
-export const listBox = style({
-  display: 'inline-block',
-  padding: 5,
-  margin: '3px 5px',
-  borderRadius: '0.6rem',
-  background: '#fff',
-});
 export const content = style({
-  width: '30%',
+  minWidth: '40%',
   padding: '30px 0 25px',
   margin: '0 20px',
   textAlign: 'center',
@@ -18,9 +11,41 @@ export const content = style({
   borderRadius: 30,
   transform: 'translate(0%, 50%)',
   opacity: 0,
+  '@media': {
+    'screen and (max-width: 768px)': { margin: 0, borderRadius: 10 },
+  },
 });
 export const inner = style({
   width: '60%',
   paddingTop: '20px',
   marginLeft: '20%',
+  border: '1px solid',
+  '@media': {
+    'screen and (max-width: 768px)': { width: '100%', marginLeft: '5%' },
+  },
+});
+export const listBox = style({
+  display: 'inline-block',
+  padding: 5,
+  margin: '3px 5px',
+  borderRadius: '0.6rem',
+  background: '#fff',
+});
+
+export const rectangle = style({
+  width: 200,
+  height: 60,
+  overflow: 'hidden',
+  '@media': {
+    'screen and (max-width: 768px)': { width: 50, height: 50 },
+    'screen and (min-width: 768px) and (max-width: 1024px)': {
+      width: 50,
+      height: 50,
+    },
+  },
+});
+export const small = style({
+  width: 50,
+  height: 50,
+  overflow: 'hidden',
 });

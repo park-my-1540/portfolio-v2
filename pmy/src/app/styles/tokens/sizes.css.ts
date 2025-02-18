@@ -9,6 +9,7 @@ export const sizeVars = {
     container: '1200px', // 주요 컨텐츠 영역의 최대 너비 (전체 페이지 너비보다 작게 설정)
     sixty: '60%', // 60% 너비
     seventy: '70%', // 70% 너비
+    eighty: '80%', // 80% 너비
   },
   height: {
     small: '5rem', // 작은 버튼 또는 입력 필드
