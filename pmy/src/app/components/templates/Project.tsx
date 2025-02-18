@@ -33,7 +33,6 @@ export default function Project({ list }: { list: NotionRes }) {
       ref={containerRef}
     >
       <Box
-        paddingBottom={'var(--padding-container)'}
         display="grid"
         responsive={{
           paddingX: {

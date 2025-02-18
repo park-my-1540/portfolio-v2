@@ -1,6 +1,10 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import { spaceVars } from './tokens/space.css';
+import {
+  responsiveTheme,
+  rootVars,
+  globalVars,
+} from '@/styles/constant/constant.css';
 
 // border - style
 export const borderTopNone = style({
@@ -16,21 +20,24 @@ export const borderTop = style({
   borderTop: '1.5px solid',
 });
 
-// layout
-export const pageContainer = style({
-  paddingTop: 'calc( (var(--padding-container)*4) + var(--textHeight))',
+export const borderX = style({
+  borderLeft: '1.5px solid',
+  borderRight: '1.5px solid',
 });
 
-export const pageInner = style({
-  height: 'calc(100vh - ((var(--padding-container)*5) + var(--textHeight)))',
-});
-
-export const paddingBox = style({
-  padding: 'var(--padding-container)',
-});
-export const paddingYNoneBox = style({
-  padding: '0 var(--padding-container)',
-});
+// layout - project page
+export const pageContainer = style([
+  responsiveTheme,
+  {
+    paddingTop: `calc( ${rootVars.headerHeight} + (${globalVars.padding.header}*2))`,
+  },
+]);
+export const paddingBox = style([
+  responsiveTheme,
+  {
+    padding: globalVars.padding.container,
+  },
+]);
 
 export const scrollbar = style({
   selectors: {
@@ -139,18 +146,4 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
   color: vars.color.light,
   top: 3,
   left: 13,
-});
-
-export const paddingContainer = style({
-  '@media': {
-    'screen and (max-width: 768px)': {
-      padding: spaceVars.large,
-    },
-    'screen and (min-width: 768px) and (max-width: 1024px)': {
-      padding: spaceVars.large,
-    },
-    'screen and (min-width: 1024px)': {
-      padding: spaceVars.large,
-    },
-  },
 });

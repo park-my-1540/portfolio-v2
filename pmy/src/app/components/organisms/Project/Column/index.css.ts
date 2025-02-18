@@ -1,12 +1,44 @@
-import { keyframes, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
+import {
+  responsiveTheme,
+  rootVars,
+  globalVars,
+} from '@/styles/constant/constant.css';
 
-export const list = style({
-  padding: '.6rem 0 .4rem',
-  borderBottom: `1px solid ${vars.color.text.light}`,
-});
+export const list = style([
+  responsiveTheme,
+  {
+    borderBottom: `1px solid ${vars.color.text.light}`,
+    padding: `${globalVars.list.item} 0`,
+  },
+]);
 
-export const columnWrap = style({
-  top: '0',
-  height: 'calc(100vh - ((var(--padding-container)*5) + var(--textHeight)))',
-});
+export const itemWrap = style([
+  responsiveTheme,
+  {
+    padding: `0 ${globalVars.list.X}`,
+  },
+]);
+export const titleWrap = style([
+  responsiveTheme,
+  {
+    padding: `${globalVars.list.Y} ${globalVars.list.X}`,
+  },
+]);
+
+export const columnWrap = style([
+  responsiveTheme,
+  {
+    top: '0',
+    '@media': {
+      'screen and (max-width: 768px)': {
+        height: '85vh',
+      },
+      'screen and (min-width: 768px)': {
+        marginBottom: '-1.5px',
+        height: `calc(100vh - ${rootVars.headerHeight} - (${globalVars.padding.container} * 3))`,
+      },
+    },
+  },
+]);

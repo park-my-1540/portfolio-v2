@@ -29,11 +29,15 @@ export default function Main({ blocks }: { blocks: PageWithBlocks[] }) {
   return (
     <>
       <Box
-        width={'calc(100% + 5px)'}
         className={borderTop}
         responsive={{
           gridColumn: {
             desktop: 'three',
+            tablet: 'full',
+            mobile: 'full',
+          },
+          width: {
+            desktop: 'fullPlusGap',
             tablet: 'full',
             mobile: 'full',
           },

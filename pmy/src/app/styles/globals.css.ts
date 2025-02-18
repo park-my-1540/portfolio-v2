@@ -62,6 +62,22 @@ globalStyle('body', {
   },
 });
 
+globalStyle(':root', {
+  '@layer': {
+    [layers.reset]: {
+      fontSize: '16px',
+    },
+  },
+  '@media': {
+    'screen and (max-width: 1024px)': {
+      fontSize: '17px',
+    },
+    'screen and (max-width: 768px)': {
+      fontSize: '18px',
+    },
+  },
+});
+
 globalStyle('button', {
   '@layer': {
     [layers.reset]: {

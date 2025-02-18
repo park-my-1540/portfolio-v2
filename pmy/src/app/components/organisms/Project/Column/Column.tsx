@@ -4,12 +4,8 @@ import { Image } from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';
 import { Filtered } from '@/types/common';
-import {
-  borderTopNone,
-  borderTop,
-  paddingBox,
-  paddingYNoneBox,
-} from '@/styles/style.css';
+import { borderTop, borderBox } from '@/styles/style.css';
+import { itemWrap, titleWrap } from './index.css';
 import { list, columnWrap } from './index.css';
 import { useRouter } from 'next/navigation';
 export default function Column({ filtered }: { filtered: Filtered[] }) {
@@ -17,7 +13,7 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
   const { duration, img, position, service, title, company } = filtered[0];
   return (
     <Box
-      className={`${borderTopNone} ${columnWrap}`}
+      className={`${borderBox} ${columnWrap}`}
       display="flex"
       direction="column"
       justify="between"
@@ -36,17 +32,12 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
     >
       <Box>
         <Box>
-          <Image
-            className={borderTop}
-            url={img}
-            radius="default"
-            sizes="card"
-          />
-          <Text sizes="large" className={`${paddingBox} ${borderTop}`}>
+          <Image url={img} radius="default" sizes="card" />
+          <Text sizes="large" className={`${titleWrap} ${borderTop}`}>
             {title}
           </Text>
         </Box>
-        <Box className={`${paddingYNoneBox} ${borderTop}`}>
+        <Box className={`${itemWrap} ${borderTop}`}>
           <Text sizes="mediumlarge" className={list}>
             {company}
           </Text>
@@ -72,11 +63,11 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
       </Box>
 
       <Box
-        className={`${paddingYNoneBox}`}
+        className={`${itemWrap}`}
         responsive={{
           display: {
             desktop: 'block',
-            tablet: 'block',
+            tablet: 'none',
             mobile: 'none',
           },
         }}

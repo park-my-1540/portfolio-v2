@@ -31,6 +31,7 @@ export default function Home({ list }: { list: Filtered[] }) {
 
   return (
     <div data-scroll-container id="main-container" ref={ref}>
+      <Main />
       <Box
         responsive={{
           paddingX: {
@@ -40,7 +41,6 @@ export default function Home({ list }: { list: Filtered[] }) {
           },
         }}
       >
-        <Main />
         <About />
         <Gallery />
         <section className="panel" id="forScrollGsap" data-scroll-section>

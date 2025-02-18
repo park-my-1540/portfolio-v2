@@ -1,6 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
+import { rootVars } from '@/styles/constant/constant.css';
+
 export const header = style({
   position: 'absolute',
   top: 0,
@@ -14,6 +16,7 @@ export const inner = style({
   position: 'relative',
   borderTop: '2px solid',
   zIndex: 99,
+  height: rootVars.headerHeight,
 });
 
 export const changeCircle = style({
