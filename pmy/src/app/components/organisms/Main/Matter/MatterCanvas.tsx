@@ -94,8 +94,8 @@ const createTitleObjects = (
       const yScale = bounding.height / image.height;
 
       const rectangle = Matter.Bodies.rectangle(
-        bounding.left + bounding.width / 2 - 30,
-        bounding.top + bounding.height / 2 - 124,
+        bounding.left + bounding.width / 2,
+        bounding.top + bounding.height / 2,
         bounding.width,
         bounding.height + 20,
         {
@@ -126,9 +126,9 @@ const createWall = (
   const bounding = titleRef.current.getBoundingClientRect();
   const floor = Matter.Bodies.rectangle(
     bounding.left + bounding.width / 2,
-    bounding.top + bounding.height + 5 + 10,
+    bounding.top + bounding.height + 5,
     bounding.width / 1.5,
-    400,
+    100,
     {
       isStatic: true,
       collisionFilter: {

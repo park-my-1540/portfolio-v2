@@ -25,22 +25,22 @@ export type MenuItem = MainMenu | SubMenu;
 
 const menuList: MenuItem[] = [
   {
-    name: 'Main',
+    name: 'main',
     desc: "meeyoung's portfolio",
   },
   {
-    name: 'About',
+    name: 'about',
     desc: 'About Me',
   },
   {
-    name: 'Project',
+    name: 'project',
     subMenus: [
       { name: 'Jandi', path: url.ROUTES.PROJECTS_JDI },
       { name: 'Adcapsule', path: url.ROUTES.PROJECTS_ADC },
     ],
   },
   {
-    name: 'Contact',
+    name: 'contact',
     subMenus: [
       { name: 'Git', path: url.GIT },
       { name: 'Notion', path: url.NOTION },
