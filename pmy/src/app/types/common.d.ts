@@ -11,7 +11,7 @@ interface ProjectContentProps {
 interface ProjectProps extends ProjectContentProps {
   id: string;
   type: string;
-  img?: string;
+  img: string;
   company: string;
 }
 

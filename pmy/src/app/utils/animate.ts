@@ -216,7 +216,7 @@ export const triggerHighlightsText = (tl) => {
 export const triggerSkill = (tl) => {
   const about = document.querySelector('#about') as HTMLElement;
   const skill = document.querySelector('#skill') as HTMLElement;
-  const box = gsap.utils.toArray('.skillBox', skill);
+  const box = gsap.utils.toArray('._skillBox', skill);
   box.forEach((span, index) => {
     // 개별적인 타임라인 생성.
     tl = gsap.timeline({

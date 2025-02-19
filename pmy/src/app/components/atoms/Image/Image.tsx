@@ -3,7 +3,7 @@ import { image, ImageVariantProps } from './index.css';
 import ImageNext from 'next/image';
 
 type ImageProps = {
-  url: string | undefined;
+  url: string;
   sizes: ImageVariantProps;
   cover?: ImageVariantProps;
   radius?: ImageVariantProps;
@@ -27,7 +27,7 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   // for smooth image load
   useEffect(() => {
     const img = new window.Image();
-    url && (img.src = url);
+    img.src = url;
     img.onload = () => setIsLoaded(true);
     img.onerror = () => console.error(`Failed to load image: ${url}`);
   }, [url]);

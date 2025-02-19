@@ -12,16 +12,23 @@ export const content = style({
   transform: 'translate(0%, 50%)',
   opacity: 0,
   '@media': {
-    'screen and (max-width: 768px)': { margin: 0, borderRadius: 10 },
+    'screen and (max-width: 768px)': {
+      margin: 0,
+      padding: '20px 0',
+      borderRadius: 10,
+    },
   },
 });
 export const inner = style({
   width: '60%',
   paddingTop: '20px',
-  marginLeft: '20%',
-  border: '1px solid',
+  margin: '0 auto',
   '@media': {
-    'screen and (max-width: 768px)': { width: '100%', marginLeft: '5%' },
+    'screen and (max-width: 768px) and (max-width:1024px)': {
+      width: '100%',
+      marginLeft: '5%',
+    },
+    'screen and (max-width: 768px)': { width: '90%' },
   },
 });
 export const listBox = style({
@@ -32,6 +39,22 @@ export const listBox = style({
   background: '#fff',
 });
 
+export const mobileImg = style({
+  '@media': {
+    'screen and (max-width: 768px)': { display: 'block' },
+    'screen and (min-width: 768px)': {
+      display: 'none',
+    },
+  },
+});
+export const desktopImg = style({
+  '@media': {
+    'screen and (max-width: 768px)': { display: 'none' },
+    'screen and (min-width: 768px)': {
+      display: 'block',
+    },
+  },
+});
 export const rectangle = style({
   width: 200,
   height: 60,
