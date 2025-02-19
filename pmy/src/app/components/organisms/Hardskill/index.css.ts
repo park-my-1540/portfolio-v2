@@ -3,7 +3,7 @@ import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
 
 export const content = style({
-  minWidth: '40%',
+  minWidth: '30%',
   padding: '30px 0 25px',
   margin: '0 20px',
   textAlign: 'center',
@@ -20,15 +20,14 @@ export const content = style({
   },
 });
 export const inner = style({
-  width: '60%',
-  paddingTop: '20px',
+  width: '100%',
   margin: '0 auto',
+  padding: '20px 20% 0',
   '@media': {
-    'screen and (max-width: 768px) and (max-width:1024px)': {
+    'screen and (max-width:1440px)': {
       width: '100%',
-      marginLeft: '5%',
+      padding: '20px 5% 0',
     },
-    'screen and (max-width: 768px)': { width: '90%' },
   },
 });
 export const listBox = style({
@@ -41,16 +40,16 @@ export const listBox = style({
 
 export const mobileImg = style({
   '@media': {
-    'screen and (max-width: 768px)': { display: 'block' },
-    'screen and (min-width: 768px)': {
+    'screen and (max-width: 1024px)': { display: 'block' },
+    'screen and (min-width: 1024px)': {
       display: 'none',
     },
   },
 });
 export const desktopImg = style({
   '@media': {
-    'screen and (max-width: 768px)': { display: 'none' },
-    'screen and (min-width: 768px)': {
+    'screen and (max-width: 1024px)': { display: 'none' },
+    'screen and (min-width: 1024px)': {
       display: 'block',
     },
   },

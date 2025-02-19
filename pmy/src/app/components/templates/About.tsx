@@ -1,6 +1,5 @@
 import Box from '@/components/layouts/Box/Box';
 import Introduction from '@/components/organisms/Introduction/Introduction';
-import Skill from '@/components//molecules/Skill';
 export default function About() {
   return (
     <section className="panel" id="about" data-scroll-section>
@@ -15,7 +14,6 @@ export default function About() {
       >
         <Introduction />
       </Box>
-      <Skill />
     </section>
   );
 }

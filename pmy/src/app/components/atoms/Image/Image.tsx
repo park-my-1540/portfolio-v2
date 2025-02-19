@@ -31,11 +31,15 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
     img.onload = () => setIsLoaded(true);
     img.onerror = () => console.error(`Failed to load image: ${url}`);
   }, [url]);
+
   return (
-    <div className={`${image({ sizes, radius, cover })}`} {...rest}>
+    <div
+      className={`${className} ${image({ sizes, radius, cover })}`}
+      {...rest}
+    >
       <p
         style={{ position: 'relative' }}
-        className={`${className} ${image({ sizes, radius, cover })} ${
+        className={` ${image({ sizes, radius, cover })} ${
           isLoaded ? 'loaded' : 'loading'
         }`}
       >

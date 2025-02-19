@@ -52,12 +52,6 @@ const skills = [
     name: 'Tried',
     skill: [
       {
-        name: 'vanilla-extract',
-        url: '/svg/hardskill/vanilla.png',
-        type: 'md',
-        mobile: '/svg/hardskill/vanilla2.svg',
-      },
-      {
         name: 'recoil',
         url: '/svg/hardskill/recoil.png',
         type: 'md',
@@ -70,16 +64,22 @@ const skills = [
         mobile: '/svg/hardskill/jotai2.png',
       },
       {
-        name: 'gsap',
-        url: '/svg/hardskill/gsap.png',
-        type: 'md',
-        mobile: '/svg/hardskill/gsap2.svg',
-      },
-      {
         name: 'redux',
         url: '/svg/hardskill/redux.png',
         type: 'md',
         mobile: '/svg/hardskill/redux2.svg',
+      },
+      {
+        name: 'vanilla-extract',
+        url: '/svg/hardskill/vanilla.png',
+        type: 'md',
+        mobile: '/svg/hardskill/vanilla2.svg',
+      },
+      {
+        name: 'gsap',
+        url: '/svg/hardskill/gsap.png',
+        type: 'md',
+        mobile: '/svg/hardskill/gsap2.svg',
       },
     ],
   },
@@ -113,22 +113,21 @@ const skills = [
 function IconBox({ skill }) {
   const { type, url, name, mobile } = skill;
   const isRectangle = type === 'md';
-  const sizes = isRectangle ? 'rectangle' : 'small';
 
   return (
     <Box className={listBox}>
       {isRectangle ? (
         <>
           <Image
-            sizes={sizes}
+            sizes="rectangle"
             className={`${desktopImg} ${rectangle}`}
             radius="round"
             url={url}
             alt={name}
           />
           <Image
-            sizes={sizes}
-            className={`${mobileImg} ${rectangle}`}
+            sizes="small"
+            className={`${mobileImg} ${small}`}
             radius="round"
             url={mobile}
             alt={name}
@@ -136,7 +135,7 @@ function IconBox({ skill }) {
         </>
       ) : (
         <Image
-          sizes={sizes}
+          sizes="small"
           className={small}
           radius="round"
           url={url}
