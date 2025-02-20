@@ -15,7 +15,7 @@ export const vars = createThemeContract({
       light: '', // 비활성화된 텍스트 색상
     },
     header: {
-      border: '',
+      thumb: '',
       background: '',
     },
     scrollbar: {
@@ -31,8 +31,8 @@ export const lightTheme = createTheme(vars, {
     light: colors['lightblue04' as ColorKey],
     dark: colors['dark' as ColorKey],
     header: {
-      border: colors['dark' as ColorKey],
-      background: 'transparent',
+      thumb: colors['lightblue' as ColorKey],
+      background: colors['blue' as ColorKey],
     },
     text: {
       primary: colors['white' as ColorKey],
@@ -52,7 +52,7 @@ export const darkTheme = createTheme(vars, {
     light: colors['dark' as ColorKey],
     dark: colors['white' as ColorKey],
     header: {
-      border: colors['lightblue' as ColorKey],
+      thumb: colors['dark' as ColorKey],
       background: colors['lightblue' as ColorKey],
     },
     text: {

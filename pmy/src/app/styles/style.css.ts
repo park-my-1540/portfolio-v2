@@ -1,10 +1,6 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import {
-  responsiveTheme,
-  rootVars,
-  globalVars,
-} from '@/styles/constant/constant.css';
+import { rootVars, respVars } from '@/styles/common/createResponsiveTheme.css';
 
 // border - style
 export const borderTopNone = style({
@@ -26,18 +22,12 @@ export const borderX = style({
 });
 
 // layout - project page
-export const pageContainer = style([
-  responsiveTheme,
-  {
-    paddingTop: `calc( ${rootVars.headerHeight} + (${globalVars.padding.header}*2))`,
-  },
-]);
-export const paddingBox = style([
-  responsiveTheme,
-  {
-    padding: globalVars.padding.container,
-  },
-]);
+export const pageContainer = style({
+  paddingTop: `calc( ${rootVars.headerHeight} + (${respVars.padding.header}*2))`,
+});
+export const paddingBox = style({
+  padding: respVars.padding.container,
+});
 
 export const scrollbar = style({
   selectors: {

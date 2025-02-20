@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
-import { rootVars } from '@/styles/constant/constant.css';
+import { rootVars } from '@/styles/common/createResponsiveTheme.css';
 
 export const header = style({
   position: 'absolute',
@@ -19,27 +19,10 @@ export const inner = style({
   height: rootVars.headerHeight,
 });
 
-export const changeCircle = style({
-  display: 'inline-block',
-  width: 30,
-  height: 30,
-  border: `2px solid ${colors.lightblue}`,
-  background: vars.color.header.background,
-  borderRadius: '50%',
-});
-
-export const dark = style({
-  background: colors.dark,
-  borderColor: vars.color.header.border,
-  marginLeft: -10,
-});
-
 export const menuBtn = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  position: 'absolute',
-  right: 0,
   height: '100%',
   padding: '0 1.6rem',
   selectors: {

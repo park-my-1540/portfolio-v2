@@ -1,7 +1,7 @@
 import {
   createThemeContract,
-  style,
   assignVars,
+  globalStyle,
   createGlobalTheme,
 } from '@vanilla-extract/css';
 import { spaceVars } from '@/styles/tokens/space.css';
@@ -11,7 +11,7 @@ export const rootVars = createGlobalTheme(':root', {
   headerHeight: '70px',
 });
 
-export const globalVars = createThemeContract({
+export const respVars = createThemeContract({
   text: {
     size: '',
   },
@@ -24,10 +24,16 @@ export const globalVars = createThemeContract({
     Y: '',
     item: '',
   },
+  toggle: {
+    width: null,
+    height: null,
+    start: null,
+    end: null,
+  },
 });
 
-export const responsiveTheme = style({
-  vars: assignVars(globalVars, {
+globalStyle(':root', {
+  vars: assignVars(respVars, {
     text: {
       size: '17px',
     },
@@ -40,10 +46,16 @@ export const responsiveTheme = style({
       Y: spaceVars.mediumSmall,
       item: spaceVars.mediumSmall,
     },
+    toggle: {
+      width: '150px',
+      height: '40px',
+      start: '7px',
+      end: '70px',
+    },
   }),
   '@media': {
     'screen and (min-width: 768px) and (max-width: 1024px)': {
-      vars: assignVars(globalVars, {
+      vars: assignVars(respVars, {
         text: {
           size: '18px',
         },
@@ -56,10 +68,16 @@ export const responsiveTheme = style({
           Y: spaceVars.mediumLarge,
           item: spaceVars.mediumSmall,
         },
+        toggle: {
+          width: '150px',
+          height: '40px',
+          start: '7px',
+          end: '87px',
+        },
       }),
     },
     'screen and (max-width: 768px)': {
-      vars: assignVars(globalVars, {
+      vars: assignVars(respVars, {
         text: {
           size: '19px',
         },
@@ -71,6 +89,12 @@ export const responsiveTheme = style({
           X: spaceVars.large,
           Y: spaceVars.mediumLargeX2,
           item: spaceVars.medium,
+        },
+        toggle: {
+          width: '80px',
+          height: '30px',
+          start: '7px',
+          end: '50px',
         },
       }),
     },

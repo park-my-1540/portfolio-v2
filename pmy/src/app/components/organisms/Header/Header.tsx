@@ -1,19 +1,16 @@
-import React, { useRef, useEffect } from 'react';
-import { LocalStorageService } from '@/service/storage/localStorageService';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
-import { header, inner, changeCircle, dark, menuBtn, sub } from './index.css';
+import { Toggle } from '@/components/atoms/toggle/toggle';
+import { header, inner, menuBtn, sub } from './index.css';
 import { Position } from '@/components/layouts/PositionContainer/Position';
-import { useSetAtom, useAtomValue } from 'jotai';
-import { themeState } from '@/jotai/themeAtom';
+import { useAtomValue } from 'jotai';
 import { modalState } from '@/jotai/modalAtom';
-
-import { ThemeMode } from '@/types/styles';
 import { SplitText } from '@/components/atoms/SplitText';
 import { TextLink } from '@/components/atoms/Text/Text';
 import Menu from '@/components/molecules/Menu';
 import * as modal from '@/utils/modal';
-import * as cursor from '@/utils/cursor';
+import * as theme from '@/utils/theme';
 
 const MenuToggle = () => {
   const modalOpen = useAtomValue(modalState);
@@ -34,32 +31,15 @@ const MenuToggle = () => {
 };
 
 const ThemeToggle = () => {
-  const setTheme = useSetAtom(themeState);
-  const changeTheme = (mode: ThemeMode) => {
-    LocalStorageService.setItem('theme', mode);
-    setTheme({
-      mode: mode,
-    });
-  };
-
-  return (
-    <>
-      <Position position="absolute" left="50%">
-        <button
-          onMouseEnter={() => cursor.set('point')}
-          onMouseLeave={() => cursor.set(null)}
-          onClick={() => changeTheme('light')}
-          className={`${changeCircle} changeTheme`}
-        />
-        <button
-          onMouseEnter={() => cursor.set('point')}
-          onMouseLeave={() => cursor.set(null)}
-          className={`${changeCircle} ${dark} changeTheme`}
-          onClick={() => changeTheme('dark')}
-        />
-      </Position>
-    </>
+  const changeTheme = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const mode = event.target.checked ? 'light' : 'dark';
+      theme.setTheme(mode);
+    },
+    [],
   );
+
+  return <Toggle changeTheme={changeTheme} />;
 };
 
 export function Header() {
@@ -68,7 +48,6 @@ export function Header() {
 
   useEffect(() => {
     if (!headerRef?.current) return;
-
     const method = pathname?.includes('project') ? 'add' : 'remove';
     headerRef.current.classList[method](sub);
   }, [pathname]);
@@ -99,7 +78,13 @@ export function Header() {
           },
         }}
       >
-        <Box display="flex" direction="row" align="center" justify="center">
+        <Box
+          display="flex"
+          direction="row"
+          align="center"
+          justify="between"
+          width="100%"
+        >
           <SplitText
             splitText="Mee Young"
             sizes="medium"
@@ -107,8 +92,8 @@ export function Header() {
             type="same"
           />
           <ThemeToggle />
+          <MenuToggle />
         </Box>
-        <MenuToggle />
         <Menu />
       </Box>
     </Box>
