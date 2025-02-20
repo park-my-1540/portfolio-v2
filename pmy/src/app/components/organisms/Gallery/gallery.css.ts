@@ -8,36 +8,36 @@ export const galleryWrap = style({
 });
 
 export const gallery = style({
-  height: '100vh',
-  padding: '15vh 0 10vh',
-  width: '200%',
   display: 'flex',
   flexWrap: 'nowrap',
+  padding: '15vh 0 10vh',
+  width: '200%',
+  height: '100vh',
 });
 
 export const galleryCounter = style({
+  zIndex: 1,
   position: 'absolute',
   top: '17%',
   left: '5%',
-  zIndex: 1,
-  mixBlendMode: 'difference',
   color: vars.color.text.light,
+  mixBlendMode: 'difference',
   WebkitFontSmoothing: 'antialiased',
 });
 
 export const divider = style({
   content: '',
-  backgroundColor: vars.color.text.light,
-  width: '6.25vw',
-  margin: '7px 10px',
-  height: '1px',
   display: 'inline-block',
+  margin: '7px 10px',
+  width: '6.25vw',
+  height: '1px',
+  backgroundColor: vars.color.text.light,
 });
 
 export const galleryItemInfo = style({
+  zIndex: 1,
   position: 'absolute',
   bottom: '15%',
-  zIndex: 1,
   transform: 'translateX(-20%)',
   fontFamily: 'MangoBold',
   color: colors.lightblue03,

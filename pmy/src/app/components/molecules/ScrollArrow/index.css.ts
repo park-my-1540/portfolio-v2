@@ -1,20 +1,47 @@
 import { style, keyframes } from '@vanilla-extract/css';
-import { vars } from '@/styles/common/createThemeContract.css';
 
-export const wrap = style({
-  position: 'absolute',
-  bottom: 30,
+const scrolldownAnimation = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: 'translate(0, -8px)',
+  },
+  '50%': {
+    opacity: 1,
+    transform: 'translate(0, 0)',
+  },
+  '100%': {
+    opacity: 0,
+    transform: 'translate(0, 8px)',
+  },
+});
+
+export const wrapper = style({
   left: '50%',
-  transform: 'translate(-50%, 0)',
-  textTransform: 'uppercase',
+  position: 'absolute',
+  textAlign: 'center',
+  bottom: '0',
+  transform: 'translate(-50%, -50%)',
 });
 
-const upAndDown = keyframes({
-  '0%': { transform: 'translate3d(0, -3px, 0)' },
-  '48%, 52%': { transform: 'translate3d(0, 5px, 0)' },
-  '97%, 100%': { transform: 'translate3d(0, -3px, 0)' },
+export const scrolldown = style({
+  border: '2px solid #FFFFFF',
+  borderRadius: '30px',
+  height: '46px',
+  margin: '0 auto 8px',
+  textAlign: 'center',
+  width: '30px',
 });
 
-export const spinAgain = style({
-  animation: `${upAndDown} 1.5s infinite ease-in`,
+export const scrolldownP1 = style({
+  animationDuration: '1.5s',
+  animationName: scrolldownAnimation,
+  animationIterationCount: 'infinite',
+  fill: '#FFFFFF',
 });
+
+export const scrolldownP2 = style([
+  scrolldownP1,
+  {
+    animationDelay: '.75s',
+  },
+]);

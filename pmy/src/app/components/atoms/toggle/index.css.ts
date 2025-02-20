@@ -2,47 +2,51 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { respVars } from '@/styles/common/createResponsiveTheme.css';
 
-export const switcher = style({
-  display: 'inline-block',
+const switcherBox = style({
   position: 'relative',
   width: respVars.toggle.width,
   height: respVars.toggle.height,
   borderRadius: `calc(${respVars.toggle.height} / 2)`,
 });
-export const switcherInput = style({
-  appearance: 'none',
-  position: 'relative',
-  width: respVars.toggle.width,
-  height: respVars.toggle.height,
-  borderRadius: `calc(${respVars.toggle.height} / 2)`,
-  backgroundColor: vars.color.header.background,
-  outline: 'none',
-  transition: '0.25s -0.1s',
-  selectors: {
-    '&:before, &:after': {
-      zIndex: 2,
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      color: vars.color.header.thumb,
-    },
-    '&:checked': {
-      backgroundColor: vars.color.header.thumb,
-    },
-    '&:checked:before': {
-      backgroundColor: vars.color.header.thumb,
-      transition: 'color 0.5s 0.2s;',
-    },
-    '&:not(:checked)': {
-      backgroundColor: vars.color.header.background,
-      transition: 'background 0.5s -0.1s;',
-    },
-    '&:not(:checked):after': {
-      backgroundColor: vars.color.header.background,
-      transition: 'color 0.5s 0.2s;',
+export const switcher = style([
+  switcherBox,
+  {
+    display: 'inline-block',
+  },
+]);
+export const switcherInput = style([
+  switcherBox,
+  {
+    backgroundColor: vars.color.header.background,
+    appearance: 'none',
+    outline: 'none',
+    transition: '0.25s -0.1s',
+    selectors: {
+      '&:before, &:after': {
+        zIndex: 2,
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        color: vars.color.header.thumb,
+      },
+      '&:checked': {
+        backgroundColor: vars.color.header.thumb,
+      },
+      '&:checked:before': {
+        backgroundColor: vars.color.header.thumb,
+        transition: 'color 0.5s 0.2s;',
+      },
+      '&:not(:checked)': {
+        backgroundColor: vars.color.header.background,
+        transition: 'background 0.5s -0.1s;',
+      },
+      '&:not(:checked):after': {
+        backgroundColor: vars.color.header.background,
+        transition: 'color 0.5s 0.2s;',
+      },
     },
   },
-});
+]);
 
 export const switcherLabel = style({
   zIndex: 1,
