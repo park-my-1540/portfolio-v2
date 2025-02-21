@@ -3,11 +3,13 @@ p {
   white-space: break-spaces;
 }
 h2 {
+  word-break: 'keep-all';
   white-space: break-spaces;
 }
 html, body {
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
+  letter-spacing: 0.6px;
 } 
 .border {
   border: 1px solid red
@@ -58,26 +60,72 @@ html, body {
 }
 
 ul {
-  display: block;
-  list-style-type: disc;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-}
-
-ol {
-  margin-left: 10rem;
-  display: block;
-  list-style-type: decimal;
-
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 1rem;
+  margin-left: 5px;
 }
 
 li {
+  position: relative;
+  margin-left: -15px;
+  padding: 2px 0 2px 15px;
   display: list-item;
-  line-height: 1.4;
+  line-height: 1.7;
   text-align: -webkit-match-parent;
+  white-space: normal;
+  word-wrap: break-word; /* 너무 긴 단어도 줄바꿈 */
+}
+
+ul > li {
+  font-family: 'MangoBold';
+  padding-left: 5px;
+  font-size: 1.1rem;
+}
+
+li > ul {
+  padding-left: 25px;
+}
+
+ul ul>li { 
+  padding-left: 15px;
+  font-size: 1rem;
+}
+ul ul>li:before { 
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #000;
+}
+
+ul ul ul>li{
+  font-family: 'MangoRegular';
+}
+ul ul ul>li:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  border:1px solid #000;
+}
+ul ul ul ul>li:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 0;
+  background: #000;
+  border:1px solid #000;
 }
 
 .loading {

@@ -3,7 +3,6 @@ import { style } from '@vanilla-extract/css';
 import { colors } from '@/styles/tokens/colors.css';
 const base = {
   margin: '0',
-  lineHeight: '1.3',
 };
 
 const variants = {
@@ -84,6 +83,14 @@ const variants = {
   textAlign: {
     center: style({
       textAlign: 'center',
+    }),
+  },
+  lineHeight: {
+    sm: style({
+      lineHeight: 1.3,
+    }),
+    md: style({
+      lineHeight: 1.5,
     }),
   },
   stroke: {

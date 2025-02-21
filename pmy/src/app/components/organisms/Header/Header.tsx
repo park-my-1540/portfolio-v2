@@ -71,7 +71,7 @@ export function Header() {
         align="center"
         justify="between"
         responsive={{
-          padding: {
+          paddingY: {
             desktop: 'mediumLargeX2',
             tablet: 'large',
             mobile: 'medium',
@@ -79,6 +79,7 @@ export function Header() {
         }}
       >
         <Box
+          paddingLeft="1.6rem"
           display="flex"
           direction="row"
           align="center"

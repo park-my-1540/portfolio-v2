@@ -8,10 +8,6 @@ const base = {
 };
 
 const variants = {
-  cover: {
-    cover: style({ backgroundSize: 'cover' }),
-    contain: style({ backgroundSize: 'contain' }),
-  },
   sizes: {
     small: style({
       width: 50,

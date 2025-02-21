@@ -223,7 +223,7 @@ export const triggerSkill = (tl) => {
       scrollTrigger: {
         trigger: about,
         scroller: '#main-container',
-        start: 'bottom 60%', // bottom이 뷰포트 80에 도달하면 시작
+        start: 'bottom 90%', // bottom이 뷰포트 90에 도달하면 시작
         end: 'bottom 10%', // bottom이 뷰포트 10까지 스크롤 될떄까지 진행
         scrub: true,
       },

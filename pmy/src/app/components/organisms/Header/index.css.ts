@@ -24,7 +24,7 @@ export const menuBtn = style({
   flexDirection: 'column',
   justifyContent: 'center',
   height: '100%',
-  padding: '0 1.6rem',
+  padding: '1.6rem',
   selectors: {
     '&:hover': {
       background: colors.lightblue,

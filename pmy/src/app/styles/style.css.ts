@@ -28,6 +28,9 @@ export const pageContainer = style({
 export const paddingBox = style({
   padding: respVars.padding.container,
 });
+export const titleWrap = style({
+  padding: `${respVars.list.X} ${respVars.list.X}`,
+});
 
 export const scrollbar = style({
   selectors: {
@@ -136,4 +139,8 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
   color: vars.color.light,
   top: 3,
   left: 13,
+});
+
+export const bg = style({
+  background: vars.color.text.primary,
 });

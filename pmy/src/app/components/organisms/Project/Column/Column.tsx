@@ -32,7 +32,7 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
     >
       <Box>
         <Box>
-          <Image url={img} radius="default" sizes="card" />
+          <Image url={img} radius="default" sizes="card" cover="cover" />
           <Text sizes="large" className={`${titleWrap} ${borderTop}`}>
             {title}
           </Text>

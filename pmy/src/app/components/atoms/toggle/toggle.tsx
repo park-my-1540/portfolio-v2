@@ -6,7 +6,7 @@ import * as theme from '@/utils/theme';
 export const Toggle = ({ changeTheme }) => {
   const _theme = theme.getTheme();
   return (
-    <Box marginTop={10}>
+    <Box>
       <span className={switcher}>
         <input
           ref={useCallback(

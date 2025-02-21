@@ -37,6 +37,7 @@ interface Blocks {
   id: string;
   type: BlockType;
   content: string;
+  children?: string[] | Blocks[];
 }
 
 type BlockCollectionKeys =
@@ -47,9 +48,10 @@ type BlockCollectionKeys =
   | 'ul'
   | 'ol'
   | 'images'
-  | 'quote';
+  | 'quote'
+  | 'desc';
 
-type BlockCollections = Record<BlockCollectionKeys, string[]>;
+type BlockCollections = Record<BlockCollectionKeys, any[]>;
 
 // interface BlockCollections {
 //   rendered: string[];

@@ -12,7 +12,8 @@ import * as modal from '@/utils/modal';
 
 export interface SubMenu {
   name: string;
-  path: string;
+  path?: string;
+  id?: string;
 }
 export interface MainMenu {
   name: string;
@@ -31,6 +32,7 @@ const menuList: MenuItem[] = [
   {
     name: 'about',
     desc: 'About Me',
+    subMenus: [{ name: 'Skill', id: 'skill' }],
   },
   {
     name: 'project',
@@ -90,6 +92,11 @@ function MenuItem({ item, moveToSectionPosition }) {
               splitText={item.name}
               sizes="smallmedium"
               weights="light"
+              onClick={
+                Boolean(item.id)
+                  ? () => moveToSectionPosition(`#${item.id}`)
+                  : undefined
+              } // 수정
               url={item.path}
             />
           ))}

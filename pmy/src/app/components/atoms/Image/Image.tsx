@@ -5,7 +5,7 @@ import ImageNext from 'next/image';
 type ImageProps = {
   url: string;
   sizes: ImageVariantProps;
-  cover?: ImageVariantProps;
+  cover?: 'cover' | 'contain' | 'fill' | 'scale-down';
   radius?: ImageVariantProps;
   children?: React.ReactNode;
   className?: string;
@@ -15,7 +15,7 @@ type ImageProps = {
 export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
   radius,
-  cover,
+  cover = 'contain',
   url,
   children,
   className,
@@ -33,17 +33,14 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   }, [url]);
 
   return (
-    <div
-      className={`${className} ${image({ sizes, radius, cover })}`}
-      {...rest}
-    >
+    <div className={`${className} ${image({ sizes, radius })}`} {...rest}>
       <p
         style={{ position: 'relative' }}
-        className={` ${image({ sizes, radius, cover })} ${
+        className={` ${image({ sizes, radius })} ${
           isLoaded ? 'loaded' : 'loading'
         }`}
       >
-        <ImageNext src={url} alt={alt} style={{ objectFit: 'cover' }} fill />
+        <ImageNext src={url} alt={alt} style={{ objectFit: cover }} fill />
       </p>
       {children}
     </div>

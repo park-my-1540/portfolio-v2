@@ -46,45 +46,62 @@ export async function getPageList(
   }
 }
 
-// 2. 페이지 블록 가져오기 함수
+// 2. 페이지 블록 가져오기 함수 - Notion API에서 페이지 블록을 가져오는 함수 (하위 Bullet까지 포함)
 export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
   try {
     const data = await getPageChildren(pageId);
 
     // 블록 내용 처리
-    const blocks: Blocks[] = data.results.map(
-      (block: (PartialBlockObjectResponse | BlockObjectResponse) & Block) => {
-        let content = '';
-        switch (block.type) {
-          case 'paragraph':
-          case 'heading_1':
-          case 'heading_2':
-          case 'heading_3':
-          case 'bulleted_list_item':
-          case 'numbered_list_item':
-          case 'quote':
-            content =
-              block[block.type]?.rich_text
-                ?.map((text: TextRichText) => text.plain_text)
-                .join('') || '';
-            break;
-          case 'image':
-            content =
-              block.image?.external?.url || block.image?.file?.url || '';
-            break;
-          case 'video':
-            content = block.video?.file?.url || '';
-            break;
-          default:
-            content = `[Unsupported block type: ${block}]`;
-        }
+    const blocks: Blocks[] = await Promise.all(
+      data.results.map(
+        async (
+          block: (PartialBlockObjectResponse | BlockObjectResponse) & Block,
+        ) => {
+          let content = '';
 
-        return {
-          id: block.id,
-          type: block.type,
-          content,
-        };
-      },
+          switch (block.type) {
+            case 'paragraph':
+            case 'heading_1':
+            case 'heading_2':
+            case 'heading_3':
+            case 'bulleted_list_item':
+            case 'numbered_list_item':
+            case 'quote':
+              content =
+                block[block.type]?.rich_text
+                  ?.map((text: TextRichText) => text.plain_text)
+                  .join('') || '';
+              const hasChildren = block.has_children;
+              let children: Blocks[] = [];
+              if (hasChildren) {
+                children = await getPageBlocks(block.id as DatabaseKey); // 재귀적으로 호출
+              }
+
+              return {
+                id: block.id,
+                type: block.type,
+                content,
+                children,
+              };
+
+            case 'image':
+              content =
+                block.image?.external?.url || block.image?.file?.url || '';
+              break;
+            case 'video':
+              content = block.video?.file?.url || '';
+              break;
+            default:
+              content = `[Unsupported block type: ${block}]`;
+          }
+
+          return {
+            id: block.id,
+            type: block.type,
+            content,
+          };
+        },
+      ),
     );
 
     return blocks;
