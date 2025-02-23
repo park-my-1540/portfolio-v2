@@ -36,7 +36,7 @@ export const SplitText = ({
     };
     initialize();
   }, []);
-  const linkUrl = url ? url : 'javascript:void(0)';
+  const linkUrl = url ? url : '#';
   const classes = clsx(
     responsive && sprinkles(responsive),
     text({ sizes }),
@@ -47,7 +47,10 @@ export const SplitText = ({
     <a
       href={linkUrl}
       className={classes}
-      onClick={onClick}
+      onClick={(e) => {
+        if (!url) e.preventDefault(); // url이 없을 때만 기본 동작 차단
+        onClick?.();
+      }}
       onMouseEnter={() => cursor.set('pointer')}
       onMouseLeave={() => cursor.set(null)}
     >
