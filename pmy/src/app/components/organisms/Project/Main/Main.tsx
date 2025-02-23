@@ -29,7 +29,6 @@ export default function Main({ blocks }: { blocks: PageWithBlocks[] }) {
   return (
     <>
       <Box
-        className={borderTop}
         responsive={{
           gridColumn: {
             desktop: 'three',

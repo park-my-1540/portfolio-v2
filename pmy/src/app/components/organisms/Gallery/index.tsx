@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Image } from '@/components/atoms/Image/Image';
 import useOnScreen from '@/hook/useOnScreen';
 import { ProjectItemProps, ProjectContentProps } from '@/types/common';
 import * as animate from '@/utils/animate';
@@ -62,18 +63,26 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
       ref={ref}
     >
       <div></div>
-      <Box width="100%" height="100%" className="sia">
+      <div
+        onClick={() => goDetail(type)}
+        onMouseEnter={() => cursor.set('project')}
+        onMouseLeave={() => cursor.set(null)}
+      >
         <Box className={style.galleryItemInfo}>
           <MemorizedGalleryContent {...item} />
         </Box>
-        <div
-          onClick={() => goDetail(type)}
+        {/* <div
           className="gallery-item-image"
-          onMouseEnter={() => cursor.set('project')}
-          onMouseLeave={() => cursor.set(null)}
           style={{ backgroundImage: `url(${img})` }}
-        ></div>
-      </Box>
+        ></div> */}
+        <Image
+          sizes="full"
+          className="gallery-item-image"
+          url={img}
+          cover="cover"
+          radius="round"
+        />
+      </div>
       <div></div>
     </div>
   );

@@ -193,11 +193,9 @@ export default function MatterMain() {
     };
   }, [scrollStart]);
   return (
-    <>
-      <Box position="relative" width="100%" height="100%" ref={canvasBoxRef}>
-        <Svg titleRef={titleRef} />
-        <canvas className={canvas} ref={canvasRef}></canvas>
-      </Box>
-    </>
+    <Box position="relative" width="100%" height="100%" ref={canvasBoxRef}>
+      <Svg titleRef={titleRef} />
+      <canvas className={canvas} ref={canvasRef}></canvas>
+    </Box>
   );
 }

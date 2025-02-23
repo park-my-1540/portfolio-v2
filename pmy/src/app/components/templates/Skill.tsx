@@ -7,8 +7,8 @@ export default function About() {
         display="flex"
         justify="center"
         align="center"
-        height="80vh"
-        paddingTop="20vh"
+        height="70vh"
+        paddingTop="10vh"
       >
         <Hardskill />
       </Box>

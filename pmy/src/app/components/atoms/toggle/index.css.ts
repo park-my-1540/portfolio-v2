@@ -61,6 +61,8 @@ export const switcherLabel = style({
   top: respVars.toggle.start,
   bottom: respVars.toggle.start,
   borderRadius: `calc(${respVars.toggle.start} * 2)`,
+  textAlign: 'center',
+  lineHeight: '30px',
   selectors: {
     [`${switcherInput}:checked + &`]: {
       left: respVars.toggle.start,

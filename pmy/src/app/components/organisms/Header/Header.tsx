@@ -21,7 +21,7 @@ const MenuToggle = () => {
   return (
     <TextLink
       weights="bold"
-      sizes="smallmedium"
+      sizes="medium"
       className={menuBtn}
       onClick={onClickMenu}
     >
@@ -39,7 +39,7 @@ const ThemeToggle = () => {
     [],
   );
 
-  return <Toggle changeTheme={changeTheme} />;
+  return <Toggle changeTheme={(e) => changeTheme(e)} />;
 };
 
 export function Header() {

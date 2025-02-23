@@ -9,7 +9,7 @@ export const content = style({
   textAlign: 'center',
   background: '#acc9ff',
   borderRadius: 30,
-  transform: 'translate(0%, 50%)',
+  transform: 'translate(0%, 100%)',
   opacity: 0,
   '@media': {
     'screen and (max-width: 768px)': {

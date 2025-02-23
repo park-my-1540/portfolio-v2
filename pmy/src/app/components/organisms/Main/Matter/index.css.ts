@@ -12,13 +12,11 @@ export const canvas = style({
 export const title = style({
   display: 'block',
   position: 'absolute',
-  top: '60%',
-  left: '50%',
-  marginLeft: '-50%',
-  width: '100%',
+  bottom: '0',
+  left: '9%',
+  width: '82%',
   height: 'auto',
   pointerEvents: 'none',
-  transform: 'translate3d(0, -50%, 0)',
   zIndex: 2,
   transition: 'opacity 0.3s ease-in',
 });

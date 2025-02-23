@@ -16,11 +16,10 @@ const scrolldownAnimation = keyframes({
 });
 
 export const wrapper = style({
-  left: '50%',
   position: 'absolute',
+  left: '95%',
+  bottom: '10%',
   textAlign: 'center',
-  bottom: '0',
-  transform: 'translate(-50%, -50%)',
 });
 
 export const scrolldown = style({

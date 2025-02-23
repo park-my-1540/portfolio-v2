@@ -25,6 +25,7 @@ export const menuBtn = style({
   justifyContent: 'center',
   height: '100%',
   padding: '1.6rem',
+  letterSpacing: '1px',
   selectors: {
     '&:hover': {
       background: colors.lightblue,
