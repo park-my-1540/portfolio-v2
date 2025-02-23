@@ -44,8 +44,8 @@ globalStyle('body, html', {
     [layers.reset]: {
       height: '100%',
       fontFamily: 'MangoRegular',
-      // overflowY: 'hidden',
       cursor: 'none',
+      letterSpacing: '0.6px',
     },
   },
 });
@@ -98,4 +98,85 @@ globalStyle('canvas', {
 globalStyle('button:disabled', {
   opacity: 0.5, // 비활성화된 버튼의 오퍼시티
   cursor: 'not-allowed', // 비활성화된 상태에서 커서 스타일 변경
+});
+
+globalStyle('p', {
+  wordBreak: 'break-word',
+  whiteSpace: 'break-spaces',
+});
+
+globalStyle('h2', {
+  wordBreak: 'keep-all',
+  whiteSpace: 'break-spaces',
+});
+
+globalStyle('ul', {
+  marginLeft: '5px',
+});
+
+globalStyle('li', {
+  position: 'relative',
+  marginLeft: '-15px',
+  padding: '2px 0 2px 15px',
+  display: 'list-item',
+  lineHeight: '1.7',
+  textAlign: 'match-parent',
+  whiteSpace: 'normal',
+  wordWrap: 'break-word', // 너무 긴 단어도 줄바꿈
+});
+
+globalStyle('ul > li', {
+  fontFamily: 'MangoBold',
+  paddingLeft: '5px',
+  fontSize: '1.1rem',
+});
+
+globalStyle('li > ul', {
+  paddingLeft: '25px',
+});
+
+globalStyle('ul ul > li', {
+  paddingLeft: '15px',
+  fontSize: '1rem',
+});
+
+globalStyle('ul ul > li::before', {
+  content: "''",
+  display: 'block',
+  position: 'absolute',
+  left: '0',
+  top: '12px',
+  width: '5px',
+  height: '5px',
+  borderRadius: '50%',
+  background: vars.color.dark,
+});
+
+globalStyle('ul ul ul > li', {
+  fontFamily: 'MangoRegular',
+});
+
+globalStyle('ul ul ul > li::before', {
+  content: "''",
+  display: 'block',
+  position: 'absolute',
+  left: '0',
+  top: '12px',
+  width: '5px',
+  height: '5px',
+  borderRadius: '50%',
+  background: 'transparent',
+  border: `1px solid ${vars.color.dark}`,
+});
+
+globalStyle('ul ul ul ul > li::before', {
+  content: "''",
+  display: 'block',
+  position: 'absolute',
+  left: '0',
+  top: '12px',
+  width: '5px',
+  height: '5px',
+  borderRadius: '0',
+  background: vars.color.dark,
 });

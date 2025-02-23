@@ -8,7 +8,7 @@ import { colors } from '@/styles/tokens/colors.css';
 export default function Contact() {
   return (
     <section className="panel" id="contact" data-scroll-section>
-      <Box>
+      <Box height="80vh">
         <Box
           className="target"
           display="flex"
