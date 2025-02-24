@@ -71,16 +71,13 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
         <Box className={style.galleryItemInfo}>
           <MemorizedGalleryContent {...item} />
         </Box>
-        {/* <div
-          className="gallery-item-image"
-          style={{ backgroundImage: `url(${img})` }}
-        ></div> */}
         <Image
           sizes="full"
           className="gallery-item-image"
           url={img}
           cover="cover"
           radius="round"
+          loading="eager"
         />
       </div>
       <div></div>

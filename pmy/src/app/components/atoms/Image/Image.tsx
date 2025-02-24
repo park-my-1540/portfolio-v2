@@ -7,6 +7,7 @@ type ImageProps = {
   sizes: ImageVariantProps;
   cover?: 'cover' | 'contain' | 'fill' | 'scale-down';
   radius?: ImageVariantProps;
+  loading: 'eager' | 'lazy';
   children?: React.ReactNode;
   className?: string;
   alt?: string;
@@ -19,6 +20,7 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
   url,
   children,
   className,
+  loading,
   alt = 'image',
   ...rest
 }) => {
@@ -40,7 +42,13 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
           isLoaded ? 'loaded' : 'loading'
         }`}
       >
-        <ImageNext src={url} alt={alt} style={{ objectFit: cover }} fill />
+        <ImageNext
+          src={url}
+          alt={alt}
+          style={{ objectFit: cover }}
+          fill
+          loading={loading}
+        />
       </p>
       {children}
     </div>
