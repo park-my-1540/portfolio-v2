@@ -10,16 +10,16 @@ import { Blocks, TextRichText, Block, DatabaseKey } from '@/types/common';
 export async function getPageList({
   pageId,
   returnIdsOnly = false,
-  next,
+  cacheOptions,
 }: {
   pageId: DatabaseKey;
   returnIdsOnly?: boolean;
-  next?;
+  cacheOptions?: { next?: { revalidate: number } };
 }) {
   const database_id = DATABASE_ID[pageId as string];
 
   try {
-    const data = await getDatabaseQuery(database_id, next);
+    const data = await getDatabaseQuery(database_id, cacheOptions);
 
     if (returnIdsOnly) {
       return data.results.map((page: NotionPage) => ({
