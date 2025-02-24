@@ -9,7 +9,7 @@ import { getPageList } from '@/service/notion/notionService';
 export default async function Home() {
   const pages = await getPageList({
     pageId: 'LIST',
-    next: { revalidate: REVALIDATE_LONG_TIME },
+    cacheOptions: { next: { revalidate: REVALIDATE_LONG_TIME } },
   });
 
   return <Page list={pages} />;
