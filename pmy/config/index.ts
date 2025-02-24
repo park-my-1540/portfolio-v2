@@ -6,3 +6,6 @@ export const DATABASE_ID: Record<DatabaseKey, string | undefined> = {
   JDI: process.env.NEXT_PUBLIC_NOTION_DATABASE_JDI_ID,
   LIST: process.env.NEXT_PUBLIC_NOTION_DATABASE_LIST_ID,
 };
+
+export const REVALIDATE_LONG_TIME = 3600;
+export const REVALIDATE_TIME = 60;

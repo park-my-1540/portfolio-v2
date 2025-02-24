@@ -20,6 +20,6 @@ export default async function Page(props: { params: paramsType }) {
 }
 
 // 동적 경로를 정적으로 생성
-export async function generateStaticParams() {
-  return [{ id: 'ADC' }, { id: 'JDI' }];
-}
+// export async function generateStaticParams() {
+//   return [{ id: 'ADC' }, { id: 'JDI' }];
+// }

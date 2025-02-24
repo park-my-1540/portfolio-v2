@@ -7,7 +7,7 @@ type ImageProps = {
   sizes: ImageVariantProps;
   cover?: 'cover' | 'contain' | 'fill' | 'scale-down';
   radius?: ImageVariantProps;
-  loading: 'eager' | 'lazy';
+  loading?: 'eager' | 'lazy';
   children?: React.ReactNode;
   className?: string;
   alt?: string;

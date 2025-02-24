@@ -1,15 +1,20 @@
 /**
  * @fileoverview API 요청만 처리
  */
-import { TOKEN } from '@/../../config';
+import { TOKEN, REVALIDATE_TIME } from '@/../../config';
 import { DatabaseKey } from '@/types/common';
 
 const BASE_URL = 'https://api.notion.com/v1';
 
 // 데이터베이스 쿼리 요청
-export async function getDatabaseQuery(databaseId: DatabaseKey) {
+export async function getDatabaseQuery(
+  databaseId: DatabaseKey,
+  cacheOptions?: { next?: { revalidate: number } },
+) {
   const url = `${BASE_URL}/databases/${databaseId}/query`;
-
+  const finalCacheOptions = cacheOptions ?? {
+    next: { revalidate: REVALIDATE_TIME },
+  };
   try {
     const res = await fetch(url, {
       method: 'POST',
@@ -18,7 +23,7 @@ export async function getDatabaseQuery(databaseId: DatabaseKey) {
         'Content-Type': 'application/json',
         'Notion-Version': '2022-06-28',
       },
-      cache: 'no-cache', // no-cache 설정
+      next: finalCacheOptions.next,
       body: JSON.stringify({
         sorts: [
           {
@@ -52,7 +57,9 @@ export async function getPageChildren(pageId: DatabaseKey) {
         Authorization: `Bearer ${TOKEN}`,
         'Notion-Version': '2022-06-28',
       },
-      cache: 'no-cache', // no-cache 설정
+      next: {
+        revalidate: REVALIDATE_TIME,
+      },
     });
 
     if (!res.ok) {
