@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
-import { rootVars } from '@/styles/common/createResponsiveTheme.css';
+import { respVars } from '@/styles/common/createResponsiveTheme.css';
 
 export const header = style({
   position: 'absolute',
@@ -16,7 +16,7 @@ export const inner = style({
   position: 'relative',
   borderTop: '2px solid',
   zIndex: 99,
-  height: rootVars.headerHeight,
+  height: respVars.header.height,
 });
 
 export const menuBtn = style({

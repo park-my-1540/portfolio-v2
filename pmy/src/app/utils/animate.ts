@@ -153,22 +153,49 @@ export const triggerHorizontalSections = (tl) => {
   const sections = gsap.utils.toArray('.gallery-item-wrapper');
 
   if (!galleryEl || !tl) return;
-  tl = gsap.timeline({
-    scrollTrigger: {
-      start: 'top top',
-      trigger: galleryEl,
-      scroller: '#main-container',
-      end: () => `+=${galleryEl.offsetWidth}`,
-      pin: true,
-      scrub: 0.5,
-      snap: 1 / (sections.length - 1),
-    },
-  });
 
-  tl.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: 'ease-in-out',
-  });
+  // matchMedia를 사용하여 화면 크기에 따라 다르게 적용
+  const mm = gsap.matchMedia();
+  mm.add(
+    {
+      isDesktop: `(min-width: 1025px)`,
+      isMobile: `(max-width: 1024px)`,
+    },
+    (context: any) => {
+      const { isDesktop, isMobile } = context.conditions;
+
+      if (isDesktop) {
+        tl = gsap.timeline({
+          scrollTrigger: {
+            start: 'top top',
+            trigger: galleryEl,
+            scroller: '#main-container',
+            end: () => `+=${galleryEl.offsetWidth}`,
+            pin: true,
+            scrub: 0.5,
+            snap: 1 / (sections.length - 1),
+          },
+        });
+
+        tl.to(sections, {
+          xPercent: -100 * (sections.length - 1),
+          ease: 'ease-in-out',
+        });
+      } else if (isMobile) {
+        tl = gsap.timeline({
+          scrollTrigger: {
+            start: 'top top',
+            trigger: galleryEl,
+            scroller: '#main-container',
+            end: 'bottom top',
+            pin: false, // 세로 스크롤에서는 고정 X
+            scrub: 0.5,
+          },
+        });
+      }
+    },
+  );
+
   return tl;
 };
 

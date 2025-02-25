@@ -153,7 +153,7 @@ export default function HardSkill() {
       justify="center"
       responsive={{
         width: {
-          desktop: 'eighty',
+          desktop: 'w80',
           tablet: 'full',
           mobile: 'full',
         },

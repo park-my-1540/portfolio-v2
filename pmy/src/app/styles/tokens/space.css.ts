@@ -6,4 +6,6 @@ export const spaceVars = {
   mediumLargeX2: '1.3rem', // 12px => 0.85rem
   large: '1.6rem', // 16px => 1rem
   xLarge: '2rem', // 32px => 2rem
+  x2Large: '4rem', // 32px => 2rem
+  big: '5rem',
 };

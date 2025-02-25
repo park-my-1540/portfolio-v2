@@ -1,6 +1,11 @@
 import React, { useCallback } from 'react';
 import Box from '@/components/layouts/Box/Box';
-import { switcher, switcherInput, switcherLabel } from './index.css';
+import {
+  switcher,
+  switcherInput,
+  switcherLabel,
+  switcherIcon,
+} from './index.css';
 import * as theme from '@/utils/theme';
 import * as cursor from '@/utils/cursor';
 
@@ -29,6 +34,7 @@ export const Toggle = ({ changeTheme }: { changeTheme: (e) => void }) => {
 
         <label htmlFor="switcher" className={switcherLabel}>
           <img
+            className={switcherIcon}
             ref={useCallback(
               (node: HTMLImageElement | null) => {
                 if (node) node.src = `/svg/toggle/${_theme}.svg`;
@@ -37,7 +43,6 @@ export const Toggle = ({ changeTheme }: { changeTheme: (e) => void }) => {
             )}
             src={`/svg/toggle/${_theme}.svg`}
             alt={_theme === 'light' ? 'Light Mode' : 'Dark Mode'}
-            width={15}
           />
         </label>
       </span>

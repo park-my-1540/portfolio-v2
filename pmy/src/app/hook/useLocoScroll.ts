@@ -126,7 +126,10 @@ export default function useLocoScroll(start: boolean, ref: any) {
           multiplier: 1,
           class: 'is-reveal',
           tablet: {
-            breakpoint: 0, // 모바일/태블릿 환경에서도 동일하게 부드러운 스크롤을 적용하도록 강제.
+            smooth: true,
+          },
+          smartphone: {
+            smooth: true,
           },
         });
 

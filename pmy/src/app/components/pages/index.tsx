@@ -46,7 +46,15 @@ export default function Home({ list }: { list: Filtered[] }) {
         <Skill />
         <Gallery />
         <section className="panel" id="forScrollGsap" data-scroll-section>
-          <Box height={300}></Box>
+          <Box
+            responsive={{
+              height: {
+                desktop: 'large',
+                tablet: 'large',
+                mobile: 'medium',
+              },
+            }}
+          ></Box>
         </section>
       </Box>
       <Contact />

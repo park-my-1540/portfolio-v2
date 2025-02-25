@@ -15,6 +15,9 @@ export const respVars = createThemeContract({
   text: {
     size: '',
   },
+  header: {
+    height: '',
+  },
   padding: {
     container: '',
     header: '',
@@ -29,6 +32,7 @@ export const respVars = createThemeContract({
     height: null,
     start: null,
     end: null,
+    icon: null,
   },
 });
 
@@ -36,6 +40,9 @@ globalStyle(':root', {
   vars: assignVars(respVars, {
     text: {
       size: '17px',
+    },
+    header: {
+      height: '70px',
     },
     padding: {
       container: '1.6rem',
@@ -51,6 +58,7 @@ globalStyle(':root', {
       height: '40px',
       start: '7px',
       end: '70px',
+      icon: '15px',
     },
   }),
   '@media': {
@@ -58,6 +66,9 @@ globalStyle(':root', {
       vars: assignVars(respVars, {
         text: {
           size: '18px',
+        },
+        header: {
+          height: '70px',
         },
         padding: {
           container: '0.65rem',
@@ -73,6 +84,7 @@ globalStyle(':root', {
           height: '40px',
           start: '7px',
           end: '87px',
+          icon: '15px',
         },
       }),
     },
@@ -80,6 +92,9 @@ globalStyle(':root', {
       vars: assignVars(respVars, {
         text: {
           size: '19px',
+        },
+        header: {
+          height: '50px',
         },
         padding: {
           container: '0.65rem',
@@ -94,7 +109,8 @@ globalStyle(':root', {
           width: '80px',
           height: '30px',
           start: '7px',
-          end: '50px',
+          end: '40px',
+          icon: '11px',
         },
       }),
     },

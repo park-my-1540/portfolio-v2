@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Image } from '@/components/atoms/Image/Image';
+import Title from '@/components/atoms/Title';
 import useOnScreen from '@/hook/useOnScreen';
 import { ProjectItemProps, ProjectContentProps } from '@/types/common';
+import { mobileOnly } from '@/styles/style.css';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
 import cn from 'classnames';
@@ -95,7 +97,10 @@ export default function Gallery() {
 
   return (
     <section data-scroll-section className={style.galleryWrap} id="project">
-      <Box className={`${style.gallery} gallery`} data-scroll-speed="10">
+      <Box margin="1rem 2rem 2rem">
+        <Title title="WORKS" className={mobileOnly} />
+      </Box>
+      <Box className={`${style.gallery} gallery`}>
         <Box className={style.galleryCounter}>
           <span>{activeImage}</span>
           <Box className={style.divider} />

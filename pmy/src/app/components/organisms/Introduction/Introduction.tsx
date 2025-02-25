@@ -17,14 +17,14 @@ export default function Introduction() {
       <Box
         responsive={{
           width: {
-            desktop: 'sixty',
-            tablet: 'seventy',
+            desktop: 'w60',
+            tablet: 'w70',
             mobile: 'full',
           },
         }}
       >
         <div data-highlight="half" data-splitting="lines" className="desc">
-          <Text style={{ paddingTop: 50 }} sizes="largeX2" weights="bold">
+          <Text sizes="largeX2" weights="bold">
             안녕하세요.
             <br />
             <br />

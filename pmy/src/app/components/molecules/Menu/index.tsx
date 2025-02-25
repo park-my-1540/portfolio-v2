@@ -58,8 +58,8 @@ function MenuItem({ item, moveToSectionPosition }) {
       className={`${menuItem} menu`}
       responsive={{
         width: {
-          desktop: 'large',
-          tablet: 'large',
+          desktop: 'menu',
+          tablet: 'menu',
           mobile: 'full',
         },
       }}
@@ -110,11 +110,6 @@ function MenuItem({ item, moveToSectionPosition }) {
             desktop: 'mediumLarge',
             tablet: 'mediumLarge',
             mobile: 'mediumLargeX2',
-          },
-          height: {
-            desktop: 'small',
-            tablet: 'small',
-            mobile: 'large',
           },
         }}
       >

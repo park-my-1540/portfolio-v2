@@ -54,7 +54,9 @@ export const switcherInput = style([
     },
   },
 ]);
-
+export const switcherIcon = style({
+  width: respVars.toggle.icon,
+});
 export const switcherLabel = style({
   zIndex: 1,
   position: 'absolute',
@@ -62,7 +64,7 @@ export const switcherLabel = style({
   bottom: respVars.toggle.start,
   borderRadius: `calc(${respVars.toggle.start} * 2)`,
   textAlign: 'center',
-  lineHeight: '30px',
+  lineHeight: `calc(${respVars.toggle.icon} * 2)`,
   selectors: {
     [`${switcherInput}:checked + &`]: {
       left: respVars.toggle.start,

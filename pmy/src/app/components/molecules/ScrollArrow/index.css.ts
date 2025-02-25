@@ -17,9 +17,16 @@ const scrolldownAnimation = keyframes({
 
 export const wrapper = style({
   position: 'absolute',
-  left: '95%',
+  right: '5%',
   bottom: '10%',
   textAlign: 'center',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      top: '15%',
+      left: '55%',
+      marginLeft: '-50%',
+    },
+  },
 });
 
 export const scrolldown = style({

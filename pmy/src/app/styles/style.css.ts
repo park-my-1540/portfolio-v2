@@ -23,7 +23,7 @@ export const borderX = style({
 
 // layout - project page
 export const pageContainer = style({
-  paddingTop: `calc( ${rootVars.headerHeight} + (${respVars.padding.header}*2))`,
+  paddingTop: `calc( ${respVars.header.height} + (${respVars.padding.header}*2))`,
 });
 export const paddingBox = style({
   padding: respVars.padding.container,
@@ -143,4 +143,13 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
 
 export const bg = style({
   background: vars.color.text.primary,
+});
+
+export const mobileOnly = style({
+  '@media': {
+    'screen and (max-width: 768px)': { display: 'block' },
+    'screen and (min-width: 768px)': {
+      display: 'none',
+    },
+  },
 });

@@ -22,7 +22,7 @@ export const columnWrap = style({
     },
     'screen and (min-width: 768px)': {
       marginBottom: '-1.5px',
-      height: `calc(100vh - ${rootVars.headerHeight} - (${respVars.padding.container} * 3))`,
+      height: `calc(100vh - ${respVars.header.height} - (${respVars.padding.container} * 3))`,
     },
   },
 });

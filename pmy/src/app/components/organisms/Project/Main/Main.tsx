@@ -36,7 +36,7 @@ export default function Main({ blocks }: { blocks: PageWithBlocks[] }) {
             mobile: 'full',
           },
           width: {
-            desktop: 'fullPlusGap',
+            desktop: 'detailExpanded',
             tablet: 'full',
             mobile: 'full',
           },

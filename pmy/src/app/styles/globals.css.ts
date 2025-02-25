@@ -73,7 +73,7 @@ globalStyle(':root', {
       fontSize: '17px',
     },
     'screen and (max-width: 768px)': {
-      fontSize: '18px',
+      fontSize: '14px',
     },
   },
 });
