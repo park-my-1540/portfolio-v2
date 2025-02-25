@@ -142,7 +142,8 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
 });
 
 export const bg = style({
-  background: vars.color.text.primary,
+  background: '#dee2e64d',
+  // background: vars.color.text.primary,
 });
 
 export const mobileOnly = style({

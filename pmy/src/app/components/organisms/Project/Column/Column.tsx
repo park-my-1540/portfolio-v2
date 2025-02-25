@@ -41,19 +41,19 @@ export default function Column({ filtered }: { filtered: Filtered[] }) {
           <Text sizes="mediumlarge" className={list}>
             {company}
           </Text>
-          <Text sizes="smallmedium" className={list}>
+          <Text sizes="smallmedium" className={list} weights="bold">
             Services
           </Text>
           <Text sizes="smallmedium" className={list}>
             {service}
           </Text>
-          <Text sizes="smallmedium" className={list}>
+          <Text sizes="smallmedium" className={list} weights="bold">
             Duration
           </Text>
           <Text sizes="smallmedium" className={list}>
             {duration}
           </Text>
-          <Text sizes="smallmedium" className={list}>
+          <Text sizes="smallmedium" className={list} weights="bold">
             Position
           </Text>
           <Text sizes="smallmedium" className={list}>
