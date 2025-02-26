@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "/project/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=60, stale-while-revalidate=31535940"
+        }
+      ]
+    },
+    {
       "source": "/fonts/:path*",
       "headers": [
         {
