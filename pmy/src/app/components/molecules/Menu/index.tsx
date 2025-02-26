@@ -141,18 +141,29 @@ export default function Menu() {
   }
 
   const getScrollPositionOfElement = useCallback((elementSelector: string) => {
+    if (!scrollRef.current) return;
+    const scrollInstance = scrollRef.current;
     const element = document.querySelector(elementSelector);
-    if (!element || !scrollRef.current) return;
-    const scrollInstance = scrollRef.current?.scroll.instance;
-    const { top } = element.getBoundingClientRect();
-    return top + scrollInstance.scroll.y;
+
+    if (!element) return;
+
+    return scrollInstance.scroll?.el?.querySelector(elementSelector)?.offsetTop;
   }, []);
+
   const moveToSectionPosition = useCallback((className: string) => {
     if (!scrollRef.current) return;
-    const position = getScrollPositionOfElement(className);
-    scrollRef.current.scrollTo(position, { duration: 0 });
 
-    modal.closeModal();
+    const scrollInstance = scrollRef.current;
+    const position = getScrollPositionOfElement(className);
+
+    if (position !== undefined) {
+      scrollInstance.scrollTo(position, {
+        duration: 1000, // 부드러운 이동을 위해 duration 추가
+        offset: 0, // 필요에 따라 조정 가능
+      });
+
+      modal.closeModal();
+    }
   }, []);
 
   return (
