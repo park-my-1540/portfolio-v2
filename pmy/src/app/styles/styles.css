@@ -3,7 +3,12 @@
   height: 24px;
   border-radius: 50%;
   background-color: red;
-  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition:
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .pointer {
   width: 48px;
@@ -20,7 +25,7 @@
   mix-blend-mode: normal;
 }
 
-.project{
+.project {
   background-color: #ffffffc8;
   color: #1509d5;
   width: 150px;
@@ -29,7 +34,7 @@
   font-family: 'MangoBold';
 }
 
-.project::after{
+.project::after {
   content: 'About';
   font-size: 21px;
   letter-spacing: 0.5px;

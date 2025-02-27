@@ -2,7 +2,6 @@
   "arrowParens": "always",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
-  "jsxSingleQuote": false,
   "orderedImports": true,
   "semi": true,
   "singleQuote": true,

@@ -1,4 +1,6 @@
-*,:after,:before {
+*,
+:after,
+:before {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -18,18 +20,18 @@
 }
 
 .txt:nth-child(2) .char {
-    transform: rotate3d(1, -0.5, 0, 90deg);
-  }
+  transform: rotate3d(1, -0.5, 0, 90deg);
+}
 
 .link:hover .txt:nth-child(1) {
-    transform: translateY(100%); /* 아래로 사라짐 */
-  }
-  
-.link:hover .txt:nth-child(2) {
-    transform: translateY(0); /* 위에서 내려옴 */
-    opacity: 1;
+  transform: translateY(100%); /* 아래로 사라짐 */
 }
-  
+
+.link:hover .txt:nth-child(2) {
+  transform: translateY(0); /* 위에서 내려옴 */
+  opacity: 1;
+}
+
 .link:hover .txt {
   transform: translateX(var(3rem));
 }
@@ -52,30 +54,32 @@
 
 .same .word .char {
   position: relative;
-  transition-delay: calc(0.017s *var(--char-index));
-  transition-duration: .4s;
+  transition-delay: calc(0.017s * var(--char-index));
+  transition-duration: 0.4s;
   transition-property: transform;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-timing-function: cubic-bezier(0,0,.2,1)
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .same:hover .char {
-  --tw-translate-y:100%;
-  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+  --tw-translate-y: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .same:hover .char::before {
   visibility: visible;
 }
 
 .same .word {
-  overflow: hidden
+  overflow: hidden;
 }
 
 .same .word .char:before {
   content: attr(data-char);
   left: 0;
   position: absolute;
-  top: -100%
+  top: -100%;
 }
 
 .link {
@@ -86,11 +90,14 @@
   color: var(--color-complementary);
 }
 
-.txt,.sameType {
+.txt,
+.sameType {
   position: absolute;
   left: 0;
   top: 0;
-  transition: transform 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s cubic-bezier(0.5, 0, 0, 1);
+  transition:
+    transform 0.5s cubic-bezier(0.5, 0, 0, 1),
+    opacity 0.5s cubic-bezier(0.5, 0, 0, 1);
 }
 
 .txt:nth-child(1) {
