@@ -1,5 +1,5 @@
 import { style, keyframes } from '@vanilla-extract/css';
-
+import { responsiveStyle } from '@/styles/common/responsive.css';
 const scrolldownAnimation = keyframes({
   '0%': {
     opacity: 0,
@@ -15,19 +15,21 @@ const scrolldownAnimation = keyframes({
   },
 });
 
-export const wrapper = style({
-  position: 'absolute',
-  right: '5%',
-  bottom: '10%',
-  textAlign: 'center',
-  '@media': {
-    'screen and (max-width: 768px)': {
+export const wrapper = style([
+  {
+    position: 'absolute',
+    right: '5%',
+    bottom: '10%',
+    textAlign: 'center',
+  },
+  responsiveStyle({
+    mobile: {
       top: '15%',
       left: '55%',
       marginLeft: '-50%',
     },
-  },
-});
+  }),
+]);
 
 export const scrolldown = style({
   border: '2px solid #FFFFFF',

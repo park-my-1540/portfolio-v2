@@ -5,7 +5,7 @@ import { PageWithBlocks, BlockCollections } from '@/types/common';
 const renderImages = (images: string[]) =>
   images.length >= 2
     ? `<Box width="100%" className={'${borderTop}'}><SwiperComp image={${JSON.stringify(images)}}/></Box>`
-    : `<Box width="100%" className={'${borderTop}'}><Image url="${images}" radius="default" className={'${bg}'} sizes="full"/></Box>`;
+    : `<Box width="100%" className={'${borderTop}'}><Image url="${images}" radius="default" className={'${bg}'} sizes="main"/></Box>`;
 
 // 비디오 렌더링 함수
 const renderVideo = (url) =>

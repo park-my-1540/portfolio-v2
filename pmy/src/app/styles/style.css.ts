@@ -1,6 +1,8 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import { rootVars, respVars } from '@/styles/common/createResponsiveTheme.css';
+import { respVars } from '@/styles/common/createResponsiveTheme.css';
+import { responsiveStyle } from '@/styles/common/responsive.css';
+import { calc } from '@vanilla-extract/css-utils';
 
 // border - style
 export const borderTopNone = style({
@@ -23,7 +25,9 @@ export const borderX = style({
 
 // layout - project page
 export const pageContainer = style({
-  paddingTop: `calc( ${respVars.header.height} + (${respVars.padding.header}*2))`,
+  paddingTop: calc(respVars.header.height)
+    .add(calc(respVars.padding.header).multiply(2))
+    .toString(),
 });
 export const paddingBox = style({
   padding: respVars.padding.container,
@@ -143,14 +147,18 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
 
 export const bg = style({
   background: '#dee2e64d',
-  // background: vars.color.text.primary,
 });
 
-export const mobileOnly = style({
-  '@media': {
-    'screen and (max-width: 768px)': { display: 'block' },
-    'screen and (min-width: 768px)': {
+export const mobileOnly = style([
+  responsiveStyle({
+    mobile: {
+      display: 'block',
+    },
+    tablet: {
       display: 'none',
     },
-  },
-});
+    desktop: {
+      display: 'none',
+    },
+  }),
+]);

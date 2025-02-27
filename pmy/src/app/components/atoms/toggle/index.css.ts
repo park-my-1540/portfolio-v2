@@ -3,11 +3,13 @@ import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
 import { respVars } from '@/styles/common/createResponsiveTheme.css';
 import { sub } from '@/components/organisms/Header/index.css';
+import { calc } from '@vanilla-extract/css-utils';
+
 const switcherBox = style({
   position: 'relative',
   width: respVars.toggle.width,
   height: respVars.toggle.height,
-  borderRadius: `calc(${respVars.toggle.height} / 2)`,
+  borderRadius: calc(respVars.toggle.height).divide(2).toString(),
 });
 export const switcher = style([
   switcherBox,
@@ -62,9 +64,9 @@ export const switcherLabel = style({
   position: 'absolute',
   top: respVars.toggle.start,
   bottom: respVars.toggle.start,
-  borderRadius: `calc(${respVars.toggle.start} * 2)`,
+  borderRadius: calc(respVars.toggle.height).multiply(2).toString(),
   textAlign: 'center',
-  lineHeight: `calc(${respVars.toggle.icon} * 2)`,
+  lineHeight: calc(respVars.toggle.icon).multiply(2).toString(),
   selectors: {
     [`${switcherInput}:checked + &`]: {
       left: respVars.toggle.start,
