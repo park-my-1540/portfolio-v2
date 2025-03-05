@@ -16,7 +16,9 @@ type TextLinkProps = {
   className?: string;
   url?: string;
   onClick?: () => void;
-};
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+} & TextProps;
 
 export const Text = ({
   sizes = 'medium',
@@ -72,13 +74,17 @@ export const TextTitle = ({
   color,
   children,
   className,
+  onMouseEnter,
+  onMouseLeave,
   ref,
   ...rest
-}: TextProps & Partial<TextVariantProps & TextColorVariantProps>) => {
+}: TextLinkProps & Partial<TextVariantProps & TextColorVariantProps>) => {
   return (
     <h2
       {...rest}
       ref={ref}
+      onMouseEnter={onMouseEnter ? onMouseEnter : undefined}
+      onMouseLeave={onMouseLeave ? onMouseLeave : undefined}
       className={cn(
         className,
         text({
@@ -106,6 +112,7 @@ export const TextLink = ({
   vertical,
   onClick,
   textAlign,
+  wordBreak = 'breakWord',
   url,
   display,
   color,
@@ -123,7 +130,7 @@ export const TextLink = ({
       {...rest}
       className={cn(
         className,
-        text({ sizes, weights, display, vertical, textAlign }),
+        text({ sizes, weights, display, vertical, textAlign, wordBreak }),
         textColor({ color }),
       )}
     >

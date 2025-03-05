@@ -41,7 +41,8 @@ const translateRightDot = keyframes({
   to: { transform: 'translate(0px, -50%)' },
 });
 
-// 기본 스타일 정의
+const transitionEffect = '0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+
 export const mainCursor = style({
   width: '24px',
   height: '24px',
@@ -53,8 +54,13 @@ export const mainCursor = style({
   position: 'fixed',
   background: 'white',
   mixBlendMode: 'difference',
-  transition:
-    'background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
+  transition: [
+    `opacity ${transitionEffect}`,
+    `background-color ${transitionEffect}`,
+    `border-color ${transitionEffect}`,
+    `width ${transitionEffect}`,
+    `height ${transitionEffect}`,
+  ].join(', '),
 });
 
 export const animations = {

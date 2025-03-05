@@ -2,7 +2,6 @@
  * @fileoverview cursor state
  */
 import { atom } from 'jotai';
+import { CursorType } from '@/types/styles';
 
-type CursorType = 'point' | 'pointer' | 'project' | null;
-
-export const cursorsState = atom<CursorType>(null); // 초기값 null
+export const cursorsState = atom<CursorType>(); // 초기값 null

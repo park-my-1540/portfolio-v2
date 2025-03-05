@@ -73,7 +73,7 @@ globalStyle(':root', {
       fontSize: '17px',
     },
     'screen and (max-width: 768px)': {
-      fontSize: '14px',
+      fontSize: '15px',
     },
   },
 });
@@ -100,16 +100,6 @@ globalStyle('button:disabled', {
   cursor: 'not-allowed', // 비활성화된 상태에서 커서 스타일 변경
 });
 
-globalStyle('p', {
-  wordBreak: 'break-word',
-  whiteSpace: 'break-spaces',
-});
-
-globalStyle('h2', {
-  wordBreak: 'keep-all',
-  whiteSpace: 'break-spaces',
-});
-
 globalStyle('ul', {
   marginLeft: '5px',
 });
@@ -120,14 +110,13 @@ globalStyle('li', {
   padding: '2px 0 2px 15px',
   display: 'list-item',
   lineHeight: '1.7',
-  textAlign: 'match-parent',
   whiteSpace: 'normal',
   wordWrap: 'break-word', // 너무 긴 단어도 줄바꿈
 });
 
 globalStyle('ul > li', {
   fontFamily: 'MangoBold',
-  paddingLeft: '5px',
+  paddingLeft: '10px',
   fontSize: '1.1rem',
 });
 

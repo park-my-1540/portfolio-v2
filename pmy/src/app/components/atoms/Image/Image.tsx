@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { image, ImageVariantProps } from './index.css';
+import * as styles from './styles.css';
+import cn from 'classnames';
 import ImageNext from 'next/image';
 
 type ImageProps = {
@@ -38,9 +40,9 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
     <div className={`${className} ${image({ sizes, radius })}`} {...rest}>
       <p
         style={{ position: 'relative' }}
-        className={` ${image({ sizes, radius })} ${
-          isLoaded ? 'loaded' : 'loading'
-        }`}
+        className={`${image({ sizes, radius })} ${cn(
+          styles.loadtyles[isLoaded ? 'loaded' : 'loading'],
+        )}`}
       >
         <ImageNext
           src={url}

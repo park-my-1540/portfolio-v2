@@ -85,6 +85,16 @@ const variants = {
       textAlign: 'center',
     }),
   },
+  wordBreak: {
+    breakWord: style({
+      wordBreak: 'break-word',
+      whiteSpace: 'break-spaces',
+    }),
+    keepAll: style({
+      wordBreak: 'keep-all',
+      whiteSpace: 'break-spaces',
+    }),
+  },
   lineHeight: {
     sm: style({
       lineHeight: 1.3,

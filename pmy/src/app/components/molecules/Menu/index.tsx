@@ -3,7 +3,7 @@ import { wrapper, menuItem, menuInner } from './index.css';
 import Box from '@/components/layouts/Box/Box';
 import { Text } from '@/components/atoms/Text/Text';
 import { SplitText } from '@/components/atoms/SplitText';
-import * as url from '@/constants/constants';
+import * as url from '@/constants/routes';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useAtomValue } from 'jotai';
 import { locoScrollState } from '@/jotai/locoScrollAtom';

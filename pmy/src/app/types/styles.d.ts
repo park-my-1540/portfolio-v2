@@ -1,21 +1,12 @@
 import { ValueOfUnion } from '@/utils/helpers';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css'; // sprinkles import
 import { themeVariants } from '@/styles/common/themeVariants';
+import { cursorValue, responsiveValue, displayValue } from '@/constants/style';
 
-export type ThemeMode = 'light' | 'dark';
-
-const responsiveValue = ['desktop', 'tablet', 'mobile'] as const;
+export type ThemeMode = ValueOfUnion<typeof themeValue>;
+export type CursorType = ValueOfUnion<typeof cursorValue>;
 export type responsiveType = ValueOfUnion<typeof responsiveValue>;
-
-const displayValue = [
-  'flex',
-  'inline',
-  'inline-block',
-  'block',
-  'grid',
-] as const;
 export type displayType = ValueOfUnion<typeof displayValue>;
-
 export type NumberOrString = number | string | undefined;
 
 export type BoxProps = {

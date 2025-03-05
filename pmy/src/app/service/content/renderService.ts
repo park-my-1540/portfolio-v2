@@ -1,4 +1,4 @@
-import { borderTop, paddingBox, titleWrap, bg } from '@/styles/style.css';
+import { borderTop, paddingBox, headingWrap, bg } from '@/styles/style.css';
 import { PageWithBlocks, BlockCollections } from '@/types/common';
 
 // 이미지 렌더링 함수
@@ -56,7 +56,7 @@ export default function renderContent(blocksData: PageWithBlocks) {
         break;
       case 'heading_3':
         block.desc.push(
-          `<TextTitle key={blk.id} className={'${borderTop} ${titleWrap}'} lineHeight="md">${content}</TextTitle>`,
+          `<TextTitle key={blk.id} className={'${borderTop} ${headingWrap}'} lineHeight="md">${content}</TextTitle>`,
         );
         break;
       case 'quote':

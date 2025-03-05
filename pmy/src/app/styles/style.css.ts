@@ -32,8 +32,8 @@ export const pageContainer = style({
 export const paddingBox = style({
   padding: respVars.padding.container,
 });
-export const titleWrap = style({
-  padding: `${respVars.list.X} ${respVars.list.X}`,
+export const headingWrap = style({
+  padding: `${respVars.list.Y} ${respVars.padding.container}`,
 });
 
 export const scrollbar = style({
