@@ -2,16 +2,17 @@
 
 import React, { useEffect, useRef } from 'react';
 import Matter from 'matter-js';
+import { useAtomValue } from 'jotai';
 import Box from '@/components/layouts/Box/Box';
+import scrollStartState from '@/jotai/scrollStartAtom';
 import { canvas } from './index.css';
 import Svg from './Svg';
-import { useAtomValue } from 'jotai';
-import { scrollStartState } from '@/jotai/scrollStartAtom';
 
 const createFallingObjects = (
   world: Matter.World,
   canvasBoxRef: React.RefObject<HTMLDivElement>,
 ) => {
+  let interval: ReturnType<typeof setInterval>;
   let timer: ReturnType<typeof setTimeout>;
   const texturePath = './svg/main/lightning.svg';
   const image = new Image();
@@ -33,28 +34,21 @@ const createFallingObjects = (
 
       timer = setTimeout(() => {
         if (!canvasBoxRef.current) return;
-        const randomX =
-          Math.random() * (canvasBoxRef.current?.offsetWidth - 500); // 화면 내 무작위 위치
+        const randomX = Math.random() * ((canvasBoxRef.current?.offsetWidth ?? 0) - 500);
         const randomAngle = Math.random() * Math.PI * 2; // 0 ~ 2π (0도 ~ 360도) 랜덤 각도
 
-        const rectangle = Matter.Bodies.rectangle(
-          randomX,
-          startingHeight,
-          56,
-          15,
-          {
-            density: 0.5, // 밀도
-            frictionAir: 0.01, // 공기 저항
-            restitution: 0.4, // 반발력
-            render: {
-              sprite: {
-                texture: texturePath,
-                xScale: 1,
-                yScale: 1,
-              },
+        const rectangle = Matter.Bodies.rectangle(randomX, startingHeight, 56, 15, {
+          density: 0.5, // 밀도
+          frictionAir: 0.01, // 공기 저항
+          restitution: 0.4, // 반발력
+          render: {
+            sprite: {
+              texture: texturePath,
+              xScale: 1,
+              yScale: 1,
             },
           },
-        );
+        });
 
         Matter.Body.setAngle(rectangle, randomAngle);
         Matter.Composite.add(world, rectangle);
@@ -72,13 +66,10 @@ const createFallingObjects = (
   createObjects();
 
   // 이후 일정 시간마다 실행
-  const interval = setInterval(createObjects, 1500);
+  interval = setInterval(createObjects, 1500);
 };
 
-const createTitleObjects = (
-  world: Matter.World,
-  titleRef: React.RefObject<SVGSVGElement>,
-) => {
+const createTitleObjects = (world: Matter.World, titleRef: React.RefObject<SVGSVGElement>) => {
   const paths = titleRef.current?.querySelectorAll('path');
 
   paths?.forEach((path) => {
@@ -106,8 +97,8 @@ const createTitleObjects = (
           render: {
             sprite: {
               texture: texturePath,
-              xScale: xScale,
-              yScale: yScale,
+              xScale,
+              yScale,
             },
           },
         },
@@ -118,10 +109,7 @@ const createTitleObjects = (
   });
 };
 
-const createWall = (
-  world: Matter.World,
-  titleRef: React.RefObject<SVGSVGElement>,
-) => {
+const createWall = (world: Matter.World, titleRef: React.RefObject<SVGSVGElement>) => {
   if (!titleRef.current) return;
   const bounding = titleRef.current.getBoundingClientRect();
   const floor = Matter.Bodies.rectangle(
@@ -164,7 +152,7 @@ export default function MatterMain() {
 
     const render = Matter.Render.create({
       element: canvasBoxRef.current,
-      engine: engine,
+      engine,
       canvas: canvasRef.current!,
       options: {
         background: 'transparent',

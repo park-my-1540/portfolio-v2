@@ -1,7 +1,11 @@
 import { ValueOfUnion } from '@/utils/helpers';
-import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css'; // sprinkles import
-import { themeVariants } from '@/styles/common/themeVariants';
-import { cursorValue, responsiveValue, displayValue } from '@/constants/style';
+import { Sprinkles } from '@/styles/common/sprinkles.css'; // sprinkles import
+import {
+  cursorValue,
+  responsiveValue,
+  displayValue,
+  themeValue,
+} from '@/constants/style';
 
 export type ThemeMode = ValueOfUnion<typeof themeValue>;
 export type CursorType = ValueOfUnion<typeof cursorValue>;

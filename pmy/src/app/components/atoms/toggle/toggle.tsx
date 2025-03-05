@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import Box from '@/components/layouts/Box/Box';
+import * as theme from '@/utils/theme';
+import * as cursor from '@/utils/cursor';
 import {
   switcher,
   switcherInput,
   switcherLabel,
   switcherIcon,
 } from './index.css';
-import * as theme from '@/utils/theme';
-import * as cursor from '@/utils/cursor';
 
-export const Toggle = ({ changeTheme }: { changeTheme: (e) => void }) => {
+const Toggle = ({ changeTheme }: { changeTheme: (e) => void }) => {
   const _theme = theme.getTheme();
   return (
     <Box>
@@ -49,3 +49,5 @@ export const Toggle = ({ changeTheme }: { changeTheme: (e) => void }) => {
     </Box>
   );
 };
+
+export default Toggle;

@@ -11,10 +11,9 @@ export default async function Page(props: { params: paramsType }) {
   const result = await getPageWithBlocks(pageId);
 
   // 비어있다면 빈객체 할당
-  const list: NotionRes =
-    result && 'pageWithBlocks' in result
-      ? result
-      : { pageWithBlocks: [], filtered: [] };
+  const list: NotionRes = result && 'pageWithBlocks' in result
+    ? result
+    : { pageWithBlocks: [], filtered: [] };
 
   return <Project list={list} />;
 }

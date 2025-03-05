@@ -6,4 +6,5 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 type locoScrollType = LocomotiveScroll | undefined;
 
-export const locoScrollState = atom<locoScrollType>();
+const locoScrollState = atom<locoScrollType>();
+export default locoScrollState;

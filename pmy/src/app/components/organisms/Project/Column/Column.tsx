@@ -1,16 +1,20 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import Box from '@/components/layouts/Box/Box';
-import { Image } from '@/components/atoms/Image/Image';
+import Image from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
-import { SplitText } from '@/components/atoms/SplitText';
+import SplitText from '@/components/atoms/SplitText';
 import { Filtered } from '@/types/common';
 import { borderTop, borderBox } from '@/styles/style.css';
-import { itemWrap, titleWrap } from './index.css';
-import { list, columnWrap } from './index.css';
-import { useRouter } from 'next/navigation';
+import {
+  itemWrap, titleWrap, list, columnWrap
+} from './index.css';
+
 export default function Column({ filtered }: { filtered: Filtered[] }) {
   const router = useRouter();
-  const { duration, img, position, service, title, company } = filtered[0];
+  const {
+    duration, img, position, service, title, company
+  } = filtered[0];
   return (
     <Box
       className={`${borderBox} ${columnWrap}`}

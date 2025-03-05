@@ -1,4 +1,4 @@
-import { BoxProps } from '@/types/styles';
+import type { BoxProps } from '@/types/styles';
 
 // Props picker utility
 /**

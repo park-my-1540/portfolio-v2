@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
-import { Image } from '@/components/atoms/Image/Image';
+import Image from '@/components/atoms/Image/Image';
 import {
   listBox,
   content,
@@ -111,7 +111,9 @@ const skills = [
 ];
 
 function IconBox({ skill }) {
-  const { type, url, name, mobile } = skill;
+  const {
+    type, url, name, mobile
+  } = skill;
   const isRectangle = type === 'md';
 
   return (

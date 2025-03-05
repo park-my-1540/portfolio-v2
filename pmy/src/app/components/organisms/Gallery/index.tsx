@@ -1,19 +1,21 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState
+} from 'react';
 import { useRouter } from 'next/navigation';
-import { Image } from '@/components/atoms/Image/Image';
+import cn from 'classnames';
+import { useAtomValue } from 'jotai';
+import Image from '@/components/atoms/Image/Image';
 import Title from '@/components/atoms/Title';
 import useOnScreen from '@/hook/useOnScreen';
 import { ProjectItemProps, ProjectContentProps } from '@/types/common';
 import { mobileOnly } from '@/styles/style.css';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
-import cn from 'classnames';
 import './style.css';
-import { useAtomValue } from 'jotai';
-import { galleryListState } from '@/jotai/galleryListAtom';
+import galleryListState from '@/jotai/galleryListAtom';
 import { Text, TextTitle } from '@/components/atoms/Text/Text';
-import * as style from './gallery.css';
 import * as cursor from '@/utils/cursor';
+import * as style from './gallery.css';
 
 const GalleryContent = ({ title, service, position }: ProjectContentProps) => {
   return (

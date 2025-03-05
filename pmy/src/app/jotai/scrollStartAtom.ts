@@ -3,4 +3,5 @@
  */
 import { atom } from 'jotai';
 
-export const scrollStartState = atom<Boolean>(false);
+const scrollStartState = atom<boolean>(false);
+export default scrollStartState;

@@ -1,14 +1,14 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { debounce } from 'lodash';
 import { usePathname } from 'next/navigation';
 import { useSetAtom } from 'jotai';
-import { scrollStartState } from '@/jotai/scrollStartAtom';
-import { locoScrollState } from '@/jotai/locoScrollAtom';
+import locoScrollState from '@/jotai/locoScrollAtom';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
-import gsap from 'gsap';
 import * as animate from '@/utils/animate';
-import { debounce } from 'lodash';
+import scrollStartState from '@/jotai/scrollStartAtom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,9 +20,9 @@ gsap.registerPlugin(ScrollTrigger);
 const getScrollPositionOfElement = (
   elementSelector: string,
   locoScroll: React.RefObject<LocomotiveScroll | null>,
-) => {
+): number | undefined => {
   const element = document.querySelector(elementSelector);
-  if (!element || !locoScroll.current) return;
+  if (!element || !locoScroll.current) return undefined;
 
   const scrollInstance = locoScroll.current.scroll.instance;
   const { top } = element.getBoundingClientRect();
@@ -87,13 +87,14 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const pathname = usePathname(); // 현재 경로
   const locoScrollRef = useRef<LocomotiveScroll | null>(null);
 
-  const galleryTimeline = useRef<gsap.core.Timeline | null>(null),
-    aboutTimeline = useRef<gsap.core.Timeline | null>(null),
-    mainTimeline = useRef<gsap.core.Timeline | null>(null),
-    skillTimeline = useRef<gsap.core.Timeline | null>(null),
-    contactTimeline = useRef<gsap.core.Timeline | null>(null);
+  const galleryTimeline = useRef<gsap.core.Timeline | null>(null);
+  const aboutTimeline = useRef<gsap.core.Timeline | null>(null);
+  const mainTimeline = useRef<gsap.core.Timeline | null>(null);
+  const skillTimeline = useRef<gsap.core.Timeline | null>(null);
+  const contactTimeline = useRef<gsap.core.Timeline | null>(null);
 
-  let timer, resizeTimer;
+  let timer;
+  let resizeTimer;
 
   useEffect(() => {
     const handleResize = debounceResizeHandler(locoScrollRef, resizeTimer);
@@ -144,7 +145,7 @@ export default function useLocoScroll(start: boolean, ref: any) {
 
         // ScrollTrigger와 Locomotive Scroll 동기화
         ScrollTrigger.scrollerProxy(scrollEl, {
-          scrollTop(value) {
+          scrollTop() {
             if (locoScrollRef.current) {
               return arguments.length
                 ? null
@@ -152,7 +153,7 @@ export default function useLocoScroll(start: boolean, ref: any) {
             }
             return null;
           },
-          scrollLeft(value) {
+          scrollLeft() {
             if (locoScrollRef.current) {
               return arguments.length
                 ? null
@@ -180,11 +181,11 @@ export default function useLocoScroll(start: boolean, ref: any) {
         // gsap timeline
         mainTimeline.current = animate.triggerMainSections(mainTimeline);
         aboutTimeline.current = animate.triggerHighlightsText(aboutTimeline);
-        galleryTimeline.current =
-          animate.triggerHorizontalSections(galleryTimeline);
+        galleryTimeline.current
+          = animate.triggerHorizontalSections(galleryTimeline);
         skillTimeline.current = animate.triggerSkill(skillTimeline);
-        contactTimeline.current =
-          animate.triggerContactSections(contactTimeline);
+        contactTimeline.current
+          = animate.triggerContactSections(contactTimeline);
 
         clearTimeout(timer);
         timer = setTimeout(() => {

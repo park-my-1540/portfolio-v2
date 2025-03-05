@@ -1,8 +1,8 @@
 import { style, globalStyle } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { respVars } from '@/styles/common/createResponsiveTheme.css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
-import { calc } from '@vanilla-extract/css-utils';
 
 // border - style
 export const borderTopNone = style({
@@ -90,7 +90,7 @@ export const bgBtn = style({
   borderRadius: '.9rem',
 });
 
-//icon
+// icon
 export const iconArrow = style({
   display: 'inline-block',
   width: '1.3rem',

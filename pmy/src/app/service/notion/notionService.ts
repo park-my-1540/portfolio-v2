@@ -2,9 +2,9 @@
  * @fileoverview 데이터 가공 로직
  */
 import { DATABASE_ID } from '@/../../config';
+import { Blocks, TextRichText, DatabaseKey } from '@/types/common';
 import { getDatabaseQuery, getPageChildren } from './notionClient';
 import { NotionPage } from './notionType';
-import { Blocks, TextRichText, Block, DatabaseKey } from '@/types/common';
 
 // 1. Notion 데이터베이스에서 일정 정보를 가져오는 함수
 export async function getPageList({
@@ -32,8 +32,8 @@ export async function getPageList({
     return data.results.map((page: NotionPage) => ({
       id: page.id,
       duration:
-        `${page.properties?.duration?.date.start}~${page.properties?.duration?.date.end}` ||
-        '',
+        `${page.properties?.duration?.date.start}~${page.properties?.duration?.date.end}`
+        || '',
       position: page.properties?.position?.rich_text[0]?.plain_text || '',
       service: page.properties?.service?.rich_text[0]?.plain_text || '',
       type: page.properties?.type?.rich_text[0]?.plain_text || '',
@@ -64,8 +64,8 @@ export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
           case 'bulleted_list_item':
           case 'numbered_list_item':
           case 'quote':
-            content =
-              block[block.type]?.rich_text
+            content
+              = block[block.type]?.rich_text
                 ?.map((text: TextRichText) => text.plain_text)
                 .join('') || '';
 
@@ -79,8 +79,8 @@ export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
             };
 
           case 'image':
-            content =
-              block.image?.external?.url || block.image?.file?.url || '';
+            content
+              = block.image?.external?.url || block.image?.file?.url || '';
             break;
           case 'video':
             content = block.video?.file?.url || '';

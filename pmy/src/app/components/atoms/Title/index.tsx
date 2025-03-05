@@ -1,6 +1,7 @@
 import Box from '@/components/layouts/Box/Box';
 import { TextTitle } from '@/components/atoms/Text/Text';
 import { borderTop } from '@/styles/style.css';
+
 type TitleProps = {
   title: string;
   className?: string;

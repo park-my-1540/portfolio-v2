@@ -1,4 +1,4 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { styleVariants } from '@vanilla-extract/css';
 
 export const positionVariants = styleVariants({
   absolute: { position: 'absolute' },

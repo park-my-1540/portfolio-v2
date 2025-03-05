@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { respVars } from '@/styles/common/createResponsiveTheme.css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
-import { calc } from '@vanilla-extract/css-utils';
 
 export const list = style({
   borderBottom: `1px solid ${vars.color.text.light}`,

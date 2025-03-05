@@ -1,5 +1,7 @@
-import { title } from './index.css';
+import React from 'react';
 import { colors } from '@/styles/tokens/colors.css';
+import { title } from './index.css';
+
 export default function Svg({
   titleRef,
 }: {

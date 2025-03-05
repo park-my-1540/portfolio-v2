@@ -4,4 +4,5 @@
 import { atom } from 'jotai';
 import { ProjectProps } from '@/types/common';
 
-export const galleryListState = atom<ProjectProps[]>([]);
+const galleryListState = atom<ProjectProps[]>([]);
+export default galleryListState;

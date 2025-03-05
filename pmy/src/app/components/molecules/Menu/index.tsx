@@ -1,14 +1,14 @@
 import { useRef, useCallback } from 'react';
-import { wrapper, menuItem, menuInner } from './index.css';
-import Box from '@/components/layouts/Box/Box';
-import { Text } from '@/components/atoms/Text/Text';
-import { SplitText } from '@/components/atoms/SplitText';
-import * as url from '@/constants/routes';
 import LocomotiveScroll from 'locomotive-scroll';
 import { useAtomValue } from 'jotai';
-import { locoScrollState } from '@/jotai/locoScrollAtom';
+import Box from '@/components/layouts/Box/Box';
+import { Text } from '@/components/atoms/Text/Text';
+import SplitText from '@/components/atoms/SplitText';
+import * as url from '@/constants/routes';
+import locoScrollState from '@/jotai/locoScrollAtom';
 import { borderTop } from '@/styles/style.css';
 import * as modal from '@/utils/modal';
+import { wrapper, menuItem, menuInner } from './index.css';
 
 export interface SubMenu {
   name: string;
@@ -22,12 +22,12 @@ export interface MainMenu {
   subMenus?: SubMenu[];
 }
 
-export type MenuItem = MainMenu | SubMenu;
+export type MenuItemType = MainMenu | SubMenu;
 
-const menuList: MenuItem[] = [
+const menuList: MenuItemType[] = [
   {
     name: 'main',
-    desc: "meeyoung's portfolio",
+    desc: 'meeyoung\'s portfolio',
   },
   {
     name: 'about',
@@ -84,8 +84,8 @@ function MenuItem({ item, moveToSectionPosition }) {
             {desc}
           </Text>
         )}
-        {subMenus &&
-          subMenus.map((item, index) => (
+        {subMenus
+          && subMenus.map((item, index) => (
             <SplitText
               key={`${item.name}-${index}`}
               type="same"
@@ -93,9 +93,7 @@ function MenuItem({ item, moveToSectionPosition }) {
               sizes="smallmedium"
               weights="light"
               onClick={
-                Boolean(item.id)
-                  ? () => moveToSectionPosition(`#${item.id}`)
-                  : undefined
+                item.id ? () => moveToSectionPosition(`#${item.id}`) : undefined
               } // 수정
               url={item.path}
             />

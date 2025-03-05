@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import * as styles from './index.css';
-import * as cursorStyles from './styles.css';
 import classNames from 'classnames';
 import { useAtomValue } from 'jotai';
-import { cursorsState } from '@/jotai/cursorsAtom';
+import cursorsState from '@/jotai/cursorsAtom';
+import * as styles from './index.css';
+import * as cursorStyles from './styles.css';
 
 const CustomCursor = () => {
   const mainCursor = useRef<HTMLDivElement | null>(null);
@@ -27,9 +27,10 @@ const CustomCursor = () => {
       const mouseY = clientY;
 
       if (!mainCursor.current) return;
-      positionRef.current.mouseX = mouseX - mainCursor.current?.clientWidth / 2;
-      positionRef.current.mouseY =
-        mouseY - mainCursor.current?.clientHeight / 2;
+      positionRef.current.mouseX
+        = mouseX - (mainCursor.current?.clientWidth ?? 0) / 2;
+      positionRef.current.mouseY
+        = mouseY - (mainCursor.current?.clientHeight ?? 0) / 2;
     });
 
     return () => {};
@@ -53,9 +54,9 @@ const CustomCursor = () => {
         positionRef.current.distanceX = (mouseX - destinationX) * 0.2;
         positionRef.current.distanceY = (mouseY - destinationY) * 0.2;
         if (
-          Math.abs(positionRef.current.distanceX) +
-            Math.abs(positionRef.current.distanceY) <
-          0.1
+          Math.abs(positionRef.current.distanceX)
+            + Math.abs(positionRef.current.distanceY)
+          < 0.1
         ) {
           positionRef.current.destinationX = mouseX;
           positionRef.current.destinationY = mouseY;
@@ -64,8 +65,7 @@ const CustomCursor = () => {
           positionRef.current.destinationY += distanceY;
         }
       }
-      if (mainCursor && mainCursor.current)
-        mainCursor.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
+      if (mainCursor && mainCursor.current) mainCursor.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
     };
     followMouse();
   }, []);

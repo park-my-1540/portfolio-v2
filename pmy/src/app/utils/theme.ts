@@ -1,7 +1,8 @@
-import { themeState } from '@/jotai/themeAtom';
 import { getDefaultStore } from 'jotai';
-import { LocalStorageService } from '@/service/storage/localStorageService';
+import themeState from '@/jotai/themeAtom';
+import LocalStorageService from '@/service/storage/localStorageService';
 import { ThemeMode } from '@/types/styles';
+
 const store = getDefaultStore();
 
 const getInitialTheme = (): ThemeMode => {

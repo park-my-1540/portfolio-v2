@@ -1,8 +1,7 @@
 // global.css.ts
 import './layers.css';
 import './reset.css';
-import { globalStyle } from '@vanilla-extract/css';
-import { globalFontFace } from '@vanilla-extract/css';
+import { globalStyle, globalFontFace } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from './tokens/colors.css';
 import * as layers from './layers.css';
@@ -130,7 +129,7 @@ globalStyle('ul ul > li', {
 });
 
 globalStyle('ul ul > li::before', {
-  content: "''",
+  content: '\'\'',
   display: 'block',
   position: 'absolute',
   left: '0',
@@ -146,7 +145,7 @@ globalStyle('ul ul ul > li', {
 });
 
 globalStyle('ul ul ul > li::before', {
-  content: "''",
+  content: '\'\'',
   display: 'block',
   position: 'absolute',
   left: '0',
@@ -159,7 +158,7 @@ globalStyle('ul ul ul > li::before', {
 });
 
 globalStyle('ul ul ul ul > li::before', {
-  content: "''",
+  content: '\'\'',
   display: 'block',
   position: 'absolute',
   left: '0',

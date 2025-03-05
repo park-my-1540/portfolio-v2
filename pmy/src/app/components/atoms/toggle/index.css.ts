@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { vars } from '@/styles/common/createThemeContract.css';
 import { colors } from '@/styles/tokens/colors.css';
 import { respVars } from '@/styles/common/createResponsiveTheme.css';
 import { sub } from '@/components/organisms/Header/index.css';
-import { calc } from '@vanilla-extract/css-utils';
 
 const switcherBox = style({
   position: 'relative',

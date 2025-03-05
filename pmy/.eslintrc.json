@@ -11,9 +11,11 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "quotes": ["error", "single"],
+    "operator-linebreak":["error","before"],
     "comma-dangle": "off",
     "camelcase": "off",
     "no-console": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-unused-expressions": "off",
     "no-underscore-dangle": "off",
     "max-classes-per-file": "off",
@@ -27,14 +29,17 @@
     "prefer-const": "off",
     "@typescript-eslint/no-inferrable-types": "off",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["on"],
+    "@typescript-eslint/no-unused-vars": ["error"],
     "arrow-body-style": "off",
+    "consistent-return": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
       {
         "js": "never",
-        "ts": "never"
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ],
     "prefer-destructuring": "off",
@@ -44,7 +49,20 @@
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "typescript": {}
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.css.ts"],
+      "rules": {
+        "import/no-default-export": "error", // default export 금지
+        "import/prefer-default-export": "off" // default export가 없을 때 발생하는 ESLint 오류 해제
       }
     }
-  }
+  ]
 }

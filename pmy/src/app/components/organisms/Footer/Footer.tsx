@@ -1,6 +1,8 @@
+import React from 'react';
 import Box from '@/components/layouts/Box/Box';
 import { colors } from '@/styles/tokens/colors.css';
 import { Text } from '@/components/atoms/Text/Text';
+
 const Footer: React.FC = () => {
   return (
     <footer data-scroll-section>

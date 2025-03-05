@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // 요소가 화면에 보이는지 여부를 감지하는 커스텀 훅
 /**

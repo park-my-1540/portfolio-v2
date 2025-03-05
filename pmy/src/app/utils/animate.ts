@@ -1,5 +1,7 @@
+import React from 'react';
 import gsap from 'gsap';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+
 type RefType = React.RefObject<HTMLDivElement>;
 
 export const pageIn = (transitionRef: RefType) => {
@@ -95,7 +97,7 @@ export const triggerMainSections = (tl) => {
   const lineEl = document.querySelector('.line') as HTMLElement;
   const sections = document.querySelector('.main') as HTMLElement;
 
-  if (!lineEl || !tl) return;
+  if (!lineEl || !tl) return null;
   tl = gsap.timeline({
     scrollTrigger: {
       trigger: sections,
@@ -152,14 +154,14 @@ export const triggerHorizontalSections = (tl) => {
   const galleryEl = document.querySelector('.gallery') as HTMLElement;
   const sections = gsap.utils.toArray('.gallery-item-wrapper');
 
-  if (!galleryEl || !tl) return;
+  if (!galleryEl || !tl) return null;
 
   // matchMedia를 사용하여 화면 크기에 따라 다르게 적용
   const mm = gsap.matchMedia();
   mm.add(
     {
-      isDesktop: `(min-width: 1025px)`,
-      isMobile: `(max-width: 1024px)`,
+      isDesktop: '(min-width: 1025px)',
+      isMobile: '(max-width: 1024px)',
     },
     (context: any) => {
       const { isDesktop, isMobile } = context.conditions;

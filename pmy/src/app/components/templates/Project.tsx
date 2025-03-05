@@ -1,12 +1,12 @@
 'use client';
+
 import React, { useRef, useEffect } from 'react';
+import Lenis from '@studio-freight/lenis';
 import Box from '@/components/layouts/Box/Box';
 import Main from '@/components/organisms/Project/Main/Main';
 import Column from '@/components/organisms/Project/Column/Column';
-import Lenis from '@studio-freight/lenis';
-import { scrollbar } from '@/styles/style.css';
+import { scrollbar, pageContainer, project } from '@/styles/style.css';
 import { NotionRes } from '@/types/common';
-import { pageContainer, project } from '@/styles/style.css';
 
 export default function Project({ list }: { list: NotionRes }) {
   const containerRef = useRef<HTMLDivElement>(null);

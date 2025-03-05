@@ -3,11 +3,11 @@ import './animate.css';
 import cn from 'classnames';
 import { clsx } from 'clsx';
 import { textColor, TextColorVariantProps } from '@/styles/common/theme.css';
-import { text, TextVariantProps } from './splitText.module.css';
 import 'splitting/dist/splitting.css';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps } from '@/types/styles';
 import * as cursor from '@/utils/cursor';
+import { text, TextVariantProps } from './splitText.module.css';
 
 type SplitTextProps = {
   splitText: string;
@@ -16,7 +16,7 @@ type SplitTextProps = {
   onClick?: () => void;
 };
 
-export const SplitText = ({
+const SplitText = ({
   splitText,
   responsive,
   sizes,
@@ -36,7 +36,7 @@ export const SplitText = ({
     };
     initialize();
   }, []);
-  const linkUrl = url ? url : '#';
+  const linkUrl = url || '#';
   const classes = clsx(
     responsive && sprinkles(responsive),
     text({ sizes }),
@@ -79,3 +79,5 @@ export const SplitText = ({
     </a>
   );
 };
+
+export default SplitText;

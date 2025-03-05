@@ -1,9 +1,8 @@
 import React from 'react';
-import { Image } from '@/components/atoms/Image/Image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { borderX } from '@/styles/style.css';
-import { bg } from '@/styles/style.css';
 import cn from 'classnames';
+import Image from '@/components/atoms/Image/Image';
+import { borderX, bg } from '@/styles/style.css';
 import { swiperFirstItem } from './index.css';
 import 'swiper/css';
 

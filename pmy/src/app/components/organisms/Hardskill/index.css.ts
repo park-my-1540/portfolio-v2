@@ -1,6 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/styles/common/createThemeContract.css';
-import { colors } from '@/styles/tokens/colors.css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
 
 export const content = style([

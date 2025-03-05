@@ -95,7 +95,9 @@ declare namespace LocomotiveScroll {
 
 declare class LocomotiveScroll {
   constructor(options?: LocomotiveScroll.InstanceOptions);
+
   init(): () => void;
+
   on<EventName extends 'scroll' | 'call'>(
     eventName: EventName,
     callback: (
@@ -104,14 +106,20 @@ declare class LocomotiveScroll {
         : string | string[],
     ) => void,
   ): () => void;
+
   update(): () => void;
+
   destroy(): () => void;
+
   start(): () => void;
+
   stop(): () => void;
+
   scrollTo(
     target: LocomotiveScroll.ScrollToTarget,
     options?: LocomotiveScroll.ScrollToOptions,
   ): () => void;
+
   scroll: InstanceOptions;
 }
 

@@ -5,6 +5,8 @@ type themeType = {
   mode: ThemeMode;
 };
 
-export const themeState = atom<themeType>({
+const themeState = atom<themeType>({
   mode: 'light',
 });
+
+export default themeState;

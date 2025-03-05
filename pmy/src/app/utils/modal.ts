@@ -1,6 +1,7 @@
-import { modalState } from '@/jotai/modalAtom';
 import { getDefaultStore } from 'jotai';
+import modalState from '@/jotai/modalAtom';
 import * as animate from '@/utils/animate';
+
 const store = getDefaultStore(); // Jotai store 직접 접근
 
 export const closeModal = () => {

@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as animate from '@/utils/animate';
 import Box from '@/components/layouts/Box/Box';
 import { page } from './index.css';

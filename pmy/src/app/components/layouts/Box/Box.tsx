@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react';
-import * as flexstyles from './index.css';
 import { clsx } from 'clsx';
-import { pickProps } from '@/utils/helpers';
+import { pickProps, ValueOfUnion } from '@/utils/helpers';
 import { sprinkles, Sprinkles } from '@/styles/common/sprinkles.css';
 import { BoxProps, NumberOrString } from '@/types/styles';
-import { ValueOfUnion } from '@/utils/helpers';
+import * as flexstyles from './index.css';
 
 type FlexProps = {
   children?: ReactNode;
@@ -96,17 +95,17 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
 
   const addUnit = (value: NumberOrString): NumberOrString => {
     if (
-      typeof value === 'number' ||
-      value?.startsWith('calc') ||
-      value?.endsWith('%') ||
-      value?.endsWith('vh') ||
-      value?.endsWith('vw') ||
-      value?.endsWith('rem') ||
-      value === undefined
+      typeof value === 'number'
+      || value?.startsWith('calc')
+      || value?.endsWith('%')
+      || value?.endsWith('vh')
+      || value?.endsWith('vw')
+      || value?.endsWith('rem')
+      || value === undefined
     ) {
       return value;
     }
-    return value + 'px';
+    return `${value}px`;
   };
 
   const inlineStyle: React.CSSProperties = {

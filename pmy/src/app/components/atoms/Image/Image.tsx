@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { image, ImageVariantProps } from './index.css';
-import * as styles from './styles.css';
 import cn from 'classnames';
 import ImageNext from 'next/image';
+import { image, ImageVariantProps } from './index.css';
+import * as styles from './styles.css';
 
 type ImageProps = {
   url: string;
@@ -15,7 +15,7 @@ type ImageProps = {
   alt?: string;
 };
 
-export const Image: React.FC<ImageProps & ImageVariantProps> = ({
+const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
   radius,
   cover = 'contain',
@@ -56,3 +56,5 @@ export const Image: React.FC<ImageProps & ImageVariantProps> = ({
     </div>
   );
 };
+
+export default Image;

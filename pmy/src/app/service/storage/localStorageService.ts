@@ -1,4 +1,4 @@
-export const LocalStorageService = {
+const LocalStorageService = {
   // 데이터 저장
   setItem: <T>(key: string, value: T): void => {
     if (typeof window === 'undefined') return;
@@ -56,3 +56,5 @@ export const LocalStorageService = {
     return localStorage.getItem(key) !== null;
   },
 };
+
+export default LocalStorageService;

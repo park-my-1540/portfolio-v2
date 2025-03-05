@@ -1,11 +1,11 @@
 import React from 'react';
+import ReactJsxParser from 'react-jsx-parser';
 import Box from '@/components/layouts/Box/Box';
-import { Image } from '@/components/atoms/Image/Image';
+import Image from '@/components/atoms/Image/Image';
 import { Text, TextTitle } from '@/components/atoms/Text/Text';
-import { borderTop, borderTopNone } from '@/styles/style.css';
+import { borderTopNone } from '@/styles/style.css';
 import SwiperComp from '@/components/organisms/Swiper/SwiperComp';
 import renderContent from '@/service/content/renderService';
-import ReactJsxParser from 'react-jsx-parser';
 import { PageWithBlocks } from '@/types/common';
 
 function StringToComponent(componentStringArray: string) {

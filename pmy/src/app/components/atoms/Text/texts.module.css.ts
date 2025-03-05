@@ -1,6 +1,7 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
 import { colors } from '@/styles/tokens/colors.css';
+
 const base = {
   margin: '0',
 };

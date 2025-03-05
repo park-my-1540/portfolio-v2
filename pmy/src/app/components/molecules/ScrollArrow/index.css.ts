@@ -1,5 +1,6 @@
 import { style, keyframes } from '@vanilla-extract/css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
+
 const scrolldownAnimation = keyframes({
   '0%': {
     opacity: 0,
