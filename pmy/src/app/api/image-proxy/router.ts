@@ -20,7 +20,7 @@ async function GET(req: Request) {
         'Cache-Control': 'public, max-age=3600', // 1시간 캐싱
       },
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch image' }, { status: 500 });
   }
 }
