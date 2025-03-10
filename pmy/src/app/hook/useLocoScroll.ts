@@ -34,17 +34,12 @@ const getScrollPositionOfElement = (
  * detail key 값이 있다면 갤러리 섹션으로 스크롤 이동
  * @param scrollRef
  */
-const moveToGalleryPosition = (
-  scrollRef: React.RefObject<LocomotiveScroll | null>,
-) => {
+const moveToGalleryPosition = (scrollRef: React.RefObject<LocomotiveScroll | null>) => {
   if (!sessionStorage.getItem('detail') || !scrollRef.current) return;
 
-  scrollRef.current.scrollTo(
-    getScrollPositionOfElement('#project', scrollRef),
-    {
-      duration: 0,
-    },
-  );
+  scrollRef.current.scrollTo(getScrollPositionOfElement('#project', scrollRef), {
+    duration: 0,
+  });
 };
 
 /**
@@ -98,9 +93,7 @@ export default function useLocoScroll(start: boolean, ref: any) {
 
   useEffect(() => {
     const handleResize = debounceResizeHandler(locoScrollRef, resizeTimer);
-
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -147,17 +140,13 @@ export default function useLocoScroll(start: boolean, ref: any) {
         ScrollTrigger.scrollerProxy(scrollEl, {
           scrollTop() {
             if (locoScrollRef.current) {
-              return arguments.length
-                ? null
-                : locoScrollRef.current.scroll.instance.scroll.y;
+              return arguments.length ? null : locoScrollRef.current.scroll.instance.scroll.y;
             }
             return null;
           },
           scrollLeft() {
             if (locoScrollRef.current) {
-              return arguments.length
-                ? null
-                : locoScrollRef.current.scroll.instance.scroll.x;
+              return arguments.length ? null : locoScrollRef.current.scroll.instance.scroll.x;
             }
             return null;
           },
@@ -181,11 +170,9 @@ export default function useLocoScroll(start: boolean, ref: any) {
         // gsap timeline
         mainTimeline.current = animate.triggerMainSections(mainTimeline);
         aboutTimeline.current = animate.triggerHighlightsText(aboutTimeline);
-        galleryTimeline.current
-          = animate.triggerHorizontalSections(galleryTimeline);
+        galleryTimeline.current = animate.triggerHorizontalSections(galleryTimeline);
         skillTimeline.current = animate.triggerSkill(skillTimeline);
-        contactTimeline.current
-          = animate.triggerContactSections(contactTimeline);
+        contactTimeline.current = animate.triggerContactSections(contactTimeline);
 
         clearTimeout(timer);
         timer = setTimeout(() => {
@@ -209,18 +196,14 @@ export default function useLocoScroll(start: boolean, ref: any) {
         locoScrollRef.current.destroy();
         locoScrollRef.current = null;
       }
-      [
-        galleryTimeline,
-        aboutTimeline,
-        skillTimeline,
-        mainTimeline,
-        contactTimeline,
-      ].forEach((tl) => {
-        if (tl.current) {
-          tl.current.kill();
-          tl.current = null;
-        }
-      });
+      [galleryTimeline, aboutTimeline, skillTimeline, mainTimeline, contactTimeline].forEach(
+        (tl) => {
+          if (tl.current) {
+            tl.current.kill();
+            tl.current = null;
+          }
+        },
+      );
     };
   }, [ref]);
 
