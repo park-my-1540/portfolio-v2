@@ -1,4 +1,9 @@
 {
+  "function": {
+    "api/image-proxy": {
+      "runtime": "edge"
+    }
+  },
   "headers": [
     {
       "source": "/project/:path*",
