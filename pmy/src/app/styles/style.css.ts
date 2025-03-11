@@ -100,8 +100,7 @@ export const iconArrow = style({
   left: 10,
   borderLeft: `2px solid ${vars.color.text.accent}`,
   transform: 'rotate(45deg)',
-  transition:
-    'all 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s cubic-bezier(0.5, 0, 0, 1)',
+  transition: 'all 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s cubic-bezier(0.5, 0, 0, 1)',
   selectors: {
     '&::before': {
       content: '',
@@ -146,7 +145,7 @@ globalStyle(`${arrowLink}:hover ${iconArrow}`, {
 });
 
 export const bg = style({
-  background: '#dee2e64d',
+  backgroundColor: '#dee2e64d',
 });
 
 export const mobileOnly = style([

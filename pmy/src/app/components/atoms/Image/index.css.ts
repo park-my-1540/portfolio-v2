@@ -2,12 +2,15 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
 
 const base = {
-  backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
 };
 
 const variants = {
+  cover: {
+    cover: style({ backgroundSize: 'cover' }),
+    contain: style({ backgroundSize: 'contain' }),
+  },
   sizes: {
     small: style({
       width: 50,
