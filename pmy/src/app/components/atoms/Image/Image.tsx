@@ -44,13 +44,7 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
           styles.loadtyles[isLoaded ? 'loaded' : 'loading'],
         )}`}
       >
-        <ImageNext
-          src={url}
-          alt={alt}
-          style={{ objectFit: cover }}
-          fill
-          loading={loading}
-        />
+        <img src={url} alt={alt} style={{ objectFit: cover }} loading={loading} />
       </p>
       {children}
     </div>
