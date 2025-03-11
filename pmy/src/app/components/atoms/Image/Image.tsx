@@ -14,7 +14,7 @@ type ImageProps = {
   alt?: string;
 };
 
-export const Image: React.FC<ImageProps & ImageVariantProps> = ({
+const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
   radius,
   cover = 'contain',
