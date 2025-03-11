@@ -2,18 +2,31 @@ import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
-/\*\* @type {import('next').NextConfig} \*/;
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['prod-files-secure.s3.us-west-2.amazonaws.com'],
+    domains: ['www.notion.so', 'prod-files-secure.s3.us-west-2.amazonaws.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
-        pathname: '/**',// 모든 경로 허용
+        hostname: 'www.notion.so', 'prod-files-secure.s3.us-west-2.amazonaws.com',
+        pathname: '/image/**',
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/_next/image',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 's-maxage=31536000, stale-while-revalidate',
+          },
+        ],
+      },
+    ];
   },
 };
 

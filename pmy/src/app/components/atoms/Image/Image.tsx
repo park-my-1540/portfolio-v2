@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-// import ImageNext from 'next/image';
+import ImageNext from 'next/image';
 import { image, ImageVariantProps } from './index.css';
 import * as styles from './styles.css';
 
@@ -44,7 +44,7 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
           styles.loadtyles[isLoaded ? 'loaded' : 'loading'],
         )}`}
       >
-        <img src={url} alt={alt} style={{ objectFit: cover }} loading={loading} />
+        <ImageNext src={url} alt={alt} style={{ objectFit: cover }} fill loading={loading} />
       </p>
       {children}
     </div>
