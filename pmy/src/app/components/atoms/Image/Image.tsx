@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import ImageNext from 'next/image';
+// import ImageNext from 'next/image';
 import { image, ImageVariantProps } from './index.css';
 import * as styles from './styles.css';
 
