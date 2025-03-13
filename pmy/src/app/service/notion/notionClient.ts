@@ -6,6 +6,45 @@ import { DatabaseKey } from '@/types/common';
 
 const BASE_URL = 'https://api.notion.com/v1';
 
+// 이미지 업데이트
+export async function patchBlock(
+  blockId: string,
+  convertedImageUrl: string,
+  cacheOptions?: { next?: { revalidate: number } },
+) {
+  const url = `${BASE_URL}/blocks/${blockId}`;
+  const finalCacheOptions = cacheOptions ?? {
+    next: { revalidate: REVALIDATE_TIME },
+  };
+  try {
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+        'Content-Type': 'application/json',
+        'Notion-Version': '2022-06-28',
+      },
+      next: finalCacheOptions.next,
+      body: JSON.stringify({
+        image: {
+          external: {
+            url: convertedImageUrl,
+          },
+        },
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error('Error fetching data');
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error('Error fetching database query:', error);
+    return null;
+  }
+}
+
 // 데이터베이스 쿼리 요청
 export async function getDatabaseQuery(
   databaseId: DatabaseKey,
@@ -38,8 +77,7 @@ export async function getDatabaseQuery(
       throw new Error('Error fetching data');
     }
 
-    const data = await res.json();
-    return data;
+    return res.json();
   } catch (error) {
     console.error('Error fetching database query:', error);
     return null;
@@ -66,8 +104,7 @@ export async function getPageChildren(pageId: DatabaseKey) {
       throw new Error('Error fetching page children');
     }
 
-    const data = await res.json();
-    return data;
+    return res.json();
   } catch (error) {
     console.error('Error fetching page children:', error);
     return null;

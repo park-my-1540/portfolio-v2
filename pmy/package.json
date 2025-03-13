@@ -19,6 +19,7 @@
     "@vanilla-extract/recipes": "^0.5.5",
     "@vanilla-extract/sprinkles": "^1.6.3",
     "classnames": "^2.5.1",
+    "cloudinary": "^2.6.0",
     "clsx": "^2.1.1",
     "eslint-import-resolver-typescript": "^3.8.3",
     "gsap": "^3.12.5",

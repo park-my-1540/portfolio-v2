@@ -7,10 +7,7 @@ import type { BoxProps } from '@/types/styles';
  * @param keys - The array of keys to pick from the properties object.
  * @returns A new object containing only the picked properties.
  */
-export const pickProps = (
-  props: BoxProps,
-  keys: (keyof BoxProps)[],
-): Partial<BoxProps> => {
+export const pickProps = (props: BoxProps, keys: (keyof BoxProps)[]): Partial<BoxProps> => {
   return keys.reduce((acc, key) => {
     if (props[key]) {
       acc[key] = props[key] as any;
@@ -26,3 +23,8 @@ export type ValueOfUnion<T> = T extends { [key: string]: unknown }
   : T extends ReadonlyArray<any>
     ? ArrayUnion<T>
     : never;
+
+export function getPublishedImageUrl(originalUrl: string, pageOrBlockId: string): string {
+  const notionDomain = 'amusing-sparrow-b19.notion.site'; // 본인의 노션 도메인으로 변경
+  return `https://${notionDomain}/image/${encodeURIComponent(originalUrl)}?table=block&id=${pageOrBlockId}&cache=v2`;
+}

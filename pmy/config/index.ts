@@ -9,3 +9,6 @@ export const DATABASE_ID: Record<DatabaseKey, string | undefined> = {
 
 export const REVALIDATE_LONG_TIME = 3600;
 export const REVALIDATE_TIME = 60;
+
+export const CLOUDINARY_URL = process.env.NEXT_CLOUDINARY_URL;
+export const CLOUDINARY_UPLOAD_FOLDER = process.env.NEXT_CLOUDINARY_UPLOAD_FOLDER;

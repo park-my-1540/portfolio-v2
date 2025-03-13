@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
+import ImageNext from 'next/image';
 import { image, ImageVariantProps } from './index.css';
 import * as styles from './styles.css';
 
@@ -18,9 +19,11 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
   sizes,
   radius,
   cover = 'contain',
-  url = '',
+  url,
   children,
   className,
+  loading,
+  alt = 'image',
   ...rest
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,19 +36,18 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
     img.onerror = () => console.error(`Failed to load image: ${url}`);
   }, [url]);
 
-  const style = {
-    ...rest,
-    backgroundImage: isLoaded ? `url(${url})` : undefined,
-  };
-
   return (
-    <p
-      className={`${className} ${image({ sizes, radius, cover })} 
-      ${cn(styles.loadtyles[isLoaded ? 'loaded' : 'loading'])}`}
-      style={style}
-    >
+    <div className={`${className} ${image({ sizes, radius })}`} {...rest}>
+      <p
+        style={{ position: 'relative' }}
+        className={`${image({ sizes, radius })} ${cn(
+          styles.loadtyles[isLoaded ? 'loaded' : 'loading'],
+        )}`}
+      >
+        <ImageNext src={url} alt={alt} style={{ objectFit: cover }} fill loading={loading} />
+      </p>
       {children}
-    </p>
+    </div>
   );
 };
 

@@ -4,15 +4,15 @@ import {
 import { PageWithBlocks, BlockCollections } from '@/types/common';
 
 // 이미지 렌더링 함수
-const renderImages = (images: string[]) => (images.length >= 2
+const renderImages = (images: string[]):string => (images.length >= 2
   ? `<Box width="100%" className={'${borderTop}'}><SwiperComp image={${JSON.stringify(images)}}/></Box>`
   : `<Box width="100%" className={'${borderTop}'}><Image url="${images}" radius="default" className={'${bg}'} sizes="main"/></Box>`);
 
 // 비디오 렌더링 함수
-const renderVideo = (url) => `<Box width="100%" height="500px" className={'${borderTop}'}><video controls width="100%"><source src="${url}" type="video/mp4" /></video></Box>`;
+const renderVideo = (url):string => `<Box width="100%" height="500px" className={'${borderTop}'}><video controls width="100%"><source src="${url}" type="video/mp4" /></video></Box>`;
 
 // 텍스트 블록을 감싸는 그리드 박스 생성
-const renderBox = (content) => (content.length > 0
+const renderBox = (content):string => (content.length > 0
   ? `<Box className={'${paddingBox} ${borderTop}'} paddingBottom="5rem"> ${content.join('')} </Box>`
   : '');
 
