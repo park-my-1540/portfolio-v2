@@ -37,6 +37,7 @@ export interface Blocks {
   id: string;
   type: BlockType;
   content: string;
+  media: string | string[];
   children?: string[] | Blocks[];
 }
 
@@ -48,16 +49,7 @@ export interface NotionRes {
   filtered: Filtered[];
 }
 
-export type BlockCollectionKeys =
-  | 'rendered'
-  | 'text'
-  | 'title'
-  | 'list'
-  | 'ul'
-  | 'ol'
-  | 'images'
-  | 'quote'
-  | 'desc';
+export type BlockCollectionKeys = 'rendered' | 'text' | 'title' | 'list' | 'ul' | 'ol' | 'images' | 'quote' | 'desc';
 
 export type BlockCollections = Record<BlockCollectionKeys, any[]>;
 
@@ -92,13 +84,7 @@ export type Block = {
   type: BlockType;
 } & Partial<
   Record<
-    | 'heading_1'
-    | 'heading_2'
-    | 'heading_3'
-    | 'quote'
-    | 'paragraph'
-    | 'bulleted_list_item'
-    | 'numbered_list_item',
+    'heading_1' | 'heading_2' | 'heading_3' | 'quote' | 'paragraph' | 'bulleted_list_item' | 'numbered_list_item',
     BlockContent
   >
 > & {

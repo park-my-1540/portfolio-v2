@@ -113,11 +113,11 @@ export const updateMediaBlocks = async (pageId: DatabaseKey): Promise<string[]> 
 export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
   try {
     const data = await getPageChildren(pageId);
-
+    const convertedUrls = await updateMediaBlocks(pageId);
     const blocks: Blocks[] = await Promise.all(
       data.results.map(async (block) => {
         let content = '';
-
+        let media = new Set();
         switch (block.type) {
           case 'paragraph':
           case 'heading_1':
@@ -137,12 +137,10 @@ export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
 
           case 'image': {
             // Notion에 직접 업로드된 이미지인 경우 Cloudinary로 변환
-            const convertedUrls = await updateMediaBlocks(pageId);
-            content = convertedUrls[0];
+            convertedUrls.forEach((url) => media.add(url));
             break;
           }
           case 'video': {
-            const convertedUrls = await updateMediaBlocks(pageId);
             content = convertedUrls[0];
             break;
           }
@@ -150,7 +148,7 @@ export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
             content = `[Unsupported block type: ${block.type}]`;
         }
 
-        return { id: block.id, type: block.type, content };
+        return { id: block.id, type: block.type, content, media: [...media] };
       }),
     );
 
