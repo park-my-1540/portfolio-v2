@@ -65,6 +65,5 @@ const uploadToCloudinary = (
 export default async function convertToPermanentMedia(notionMediaUrl: string, title: string, type: 'image' | 'video') {
   const fileBuffer = await downloadFile(notionMediaUrl);
   const { url: cloudinaryUrl } = await uploadToCloudinary(fileBuffer, type, title);
-  console.log(cloudinaryUrl);
   return cloudinaryUrl;
 }
