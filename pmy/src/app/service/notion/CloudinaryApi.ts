@@ -22,15 +22,14 @@ const configureCloudinary = () => {
 
 configureCloudinary();
 
-const downloadImageToBase64 = (url: string): Promise<string> => {
+const downloadFile = (url: string): Promise<Buffer> => {
   return new Promise((resolve, reject) => {
     const req = https.request(url, (response) => {
       const chunks: Uint8Array[] = [];
 
       response.on('data', (chunk) => chunks.push(chunk));
       response.on('end', () => {
-        const result = Buffer.concat(chunks);
-        resolve(result.toString('base64'));
+        resolve(Buffer.concat(chunks));
       });
     });
     req.on('error', reject);
@@ -38,22 +37,34 @@ const downloadImageToBase64 = (url: string): Promise<string> => {
   });
 };
 
-const uploadImage = (image: string, options: UploadApiOptions = {}): Promise<{ url: string }> => {
-  return cloudinary.uploader
-    .upload(image, options)
-    .then((result) => ({ url: result.secure_url }))
-    .catch((error) => {
-      console.error(error);
-      return { url: '' };
-    });
+const uploadToCloudinary = (
+  fileBuffer: Buffer,
+  fileType: 'image' | 'video',
+  title: string,
+): Promise<{ url: string }> => {
+  return new Promise((resolve, reject) => {
+    const uploadOptions: UploadApiOptions = {
+      folder: CLOUDINARY_UPLOAD_FOLDER!,
+      public_id: title.split(' ').join('_').trim(),
+      overwrite: true,
+      resource_type: fileType, // 이미지면 "image", 비디오면 "video"
+    };
+
+    cloudinary.uploader
+      .upload_stream(uploadOptions, (error, result) => {
+        if (error) {
+          console.error('Cloudinary Upload Error:', error);
+          return reject(error);
+        }
+        resolve({ url: result?.secure_url ?? '' });
+      })
+      .end(fileBuffer);
+  });
 };
 
-export default async function convertToPermanentImage(notionImageUrl: string, title: string) {
-  const imgBase64 = await downloadImageToBase64(notionImageUrl);
-  const { url: cloudinaryUrl } = await uploadImage(`data:image/jpeg;base64,${imgBase64}`, {
-    folder: CLOUDINARY_UPLOAD_FOLDER!,
-    public_id: title.split(' ').join('_').trim(),
-    overwrite: true,
-  });
+export default async function convertToPermanentMedia(notionMediaUrl: string, title: string, type: 'image' | 'video') {
+  const fileBuffer = await downloadFile(notionMediaUrl);
+  const { url: cloudinaryUrl } = await uploadToCloudinary(fileBuffer, type, title);
+  console.log(cloudinaryUrl);
   return cloudinaryUrl;
 }

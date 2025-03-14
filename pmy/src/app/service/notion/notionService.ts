@@ -6,7 +6,7 @@ import { Blocks, TextRichText, DatabaseKey } from '@/types/common';
 import { getPublishedImageUrl } from '@/utils/helpers';
 import { getDatabaseQuery, getPageChildren, patchBlock } from './notionClient';
 import { NotionPage } from './notionType';
-import convertToPermanentImage from './CloudinaryApi';
+import convertToPermanentMedia from './CloudinaryApi';
 
 // 1. Notion 데이터베이스에서 일정 정보를 가져오는 함수
 export async function getPageList({
@@ -26,7 +26,7 @@ export async function getPageList({
     if (returnIdsOnly) {
       return data.results.map((page: NotionPage) => ({
         id: page.id,
-        type: page.properties?.type?.rich_text[0]?.plain_text || '',
+        type: page.properties?.type?.rich_text?.[0]?.plain_text || '',
       }));
     }
 
@@ -37,13 +37,13 @@ export async function getPageList({
 
       return {
         id: page.id,
-        duration: `${page.properties?.duration?.date.start}~${page.properties?.duration?.date.end}` || '',
-        position: page.properties?.position?.rich_text[0]?.plain_text || '',
-        service: page.properties?.service?.rich_text[0]?.plain_text || '',
-        type: page.properties?.type?.rich_text[0]?.plain_text || '',
+        duration: `${page.properties?.duration?.date?.start}~${page.properties?.duration?.date?.end}` || '',
+        position: page.properties?.position?.rich_text?.[0]?.plain_text || '',
+        service: page.properties?.service?.rich_text?.[0]?.plain_text || '',
+        type: page.properties?.type?.rich_text?.[0]?.plain_text || '',
         img: updatedImgUrl,
-        title: page.properties?.이름?.title[0]?.plain_text || '',
-        company: page.properties?.company?.rich_text[0]?.plain_text || '',
+        title: page.properties?.이름?.title?.[0]?.plain_text || '',
+        company: page.properties?.company?.rich_text?.[0]?.plain_text || '',
       };
     });
   } catch (error) {
@@ -52,50 +52,61 @@ export async function getPageList({
   }
 }
 
-export const updateImageBlocks = async (pageId: DatabaseKey): Promise<string[]> => {
-  const allImageBlocks = await getPageChildren(pageId);
-  if (!allImageBlocks?.results?.length) return [];
+// 2. Notion 블록 내 이미지 및 비디오를 Cloudinary로 업로드 후 URL 업데이트
+export const updateMediaBlocks = async (pageId: DatabaseKey): Promise<string[]> => {
+  const allMediaBlocks = await getPageChildren(pageId);
+  if (!allMediaBlocks?.results?.length) return [];
 
-  const uploadTasks = allImageBlocks.results.map(async (imageBlock: any, index: number) => {
-    const { image, id: blockId } = imageBlock;
-    if (!image || !('type' in image)) return null;
+  const uploadTasks = allMediaBlocks.results.map(async (mediaBlock: any, index: number) => {
+    const { type, id: blockId } = mediaBlock;
+    if (!type || !mediaBlock[type]) return null;
 
-    let imageUrl: string | null = null;
-    if (image.type === 'file') {
-      imageUrl = image.file.url;
-    } else if (image.type === 'external') {
-      imageUrl = image.external.url;
+    let mediaUrl: string | null = null;
+    let mediaType: 'image' | 'video' | null = null;
+    if (type === 'image' || type === 'video') {
+      const mediaData = mediaBlock[type];
+      if (mediaData.type === 'file') {
+        mediaUrl = mediaData.file.url;
+      } else if (mediaData.type === 'external') {
+        mediaUrl = mediaData.external.url;
+      }
+
+      mediaType = type;
     }
-    if (!imageUrl) return null;
 
-    return convertToPermanentImage(imageUrl, `${pageId}_imageblock_${index + 1}`).then((convertedImageUrl) => ({
-      blockId,
-      convertedImageUrl,
-    }));
+    if (!mediaUrl || !mediaType) return null;
+
+    return convertToPermanentMedia(mediaUrl, `${pageId}_${mediaType}block_${index + 1}`, mediaType).then(
+      (convertedMediaUrl) => ({
+        blockId,
+        convertedMediaUrl,
+      }),
+    );
   });
 
-  // Cloudinary 변환된 이미지 리스트 가져오기
-  const imageUpdates = (await Promise.allSettled(uploadTasks))
+  // 변환된 미디어 리스트 가져오기
+  const mediaUpdates = (await Promise.allSettled(uploadTasks))
     .filter((result) => result.status === 'fulfilled' && result.value !== null)
     .map(
       (result) =>
         (
           result as PromiseFulfilledResult<{
             blockId: string;
-            convertedImageUrl: string;
+            convertedMediaUrl: string;
           }>
         ).value,
     );
 
-  if (!imageUpdates.length) {
+  if (!mediaUpdates.length) {
     return [];
   }
 
   // Notion 블록 업데이트 병렬 처리
   await Promise.allSettled(
-    imageUpdates.map(({ blockId, convertedImageUrl }) => patchBlock(blockId, convertedImageUrl)),
+    mediaUpdates.map(({ blockId, convertedMediaUrl }) => patchBlock(blockId, convertedMediaUrl)),
   );
-  return imageUpdates.map((i) => i.convertedImageUrl);
+
+  return mediaUpdates.map((i) => i.convertedMediaUrl);
 };
 
 // 2. 페이지 블록 가져오기 함수 - Notion API에서 페이지 블록을 가져오는 함수 (하위 Bullet까지 포함)
@@ -126,13 +137,15 @@ export async function getPageBlocks(pageId: DatabaseKey): Promise<Blocks[]> {
 
           case 'image': {
             // Notion에 직접 업로드된 이미지인 경우 Cloudinary로 변환
-            const convertedUrls = await updateImageBlocks(pageId);
+            const convertedUrls = await updateMediaBlocks(pageId);
             content = convertedUrls[0];
             break;
           }
-          case 'video':
-            content = block.video?.file?.url || '';
+          case 'video': {
+            const convertedUrls = await updateMediaBlocks(pageId);
+            content = convertedUrls[0];
             break;
+          }
           default:
             content = `[Unsupported block type: ${block.type}]`;
         }
