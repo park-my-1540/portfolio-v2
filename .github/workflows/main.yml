@@ -11,7 +11,14 @@ jobs:
   quality:
     name: 'CI: Check quality'
     runs-on: ubuntu-latest
-
+    env:
+      CLOUDINARY_URL: ${{ secrets.NEXT_CLOUDINARY_URL }}
+      CLOUDINARY_UPLOAD_FOLDER: ${{ secrets.NEXT_CLOUDINARY_UPLOAD_FOLDER }}
+      API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+      NOTION_DATABASE_ADC_ID: ${{ secrets.NEXT_PUBLIC_NOTION_DATABASE_ADC_ID }}
+      NOTION_DATABASE_JDI_ID: ${{ secrets.NEXT_PUBLIC_NOTION_DATABASE_JDI_ID }}
+      NOTION_DATABASE_LIST_ID: ${{ secrets.NEXT_PUBLIC_NOTION_DATABASE_LIST_ID }}
+      NOTION_TOKEN: ${{ secrets.NEXT_PUBLIC_NOTION_TOKEN }}
     steps:
       # Step 1: Checkout the code
       - uses: actions/checkout@v3
