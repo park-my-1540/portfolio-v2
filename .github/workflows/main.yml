@@ -8,14 +8,14 @@ jobs:
   quality:
     name: 'CI: Check quality'
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Check typescript
-        run: yarn type:check
-
-      - name: Check eslint
-        run: yarn lint
+   steps:
+    - uses: actions/checkout@v3
+  
+    - name: Install dependencies
+      run: npm install --frozen-lockfile
+  
+    - name: Check TypeScript
+      run: npm run type:check
+  
+    - name: Check ESLint
+      run: npm run lint
