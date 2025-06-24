@@ -13,6 +13,8 @@ type ImageProps = {
   children?: React.ReactNode;
   className?: string;
   alt?: string;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 };
 
 const Image: React.FC<ImageProps & ImageVariantProps> = ({
@@ -23,6 +25,8 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
   children,
   className,
   loading,
+  onMouseEnter,
+  onMouseLeave,
   alt = 'image',
   ...rest
 }) => {
@@ -37,7 +41,12 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
   }, [url]);
 
   return (
-    <div className={`${className} ${image({ sizes, radius })}`} {...rest}>
+    <div
+      className={`${className} ${image({ sizes, radius })}`}
+      {...rest}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <p
         style={{ position: 'relative' }}
         className={`${image({ sizes, radius })} ${cn(styles.loadtyles[isLoaded ? 'loaded' : 'loading'])}`}

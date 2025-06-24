@@ -15,7 +15,7 @@ import { Text, TextTitle } from '@/components/atoms/Text/Text';
 import * as cursor from '@/utils/cursor';
 import * as style from './gallery.css';
 
-const GalleryContent = ({ title, service, position }: ProjectContentProps) => {
+const GalleryContent = ({ title, service, position, desc, duration }: ProjectContentProps) => {
   return (
     <>
       <TextTitle sizes="title" weights="bold">
@@ -24,12 +24,14 @@ const GalleryContent = ({ title, service, position }: ProjectContentProps) => {
       <TextTitle className={style.galleryInfoSubtitle} color="transparent" sizes="big" weights="bold">
         {service}
       </TextTitle>
+      <Text sizes="medium" style={{ marginTop: 10 }}>
+        {duration}
+      </Text>
       <Text sizes="large" weights="bold" style={{ marginTop: 20 }}>
         {position}
       </Text>
       <Text sizes="mediumlarge" style={{ marginTop: 5 }}>
-        협업툴 Web Client 개발 및 운영 담당 <br />
-        텍스트 에디터 개발 · 대화 기능 확장 · UI 개선 등
+        {desc}
       </Text>
     </>
   );
@@ -39,7 +41,7 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
   const router = useRouter();
   const ref = useRef(null);
   const onScreen = useOnScreen(ref, 0.5);
-
+  const [hovered, setHovered] = useState(false);
   const { type, img, ...item } = rest;
 
   useEffect(() => {
@@ -59,13 +61,30 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
       <div></div>
       <div
         onClick={() => goDetail(type)}
-        onMouseEnter={() => cursor.set('project')}
-        onMouseLeave={() => cursor.set(null)}
+        onMouseEnter={() => {
+          cursor.set('project');
+        }}
+        onMouseLeave={() => {
+          cursor.set(null);
+        }}
       >
-        <Box className={style.galleryItemInfo}>
+        <Box className={cn(`${style.galleryItemInfo}`, hovered && style.galleryTextBlur)}>
           <MemorizedGalleryContent {...item} />
         </Box>
-        <Image sizes="full" className="gallery-item-image" url={img} cover="cover" radius="round" loading="eager" />
+        <Image
+          onMouseEnter={() => {
+            setHovered(true);
+          }}
+          onMouseLeave={() => {
+            setHovered(false);
+          }}
+          sizes="full"
+          className="gallery-item-image"
+          url={img}
+          cover="cover"
+          radius="round"
+          loading="eager"
+        />
       </div>
       <div></div>
     </div>
@@ -74,12 +93,10 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
 
 export default function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
-
   const handleUpdateActiveImage = useCallback((index: number) => {
     setActiveImage(index + 1);
   }, []);
   const list = useAtomValue(galleryListState);
-
   return (
     <section data-scroll-section className={style.galleryWrap} id="project">
       <Box margin="1rem 2rem 2rem">

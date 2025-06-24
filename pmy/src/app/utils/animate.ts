@@ -62,11 +62,7 @@ export const pageOut = (href: string, router: AppRouterInstance) => {
 export const pageFadeIn = (pageRef: RefType) => {
   const animationWrapper = pageRef.current;
   if (animationWrapper) {
-    gsap.fromTo(
-      animationWrapper,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: 'power2.in' },
-    );
+    gsap.fromTo(animationWrapper, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.in' });
   }
 };
 
@@ -175,7 +171,17 @@ export const triggerHorizontalSections = (tl) => {
             end: () => `+=${galleryEl.offsetWidth}`,
             pin: true,
             scrub: 0.5,
-            snap: 1 / (sections.length - 1),
+            snap: {
+              snapTo: (progress) => {
+                const sectionCount = sections.length;
+                const step = 1 / (sectionCount - 1);
+                const targetIndex = Math.round(progress / step);
+                const offset = step * (1 / 3);
+                return targetIndex * step - offset;
+              },
+              duration: 0.3,
+              ease: 'power1.inOut',
+            },
           },
         });
 

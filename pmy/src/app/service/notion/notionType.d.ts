@@ -41,6 +41,7 @@ interface NotionJobProperties {
   type: NotionPropertyRichText;
   company: NotionPropertyRichText;
   duration: NotionPropertyDate;
+  desc: NotionPropertyRichText;
   이름: NotionPropertyTitle;
 }
 

@@ -46,10 +46,7 @@ export async function patchBlock(
 }
 
 // 데이터베이스 쿼리 요청
-export async function getDatabaseQuery(
-  databaseId: DatabaseKey,
-  cacheOptions?: { next?: { revalidate: number } },
-) {
+export async function getDatabaseQuery(databaseId: DatabaseKey, cacheOptions?: { next?: { revalidate: number } }) {
   const url = `${BASE_URL}/databases/${databaseId}/query`;
   const finalCacheOptions = cacheOptions ?? {
     next: { revalidate: REVALIDATE_TIME },

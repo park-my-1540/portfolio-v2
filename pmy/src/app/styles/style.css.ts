@@ -25,9 +25,7 @@ export const borderX = style({
 
 // layout - project page
 export const pageContainer = style({
-  paddingTop: calc(respVars.header.height)
-    .add(calc(respVars.padding.header).multiply(2))
-    .toString(),
+  paddingTop: calc(respVars.header.height).add(calc(respVars.padding.header).multiply(2)).toString(),
 });
 export const paddingBox = style({
   padding: respVars.padding.container,
@@ -96,9 +94,9 @@ export const iconArrow = style({
   width: '1.3rem',
   height: '1.3rem',
   position: 'relative',
-  top: 12,
+  top: 15,
   left: 10,
-  borderLeft: `2px solid ${vars.color.text.accent}`,
+  borderLeft: `3px solid ${vars.color.text.accent}`,
   transform: 'rotate(45deg)',
   transition: 'all 0.5s cubic-bezier(0.5, 0, 0, 1), opacity 0.5s cubic-bezier(0.5, 0, 0, 1)',
   selectors: {
@@ -106,10 +104,10 @@ export const iconArrow = style({
       content: '',
       display: 'block',
       width: 'calc(100% - 7px)',
-      height: 2,
+      height: 3,
       position: 'absolute',
-      top: 3,
-      left: -3,
+      top: 2,
+      left: -4,
       transform: 'rotate(45deg)',
       background: vars.color.text.accent,
     },
@@ -117,9 +115,9 @@ export const iconArrow = style({
       content: '',
       display: 'block',
       width: 'calc(100% - 7px)',
-      height: 2,
+      height: 3,
       position: 'absolute',
-      top: 3,
+      top: 2,
       left: -11,
       transform: 'rotate(-45deg)',
       background: vars.color.text.accent,
@@ -140,7 +138,7 @@ export const arrowLink = style({
 
 globalStyle(`${arrowLink}:hover ${iconArrow}`, {
   color: vars.color.light,
-  top: 3,
+  top: 1,
   left: 13,
 });
 

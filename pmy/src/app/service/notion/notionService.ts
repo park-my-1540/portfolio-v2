@@ -38,6 +38,7 @@ export async function getPageList({
       return {
         id: page.id,
         duration: `${page.properties?.duration?.date?.start}~${page.properties?.duration?.date?.end}` || '',
+        desc: page.properties?.desc?.rich_text?.[0]?.plain_text || '',
         position: page.properties?.position?.rich_text?.[0]?.plain_text || '',
         service: page.properties?.service?.rich_text?.[0]?.plain_text || '',
         type: page.properties?.type?.rich_text?.[0]?.plain_text || '',

@@ -40,14 +40,8 @@ export default function Contact() {
           height="70vh"
           backgroundColor={colors.pink}
         >
-          <Text
-            sizes="mediumlarge"
-            color="point"
-            weights="bold"
-            bgColor="accent"
-            className={bgBtn}
-          >
-            CONTACT
+          <Text sizes="mediumlarge" color="point" weights="bold" bgColor="accent" className={bgBtn}>
+            Let’s Connect
           </Text>
           <TextLink
             sizes="largeX3"
@@ -63,20 +57,10 @@ export default function Contact() {
             parkmy722698@gmail.com
           </TextLink>
           <Box display="flex" direction="row">
-            <TextLink
-              sizes="mediumlarge"
-              url={url.GIT}
-              color="accent"
-              className={arrowLink}
-            >
+            <TextLink sizes="mediumlargeX2" url={url.GIT} color="accent" className={arrowLink} weights="bold">
               GIT <span className={iconArrow}></span>
             </TextLink>
-            <TextLink
-              sizes="mediumlarge"
-              url={url.NOTION}
-              color="accent"
-              className={arrowLink}
-            >
+            <TextLink sizes="mediumlargeX2" url={url.NOTION} color="accent" className={arrowLink} weights="bold">
               NOTION <span className={iconArrow}></span>
             </TextLink>
           </Box>

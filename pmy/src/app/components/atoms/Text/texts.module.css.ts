@@ -34,12 +34,12 @@ const variants = {
       fontSize: '3.5rem', // 40px
     }),
     big: style({
-      fontSize: '4.375rem', // 70px
-      lineHeight: '4.375rem !important', // 70px
+      fontSize: '4rem', // 70px
+      lineHeight: '4rem !important', // 70px
     }),
     title: style({
-      fontSize: '6.5vw', // 70px
-      lineHeight: '6.5vw !important', // 70px
+      fontSize: '5vw', // 70px
+      lineHeight: '5vw !important', // 70px
     }),
     full: style({
       fontSize: '12vw', // 70px

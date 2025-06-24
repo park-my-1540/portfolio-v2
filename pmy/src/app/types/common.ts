@@ -4,6 +4,8 @@ export interface ProjectContentProps {
   title: string;
   service: string;
   position: string;
+  desc: string;
+  duration: string;
 }
 
 export interface ProjectProps extends ProjectContentProps {

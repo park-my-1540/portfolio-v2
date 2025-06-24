@@ -4,7 +4,7 @@ import { colors } from '@/styles/tokens/colors.css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
 
 export const galleryWrap = style({
-  marginLeft: '-5vw',
+  marginLeft: '5vw',
   marginRight: '-5vw',
 });
 
@@ -36,7 +36,9 @@ export const galleryCounter = style([
     zIndex: 1,
     position: 'absolute',
     top: '17%',
-    left: '5%',
+    left: '0%',
+    fontWeight: 'bold',
+    fontSize: '20px',
     color: vars.color.text.light,
     mixBlendMode: 'difference',
     WebkitFontSmoothing: 'antialiased',
@@ -53,7 +55,7 @@ export const divider = style({
   display: 'inline-block',
   margin: '7px 10px',
   width: '6.25vw',
-  height: '1px',
+  height: '2px',
   backgroundColor: vars.color.text.light,
 });
 
@@ -96,3 +98,7 @@ export const galleryContainer = style([
     },
   }),
 ]);
+
+export const galleryTextBlur = style({
+  filter: 'blur(2px)',
+});
