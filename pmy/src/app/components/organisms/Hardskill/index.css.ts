@@ -88,3 +88,35 @@ export const small = style({
   height: 50,
   overflow: 'hidden',
 });
+
+export const wrapper = style({
+  position: 'relative',
+  display: 'inline-block',
+});
+
+export const imgStyle = style({
+  display: 'block',
+  width: '100%',
+});
+
+export const altTooltip = style({
+  position: 'absolute',
+  bottom: '100%',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  backgroundColor: '#000',
+  color: '#fff',
+  fontSize: '12px',
+  padding: '4px 8px',
+  borderRadius: '4px',
+  whiteSpace: 'nowrap',
+  opacity: 0,
+  pointerEvents: 'none',
+  transition: 'opacity 0.2s ease-in-out',
+
+  selectors: {
+    [`${wrapper}:hover &`]: {
+      opacity: 1,
+    },
+  },
+});

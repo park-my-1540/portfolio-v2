@@ -20,7 +20,7 @@ export const wrapper = style([
   {
     position: 'absolute',
     right: '5%',
-    bottom: '10%',
+    bottom: '50%',
     textAlign: 'center',
   },
   responsiveStyle({
@@ -39,6 +39,7 @@ export const scrolldown = style({
   margin: '0 auto 8px',
   textAlign: 'center',
   width: '30px',
+  color: '#FFF',
 });
 
 export const scrolldownP1 = style({

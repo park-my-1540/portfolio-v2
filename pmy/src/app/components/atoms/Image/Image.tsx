@@ -40,9 +40,7 @@ const Image: React.FC<ImageProps & ImageVariantProps> = ({
     <div className={`${className} ${image({ sizes, radius })}`} {...rest}>
       <p
         style={{ position: 'relative' }}
-        className={`${image({ sizes, radius })} ${cn(
-          styles.loadtyles[isLoaded ? 'loaded' : 'loading'],
-        )}`}
+        className={`${image({ sizes, radius })} ${cn(styles.loadtyles[isLoaded ? 'loaded' : 'loading'])}`}
       >
         <ImageNext src={url} alt={alt} style={{ objectFit: cover }} fill loading={loading} />
       </p>

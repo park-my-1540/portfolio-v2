@@ -95,13 +95,13 @@ const Box: React.FC<BoxProps & FlexProps & Sprinkles> = ({
 
   const addUnit = (value: NumberOrString): NumberOrString => {
     if (
-      typeof value === 'number'
-      || value?.startsWith('calc')
-      || value?.endsWith('%')
-      || value?.endsWith('vh')
-      || value?.endsWith('vw')
-      || value?.endsWith('rem')
-      || value === undefined
+      typeof value === 'number' ||
+      value?.startsWith('calc') ||
+      value?.endsWith('%') ||
+      value?.endsWith('vh') ||
+      value?.endsWith('vw') ||
+      value?.endsWith('rem') ||
+      value === undefined
     ) {
       return value;
     }

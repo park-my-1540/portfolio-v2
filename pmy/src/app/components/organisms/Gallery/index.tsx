@@ -1,6 +1,4 @@
-import React, {
-  useCallback, useEffect, useRef, useState
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import cn from 'classnames';
 import { useAtomValue } from 'jotai';
@@ -23,16 +21,15 @@ const GalleryContent = ({ title, service, position }: ProjectContentProps) => {
       <TextTitle sizes="title" weights="bold">
         {title}
       </TextTitle>
-      <TextTitle
-        className={style.galleryInfoSubtitle}
-        color="transparent"
-        sizes="title"
-        weights="bold"
-      >
+      <TextTitle className={style.galleryInfoSubtitle} color="transparent" sizes="big" weights="bold">
         {service}
       </TextTitle>
-      <Text sizes="large" weights="bold" style={{ marginTop: 5 }}>
+      <Text sizes="large" weights="bold" style={{ marginTop: 20 }}>
         {position}
+      </Text>
+      <Text sizes="mediumlarge" style={{ marginTop: 5 }}>
+        협업툴 Web Client 개발 및 운영 담당 <br />
+        텍스트 에디터 개발 · 대화 기능 확장 · UI 개선 등
       </Text>
     </>
   );
@@ -58,14 +55,7 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
 
   const MemorizedGalleryContent = React.memo(GalleryContent);
   return (
-    <div
-      className={cn(
-        'gallery-item-wrapper',
-        { 'is-reveal': onScreen },
-        `${style.galleryContainer}`,
-      )}
-      ref={ref}
-    >
+    <div className={cn('gallery-item-wrapper', { 'is-reveal': onScreen }, `${style.galleryContainer}`)} ref={ref}>
       <div></div>
       <div
         onClick={() => goDetail(type)}
@@ -75,14 +65,7 @@ function GalleryItem({ updateActiveImage, index, ...rest }: ProjectItemProps) {
         <Box className={style.galleryItemInfo}>
           <MemorizedGalleryContent {...item} />
         </Box>
-        <Image
-          sizes="full"
-          className="gallery-item-image"
-          url={img}
-          cover="cover"
-          radius="round"
-          loading="eager"
-        />
+        <Image sizes="full" className="gallery-item-image" url={img} cover="cover" radius="round" loading="eager" />
       </div>
       <div></div>
     </div>
@@ -109,12 +92,7 @@ export default function Gallery() {
           <span>{list.length}</span>
         </Box>
         {list.map((image, index) => (
-          <GalleryItem
-            key={`${image}-${index}`}
-            index={index}
-            {...image}
-            updateActiveImage={handleUpdateActiveImage}
-          />
+          <GalleryItem key={`${image}-${index}`} index={index} {...image} updateActiveImage={handleUpdateActiveImage} />
         ))}
       </Box>
     </section>

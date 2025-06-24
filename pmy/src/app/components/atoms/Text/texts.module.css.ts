@@ -16,6 +16,7 @@ const variants = {
     }),
     medium: style({
       fontSize: '1rem', // 16px
+      lineHeight: '1.3rem',
     }),
     mediumlarge: style({
       fontSize: '1.3rem', // 20px
@@ -37,8 +38,8 @@ const variants = {
       lineHeight: '4.375rem !important', // 70px
     }),
     title: style({
-      fontSize: '6vw', // 70px
-      lineHeight: '6vw !important', // 70px
+      fontSize: '6.5vw', // 70px
+      lineHeight: '6.5vw !important', // 70px
     }),
     full: style({
       fontSize: '12vw', // 70px

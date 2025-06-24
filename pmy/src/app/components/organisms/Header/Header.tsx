@@ -9,9 +9,7 @@ import { TextLink } from '@/components/atoms/Text/Text';
 import Menu from '@/components/molecules/Menu';
 import * as modal from '@/utils/modal';
 import * as theme from '@/utils/theme';
-import {
-  header, inner, menuBtn, sub
-} from './index.css';
+import { header, inner, menuBtn, sub } from './index.css';
 
 const MenuToggle = () => {
   const modalOpen = useAtomValue(modalState);
@@ -24,25 +22,17 @@ const MenuToggle = () => {
   };
 
   return (
-    <TextLink
-      weights="bold"
-      sizes="medium"
-      className={menuBtn}
-      onClick={onClickMenu}
-    >
+    <TextLink weights="bold" sizes="medium" className={menuBtn} onClick={onClickMenu}>
       {modalOpen ? 'CLOSE' : 'MENU'}
     </TextLink>
   );
 };
 
 const ThemeToggle = () => {
-  const changeTheme = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const mode = event.target.checked ? 'light' : 'dark';
-      theme.setTheme(mode);
-    },
-    [],
-  );
+  const changeTheme = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const mode = event.target.checked ? 'light' : 'dark';
+    theme.setTheme(mode);
+  }, []);
 
   return <Toggle changeTheme={(e) => changeTheme(e)} />;
 };
@@ -83,20 +73,8 @@ function Header() {
           },
         }}
       >
-        <Box
-          paddingLeft="1.6rem"
-          display="flex"
-          direction="row"
-          align="center"
-          justify="between"
-          width="100%"
-        >
-          <SplitText
-            splitText="Mee Young"
-            sizes="medium"
-            weights="bold"
-            type="same"
-          />
+        <Box paddingLeft="1.6rem" display="flex" direction="row" align="center" justify="between" width="100%">
+          <SplitText splitText="MEE YOUNG" sizes="medium" weights="bold" type="same" />
           <ThemeToggle />
           <MenuToggle />
         </Box>

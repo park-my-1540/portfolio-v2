@@ -10,18 +10,21 @@ import {
   small,
   desktopImg,
   mobileImg,
+  wrapper,
+  imgStyle,
+  altTooltip,
 } from './index.css';
 
 const skills = [
   {
     name: 'Familiar',
     skill: [
-      { name: 'angular', url: '/svg/hardskill/angularjs.svg' },
       { name: 'html', url: '/svg/hardskill/html.svg' },
       { name: 'css', url: '/svg/hardskill/css.svg' },
       { name: 'scss', url: '/svg/hardskill/scss.svg' },
       { name: 'javascript', url: '/svg/hardskill/javascript.svg' },
       { name: 'typescript', url: '/svg/hardskill/typescript.svg' },
+      { name: 'angular', url: '/svg/hardskill/angularjs.svg' },
       {
         name: 'react',
         url: '/svg/hardskill/react.png',
@@ -49,7 +52,7 @@ const skills = [
     ],
   },
   {
-    name: 'Tried',
+    name: 'Used in project',
     skill: [
       {
         name: 'recoil',
@@ -81,6 +84,26 @@ const skills = [
         type: 'md',
         mobile: '/svg/hardskill/gsap2.svg',
       },
+      {
+        name: 'supabase',
+        url: '/svg/hardskill/supabase2.webp',
+        type: 'sm',
+      },
+      {
+        name: 'cursorai',
+        url: '/svg/hardskill/cursor2.svg',
+        type: 'sm',
+      },
+      {
+        name: 'remix',
+        url: '/svg/hardskill/remix2.png',
+        type: 'sm',
+      },
+      {
+        name: 'shadcn',
+        url: '/svg/hardskill/shadcn2.png',
+        type: 'sm',
+      },
     ],
   },
   {
@@ -92,8 +115,7 @@ const skills = [
       {
         name: 'confluence',
         url: '/svg/hardskill/confluence.png',
-        type: 'md',
-        mobile: '/svg/hardskill/confluence2.svg',
+        type: 'sm',
       },
     ],
   },
@@ -111,38 +133,28 @@ const skills = [
 ];
 
 function IconBox({ skill }) {
-  const {
-    type, url, name, mobile
-  } = skill;
+  const { type, url, name, mobile } = skill;
   const isRectangle = type === 'md';
 
   return (
-    <Box className={listBox}>
+    <Box className={`${listBox} ${wrapper}`}>
       {isRectangle ? (
         <>
           <Image
             sizes="rectangle"
-            className={`${desktopImg} ${rectangle}`}
+            className={`${desktopImg} ${rectangle} ${imgStyle}`}
             radius="round"
             url={url}
             alt={name}
           />
-          <Image
-            sizes="small"
-            className={`${mobileImg} ${small}`}
-            radius="round"
-            url={mobile}
-            alt={name}
-          />
+          <Image sizes="small" className={`${mobileImg} ${small} ${imgStyle}`} radius="round" url={mobile} alt={name} />
+          <span className={altTooltip}>{name}</span>
         </>
       ) : (
-        <Image
-          sizes="small"
-          className={small}
-          radius="round"
-          url={url}
-          alt={name}
-        />
+        <>
+          <Image sizes="small" className={`${small} ${imgStyle}`} radius="round" url={url} alt={name} />
+          <span className={altTooltip}>{name}</span>
+        </>
       )}
     </Box>
   );
@@ -190,12 +202,7 @@ export default function HardSkill() {
             <IconBox skill={skill} key={`${skill.name}-${skillIndex}`} />
           ))}
 
-          <Text
-            sizes="large"
-            weights="bold"
-            style={{ whiteSpace: 'nowrap', margin: '40px 0 20px' }}
-            color="primary"
-          >
+          <Text sizes="large" weights="bold" style={{ whiteSpace: 'nowrap', margin: '40px 0 20px' }} color="primary">
             {skills[skills.length - 1].name}
           </Text>
 

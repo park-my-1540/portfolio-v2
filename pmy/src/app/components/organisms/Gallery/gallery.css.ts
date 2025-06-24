@@ -80,7 +80,7 @@ export const galleryInfoSubtitle = style({
   fontFamily: 'MangoBold',
   fontWeight: 400,
   WebkitFontSmoothing: 'antialiased',
-  WebkitTextStroke: `2px ${colors.lightblue03}`,
+  WebkitTextStroke: `2px ${colors.lightblue04}`,
 });
 
 export const galleryContainer = style([
