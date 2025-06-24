@@ -12,7 +12,6 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "quotes": ["error", "single"],
-    "operator-linebreak":["error","before"],
     "comma-dangle": "off",
     "camelcase": "off",
     "no-console": "off",

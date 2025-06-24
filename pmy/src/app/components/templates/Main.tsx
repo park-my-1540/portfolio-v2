@@ -5,8 +5,8 @@ import Box from '@/components/layouts/Box/Box';
 import Matter from '@/components/organisms/Main/Matter/MatterCanvas';
 import ScrollArrow from '@/components/molecules/ScrollArrow';
 import Line from '@/components/atoms/line';
-import { Position } from '../layouts/PositionContainer/Position';
 import { Text } from '@/components/atoms/Text/Text';
+import { Position } from '../layouts/PositionContainer/Position';
 
 export default function Main() {
   const svgRef = useRef<HTMLDivElement>(null);

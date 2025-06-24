@@ -13,8 +13,8 @@ type ImageProps = {
   children?: React.ReactNode;
   className?: string;
   alt?: string;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 };
 
 const Image: React.FC<ImageProps & ImageVariantProps> = ({

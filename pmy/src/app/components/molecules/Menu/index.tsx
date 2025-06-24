@@ -27,7 +27,7 @@ export type MenuItemType = MainMenu | SubMenu;
 const menuList: MenuItemType[] = [
   {
     name: 'main',
-    desc: 'meeyoung\'s portfolio',
+    desc: 'meeyoung`s portfolio',
   },
   {
     name: 'about',
@@ -84,17 +84,15 @@ function MenuItem({ item, moveToSectionPosition }) {
             {desc}
           </Text>
         )}
-        {subMenus
-          && subMenus.map((item, index) => (
+        {subMenus &&
+          subMenus.map((item, index) => (
             <SplitText
               key={`${item.name}-${index}`}
               type="same"
               splitText={item.name}
               sizes="smallmedium"
               weights="light"
-              onClick={
-                item.id ? () => moveToSectionPosition(`#${item.id}`) : undefined
-              } // 수정
+              onClick={item.id ? () => moveToSectionPosition(`#${item.id}`) : undefined} // 수정
               url={item.path}
             />
           ))}
@@ -181,13 +179,7 @@ export default function Menu() {
       }}
     >
       {menuList.map((item, index) => {
-        return (
-          <MenuItem
-            key={`${index}-${item}`}
-            item={item}
-            moveToSectionPosition={moveToSectionPosition}
-          />
-        );
+        return <MenuItem key={`${index}-${item}`} item={item} moveToSectionPosition={moveToSectionPosition} />;
       })}
     </Box>
   );
