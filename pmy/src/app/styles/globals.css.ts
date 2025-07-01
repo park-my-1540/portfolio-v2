@@ -129,7 +129,7 @@ globalStyle('ul ul > li', {
 });
 
 globalStyle('ul ul > li::before', {
-  content: "''",
+  content: "''", // eslint-disable-line quotes
   display: 'block',
   position: 'absolute',
   left: '0',
