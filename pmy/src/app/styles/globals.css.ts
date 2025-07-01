@@ -129,7 +129,7 @@ globalStyle('ul ul > li', {
 });
 
 globalStyle('ul ul > li::before', {
-  content: '',
+  content: "''",
   display: 'block',
   position: 'absolute',
   left: '0',
