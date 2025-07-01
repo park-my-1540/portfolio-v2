@@ -116,7 +116,7 @@ globalStyle('li', {
 globalStyle('ul > li', {
   fontFamily: 'MangoBold',
   paddingLeft: '10px',
-  fontSize: '1.1rem',
+  fontSize: '1.4rem',
 });
 
 globalStyle('li > ul', {
@@ -125,11 +125,11 @@ globalStyle('li > ul', {
 
 globalStyle('ul ul > li', {
   paddingLeft: '15px',
-  fontSize: '1rem',
+  fontSize: '1.3rem',
 });
 
 globalStyle('ul ul > li::before', {
-  content: '\'\'',
+  content: '',
   display: 'block',
   position: 'absolute',
   left: '0',
@@ -145,7 +145,7 @@ globalStyle('ul ul ul > li', {
 });
 
 globalStyle('ul ul ul > li::before', {
-  content: '\'\'',
+  content: "''",
   display: 'block',
   position: 'absolute',
   left: '0',
@@ -158,7 +158,7 @@ globalStyle('ul ul ul > li::before', {
 });
 
 globalStyle('ul ul ul ul > li::before', {
-  content: '\'\'',
+  content: "''",
   display: 'block',
   position: 'absolute',
   left: '0',
