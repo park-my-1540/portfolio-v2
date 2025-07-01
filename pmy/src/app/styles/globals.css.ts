@@ -145,7 +145,7 @@ globalStyle('ul ul ul > li', {
 });
 
 globalStyle('ul ul ul > li::before', {
-  content: "''",
+  content: "''", // eslint-disable-line quotes
   display: 'block',
   position: 'absolute',
   left: '0',
@@ -158,7 +158,7 @@ globalStyle('ul ul ul > li::before', {
 });
 
 globalStyle('ul ul ul ul > li::before', {
-  content: "''",
+  content: "''", // eslint-disable-line quotes
   display: 'block',
   position: 'absolute',
   left: '0',
