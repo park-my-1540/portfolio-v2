@@ -5,6 +5,8 @@ export const DATABASE_ID: Record<DatabaseKey, string | undefined> = {
   ADC: process.env.NEXT_PUBLIC_NOTION_DATABASE_ADC_ID,
   JDI: process.env.NEXT_PUBLIC_NOTION_DATABASE_JDI_ID,
   LIST: process.env.NEXT_PUBLIC_NOTION_DATABASE_LIST_ID,
+  TOYS: process.env.NEXT_PUBLIC_NOTION_DATABASE_TOYS_ID,
+  BOOKS: process.env.NEXT_PUBLIC_NOTION_DATABASE_BOOKS_ID,
 };
 
 export const REVALIDATE_LONG_TIME = 3600;

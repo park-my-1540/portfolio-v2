@@ -1,4 +1,4 @@
-export type DatabaseKey = 'ADC' | 'JDI' | 'LIST';
+export type DatabaseKey = 'ADC' | 'JDI' | 'LIST' | 'TOYS' | 'BOOKS';
 
 export interface ProjectContentProps {
   title: string;

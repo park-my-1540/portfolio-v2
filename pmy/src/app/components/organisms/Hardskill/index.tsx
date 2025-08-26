@@ -1,18 +1,17 @@
-import React from 'react';
+import Image from '@/components/atoms/Image/Image';
 import { Text } from '@/components/atoms/Text/Text';
 import Box from '@/components/layouts/Box/Box';
-import Image from '@/components/atoms/Image/Image';
 import {
-  listBox,
+  altTooltip,
   content,
+  desktopImg,
+  imgStyle,
   inner,
+  listBox,
+  mobileImg,
   rectangle,
   small,
-  desktopImg,
-  mobileImg,
   wrapper,
-  imgStyle,
-  altTooltip,
 } from './index.css';
 
 const skills = [
@@ -87,11 +86,6 @@ const skills = [
       {
         name: 'supabase',
         url: '/svg/hardskill/supabase2.webp',
-        type: 'sm',
-      },
-      {
-        name: 'cursorai',
-        url: '/svg/hardskill/cursor2.svg',
         type: 'sm',
       },
       {

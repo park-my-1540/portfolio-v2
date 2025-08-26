@@ -9,16 +9,13 @@ export default async function Page(props: { params: paramsType }) {
 
   // 각 페이지의 블록 데이터 가져오기
   const result = await getPageWithBlocks(pageId);
-
   // 비어있다면 빈객체 할당
-  const list: NotionRes = result && 'pageWithBlocks' in result
-    ? result
-    : { pageWithBlocks: [], filtered: [] };
+  const list: NotionRes = result && 'pageWithBlocks' in result ? result : { pageWithBlocks: [], filtered: [] };
 
   return <Project list={list} />;
 }
 
 // 동적 경로를 정적으로 생성
 export async function generateStaticParams() {
-  return [{ id: 'ADC' }, { id: 'JDI' }];
+  return [{ id: 'ADC' }, { id: 'JDI' }, { id: 'BOOKS' }];
 }

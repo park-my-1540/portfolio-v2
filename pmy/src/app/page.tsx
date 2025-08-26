@@ -7,10 +7,16 @@ import Page from '@/components/pages/index';
 import { getPageList } from '@/service/notion/notionService';
 
 export default async function Home() {
-  const pages = await getPageList({
-    pageId: 'LIST',
-    cacheOptions: { next: { revalidate: REVALIDATE_LONG_TIME } },
-  });
-
-  return <Page list={pages} />;
+  const [pages, toys] = await Promise.all([
+    getPageList({
+      pageId: 'LIST',
+      cacheOptions: { next: { revalidate: REVALIDATE_LONG_TIME } },
+    }),
+    getPageList({
+      pageId: 'TOYS',
+      cacheOptions: { next: { revalidate: REVALIDATE_LONG_TIME } },
+    }),
+  ]);
+  const list = [...(pages ?? []), ...(toys ?? [])];
+  return <Page list={list} />;
 }

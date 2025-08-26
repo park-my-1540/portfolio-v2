@@ -2,11 +2,11 @@
  * @fileoverview 데이터 가공 로직
  */
 import { DATABASE_ID } from '@/../../config';
-import { Blocks, TextRichText, DatabaseKey } from '@/types/common';
+import { Blocks, DatabaseKey, TextRichText } from '@/types/common';
 import { getPublishedImageUrl } from '@/utils/helpers';
+import convertToPermanentMedia from './CloudinaryApi';
 import { getDatabaseQuery, getPageChildren, patchBlock } from './notionClient';
 import { NotionPage } from './notionType';
-import convertToPermanentMedia from './CloudinaryApi';
 
 // 1. Notion 데이터베이스에서 일정 정보를 가져오는 함수
 export async function getPageList({
@@ -19,7 +19,6 @@ export async function getPageList({
   cacheOptions?: { next?: { revalidate: number } };
 }) {
   const database_id = DATABASE_ID[pageId as string];
-
   try {
     const data = await getDatabaseQuery(database_id, cacheOptions);
 
@@ -29,7 +28,6 @@ export async function getPageList({
         type: page.properties?.type?.rich_text?.[0]?.plain_text || '',
       }));
     }
-
     // 기본적으로 상세 정보를 반환
     return data.results.map((page: NotionPage) => {
       const originalImgUrl = page.cover?.file?.url || '';
@@ -165,6 +163,7 @@ export async function getPageWithBlocks(pageId: DatabaseKey) {
   try {
     const page = await getPageList({ pageId, returnIdsOnly: true });
     const list = await getPageList({ pageId: 'LIST' });
+    const toys = await getPageList({ pageId: 'TOYS' });
     const filtered = list.filter((item) => item.type && item.type === pageId);
     const pageWithBlocks = await Promise.all(
       page.map(async (item) => {
@@ -172,7 +171,7 @@ export async function getPageWithBlocks(pageId: DatabaseKey) {
         return { blocks };
       }),
     );
-    return { pageWithBlocks, filtered };
+    return { pageWithBlocks, filtered: [...filtered, ...(toys ?? [])] };
   } catch (error) {
     console.error('Error fetching page with blocks:', error);
     return [];

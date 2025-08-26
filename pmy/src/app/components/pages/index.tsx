@@ -1,17 +1,17 @@
 'use client';
 
-import React, { useRef } from 'react';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import gsap from 'gsap';
-import { useSetAtom } from 'jotai';
-import { Filtered } from '@/types/common';
 import Box from '@/components/layouts/Box/Box';
-import Skill from '@/components/templates/Skill';
+import Footer from '@/components/organisms/Footer/Footer';
+import Gallery from '@/components/organisms/Gallery';
 import About from '@/components/templates/About';
 import Contact from '@/components/templates/Contact';
 import Main from '@/components/templates/Main';
-import Gallery from '@/components/organisms/Gallery';
-import Footer from '@/components/organisms/Footer/Footer';
+import Skill from '@/components/templates/Skill';
+import { Filtered } from '@/types/common';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useSetAtom } from 'jotai';
+import { useRef } from 'react';
 
 import useLocoScroll from '@/hook/useLocoScroll';
 import galleryListState from '@/jotai/galleryListAtom';
