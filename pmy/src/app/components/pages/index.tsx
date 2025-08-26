@@ -11,7 +11,7 @@ import { Filtered } from '@/types/common';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useSetAtom } from 'jotai';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import useLocoScroll from '@/hook/useLocoScroll';
 import galleryListState from '@/jotai/galleryListAtom';
@@ -19,12 +19,24 @@ import galleryListState from '@/jotai/galleryListAtom';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home({ list }: { list: Filtered[] }) {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const key = 'bf__reloaded_once'; // 세션 플래그
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, '1');
+      window.location.replace(window.location.href); // 또는 window.location.reload()
+    }
+  }, []);
+
   const setList = useSetAtom(galleryListState);
-  setList(list);
+  // 2) 렌더 중 setState 금지 → 클라이언트에서만 세팅
+  useEffect(() => {
+    setList(list);
+  }, [list, setList]);
 
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+
   useLocoScroll(true, ref);
-
   return (
     <div data-scroll-container id="main-container" ref={ref}>
       <Main />
