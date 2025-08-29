@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { debounce } from 'lodash';
-import { usePathname } from 'next/navigation';
-import { useSetAtom } from 'jotai';
 import locoScrollState from '@/jotai/locoScrollAtom';
+import scrollStartState from '@/jotai/scrollStartAtom';
+import * as animate from '@/utils/animate';
+import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useSetAtom } from 'jotai';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
-import * as animate from '@/utils/animate';
-import scrollStartState from '@/jotai/scrollStartAtom';
+import { debounce } from 'lodash';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,40 +43,21 @@ const moveToGalleryPosition = (scrollRef: React.RefObject<LocomotiveScroll | nul
 };
 
 /**
- * 타이머 핸들러
- */
-const debounceResizeHandler = (
-  locoScrollRef: React.RefObject<LocomotiveScroll | null>,
-  timer: any,
-) => {
-  const handleResize = debounce(() => {
-    locoScrollRef.current?.scrollTo(0, { duration: 0 });
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      locoScrollRef.current?.update();
-      ScrollTrigger.refresh(); // 새로 계산
-    }, 500);
-  }, 300);
-
-  return handleResize;
-};
-
-/**
- * ScrollTrigger 새로고침 함수
- */
-const refreshScrollTriggers = (timelines) => {
-  timelines.forEach((tl) => {
-    if (tl && tl.scrollTrigger) {
-      tl.scrollTrigger.refresh();
-    }
-  });
-};
-
-/**
  * Locomotive Scroll과 GSAP의 ScrollTrigger를 통합하여 스크롤 이벤트를 처리합니다.
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
 export default function useLocoScroll(start: boolean, ref: any) {
+  /**
+   * ScrollTrigger 새로고침 함수
+   */
+  const refreshScrollTriggers = (timelines) => {
+    timelines.forEach((tl) => {
+      if (tl && tl.scrollTrigger) {
+        tl.scrollTrigger.refresh();
+      }
+    });
+  };
+
   const setScrollStartState = useSetAtom(scrollStartState);
   const setLocoScrollState = useSetAtom(locoScrollState);
   const pathname = usePathname(); // 현재 경로
@@ -87,6 +68,29 @@ export default function useLocoScroll(start: boolean, ref: any) {
   const mainTimeline = useRef<gsap.core.Timeline | null>(null);
   const skillTimeline = useRef<gsap.core.Timeline | null>(null);
   const contactTimeline = useRef<gsap.core.Timeline | null>(null);
+
+  /**
+   * 타이머 핸들러
+   */
+  const debounceResizeHandler = (locoScrollRef: React.RefObject<LocomotiveScroll | null>, timer: any) => {
+    const handleResize = debounce(() => {
+      locoScrollRef.current?.scrollTo(0, { duration: 0 });
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        locoScrollRef.current?.update();
+        ScrollTrigger.refresh(); // 새로 계산
+        refreshScrollTriggers([
+          galleryTimeline.current,
+          skillTimeline.current,
+          aboutTimeline.current,
+          mainTimeline.current,
+          contactTimeline.current,
+        ]);
+      }, 500);
+    }, 300);
+
+    return handleResize;
+  };
 
   let timer;
   let resizeTimer;
@@ -160,13 +164,6 @@ export default function useLocoScroll(start: boolean, ref: any) {
           },
         });
 
-        // ScrollTrigger 새로고침
-        const refreshScrollTrigger = () => {
-          if (locoScrollRef.current) {
-            locoScrollRef.current.update();
-          }
-        };
-
         // gsap timeline
         mainTimeline.current = animate.triggerMainSections(mainTimeline);
         aboutTimeline.current = animate.triggerHighlightsText(aboutTimeline);
@@ -179,6 +176,13 @@ export default function useLocoScroll(start: boolean, ref: any) {
           moveToGalleryPosition(locoScrollRef);
           sessionStorage.removeItem('detail');
         });
+
+        // ScrollTrigger 새로고침
+        const refreshScrollTrigger = () => {
+          if (locoScrollRef.current) {
+            locoScrollRef.current.update();
+          }
+        };
 
         ScrollTrigger.addEventListener('refresh', refreshScrollTrigger);
         ScrollTrigger.refresh();
@@ -196,14 +200,12 @@ export default function useLocoScroll(start: boolean, ref: any) {
         locoScrollRef.current.destroy();
         locoScrollRef.current = null;
       }
-      [galleryTimeline, aboutTimeline, skillTimeline, mainTimeline, contactTimeline].forEach(
-        (tl) => {
-          if (tl.current) {
-            tl.current.kill();
-            tl.current = null;
-          }
-        },
-      );
+      [galleryTimeline, aboutTimeline, skillTimeline, mainTimeline, contactTimeline].forEach((tl) => {
+        if (tl.current) {
+          tl.current.kill();
+          tl.current = null;
+        }
+      });
     };
   }, [ref]);
 
@@ -216,5 +218,6 @@ export default function useLocoScroll(start: boolean, ref: any) {
       mainTimeline.current,
       contactTimeline.current,
     ]);
+    locoScrollRef.current?.update();
   }, [pathname]);
 }
