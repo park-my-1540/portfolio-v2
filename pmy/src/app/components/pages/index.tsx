@@ -14,6 +14,7 @@ import { useSetAtom } from 'jotai';
 import { useEffect, useRef } from 'react';
 
 import useLocoScroll from '@/hook/useLocoScroll';
+import usePageReady from '@/hook/usePageReady';
 import galleryListState from '@/jotai/galleryListAtom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -35,7 +36,9 @@ export default function Home({ list }: { list: Filtered[] }) {
   }, [list, setList]);
 
   const ref = useRef<HTMLDivElement | null>(null);
-  useLocoScroll(true, ref);
+  const ready = usePageReady();
+
+  useLocoScroll(ready, ref);
   return (
     <div data-scroll-container id="main-container" ref={ref}>
       <Main />
