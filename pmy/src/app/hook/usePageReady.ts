@@ -18,6 +18,5 @@ export default function usePageReady() {
     check();
   }, []);
 
-  console.log(`시작!!!  ${ready}`);
   return ready;
 }

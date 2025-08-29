@@ -74,7 +74,6 @@ const refreshScrollTriggers = (timelines) => {
  * @param start - 스크롤 통합을 시작할지 여부를 결정하는 불린 값
  */
 export default function useLocoScroll(start: boolean, ref: any) {
-  console.log('useLocoScroll');
   const setScrollStartState = useSetAtom(scrollStartState);
   const setLocoScrollState = useSetAtom(locoScrollState);
   const pathname = usePathname(); // 현재 경로
