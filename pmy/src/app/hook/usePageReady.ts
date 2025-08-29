@@ -6,7 +6,9 @@ export default function usePageReady() {
   useEffect(() => {
     const check = async () => {
       if (document.readyState !== 'complete') {
-        await new Promise<void>((res) => window.addEventListener('load', () => res(), { once: true }));
+        await new Promise<void>((res) => {
+          window.addEventListener('load', () => res(), { once: true });
+        });
       }
       // 웹폰트까지 기다리고 싶으면
       if (document.fonts?.ready) await document.fonts.ready;
