@@ -1,14 +1,14 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-import { usePathname } from 'next/navigation';
-import { useAtomValue } from 'jotai';
-import Box from '@/components/layouts/Box/Box';
-import Toggle from '@/components/atoms/toggle/toggle';
-import modalState from '@/jotai/modalAtom';
 import SplitText from '@/components/atoms/SplitText';
 import { TextLink } from '@/components/atoms/Text/Text';
+import Toggle from '@/components/atoms/toggle/toggle';
+import Box from '@/components/layouts/Box/Box';
 import Menu from '@/components/molecules/Menu';
+import modalState from '@/jotai/modalAtom';
 import * as modal from '@/utils/modal';
 import * as theme from '@/utils/theme';
+import { useAtomValue } from 'jotai';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { header, inner, menuBtn, sub } from './index.css';
 
 const MenuToggle = () => {
@@ -40,7 +40,8 @@ const ThemeToggle = () => {
 function Header() {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname(); // 현재 경로
-
+  const router = useRouter();
+  const isDetail = pathname.startsWith('/project');
   useEffect(() => {
     if (!headerRef?.current) return;
     const method = pathname?.includes('project') ? 'add' : 'remove';
@@ -74,9 +75,9 @@ function Header() {
         }}
       >
         <Box paddingLeft="1.6rem" display="flex" direction="row" align="center" justify="between" width="100%">
-          <SplitText splitText="MEE YOUNG" sizes="medium" weights="bold" type="same" />
+          <SplitText splitText="MEE YOUNG" sizes="medium" weights="bold" type="same" onClick={() => router.push('/')} />
           <ThemeToggle />
-          <MenuToggle />
+          {!isDetail ? <MenuToggle /> : <div style={{ visibility: 'hidden' }}>MENU</div>}
         </Box>
         <Menu />
       </Box>

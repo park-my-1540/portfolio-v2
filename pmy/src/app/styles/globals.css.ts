@@ -1,10 +1,10 @@
 // global.css.ts
-import './layers.css';
-import './reset.css';
-import { globalStyle, globalFontFace } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import { colors } from './tokens/colors.css';
+import { globalFontFace, globalStyle } from '@vanilla-extract/css';
+import './layers.css';
 import * as layers from './layers.css';
+import './reset.css';
+import { colors } from './tokens/colors.css';
 
 // Medium 폰트 설정
 globalFontFace('MangoLight', {
@@ -43,7 +43,7 @@ globalStyle('body, html', {
     [layers.reset]: {
       height: '100%',
       fontFamily: 'MangoRegular',
-      cursor: 'none',
+      // cursor: 'none',
       letterSpacing: '0.6px',
     },
   },
@@ -96,7 +96,7 @@ globalStyle('canvas', {
 // 비활성화된 버튼 스타일
 globalStyle('button:disabled', {
   opacity: 0.5, // 비활성화된 버튼의 오퍼시티
-  cursor: 'not-allowed', // 비활성화된 상태에서 커서 스타일 변경
+  // cursor: 'not-allowed', // 비활성화된 상태에서 커서 스타일 변경
 });
 
 globalStyle('ul', {
