@@ -135,17 +135,24 @@ export default function useLocoScroll(start: boolean, ref: any) {
 
         // ScrollTrigger와 Locomotive Scroll 동기화
         ScrollTrigger.scrollerProxy(scrollEl, {
-          scrollTop() {
-            if (locoScrollRef.current) {
-              return arguments.length ? null : locoScrollRef.current.scroll.instance.scroll.y;
+          scrollTop(value) {
+            if (!locoScrollRef.current) return 0;
+
+            if (arguments.length && typeof value === 'number') {
+              locoScrollRef.current.scrollTo(value, { duration: 0, disableLerp: true });
             }
-            return null;
+
+            return locoScrollRef.current.scroll.instance.scroll.y;
           },
-          scrollLeft() {
-            if (locoScrollRef.current) {
-              return arguments.length ? null : locoScrollRef.current.scroll.instance.scroll.x;
+          scrollLeft(value) {
+            if (!locoScrollRef.current) return 0;
+            if (arguments.length && typeof value === 'number') {
+              locoScrollRef.current.scrollTo(
+                { x: value, y: locoScrollRef.current.scroll.instance.scroll.y },
+                { duration: 0, disableLerp: true },
+              );
             }
-            return null;
+            return locoScrollRef.current.scroll.instance.scroll.x;
           },
           getBoundingClientRect() {
             return {
