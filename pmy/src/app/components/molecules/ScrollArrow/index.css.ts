@@ -1,3 +1,4 @@
+import { vars } from '@/styles/common/createThemeContract.css';
 import { style, keyframes } from '@vanilla-extract/css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
 
@@ -33,20 +34,20 @@ export const wrapper = style([
 ]);
 
 export const scrolldown = style({
-  border: '2px solid #FFFFFF',
+  border: `2px solid ${vars.color.text.primary}`,
   borderRadius: '30px',
   height: '46px',
   margin: '0 auto 8px',
   textAlign: 'center',
   width: '30px',
-  color: '#FFF',
+  color: vars.color.text.primary,
 });
 
 export const scrolldownP1 = style({
   animationDuration: '1.5s',
   animationName: scrolldownAnimation,
   animationIterationCount: 'infinite',
-  fill: '#FFFFFF',
+  fill: vars.color.text.primary,
 });
 
 export const scrolldownP2 = style([

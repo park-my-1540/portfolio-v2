@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/common/createThemeContract.css';
-import { colors } from '@/styles/tokens/colors.css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
 
 export const galleryWrap = style({
@@ -66,7 +65,10 @@ export const galleryItemInfo = style([
     bottom: '15%',
     left: '10%',
     fontFamily: 'MangoBold',
-    color: colors.lightblue03,
+    color: '#F1EDF6',
+    backgroundColor: '#211D2BE6',
+    padding: '1rem 1.25rem',
+    borderRadius: '12px',
   },
   responsiveStyle({
     mobile: {
@@ -82,7 +84,7 @@ export const galleryInfoSubtitle = style({
   fontFamily: 'MangoBold',
   fontWeight: 400,
   WebkitFontSmoothing: 'antialiased',
-  WebkitTextStroke: `2px ${colors.lightblue04}`,
+  WebkitTextStroke: `2px ${vars.color.text.accent}`,
 });
 
 export const galleryContainer = style([

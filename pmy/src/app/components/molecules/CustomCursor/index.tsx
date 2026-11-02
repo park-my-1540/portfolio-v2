@@ -9,75 +9,43 @@ const CustomCursor = () => {
   const mainCursor = useRef<HTMLDivElement | null>(null);
   const cursorType = useAtomValue(cursorsState);
 
-  const positionRef = useRef({
-    mouseX: 0,
-    mouseY: 0,
-    destinationX: 0,
-    destinationY: 0,
-    distanceX: 0,
-    distanceY: 0,
-    key: -1,
-  });
-
   useEffect(() => {
-    document.addEventListener('mousemove', (event) => {
-      const { clientX, clientY } = event;
-
-      const mouseX = clientX;
-      const mouseY = clientY;
-
-      if (!mainCursor.current) return;
-      positionRef.current.mouseX
-        = mouseX - (mainCursor.current?.clientWidth ?? 0) / 2;
-      positionRef.current.mouseY
-        = mouseY - (mainCursor.current?.clientHeight ?? 0) / 2;
-    });
-
-    return () => {};
-  }, []);
-
-  useEffect(() => {
-    const followMouse = () => {
-      positionRef.current.key = requestAnimationFrame(followMouse);
-      const {
-        mouseX,
-        mouseY,
-        destinationX,
-        destinationY,
-        distanceX,
-        distanceY,
-      } = positionRef.current;
-      if (!destinationX || !destinationY) {
-        positionRef.current.destinationX = mouseX;
-        positionRef.current.destinationY = mouseY;
-      } else {
-        positionRef.current.distanceX = (mouseX - destinationX) * 0.2;
-        positionRef.current.distanceY = (mouseY - destinationY) * 0.2;
-        if (
-          Math.abs(positionRef.current.distanceX)
-            + Math.abs(positionRef.current.distanceY)
-          < 0.1
-        ) {
-          positionRef.current.destinationX = mouseX;
-          positionRef.current.destinationY = mouseY;
-        } else {
-          positionRef.current.destinationX += distanceX;
-          positionRef.current.destinationY += distanceY;
-        }
-      }
-      if (mainCursor && mainCursor.current) mainCursor.current.style.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
+    const media = window.matchMedia('(min-width: 769px) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+    let frame = 0;
+    let seen = false;
+    let x = 0; let y = 0; let targetX = 0; let targetY = 0;
+    const draw = () => {
+      const cursor = mainCursor.current;
+      if (!cursor || !seen || !media.matches) return;
+      x += (targetX - x) * 0.25;
+      y += (targetY - y) * 0.25;
+      cursor.style.transform = `translate3d(${x - cursor.clientWidth / 2}px, ${y - cursor.clientHeight / 2}px, 0)`;
+      cursor.style.opacity = '1';
+      frame = requestAnimationFrame(draw);
     };
-    followMouse();
+    const hide = () => {
+      seen = false;
+      cancelAnimationFrame(frame);
+      if (mainCursor.current) mainCursor.current.style.opacity = '0';
+    };
+    const move = (event: MouseEvent) => {
+      if (!media.matches) return;
+      targetX = event.clientX; targetY = event.clientY;
+      if (!seen) { x = targetX; y = targetY; seen = true; draw(); }
+    };
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseleave', hide);
+    window.addEventListener('blur', hide);
+    media.addEventListener('change', hide);
+    return () => {
+      hide();
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseleave', hide);
+      window.removeEventListener('blur', hide);
+      media.removeEventListener('change', hide);
+    };
   }, []);
-  return (
-    <div
-      ref={mainCursor}
-      className={classNames(
-        styles.mainCursor,
-        cursorStyles.cursorStyles[cursorType || 'default'],
-      )}
-    />
-  );
-};
 
+  return <div aria-hidden="true" ref={mainCursor} className={classNames(styles.mainCursor, cursorStyles.cursorStyles[cursorType || 'default'])} />;
+};
 export default CustomCursor;

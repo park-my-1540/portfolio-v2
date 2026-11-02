@@ -1,6 +1,6 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
-import { colors } from '@/styles/tokens/colors.css';
+import { vars } from '@/styles/common/createThemeContract.css';
 
 const base = {
   margin: '0',
@@ -109,7 +109,7 @@ const variants = {
     stroke: style({
       color: 'transparent !important',
       WebkitFontSmoothing: 'antialiased',
-      WebkitTextStroke: `2px ${colors.lightblue}`,
+      WebkitTextStroke: `2px ${vars.color.text.accent}`,
     }),
   },
   decoration: {

@@ -1,49 +1,25 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import { useAtomValue } from 'jotai';
 import Box from '@/components/layouts/Box/Box';
-import * as theme from '@/utils/theme';
+import themeState from '@/jotai/themeAtom';
 import * as cursor from '@/utils/cursor';
-import {
-  switcher,
-  switcherInput,
-  switcherLabel,
-  switcherIcon,
-} from './index.css';
+import { switcher, switcherInput, switcherLabel, switcherIcon } from './index.css';
 
-const Toggle = ({ changeTheme }: { changeTheme: (e) => void }) => {
-  const _theme = theme.getTheme();
+const Toggle = ({ changeTheme }: { changeTheme: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
+  const { mode } = useAtomValue(themeState);
   return (
     <Box>
-      <span
-        className={switcher}
-        onMouseEnter={() => cursor.set('point')}
-        onMouseLeave={() => cursor.set(null)}
-      >
-        {/* 테마 스위치 */}
+      <span className={switcher} onMouseEnter={() => cursor.set('point')} onMouseLeave={() => cursor.set(null)}>
         <input
-          ref={useCallback(
-            (node: HTMLInputElement | null) => {
-              if (node) node.checked = _theme === 'light';
-            },
-            [_theme],
-          )}
           type="checkbox"
           id="switcher"
           className={switcherInput}
+          checked={mode === 'light'}
+          aria-label="라이트 모드"
           onChange={changeTheme}
         />
-
         <label htmlFor="switcher" className={switcherLabel}>
-          <img
-            className={switcherIcon}
-            ref={useCallback(
-              (node: HTMLImageElement | null) => {
-                if (node) node.src = `/svg/toggle/${_theme}.svg`;
-              },
-              [_theme],
-            )}
-            src={`/svg/toggle/${_theme}.svg`}
-            alt={_theme === 'light' ? 'Light Mode' : 'Dark Mode'}
-          />
+          <img className={switcherIcon} src={`/svg/toggle/${mode}.svg`} alt="" />
         </label>
       </span>
     </Box>

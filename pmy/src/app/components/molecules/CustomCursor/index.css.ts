@@ -47,6 +47,8 @@ export const mainCursor = style({
   width: '24px',
   height: '24px',
   zIndex: 999,
+  opacity: 0,
+  '@media': { '(max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce)': { display: 'none' } },
   borderRadius: '50%',
   pointerEvents: 'none',
   overflow: 'hidden',

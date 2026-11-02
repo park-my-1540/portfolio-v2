@@ -3,7 +3,7 @@ import Box from '@/components/layouts/Box/Box';
 import { Text, TextLink } from '@/components/atoms/Text/Text';
 import { arrowLink, iconArrow, bgBtn } from '@/styles/style.css';
 import * as url from '@/constants/routes';
-import { colors } from '@/styles/tokens/colors.css';
+import { vars } from '@/styles/common/createThemeContract.css';
 import * as cursor from '@/utils/cursor';
 
 export default function Contact() {
@@ -38,9 +38,9 @@ export default function Contact() {
           borderRadius="60px"
           width="100vw"
           height="70vh"
-          backgroundColor={colors.pink}
+          backgroundColor={vars.color.light}
         >
-          <Text sizes="mediumlarge" color="point" weights="bold" bgColor="accent" className={bgBtn}>
+          <Text sizes="mediumlarge" color="primary" weights="bold" bgColor="accent" className={bgBtn}>
             Let’s Connect
           </Text>
           <TextLink

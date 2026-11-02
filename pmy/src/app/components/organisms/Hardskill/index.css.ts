@@ -1,3 +1,4 @@
+import { vars } from '@/styles/common/createThemeContract.css';
 import { style } from '@vanilla-extract/css';
 import { responsiveStyle } from '@/styles/common/responsive.css';
 
@@ -7,7 +8,8 @@ export const content = style([
     padding: '30px 0 25px',
     margin: '0 20px',
     textAlign: 'center',
-    background: '#acc9ff',
+    background: vars.color.light,
+    color: vars.color.text.primary,
     borderRadius: 30,
     transform: 'translate(0%, 100%)',
     opacity: 0,
@@ -40,7 +42,7 @@ export const listBox = style({
   padding: 5,
   margin: '3px 5px',
   borderRadius: '0.6rem',
-  background: '#fff',
+  background: vars.color.primary,
 });
 
 export const mobileImg = style([
@@ -104,8 +106,8 @@ export const altTooltip = style({
   bottom: '100%',
   left: '50%',
   transform: 'translateX(-50%)',
-  backgroundColor: '#000',
-  color: '#fff',
+  backgroundColor: vars.color.text.accent,
+  color: vars.color.primary,
   fontSize: '12px',
   padding: '4px 8px',
   borderRadius: '4px',

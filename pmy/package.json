@@ -23,7 +23,7 @@
     "cloudinary": "^2.6.0",
     "clsx": "^2.1.1",
     "eslint-import-resolver-typescript": "^3.8.3",
-    "gsap": "^3.12.5",
+    "gsap": "^3.13.0",
     "jotai": "^2.10.3",
     "locomotive-scroll": "^4.1.4",
     "lodash": "^4.17.21",

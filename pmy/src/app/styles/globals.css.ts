@@ -4,7 +4,6 @@ import { globalFontFace, globalStyle } from '@vanilla-extract/css';
 import './layers.css';
 import * as layers from './layers.css';
 import './reset.css';
-import { colors } from './tokens/colors.css';
 
 // Medium 폰트 설정
 globalFontFace('MangoLight', {
@@ -55,7 +54,7 @@ globalStyle('body', {
       margin: 0,
       overflowX: 'hidden',
       backgroundColor: vars.color.primary,
-      color: colors.lightblue,
+      color: vars.color.text.primary,
       transition: 'background-color 0.3s ease-in-out',
     },
   },
@@ -167,4 +166,16 @@ globalStyle('ul ul ul ul > li::before', {
   height: '5px',
   borderRadius: '0',
   background: vars.color.dark,
+});
+
+// Keep scroll-driven text colors responsive to theme changes.
+globalStyle('body', {
+  vars: {
+    '--intro-active': vars.color.text.primary,
+    '--intro-muted': vars.color.text.tertiary,
+  },
+});
+globalStyle('::selection', {
+  backgroundColor: vars.color.text.accent,
+  color: vars.color.primary,
 });

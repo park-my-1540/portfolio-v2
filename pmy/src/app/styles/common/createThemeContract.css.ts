@@ -1,13 +1,13 @@
 import { createThemeContract, createTheme } from '@vanilla-extract/css';
 import { colors } from '@/styles/tokens/colors.css';
 
-type ColorKey = keyof typeof colors;
-
 export const vars = createThemeContract({
   color: {
     primary: '', // 주 색상
     light: '', // 흐린 색상
     dark: '',
+    signal: '',
+    typography: '',
     text: {
       primary: '', // 기본 텍스트 색상
       tertiary: '', // 보조 텍스트 색상 (설명 텍스트 등)
@@ -23,35 +23,39 @@ export const vars = createThemeContract({
 
 export const lightTheme = createTheme(vars, {
   color: {
-    primary: colors['blue' as ColorKey],
-    light: colors['lightblue04' as ColorKey],
-    dark: colors['dark' as ColorKey],
+    primary: colors.mintBackground,
+    light: colors.mintSurface,
+    dark: colors.plumText,
+    signal: '#CE2939',
+    typography: '#681C93',
     text: {
-      primary: colors['white' as ColorKey],
-      tertiary: colors['lightblue02' as ColorKey],
-      accent: colors['blue' as ColorKey],
-      light: colors['gray' as ColorKey],
+      primary: colors.plumText,
+      tertiary: colors.lightMuted,
+      accent: colors.violetAccent,
+      light: colors.lightMuted,
     },
     scrollbar: {
-      track: colors['lightblue' as ColorKey],
-      thumb: colors['blue' as ColorKey],
+      track: colors.mintSurface,
+      thumb: colors.violetAccent,
     },
   },
 });
 export const darkTheme = createTheme(vars, {
   color: {
-    primary: colors['dark' as ColorKey],
-    light: colors['dark' as ColorKey],
-    dark: colors['white' as ColorKey],
+    primary: colors.charcoalBackground,
+    light: colors.charcoalSurface,
+    dark: colors.paleText,
+    signal: '#CE2939',
+    typography: '#C59AE0',
     text: {
-      primary: colors['gray' as ColorKey],
-      tertiary: colors['light' as ColorKey],
-      accent: colors['white' as ColorKey],
-      light: colors['gray' as ColorKey],
+      primary: colors.paleText,
+      tertiary: colors.darkMuted,
+      accent: colors.mintAccent,
+      light: colors.darkMuted,
     },
     scrollbar: {
-      track: colors['dark' as ColorKey],
-      thumb: colors['lightblue' as ColorKey],
+      track: colors.charcoalSurface,
+      thumb: colors.mintAccent,
     },
   },
 });

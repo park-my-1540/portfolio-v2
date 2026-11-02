@@ -90,7 +90,7 @@ export const scaleOnScroll = (lineRef: RefType, triggerRef: RefType) => {
  * @param tl - timeline
  */
 export const triggerMainSections = (tl) => {
-  const lineEl = document.querySelector('.line') as HTMLElement;
+  const lineEl = document.querySelector('.main') as HTMLElement;
   const sections = document.querySelector('.main') as HTMLElement;
 
   if (!lineEl || !tl) return null;
@@ -101,18 +101,11 @@ export const triggerMainSections = (tl) => {
       scrub: true,
       pin: true,
       start: 'top top', // 트리거 시작 지점
-      end: '+=200%', // 트리거 종료 지점
+      end: '+=60%', // A brief pause for the title interaction
     },
   });
 
-  tl.from(lineEl, {
-    scaleX: 0,
-    transformOrigin: 'left center',
-    ease: 'none',
-  }).to(lineEl, {
-    xPercent: -100,
-    ease: 'none',
-  });
+  tl.to({}, { duration: 1 });
   return tl;
 };
 
@@ -130,7 +123,7 @@ export const triggerContactSections = (tl) => {
       scroller: '#main-container', // Locomotive Scroll을 사용하는 경우 설정
       scrub: true,
       start: 'top top', // 트리거 시작 지점
-      end: '+=200%', // 트리거 종료 지점
+      end: '+=60%', // A brief pause for the title interaction
     },
   });
 
@@ -231,11 +224,11 @@ export const triggerHighlightsText = (tl) => {
 
       // span이 뷰포트에 들어오면 색상이 변경되었다가 점점 투명해지는 애니메이션
       tl.to(span, {
-        color: '#C4D9FF', // 활성화 색상
+        color: 'var(--intro-active)', // 활성화 색상
         duration: 0.5,
         delay: index * 0.1, // 단어별 순차적 딜레이
       }).to(span, {
-        color: '#C4D9FF50', // 비활성화 색상 (반투명)
+        color: 'var(--intro-muted)', // 비활성화 색상 (반투명)
         duration: 0.5,
         delay: 0.5, // 활성화 후 잠시 대기
       });
